@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Research: API landscape — Open Energy Data Layer — documentation</title>
+<meta name="description" content="API &amp; Interop Landscape — Open Energy Data Layer for the Philippines">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" class="current" aria-current="page" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-research">Research</a><span class="sep">/</span><span aria-current="page">Research: API landscape</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Research <span class="sep">&middot;</span> documentation</p>
+  <h1 id="api--interop-landscape--open-energy-data-layer-for-the-philippines">API &amp; Interop Landscape — Open Energy Data Layer for the Philippines</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>research/api-landscape.md</code> &middot; 219 lines &middot; 36 KB &middot; 4,722 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/research/api-landscape.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p><strong>Author:</strong> api-researcher (Team Lead's research task) · <strong>Date:</strong> 2026-11-10 (Asia/Manila)
+<strong>Scope:</strong> DBM COMPASS / EO 126 context, PH open-data stack, precedent energy APIs, standards, BetterGovPH assets, and a recommended v1 API + governance shape for the BetterGov PH Fellowship &quot;Energy&quot; challenge (pilot cohort Dec 2026 – Mar 2027).
+<strong>Method / legend:</strong> <code>[V]</code> = URL or fact fetched and observed on 2026-11-10. <code>[B]</code> = URL exists but fetch was blocked (Cloudflare/bot protection) in this environment. <code>[I]</code> = inferred/recommended by this researcher, not observed. Access date for every source below: <strong>2026-11-10</strong>. Endpoints described as &quot;proposed&quot; are not live and are not claimed to exist.</p>
+<hr />
+<h2 class="has-anchor" id="0-tldr--decisions-this-research-supports">0. TL;DR — decisions this research supports<a class="h-anchor" href="#0-tldr--decisions-this-research-supports" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>Build REST-first, then wrap in MCP.</strong> BetterGovPH already ships this exact pattern twice (Budget API, community Open Data Portal): OpenAPI 3.1 + public REST + stateless Streamable-HTTP MCP server + bulk data files. Copy it; don't invent a new pattern.</li>
+<li><strong>One master entity list is the product.</strong> A <code>utility</code>/<code>supplier</code> entity with a stable public ID keyed to PSGC geography is the join key for the price table, DOE RE/priority projects, COMPASS budget records, and Presyo PH. Publish it before the rates pipeline.</li>
+<li><strong>Register the dataset where government data is already discovered.</strong> data.gov.ph registration + DICT eGov API catalog listing + DCAT-3 metadata are the three &quot;publish&quot; surfaces; COMPASS itself is consumed read-only via its own API-keyed REST API.</li>
+<li><strong>Bulk CSV mirror is non-negotiable.</strong> Every precedent with staying power pairs an API with dated bulk files (OPSD, OEDI, Ember datasets). A GitHub/Cloudflare mirror + <code>datapackage.json</code> + SHA-256 makes the project survive API downtime and outlast the 3-month fellowship.</li>
+<li><strong>Editorial review must be modeled in the schema, not a side process.</strong> The coalition data analyst who &quot;checks every number before it goes public&quot; needs <code>data_status</code>, <code>reviewed_by</code>, <code>reviewed_at</code>, <code>source_document_id</code>, <code>confidence</code> fields and <code>draft → in_review → published → superseded</code> states.</li>
+<li><strong>License: CC-BY-4.0 for data, MIT/CC0 for code, link-don't-rehost for source PDFs.</strong> PH government content is &quot;public domain unless otherwise stated&quot;; CC-BY-4.0 satisfies the fellowship's open-license expectation while preserving attribution to DOE/ERC/NEA.</li>
+<li><strong>COMPASS integration is a metadata + join-key problem, not a write-API problem.</strong> No public write API was found; the documented surface is the read-only DBM Transparency Portal API behind <code>X-API-Key</code>, plus dataset publication.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="1-dbm-compass--eo-126-s-2026-what-it-is-and-why-integration-matters">1. DBM COMPASS + EO 126 s. 2026: what it is and why integration matters<a class="h-anchor" href="#1-dbm-compass--eo-126-s-2026-what-it-is-and-why-integration-matters" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>What COMPASS is.</strong>
+COMPASS = <em>Centralized Open Monitoring Platform for Appropriations and Spending Statistics</em>, DBM's unified public platform for budget execution and spending disclosure. Public portal: https://compass.dbm.gov.ph/ <code>[V]</code> (HTTP 200; client-rendered SPA; title verified). Fellowship context page: https://fellowship.bettergov.ph/#challenge-energy <code>[V]</code>.</p>
+<p><strong>What EO 126 s. 2026 does</strong> (as described in DBM's own press release of 2026-09-30 <code>[V]</code>, https://www.dbm.gov.ph/index.php/management-2/4275-follow-every-peso-pbbm-orders-gov-t-wide-disclosure-of-budget-procurement-project-data-through-dbm-compass):</p>
+<ul>
+<li>Institutionalizes COMPASS as <em>the</em> government-wide disclosure platform for budget, procurement, project implementation and completion data.</li>
+<li>Requires covered NGAs, GOCCs/GFIs to submit/disclose/update/publish through COMPASS; each agency owns accuracy, completeness, timeliness; non-compliance may trigger administrative/disciplinary sanctions.</li>
+<li>Directs COMPASS to be <strong>capable of interfacing</strong> with IFMIS, BTMS, PhilGEPS, DIME, and the E-Gov PH App &quot;among other systems identified by DBM&quot;.</li>
+<li>Creates a <strong>COMPASS Council</strong>: DBM chair, DICT co-chair, DOF and DILG members; empowered to set disclosure standards, timelines, monitor compliance, recommend action.</li>
+<li>Requires <strong>exception/redaction logs</strong> with legal basis, approving authority and date whenever information is withheld; requires standards on integrity, authenticity, interoperability, accessibility, traceability, auditability, cybersecurity, resilience.</li>
+<li>Encourages LGUs; DILG to push COMPASS use and potentially use disclosure as an SGLG criterion.</li>
+<li>Formal text: https://www.officialgazette.gov.ph/2026/09/28/executive-order-no-126-s-2026/ (linked from the fellowship site; direct fetch returned <strong>403 Cloudflare</strong> in this environment <code>[B]</code>). The fellowship page itself frames the mission as linking &quot;government datasets and services to DBM COMPASS and the open data ecosystem through open APIs and shared standards&quot; <code>[V]</code>.</li>
+</ul>
+<p><strong>Verified COMPASS integration surface — its public API catalog.</strong>
+DICT's eGov developer portal publishes a COMPASS API catalog page: https://platforms.e.gov.ph/api-catalogs/compass <code>[V]</code> (HTTP 200; Next.js, catalog content embedded in the RSC payload and read by this researcher). Observed facts:</p>
+<ul>
+<li>Catalog entry describes &quot;REST endpoints to securely consume SAAODB, NCA, SARO, and LGSF records and dashboard summaries&quot;.</li>
+<li>Authentication: <strong><code>X-API-Key</code> request header</strong> on every endpoint.</li>
+<li>Endpoints documented in the catalog's embedded API reference (base URL is presented as a <code>{{baseUrl}}</code> template, so the concrete host is not honestly publishable from the public page): <code>GET /api/v1/records/saaodb</code>, <code>/api/v1/records/saaodb/dashboard</code>, <code>/api/v1/records/saaodb/entities</code>, <code>/api/v1/records/nca</code>, <code>/api/v1/records/saro</code>, <code>/api/v1/records/lgsf</code>, <code>/api/v1/records/lgsf/dashboard</code>. Pagination <code>page</code> + <code>limit</code> (limit max 1000). A Postman collection (&quot;DBM Transparency Portal API&quot;) is embedded on the same page. <code>[V]</code></li>
+<li>This is a <strong>read-only budget-execution API</strong>, not a general-purpose write API. <code>[I]</code> conclusion from the documented methods/scope.</li>
+</ul>
+<p><strong>Plausible integration surfaces for the energy layer</strong> (ranked by feasibility):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Surface</th>
+<th>What it means concretely</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Join keys, not writes</strong></td>
+<td>Publish DOE/ERC records carrying PSGC codes and UACS codes where applicable, so COMPASS users/agents can join DOE project spend to budget lines.</td>
+<td><code>[I]</code> recommended</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Register API + metadata</strong></td>
+<td>List the energy API as an external/public API in DICT's eGov API catalog (<code>platforms.e.gov.ph</code>) and register datasets on data.gov.ph.</td>
+<td><code>[V]</code> catalog exists; submission process not documented publicly <code>[I]</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>COMPASS consumption</strong></td>
+<td>If DBM grants a key, consume COMPASS SAAODB/SARO/LGSF data to show energy-program budget vs. project status; keep the key server-side.</td>
+<td><code>[V]</code> API documented; key availability unknown</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>MCP for agents</strong></td>
+<td>Wrap the energy API in an MCP server (and, where possible, point at COMPASS-backed helpers) so AI clients can query &quot;who sells power at what price in <PSGC>&quot;.</td>
+<td><code>[V]</code> pattern proven by BetterGovPH Budget API</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Project feeds behind DOE dashboards</strong></td>
+<td>Replace manual DOE dashboard updates with feeds (CSV+API) for RE contracts and priority projects; DIME-style project IDs help COMPASS linkage.</td>
+<td><code>[I]</code> target from pitch deck</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What the fellowship expects</strong> (verbatim from the site <code>[V]</code>): connect datasets &quot;through open APIs, metadata standards, MCP-compatible integrations, or other approved mechanisms&quot;; deliver a &quot;working civic-tech solution, platform enhancement, data tool, dashboard, API service&quot;; provide &quot;technical and data-schema documentation, source-code repositories, deployment instructions&quot;; outputs &quot;encouraged to be released under open licenses&quot;. Energy challenge deliverables: (a) one master list of suppliers/DUs/ECs published as an API, (b) one price table from the 142 utilities' published rates, (c) feeds + an API behind DOE's RE and priority-project dashboards, aligned with ASEAN Energy Statistics <code>[V]</code>.</p>
+<hr />
+<h2 class="has-anchor" id="2-philippine-open-data-ecosystem-and-what-a-new-energy-dataset-must-publish">2. Philippine open-data ecosystem and what a new energy dataset must publish<a class="h-anchor" href="#2-philippine-open-data-ecosystem-and-what-a-new-energy-dataset-must-publish" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>URL</th>
+<th>Observed status 2026-11-10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Data Philippines (national portal)</td>
+<td>https://data.gov.ph/</td>
+<td><code>[V]</code> HTTP 200; Angular SPA, client-rendered; a third-party directory reports the old CKAN <code>/api/3/action/*</code> paths are gone (not independently re-verified here).</td>
+</tr>
+<tr>
+<td>data.gov.ph public API</td>
+<td>https://api.data.gov.ph/api/public/dataset/search</td>
+<td><code>[V]</code> Anonymous POST returns <strong>HTTP 401</strong> <code>{&quot;success&quot;:false,&quot;message&quot;:&quot;API Key not found.&quot;}</code> — i.e., an API key (likely <code>X-API-KEY</code>, registered via portal account) is required. The portal's client bundle shows the public routes it calls: <code>/api/public/dataset/search</code>, <code>/api/public/topic/search</code>, <code>/api/public/agency/search</code>, <code>/api/public/format/search</code>, <code>/api/public/dataset/featured</code>, <code>/api/public/dataset/{id}/{slug}</code> — observed in the client JS, <strong>not documented</strong> by the portal, so treat as unstable.</td>
+</tr>
+<tr>
+<td>DCAT / &quot;DCAT-PH&quot;</td>
+<td>https://www.w3.org/TR/vocab-dcat-3/</td>
+<td><code>[V]</code> DCAT 3 is the stable W3C vocabulary. <strong>No published &quot;DCAT-PH&quot; national profile could be verified</strong> on any official site as of 2026-11-10 <code>[B/I]</code> — treat &quot;DCAT-PH&quot; as a working name, not a citable spec; publish a documented DCAT-3 profile instead.</td>
+</tr>
+<tr>
+<td>PSGC (geography)</td>
+<td>https://psa.gov.ph/classification/psgc</td>
+<td><code>[B]</code> PSA blocks automated fetches (Cloudflare 403). PSGC is the authoritative code system; community JSON mirror https://psgc.gitlab.io/api/ <code>[V]</code> (unofficial, useful for prototyping only).</td>
+</tr>
+<tr>
+<td>FOI portal</td>
+<td>https://www.foi.gov.ph/ · DOE agency page: https://www.foi.gov.ph/agencies/doe/</td>
+<td><code>[B]</code> Portal blocks automated fetches; DOE links its agency FOI page <code>[V]</code> (seen on doe.gov.ph footer). Use FOI for bulk data requests and for the redaction/exception-log angle in EO 126.</td>
+</tr>
+<tr>
+<td>DBM COMPASS open data</td>
+<td>https://compass.dbm.gov.ph/ · https://platforms.e.gov.ph/api-catalogs/compass</td>
+<td><code>[V]</code> Public portal + documented API-key REST API (see §1).</td>
+</tr>
+<tr>
+<td>UACS (budget codes)</td>
+<td>https://uacs.gov.ph/</td>
+<td><code>[V]</code> linked from DBM footer; scheme needed to join energy projects to COMPASS budget lines. Not fetched here.</td>
+</tr>
+<tr>
+<td>PSA</td>
+<td>https://psa.gov.ph/</td>
+<td><code>[B]</code> Cloudflare-blocked for this researcher; PSGC/statistics needed as geography + denominator reference.</td>
+</tr>
+<tr>
+<td>DOE electricity rates page</td>
+<td>https://doe.gov.ph/data-and-prices/electricity</td>
+<td><code>[V]</code> HTTP 200; page title &quot;Electricity Rates &amp; Power Market Monitor&quot;; meta description: &quot;Monthly DU electricity rates by customer class, including generation charges, with comparative domestic and international rates&quot;. <strong>Client-rendered Next.js</strong>: no JSON/CSV/PDF links in the initial HTML and <strong>no documented public API found</strong> — the rates table is loaded client-side. Do not invent an endpoint; treat as a scraping/partnership target.</td>
+</tr>
+<tr>
+<td>DOE energy statistics page</td>
+<td>https://doe.gov.ph/data-and-prices/energy-statistics</td>
+<td><code>[V]</code> HTTP 200; &quot;Official Energy Statistics &amp; Data Sets&quot;. Client-rendered; no documented API.</td>
+</tr>
+<tr>
+<td>DOE legacy DU profiles / power plants</td>
+<td>https://legacy.doe.gov.ph/duprofile ; <code>legacy.doe.gov.ph/sites/default/files/pdf/electric_power/...</code></td>
+<td><code>[B]</code> Search-indexed (DU profile pages; LOEPP &quot;existing power plants&quot; PDFs) but <strong>connection failed</strong> on 2026-11-10 — do not design against the legacy host until DOE confirms it is supported.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Registration/publication checklist for a new energy dataset</strong> <code>[I]</code>:</p>
+<ol>
+<li>Register the dataset + each distribution on <strong>data.gov.ph</strong> with title, description, topics, agency/publisher (&quot;Department of Energy, with …&quot;), formats, update frequency; obtain/ask DBM-DICT for the publishing API key and document the exact metadata fields in the repo.</li>
+<li>Publish the <strong>API listing</strong> in DICT's eGov API catalog so COMPASS-adjacent teams can discover it (mirror the COMPASS catalog page structure: auth model, endpoints, query params, examples).</li>
+<li>Publish <strong>DCAT-3 JSON-LD</strong> at a stable URL (e.g. <code>/catalog.jsonld</code>) with <code>dcat:Dataset</code> → <code>dcat:Distribution</code> (API endpoint + CSV/JSON files), <code>dcat:contactPoint</code>, <code>dct:license</code>, <code>dct:spatial</code> (PSGC codes), <code>dct:temporal</code>, <code>dct:accrualPeriodicity</code> (<code>MONTHLY</code> for rates).</li>
+<li>Publish a <strong>Frictionless <code>datapackage.json</code></strong> next to every bulk release (<code>name, title, version, created, licenses, resources[{name,path,format,bytes,hash}]</code>).</li>
+<li>State <strong>provenance, units, and methodology</strong> in metadata: PHP/kWh, VAT treatment, customer class, month effective, source document, extraction method, reviewer.</li>
+<li>Use <strong>PSGC codes</strong> for every geographic reference and publish a crosswalk for legacy DOE/ERC names.</li>
+<li>Version every release by <strong>effective month + release date</strong>, keep immutable snapshots, and keep old versions addressable.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="3-precedent-apis-worth-citing-what-to-copy-what-not-to">3. Precedent APIs worth citing (what to copy, what not to)<a class="h-anchor" href="#3-precedent-apis-worth-citing-what-to-copy-what-not-to" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Precedent</th>
+<th>Base URL / spec</th>
+<th>Auth</th>
+<th>Granularity / shape</th>
+<th>Bulk</th>
+<th>Versioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ember</strong></td>
+<td>https://api.ember-energy.org/v1 · docs https://ember-energy.org/data/api/ <code>[V]</code></td>
+<td>Free API key requested by email; <code>api_key</code> query parameter appears in the spec (examples <code>?api_key=MY_API_KEY</code>) <code>[V]</code></td>
+<td>10 dataset routes (<code>/electricity-generation/{yearly,monthly}</code>, <code>/electricity-demand/...</code>, <code>/power-sector-emissions/...</code>, <code>/carbon-intensity/...</code>, <code>/installed-capacity/monthly</code>, <code>/options/{dataset}/{temporal_resolution}/{filter_name}</code>); records like <code>{entity, entity_code, date, series, generation_twh, share_of_generation_pct}</code>; every response carries a <code>Stats</code> block (<code>timestamp, response_time_in_seconds, rate_limit, number_of_records, query_parameters_used</code>) <code>[V]</code></td>
+<td>Dataset download pages (Yearly/Monthly Electricity Data) — API + files <code>[V]</code></td>
+<td>URL <code>/v1</code>; OpenAPI <code>info.version</code> = 1.2.3 <code>[V]</code></td>
+</tr>
+<tr>
+<td><strong>US EIA API v2</strong></td>
+<td>https://api.eia.gov/v2/ · docs https://www.eia.gov/opendata/documentation.php <code>[V]</code></td>
+<td>Required <code>api_key</code> query param; key registration at <code>/opendata/register.php</code> (from 403 JSON <code>API_KEY_MISSING</code>) <code>[V]</code></td>
+<td>Self-documenting hierarchical routes (<code>/v2/electricity</code> → child routes → <code>/data</code>), <code>facets[…]</code>, <code>frequency</code>, <code>start/end</code>, chosen <code>data[]</code> columns; response echoes the request and the API version; values returned as strings; errors and warnings separated <code>[V]</code></td>
+<td>Bulk files offered separately (not verified here) <code>[I]</code></td>
+<td>v2 announced in docs; patch-level changelog (v2.1.12, March 2026) with behavioural fixes <code>[V]</code></td>
+</tr>
+<tr>
+<td><strong>OEDI (US DOE)</strong></td>
+<td>https://data.openei.org/ · data lake <code>https://oedi-data-lake.s3.amazonaws.com/</code> <code>[V]</code></td>
+<td>None for public data; content CC-BY-4.0 unless noted <code>[V]</code></td>
+<td>Catalog of datasets/submissions + &quot;data lakes&quot; (curated collections); no documented query REST API was found — access is file/dataset-centric <code>[V/I]</code></td>
+<td>Yes — S3 bucket list returns XML <code>ListBucketResult</code> (public bulk listing, 1000 keys/page, e.g. <code>ATB/</code>) <code>[V]</code></td>
+<td>Immutable S3 keys/datasets <code>[I]</code></td>
+</tr>
+<tr>
+<td><strong>Open Power System Data</strong></td>
+<td>https://data.open-power-system-data.org/ <code>[V]</code></td>
+<td>None</td>
+<td>5 core + contributed <strong>data packages</strong>; each package = Frictionless <code>datapackage.json</code> listing <code>resources[{name,title,description,path,format,mediatype,bytes,hash}]</code> (verified on the <code>time_series</code> package) <code>[V]</code></td>
+<td>Only bulk: dated ZIPs per release (e.g. <code>time_series/2020-10-06/…zip</code>); no API <code>[V]</code></td>
+<td>Release date in path (<code>2020-10-06</code>), immutable versions, docs per release <code>[V]</code></td>
+</tr>
+<tr>
+<td><strong>ENTSO-E Transparency Platform</strong></td>
+<td>Platform https://transparency.entsoe.eu/ · data page https://www.entsoe.eu/data/transparency-platform/ <code>[V]</code>; API base <code>https://web-api.tp.entsoe.eu/api</code> <code>[V]</code></td>
+<td>Security token required: request without token returns <strong>HTTP 401 + XML <code>Acknowledgement_MarketDocument</code></strong> (no JSON error) <code>[V]</code>; publication mandated by Regulation (EU) 543/2013 <code>[V]</code></td>
+<td>Domain-based XML market documents (load, generation, prices, etc.), IEC 62325-style XML namespaces <code>[V]</code></td>
+<td>Not verified <code>[I]</code></td>
+<td>Not verified <code>[I]</code></td>
+</tr>
+<tr>
+<td><strong>ASEAN Centre for Energy</strong></td>
+<td>https://www.aseanenergy.org/projects/aeds (AEDS) <code>[V]</code>; ASEAN Energy Statistics Leaflet 2025 https://aseanenergy.org/publications/asean-energy-statistics-leaflet-2025/ <code>[V]</code>; AEDS revamp workshop <code>[V]</code></td>
+<td>Not applicable — portal/publications; no documented public API found <code>[I]</code></td>
+<td>Country/sector statistics and dashboards; AEDS is being revamped <code>[V]</code> (workshop article title)</td>
+<td>Publications/leaflets (PDF) <code>[V]</code></td>
+<td>Editions (e.g. AESL 2025, data 2005–2023 per publisher description) <code>[V]</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Synthesis — what most influenced the v1 recommendation:</strong></p>
+<ul>
+<li><strong>Ember</strong> → single versioned base URL, dataset-oriented routes, stats/rate-limit envelope, API key, <code>/options</code> endpoint for enumerations.</li>
+<li><strong>EIA v2</strong> → self-describing hierarchy (<code>/v1/datasets</code> → resources), explicit facets/filters, request echo for debugging, documented changelog.</li>
+<li><strong>OPSD + OEDI</strong> → dated immutable bulk releases + Frictionless datapackage + hashes; &quot;the mirror is the product&quot; when source sites are fragile.</li>
+<li><strong>BetterGovPH Budget API</strong> (local precedent, see §5) → the closest cultural/technical model: no-auth public REST, OpenAPI 3.1, cursor pagination, <code>{meta,data,next_cursor}</code> envelope, disclaimers/provenance in every response, and an MCP server over the same data.</li>
+<li><strong>ENTSO-E</strong> → shows why a machine-readable API matters when publication is mandated, but also that government-grade APIs can require registration/tokens — plan for a keyed mode even if v1 is anonymous.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="4-standards--interoperability-decisions">4. Standards &amp; interoperability decisions<a class="h-anchor" href="#4-standards--interoperability-decisions" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Recommendation</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API description</td>
+<td><strong>OpenAPI 3.1</strong> (3.2.0 is published and usable; 3.1 has widest tooling today). Serve <code>/openapi.json</code>, render docs, commit the spec to the repo and CI-diff it.</td>
+<td>https://spec.openapis.org/oas/v3.2.0.html <code>[V]</code>; https://spec.openapis.org/oas/v3.1.1.html <code>[V]</code>; Budget API publishes 3.1 at <code>/api/v1/openapi.json</code> <code>[V]</code></td>
+</tr>
+<tr>
+<td>Tabular/bulk packaging</td>
+<td><strong>Frictionless Data Package v1</strong> (<code>datapackage.json</code>) + CSV files + SHA-256 per resource; also emit Parquet if cheap.</td>
+<td>https://specs.frictionlessdata.io/data-package/ <code>[V]</code>; OPSD uses exactly this shape <code>[V]</code></td>
+</tr>
+<tr>
+<td>Catalog metadata</td>
+<td><strong>DCAT 3</strong> JSON-LD (<code>dcat:Dataset</code>, <code>dcat:Distribution</code>, <code>dct:spatial</code>, <code>dct:temporal</code>, <code>dct:license</code>, <code>dcat:contactPoint</code>); document it as a local profile, not as &quot;DCAT-PH&quot;.</td>
+<td>https://www.w3.org/TR/vocab-dcat-3/ <code>[V]</code>; data.gov.ph registration aligns discovery <code>[V]</code></td>
+</tr>
+<tr>
+<td>MCP-compatible integration</td>
+<td><strong>MCP spec 2026-07-28</strong>, JSON-RPC 2.0; transport <strong>Streamable HTTP</strong> (single endpoint, POST → JSON or request-scoped SSE) or stdio for local use. Expose read-only <strong>tools</strong> (and optionally resources) that return the same envelopes as REST. Keep the server stateless; don't require auth in v1 (rate-limit instead); put disclaimers in server instructions.</td>
+<td>https://modelcontextprotocol.io/specification/2026-07-28 <code>[V]</code>; transports <code>[V]</code>; working local example: Budget API <code>/mcp</code> + 25 documented read-only tools <code>[V]</code>; data.bettergov.ph <code>/mcp</code> with 7 tools <code>[V]</code></td>
+</tr>
+<tr>
+<td>Caching / ETag</td>
+<td><code>ETag</code> + <code>If-None-Match</code> on every collection and bulk file; <code>Cache-Control: public, max-age=300, s-maxage=3600</code> for data (Budget API does exactly this) and <code>max-age=86400</code> for immutable dated files; <code>Last-Modified</code> on source documents.</td>
+<td>Budget API docs <code>[V]</code></td>
+</tr>
+<tr>
+<td>Rate limits</td>
+<td>Publish committed limits in docs (e.g. anonymous 60 req/min/IP, 10k/day; bulk only via mirror), return <code>429</code> + <code>RateLimit-Limit/Remaining/Reset</code> (or document headers used); require a descriptive <code>User-Agent</code> with contact and crawl politely under each source's robots/terms. Ember exposes <code>rate_limit</code> in responses — a good pattern.</td>
+<td>Budget API fair-use + UA request <code>[V]</code>; Ember <code>Stats.rate_limit</code> <code>[V]</code></td>
+</tr>
+<tr>
+<td>Provenance fields</td>
+<td>On every rate row: <code>source_document_id</code>, <code>source_url</code>, <code>source_publisher</code>, <code>source_document_date</code>, <code>fetched_at</code>, <code>extraction_method</code>, <code>data_status</code> (<code>official</code>/<code>derived</code>/<code>editorial</code>), <code>confidence</code> (<code>high</code>/<code>medium</code>/<code>low</code>), <code>reviewed_by</code>, <code>reviewed_at</code>, <code>valid_from</code>, <code>valid_to</code>, <code>supersedes</code>. Budget API's <code>upstream_restrictions_url</code> + per-figure disclaimers are the local pattern.</td>
+<td>Budget API docs <code>[V]</code></td>
+</tr>
+<tr>
+<td>Licensing</td>
+<td>Data <strong>CC-BY-4.0</strong>; code <strong>MIT</strong> (or CC0 for snippets/design); source PDFs <strong>linked, not rehosted</strong>, unless DOE/ERC terms explicitly allow; preserve attribution &quot;Department of Energy / ERC / NEA / utility name&quot; and the coalition. PH gov default: &quot;All content is in the public domain unless otherwise stated&quot; (seen on doe.gov.ph footer) <code>[V]</code>; Ember and OEDI both CC-BY-4.0 <code>[V]</code>.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 class="has-anchor" id="5-existing-ph-civic-tech--bettergovph-assets--reuse-complement-dont-duplicate">5. Existing PH civic-tech / BetterGovPH assets — reuse, complement, don't duplicate<a class="h-anchor" href="#5-existing-ph-civic-tech--bettergovph-assets--reuse-complement-dont-duplicate" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>Verified BetterGovPH repos</strong> (GitHub API <code>api.github.com/orgs/bettergovph/repos</code>, 2026-11-10 <code>[V]</code>). Notable:</p>
+<ul>
+<li><code>open-data-portal</code> (CC0) → live at <strong>https://data.bettergov.ph/</strong> <code>[V]</code>: community dataset catalog API (OpenAPI 3.1, paths <code>/api/v1/datasets</code>, <code>/datasets/{id}</code>, <code>/publishers</code>, <code>/categories</code>, <code>/resources</code>, <code>/resources/{id}</code>, <code>/stats</code>, <code>/ping</code>) <strong>and</strong> MCP at <code>/mcp</code> with 7 tools (<code>get_stats</code>, <code>list_categories</code>, <code>list_publishers</code>, <code>search_datasets</code>, <code>get_dataset</code>, <code>list_resources</code>, <code>get_resource</code>) <code>[V]</code>. Metadata fields already modeled: <code>name, description, publisher_id, category_id, tags, size_bytes, latest_version_date, attribution[{authors, source_url, attribution_text, license, license_url}], license, license_url</code>; resources: <code>mime_type, size_bytes, download_url, source_url</code> <code>[V]</code>. <strong>25 datasets listed, none energy-specific</strong> — a clear, cheap win is to register the energy layer as a publisher+datasets here. Repo's <code>wrangler.toml</code> reserves <code>/api/*</code>, <code>/docs*</code>, <code>/openapi*</code>, <code>/mcp</code>, <code>/llms.txt</code> <code>[V]</code>.</li>
+<li><code>open-budget-api</code> / <code>open-budget-data</code> (CC0) and the <strong>live Budget API https://budget.bettergov.ph/</strong> <code>[V]</code> — the strongest template in the ecosystem: no-auth public REST, OpenAPI 3.1 (34 paths), <code>{meta,data,next_cursor}</code> envelope, documented error slugs (<code>bad_cursor</code>, <code>not_found</code>, <code>not_loaded</code>, <code>query_failed</code>), keyset cursors (limit 1–500), CORS <code>*</code>, edge caching, Terms/Disclaimer pages, &quot;upstream restrictions&quot; carried per figure, and an MCP server (Streamable HTTP, stateless, 25 documented read-only tools) at <code>/mcp</code>. <code>[V]</code></li>
+<li><code>transparency-portal</code> (MIT), <code>transparency-dashboard</code> (MIT), <code>flood-watch</code> (MIT), <code>kapwa</code> design system (CC0), <code>open-congress-api</code> (CC0), <code>open-philgeps-data</code>, <code>ph-tax-directory</code> (CC0), <code>hotlines</code>. Org-wide: <strong>no energy project/repo exists</strong> <code>[V]</code> — the fellowship challenge is greenfield for BetterGovPH.</li>
+<li>BetterGovPH projects page lists 29 live tools incl. <code>budget.bettergov.ph</code>, <code>data.bettergov.ph</code>, <code>philgeps.bettergov.ph</code>, <code>price-guides.bettergov.ph</code>, <code>transparency.bettergov.ph</code> <code>[V]</code>; <code>philgeps.bettergov.ph</code> returned a Cloudflare 1016 error on 2026-11-10 (origin DNS error) — don't hard-depend on it <code>[V]</code>.</li>
+</ul>
+<p><strong>Existing PH efforts to complement, not duplicate:</strong></p>
+<ul>
+<li><strong>PRESYO-PH (ICSC)</strong> — app https://presyo.icsc.ngo/ <code>[V]</code> (SPA using MapLibre/Plotly/deck.gl; no documented API found <code>[V/I]</code>), project page https://icsc.ngo/power-supply-overview/ <code>[V]</code>. Launched 2026-04-28, consolidates rates and supply data for <strong>150+ DUs/ECs</strong>, focuses on generation charge and supply mix, browser-first (Chrome) <code>[V]</code> (Power Philippines, 2026-04-28: https://powerphilippines.com/icsc-launches-presyo-ph-web-app-to-help-consumers-understand-power-costs/). <strong>Recommendation:</strong> make PRESYO-PH a link-out/consumer of the open API, not a competing product; the fellowship's edge is the open, citable, versioned data layer behind all such tools.</li>
+<li><strong>DOE</strong> rate/statistics pages (§2) and <strong>ERC/NEA</strong> source documents: ERC monthly generation-charge postings (pitch-deck stretch goal; ERC site https://www.erc.gov.ph/ blocked 403 here <code>[B]</code>), NEA electric-cooperative directory (https://www.nea.gov.ph/ blocked 403 <code>[B]</code>), DOE's own monthly DU rates page <code>[V]</code>.</li>
+<li><strong>Market data:</strong> IEMOP (https://www.iemop.ph/ <code>[V]</code>; market data at <code>/market-information/market-data</code> <code>[V]</code>, WESM Rates / Daily Operations Reports) and PEMC/WESM (https://www.wesm.ph/ — not fetched here). Useful for <code>generation_charge</code> + WESM reference prices, not as the retail rates source.</li>
+<li><strong>Procurement/budget:</strong> PhilGEPS (https://philgeps.gov.ph/Indexes/login <code>[V]</code> link from DBM), COMPASS <code>[V]</code>, and <code>data.bettergov.ph</code> dataset &quot;Open PhilGEPS Data&quot; <code>[V]</code>.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="6-recommended-v1-api-shape">6. Recommended v1 API shape<a class="h-anchor" href="#6-recommended-v1-api-shape" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>Proposed only. Deploy under a fellowship-controlled host (e.g. the existing BetterGovPH Cloudflare/Pages setup), publish the OpenAPI spec before the demo, and state clearly when data is derived vs. official.</p></div></div>
+<p><strong>Base &amp; versioning.</strong> <code>https://&lt;host&gt;/v1</code> with <code>/v1</code> frozen after Demo Day. Additive changes only in v1; <code>/v2</code> for breaking changes; per-dataset schema version in metadata; <code>Deprecation</code> + <code>Sunset</code> headers with <strong>≥90 days</strong> notice; CHANGELOG.md + machine-readable <code>/v1/changelog.json</code>.</p>
+<p><strong>Resources (proposed):</strong></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Keys / fields</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/utilities</code></td>
+<td><code>id, name, short_name, type (DU/EC/supplier/IPP/cooperative), operator, psgc_province, psgc_city_municipality, region, franchise_area[], licenses[], source_ids[], updated_at</code></td>
+<td>Master list = deliverable (a). Cursor pagination, filters <code>type, region, q</code>.</td>
+</tr>
+<tr>
+<td><code>GET /v1/utilities/{id}</code></td>
+<td>profile + <code>latest_rate</code>, <code>rate_history_url</code>, <code>source_documents[]</code>, <code>crosswalks[]</code> (ERC ID, DOE legacy name, NEA EC ID)</td>
+<td>Stable ID is the whole point; document the ID scheme.</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates</code></td>
+<td><code>utility_id, month (YYYY-MM), customer_class, price_php_per_kwh, generation_charge_php_per_kwh, transmission, distribution, subsidies, taxes, currency, unit, source_document_id, data_status, confidence, reviewed_by, reviewed_at</code></td>
+<td>Deliverable (b). Filter by <code>month</code>, <code>utility_id</code>, <code>customer_class</code>; aggregate endpoints later.</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates/{utility_id}/history</code></td>
+<td>monthly series for one utility</td>
+<td>Small, cacheable, 30-day cache.</td>
+</tr>
+<tr>
+<td><code>GET /v1/projects</code></td>
+<td><code>id, name, type (RE contract / priority project), technology, capacity_mw, status, psgc_location, doe_project_id, dime_id?, amount_php?, source_document_id, updated_at</code></td>
+<td>Deliverable (c) feed for DOE dashboards.</td>
+</tr>
+<tr>
+<td><code>GET /v1/sources</code></td>
+<td><code>id, publisher, title, url, document_type (PDF/web table/FB post), document_date, fetched_at, sha256, extraction_method, licence_status</code></td>
+<td>&quot;Source document&quot; provenance registry.</td>
+</tr>
+<tr>
+<td><code>GET /v1/sources/{id}</code></td>
+<td>metadata + <code>used_by[]</code> (rate/project ids) + <code>archive_url</code></td>
+<td>Every published number must resolve to one of these.</td>
+</tr>
+<tr>
+<td><code>GET /v1/datasets</code></td>
+<td>DCAT-3-lite catalog of the API's own datasets/distributions + <code>datapackage_url</code>, <code>openapi_url</code></td>
+<td>Discoverability + COMPASS/eGov catalog listing.</td>
+</tr>
+<tr>
+<td><code>GET /v1/meta</code></td>
+<td>service name, version, commit, data vintage, rate limits, licence, disclaimers</td>
+<td>Trust surface.</td>
+</tr>
+<tr>
+<td>Editorial (auth-gated, not public v1)</td>
+<td><code>POST /v1/admin/records/{id}/review</code>, <code>POST /v1/admin/records/{id}/publish</code>, <code>POST /v1/admin/records/{id}/correct</code></td>
+<td><code>X-API-Key</code>/OIDC, reviewer identity, audit log. Model <code>draft → in_review → published → superseded</code>; corrections are new versions, never silent overwrites.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Response envelope</strong> (copy Budget API <code>[V]</code>):</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">{&quot;meta&quot;:{&quot;dataset&quot;:&quot;rates&quot;,&quot;currency&quot;:&quot;PHP&quot;,&quot;unit&quot;:&quot;php_per_kwh&quot;,&quot;source&quot;:&quot;ERC/DOE/utility&quot;,&quot;generated_at&quot;:&quot;…&quot;,&quot;licence&quot;:&quot;CC-BY-4.0&quot;,&quot;matched&quot;:142},&quot;data&quot;:[…],&quot;next_cursor&quot;:&quot;…&quot;,&quot;disclaimers&quot;:[&quot;…&quot;]}
+</code></pre></div>
+<p><strong>Errors</strong> (JSON, machine-readable slug + message + request id): <code>{&quot;error&quot;:{&quot;code&quot;:&quot;bad_cursor&quot;,&quot;message&quot;:&quot;…&quot;,&quot;request_id&quot;:&quot;…&quot;}}</code>; statuses 400 <code>bad_request</code>/<code>bad_cursor</code>, 404 <code>not_found</code>, 405 <code>read_only</code>, 409 <code>stale_version</code>, 429 <code>rate_limited</code>, 503 <code>upstream_unavailable</code>. Optionally emit <code>application/problem+json</code> (RFC 9457) from the same URLs <code>[I]</code>.</p>
+<p><strong>Pagination &amp; filtering.</strong> Opaque keyset <code>cursor</code> + <code>limit</code> (default 100, max 500) for large collections; <code>limit/offset</code> only for small admin lists; every list echoes <code>meta.matched</code> / <code>meta.matched_amount</code> where meaningful (Budget API pattern) so one call answers &quot;how many/how much&quot;.</p>
+<p><strong>ASEAN alignment.</strong> Name indicators and units so they can be mapped 1:1 to ASEAN Energy Statistics concepts (capacity MW, generation GWh/TWh, price PHP/kWh with explicit currency+unit fields), and keep an <code>asean_concept</code> crosswalk column in bulk files rather than renaming the agency's original terms <code>[I]</code>.</p>
+<p><strong>Bulk mirror.</strong> <code>GET /v1/bulk/</code> → <code>catalog.json</code> listing dated artifacts: <code>sources/YYYY-MM-DD/datapackage.json</code>, <code>utilities/YYYY-MM-DD.csv</code>, <code>rates/YYYY-MM-DD.csv</code>, <code>projects/YYYY-MM-DD.csv</code>, each with <code>bytes</code>, <code>sha256</code>, <code>row_count</code>, <code>created</code>. Immutable URLs, 1-day cache; regenerated on every publish; also mirrored to GitHub Releases so availability does not depend on one host.</p>
+<p><strong>MCP wrapper (5 tools, read-only, stateless Streamable HTTP at <code>/mcp</code>):</strong></p>
+<ol>
+<li><code>search_utilities({q?, type?, region?}) → {meta,data[],next_cursor}</code></li>
+<li><code>get_utility({utility_id}) → profile + latest rate + sources</code></li>
+<li><code>get_rate_history({utility_id, from_month?, to_month?, customer_class?}) → monthly series + provenance per row</code></li>
+<li><code>search_projects({type?, region?, status?, technology?}) → RE/priority project feed rows</code></li>
+<li><code>get_source_document({source_id}) → URL, fetched_at, sha256, used_by[]</code>
+Each tool returns the same JSON envelope as REST, includes disclaimers in <code>meta</code>, and errors return <code>isError: true</code> with a fixable message (Budget API MCP convention <code>[V]</code>). Tool descriptions must tell agents to cite <code>source_url</code> and never present derived rows as official. <code>[I]</code></li>
+</ol>
+<p><strong>COMPASS linkage mechanics</strong> <code>[I]</code>: (a) register the API/datasets in the DICT eGov catalog + data.gov.ph; (b) emit <code>psgc_*</code> and <code>uacs_*</code> join fields in <code>utilities</code> and <code>projects</code>; (c) publish a quarterly crosswalk CSV <code>energy_projects ↔ COMPASS SAAODB/SARO/LGSF rows</code> with match status and unmatched reasons (mirrors how the Budget &amp; Procurement challenge expects unmatched records explained); (d) keep COMPASS API keys server-side; never leak them to MCP clients.</p>
+<p><strong>Governance recommendation:</strong></p>
+<ul>
+<li><strong>Who publishes:</strong> DOE (challenge owner) as data authority; coalition (Mura, Malinis, at Maaasahang Kuryente Coalition) as editorial reviewer/&quot;checks every number&quot;; fellowship team as operator; BetterGovPH as host/maintainer during the pilot. Handover plan to DOE/DICT at pilot end.</li>
+<li><strong>SLA:</strong> rates refreshed <strong>monthly within 5 business days</strong> of ERC/DOE publication; master list re-synced weekly and on notice; source-document fetch failures surfaced in <code>/v1/meta</code>; 99% best-effort on static mirror, API best-effort with status page; corrections acknowledged in ≤2 business days.</li>
+<li><strong>Licence:</strong> data CC-BY-4.0 with attribution string; code MIT; source PDFs linked not rehosted; a <code>LICENSE</code> + per-dataset <code>licence</code> field and a rights note for utility-published posts (utility terms may be stricter than government terms — link out).</li>
+<li><strong>Breaking-change policy:</strong> additive-only v1; deprecate with 90-day notice + migration note; never renumber stable IDs; frozen snapshots remain downloadable forever.</li>
+<li><strong>Review rights:</strong> DOE/coalition can unpublish a row instantly (status <code>withdrawn</code>, reason logged); public corrections page.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="7-risks-and-mitigations">7. Risks and mitigations<a class="h-anchor" href="#7-risks-and-mitigations" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Risk</th>
+<th>Evidence</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>No documented DOE API; SPA-loaded tables</strong></td>
+<td>doe.gov.ph electricity/statistics pages are client-rendered with no API/CSV links <code>[V]</code></td>
+<td>Treat as scraping/partnership target; snapshot evidence; agree with DOE focal person on a machine feed (CSV drop or API) — this is exactly deliverable (c).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Bot protection blocks automated access</strong></td>
+<td>PSA, FOI, ERC, NEA returned Cloudflare 403 in this environment <code>[B]</code></td>
+<td>Manual/assisted acquisition; FOI requests for bulk data; keep a human-in-the-loop curator; publish only what can be lawfully and reliably obtained; request allowlisting via DOE invitation.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>142 utilities publish via PDFs, web tables and Facebook posts</strong></td>
+<td>Fellowship challenge page <code>[V]</code>; pitch-deck reality (per Lead extraction)</td>
+<td>Source-document registry + per-utility <code>access_method</code>; parse only where permitted; prioritize utilities with stable pages; mark <code>confidence</code> low for OCR'd/FB-sourced rows; weekly coalition review.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>No common utility ID across ERC/DOE/NEA</strong></td>
+<td>Pitch-deck ground truth (Lead, 2026-11-10); DOE legacy DU pages unverified <code>[B]</code></td>
+<td>Make the new ID the canonical key and publish crosswalks; never reuse agency IDs as primary keys; version the crosswalk.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>data.gov.ph API requires a key; metadata fields undocumented</strong></td>
+<td>401 <code>API Key not found</code> <code>[V]</code>; endpoints only observed in client JS</td>
+<td>Ask DBM/DICT for publishing credentials + field documentation early; in the meantime publish DCAT JSON-LD and a raw CSV mirror that need no key.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>COMPASS interface scope unclear; write access unlikely</strong></td>
+<td>COMPASS API catalog is read-only, keyed <code>[V]</code></td>
+<td>Frame integration as metadata + join keys + read-side consumption; don't promise write-back; get DBM confirmation in writing before Demo Day.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Legal/language constraints</strong></td>
+<td>Data Privacy Act concerns for owner/contact fields; EO 126 redaction-log duty; bilingual/Taglish content and regional place names <code>[I]</code></td>
+<td>Ship only business/entity data; no personal data; honor redaction logging; support English + Filipino labels; PSGC-based location matching with alias table.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Vendor lock-in / project death after March 2027</strong></td>
+<td>Single-team pilot, 3 months, no maintenance guarantee <code>[I]</code></td>
+<td>Static mirror + GitHub Releases + documented restore; infrastructure-as-code; open licence so anyone can fork; handover runbook as a fellowship deliverable.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Presyo PH / other trackers perceived as duplicates</strong></td>
+<td>PRESYO-PH live <code>[V]</code></td>
+<td>Position as the open data layer + API behind such tools; link out; invite ICSC to consume; avoid cloning their UI.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Entry-point volatility</strong></td>
+<td><code>philgeps.bettergov.ph</code> Cloudflare 1016; DOE legacy host connection failure; &quot;DCAT-PH&quot; not verifiable <code>[V/B]</code></td>
+<td>Prefer durable official sources; monitor links; maintain <code>sources.archive_url</code>; don't cite unstable endpoints in public docs without a <code>[B]</code>/unstable note.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 class="has-anchor" id="8-open-questions-to-resolve-with-doe--dbm--dict-first-sprint">8. Open questions to resolve with DOE / DBM / DICT (first sprint)<a class="h-anchor" href="#8-open-questions-to-resolve-with-doe--dbm--dict-first-sprint" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li>Does DOE have a machine-readable feed — or will it provide a monthly CSV drop — for DU rates and RE/priority projects? Who owns it?</li>
+<li>Can DOE provide/confirm the canonical supplier/DU/EC list and names (and the mapping to ERC/NEA identifiers)?</li>
+<li>Will DBM grant a COMPASS API key to the fellowship team, and is read-only SAAODB/SARO/JOIN acceptable use?</li>
+<li>Will DICT/DBM accept a DCAT-3 document and eGov API-catalog listing as the submission mechanism for an external API?</li>
+<li>ERC: may monthly generation-charge PDFs be parsed and republished as derived data with attribution, or must they be linked only?</li>
+<li>Which customer class(es) does &quot;price per kWh&quot; mean — residential average, per-utility, VAT-inclusive? (The challenge page cites ₱12.43/kWh June 2026 national average <code>[V]</code>.)</li>
+<li>Preferred bilingual presentation (English/Filipino) and any restrictions on utility-published social-media content.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="9-sources-accessed-2026-11-10-b--blocked">9. Sources (accessed 2026-11-10; <code>[B]</code> = blocked)<a class="h-anchor" href="#9-sources-accessed-2026-11-10-b--blocked" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>Verified <code>[V]</code>:</strong> fellowship.bettergov.ph (challenge + requirements) · dbm.gov.ph press release 2026-09-30 (EO 126) · compass.dbm.gov.ph · platforms.e.gov.ph/api-catalogs/compass (COMPASS API reference, embedded) · data.gov.ph (+ api.data.gov.ph 401) · psgc.gitlab.io/api (unofficial mirror) · doe.gov.ph/data-and-prices/electricity · doe.gov.ph/data-and-prices/energy-statistics · iemop.ph (+ /market-information/market-data) · presyo.icsc.ngo · icsc.ngo/power-supply-overview · powerphilippines.com (Presyo PH launch, 2026-04-28) · ember-energy.org/data/api · api.ember-energy.org/v1/openapi.json · eia.gov/opendata/documentation.php · api.eia.gov/v2 (403 API_KEY_MISSING) · data.openei.org · oedi-data-lake.s3.amazonaws.com (public bucket) · data.open-power-system-data.org (+ datapackage.json) · entsoe.eu/data/transparency-platform · web-api.tp.entsoe.eu/api (401 XML) · aseanenergy.org/projects/aeds · aseanenergy.org/publications/asean-energy-statistics-leaflet-2025 · aseanenergy.org AEDS-revamp article · spec.openapis.org/oas/v3.2.0.html · specs.frictionlessdata.io/data-package · w3.org/TR/vocab-dcat-3 · modelcontextprotocol.io/specification/2026-07-28 (+/basic/transports) · budget.bettergov.ph/docs + /api/v1/openapi.json + /mcp · data.bettergov.ph (+ /openapi.json, /mcp, /api/v1/ping) · github.com/bettergovph (+ GitHub REST API org repos: 37 public repos, none energy-specific) · about.bettergov.ph/projects · pasarapi.xyz/a/data-gov-ph (third-party status note on data.gov.ph).</p>
+<p><strong>Blocked/blocked-by-environment <code>[B]</code>:</strong> officialgazette.gov.ph (EO 126 text, Cloudflare 403) · psa.gov.ph/classification/psgc · foi.gov.ph · erc.gov.ph · nea.gov.ph · legacy.doe.gov.ph (connection failure) · businessmirror.com.ph (403) · transparencyplatform.zendesk.com (403) · decorp.com.ph generation-charge page (connection failure). <strong>Unverified / not found:</strong> a published &quot;DCAT-PH&quot; profile; an OEDI query API; an AEDS public API; any BetterGovPH energy repo.</p>
+<p><strong>Ground truth not from web:</strong> Energy pitch-deck details (master-list split across ERC/DOE/NEA, rate schema, ERC stretch goal, sprint/editorial reality) supplied by the Lead from the consolidated fellowship deck on 2026-11-10; this researcher did not independently parse the deck (link on file: https://docs.google.com/presentation/d/1aYTkTqNYfPGnIhzDBXXSsJqjk-NBTYA90yoSDfHgEcA/edit).</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="research-api-docs-conventions.html"><span class="label">Previous</span><span class="pager-title">&larr; Research: API docs conventions</span></a><a class="pager-link pager-next" href="research-data-landscape.html"><span class="label">Next</span><span class="pager-title">Research: Data landscape &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#0-tldr--decisions-this-research-supports">0. TL;DR — decisions this research supports</a><a class="toc-link" href="#1-dbm-compass--eo-126-s-2026-what-it-is-and-why-integration-matters">1. DBM COMPASS + EO 126 s. 2026: what it is and why integration matters</a><a class="toc-link" href="#2-philippine-open-data-ecosystem-and-what-a-new-energy-dataset-must-publish">2. Philippine open-data ecosystem and what a new energy dataset must publish</a><a class="toc-link" href="#3-precedent-apis-worth-citing-what-to-copy-what-not-to">3. Precedent APIs worth citing (what to copy, what not to)</a><a class="toc-link" href="#4-standards--interoperability-decisions">4. Standards &amp; interoperability decisions</a><a class="toc-link" href="#5-existing-ph-civic-tech--bettergovph-assets--reuse-complement-dont-duplicate">5. Existing PH civic-tech / BetterGovPH assets — reuse, complement, don't duplicate</a><a class="toc-link" href="#6-recommended-v1-api-shape">6. Recommended v1 API shape</a><a class="toc-link" href="#7-risks-and-mitigations">7. Risks and mitigations</a><a class="toc-link" href="#8-open-questions-to-resolve-with-doe--dbm--dict-first-sprint">8. Open questions to resolve with DOE / DBM / DICT (first sprint)</a><a class="toc-link" href="#9-sources-accessed-2026-11-10-b--blocked">9. Sources (accessed 2026-11-10; [B] = blocked)</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+plant_id,plant_name,fuel_type,region_code,region_name,province,latitude,longitude,capacity_mw,status,source_id,source_date,notes,data_status
+PLT-001,Calaca Coal Power Plant,coal,0400000000,Region IV-A (CALABARZON),Batangas,13.928,120.813,600,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-002,Mauban Coal Power Plant,coal,0400000000,Region IV-A (CALABARZON),Quezon,14.205,121.735,460,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-003,Ilijan Combined Cycle Power Plant,natural_gas,0400000000,Region IV-A (CALABARZON),Batangas,13.612,121.086,1200,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-004,Limay Oil Power Plant,oil,0300000000,Region III (Central Luzon),Bataan,14.515,120.598,620,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-005,Naga Oil Power Plant,oil,0700000000,Region VII (Central Visayas),Cebu,10.238,123.766,160,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-006,Agus 6 Hydroelectric Power Plant,hydro,1000000000,Region X (Northern Mindanao),Lanao del Norte,8.231,124.221,200,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-007,Pulangi IV Hydroelectric Power Plant,hydro,1000000000,Region X (Northern Mindanao),Bukidnon,7.746,125.045,255,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-008,Tiwi Geothermal Power Plant,geothermal,0500000000,Region V (Bicol Region),Albay,13.441,123.641,234,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-009,Palinpinon Geothermal Power Plant,geothermal,1800000000,Negros Island Region,Negros Oriental,9.338,123.247,192,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-010,Tongonan Geothermal Power Plant,geothermal,0800000000,Region VIII (Eastern Visayas),Leyte,11.379,124.629,723,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-011,Tarlac Solar Power Project,solar,0300000000,Region III (Central Luzon),Tarlac,15.421,120.723,150,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-012,Bangui Bay Wind Farm,wind,0100000000,Region I (Ilocos Region),Ilocos Norte,18.602,120.754,99,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative
+PLT-013,San Carlos Bioenergy Plant,biomass,1800000000,Negros Island Region,Negros Occidental,10.492,123.421,35,operating,SRC-DOE-PLANTS,2026-06-30,Approximate location; capacity illustrative.,illustrative

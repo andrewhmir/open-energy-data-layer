@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Project README — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Project overview: what it does, the dataset at a glance, quickstart, repository layout, quality checks and licensing.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" class="current" aria-current="page" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-overview">Overview</a><span class="sep">/</span><span aria-current="page">Project README</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Overview <span class="sep">&middot;</span> documentation</p>
+  <h1 id="open-energy-data-layer--philippine-electricity-rates">Open Energy Data Layer — Philippine electricity rates</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>README.md</code> &middot; 426 lines &middot; 31 KB &middot; 4,560 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/README.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>An open, API-first data layer that collates who sells power in the Philippines, at what
+price, and with what provenance — starting from what the Department of Energy (DOE) already
+publishes, not from a fleet of scrapers.</p>
+<p>This repository turns DOE's public <strong>Electricity Rates &amp; Power Market Monitor</strong> workbook (a
+public Google Sheet embedded in a page) into a usable open dataset: a canonical utility
+registry, tidy monthly rate observations with a receipt behind every number, region
+aggregates, <strong>sourced service areas for every distribution utility</strong>, a self-contained
+publication page, a read-only static JSON API, a documented OpenAPI 3.1 contract, and a
+generated documentation site. It is built as a production open-source project.</p>
+<p>The product page is titled <strong>&quot;Philippine electricity rates&quot;</strong> — a national map, a comparable
+price table, the API in one place, and the receipts behind every number.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dataset version</strong></td>
+<td><code>2026-11-10</code> (DOE workbook retrieved 2026-11-10)</td>
+</tr>
+<tr>
+<td><strong>Latest published month</strong></td>
+<td>October 2026</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>141 distribution utilities and electric cooperatives, 18 PSGC regions, 106 months with published data (Jan 2018 – Oct 2026)</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Pre-release (<code>0.x</code>), not yet deployed — see <a href="#deployment-status">Deployment status</a></td>
+</tr>
+<tr>
+<td><strong>Licence</strong></td>
+<td>Code, page and design: MIT. Data, brand and third-party assets: see <a href="#licence">Licence</a> and <a href="notice.html">NOTICE.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="what-it-does">What it does<a class="h-anchor" href="#what-it-does" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>DOE already consolidates monthly electricity rates for the country's distribution utilities
+(DUs) and electric cooperatives (ECs), but as a wide-format Google Sheet with no stable
+entity IDs, no licence statement, no provenance and no API. This project adds the missing
+layer:</p>
+<ul>
+<li><strong>A canonical utility registry</strong> — one row per DU/EC, with a stable <code>utility_code</code>, PSA
+PSGC geography, type (PIOU/EC), grid status, source row and provenance.</li>
+<li><strong>A tidy monthly price table</strong> — utility × month × customer class, with <code>published</code>,
+<code>nda</code>, <code>missing</code> and <code>invalid</code> states preserved and <strong>nothing imputed</strong>.</li>
+<li><strong>Region aggregates</strong> — medians/means and reporting counts behind the map, computed only
+from published values.</li>
+<li><strong>Sourced service areas</strong> — the LGU-level franchise footprint behind every utility, so the
+map can answer &quot;where does this provider operate, and at what price?&quot; instead of assuming
+one utility per region. Meralco's territory comes from RA 12146 (the current franchise
+law); the rest come from franchise tables compiled from DOE records, with the DOE workbook
+region as a labelled fallback. The coverage layer is published as its own CSV with a source
+registry and licence notes.</li>
+<li><strong>A self-contained publication page</strong> — national map, provider coverage lens, comparable
+price table, expandable histories, API preview and the method/receipts behind every number.</li>
+<li><strong>A generated documentation site</strong> — every markdown document (README, data model, API
+guide, frontend/backend architecture, the component map, contributing, security,
+changelog, research notes and seed documentation) rendered as a styled static docs UI
+under <code>draft/docs/</code>, with a sidebar, table of contents and full-text downloads.</li>
+<li><strong>Agent maps</strong> — an <code>AGENTS.md</code> at the repository root plus per-area maps for <code>tools/</code>,
+<code>data/</code>, <code>draft/</code> and <code>tests/</code>, so a human or a coding agent can find the source of
+truth, the build command and the contract for each component.</li>
+<li><strong>A versioned API contract and a static JSON API</strong> — an OpenAPI 3.1 contract, plus a
+complete read-only JSON mirror generated under <code>draft/api/v1/</code> for anyone who wants to
+integrate today from a static host, with a BetterGovPH-compatible envelope and
+provenance fields.</li>
+<li><strong>A paper trail</strong> — raw publisher bytes, per-tab SHA-256 hashes, a 17-check validation
+report and a disclosed log of where the source tabs disagree.</li>
+</ul>
+<h3 class="has-anchor" id="dataset-at-a-glance">Dataset at a glance<a class="h-anchor" href="#dataset-at-a-glance" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distribution utilities and electric cooperatives</td>
+<td><strong>141</strong> (120 ECs, 21 PIOUs)</td>
+</tr>
+<tr>
+<td>Regions</td>
+<td><strong>18</strong> PSGC regions</td>
+</tr>
+<tr>
+<td>Monthly observation rows</td>
+<td><strong>60,348</strong> (141 utilities × 107 header months × 4 customer classes)</td>
+</tr>
+<tr>
+<td>Months with published data</td>
+<td><strong>106</strong> — Jan 2018 → Oct 2026 (the workbook's Nov 2026 column exists but has no published values)</td>
+</tr>
+<tr>
+<td>Customer classes</td>
+<td>Residential, commercial, industrial, blended generation charge</td>
+</tr>
+<tr>
+<td>Latest month reporting (residential)</td>
+<td><strong>113 / 141</strong> — 27 NDA, 1 invalid cell, median ₱12.72/kWh</td>
+</tr>
+<tr>
+<td>Source-tab conflicts disclosed</td>
+<td><strong>5</strong> (grid status, region, island label, name variant)</td>
+</tr>
+<tr>
+<td>Service areas</td>
+<td><strong>141 / 141</strong> utilities with LGU-level coverage; <strong>1,648 LGU rows + 17 barangay rows</strong>, 1,602 distinct LGUs</td>
+</tr>
+<tr>
+<td>Service-area sources</td>
+<td>RA 12146 (Meralco law), OSM Wiki franchise table (CC BY-SA 2.0), Wikipedia supplement (CC BY-SA 4.0), DOE region fallback</td>
+</tr>
+<tr>
+<td>Automated ingest checks</td>
+<td><strong>17 / 17 passing</strong>, plus <strong>7 / 7</strong> service-area checks</td>
+</tr>
+<tr>
+<td>Raw source snapshots</td>
+<td><strong>4</strong> tab CSVs with per-tab SHA-256</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="architecture-and-agent-maps">Architecture and agent maps<a class="h-anchor" href="#architecture-and-agent-maps" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Three generated guides explain how the system is put together and where to change it —
+all rendered with the rest of the documentation under <code>draft/docs/</code> (21 pages: 20
+documents + index):</p>
+<ul>
+<li><strong><a href="frontend.html">Frontend architecture</a></strong> — the three browser-facing surfaces
+(product page, docs site, review pack), build-time data/asset injection, the runtime JS
+modules and state/deep links, accessibility, and the pinned QA contracts.</li>
+<li><strong><a href="backend.html">Backend &amp; pipeline architecture</a></strong> — the deterministic
+static-artifact pipeline: raw snapshots and hashes, ingest and validation, service
+areas, geometry, the static JSON API, the page/docs/preview builders, determinism and
+failure modes.</li>
+<li><strong><a href="component-map.html">Component map &amp; agent guide</a></strong> — where every component lives,
+what to edit versus regenerate, the build-order graph, task routing, and the
+cross-cutting invariants.</li>
+</ul>
+<p>For coding agents the repository also ships <code>AGENTS.md</code> plus per-area maps —
+<code>tools/AGENTS.md</code>, <code>data/AGENTS.md</code>, <code>draft/AGENTS.md</code> and <code>tests/AGENTS.md</code> — each
+stating its area's source-of-truth files, commands, generated artefacts and pitfalls.</p>
+<h2 class="has-anchor" id="the-page">The page<a class="h-anchor" href="#the-page" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><a href="../index.html"><code>draft/map-table-prototype.html</code></a> is the product reading:
+a single, self-contained HTML file in the BetterGovPH open-data design language. It is
+built by <code>tools/build-map-page.py</code> and contains no external runtime dependencies — fonts,
+logo, favicon, region geometry and data are inlined at build time, and the page makes <strong>no
+network requests</strong>. It includes:</p>
+<ul>
+<li>a national map of the 18 regions, coloured by median rate per customer class, with a
+visible colour-scale legend above the map, zoom controls, keyboard-accessible region
+selection (roving tabindex, arrow keys to move, Enter to select, Escape to clear) and
+click-to-filter;</li>
+<li>a <strong>national overview</strong> beside the map: the latest month's median residential rate and
+reporting count, a proportional ranking of all 18 region medians, and the month's biggest
+movers — every row and chip clickable through to the region or utility;</li>
+<li>a <strong>provider lens</strong>: search any of the 141 utilities, see its sourced service area drawn at
+LGU level on a zoomed map, with the utility's latest published rate, its region-median
+comparison for context, and an aside listing the served provinces and LGU counts
+(&quot;Cavite 20/23&quot;, &quot;Metro Manila 17&quot;); Meralco's franchise, the only multi-region utility
+whose territory is settled by law, is drawn from RA 12146 and includes its 17 Pampanga
+barangays;</li>
+<li>a sticky, scrollspy navigation bar, custom searchable dropdown filters (provider, region,
+grid, customer class), a copy-link action and a mobile menu — designed to stay usable at
+390 px;</li>
+<li>a sortable, searchable, filterable price table of all 141 utilities, with month-on-month
+deltas, NDA/invalid badges, expandable 106-month histories, a service-area line in each
+expanded row, a compare action, a source-row link behind each rate and a clear no-results
+state;</li>
+<li>a <strong>comparison view</strong>: add up to three utilities from an expanded price-table row or the
+provider panel, then compare their full 2018–2026 residential histories on one chart plus
+a latest-rate matrix; every row links to its DOE workbook source row and its public API
+file, the dialog is keyboard-accessible, becomes stacked cards on mobile, and the selection
+is deep-linkable (<code>?compare=MERALCO,SOLECO</code>);</li>
+<li><strong>shareable views</strong>: the copy-link control in the sticky nav puts the current provider,
+region, comparison, search, type, grid, NDA toggle and sort into the URL, so any filtered
+view can be bookmarked or sent to a colleague;</li>
+<li>a generated <strong>docs site</strong> (<code>draft/docs/</code>) linked from the masthead, downloads and footer,
+so the markdown documents are readable as a UI rather than raw files;</li>
+<li>an <strong>API v1.0</strong> section with the static JSON API's conventions, datasets and units, a file
+reference, and an in-page JSON explorer for the generated payloads;</li>
+<li>the method, validation report, source-tab hashes and the five disclosed conflicts, plus a
+downloads-and-licence section.</li>
+</ul>
+<p>Open the file directly in a browser (no server needed), or rebuild it from source with the
+commands below. Reviewed data and generated payloads are documented in
+<a href="data-seed.html"><code>data/seed/README.md</code></a>.</p>
+<h2 class="has-anchor" id="deployment-status">Deployment status<a class="h-anchor" href="#deployment-status" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>No public deployment exists yet, and this repository contains no live URL for the project.</strong>
+The page is a single static HTML file that can be opened locally or dropped on any static
+host or CDN; choosing and documenting that host (and the API's base URL) is pending. The
+generated static JSON API under <code>draft/api/v1/</code> is the same kind of artefact: it can be
+served from any static host, but no host is configured yet, and the proposed hostnames in
+the API contract are not live services. The <code>preview/</code> review hub is a <strong>local build
+artefact</strong> (gitignored, produced by <code>tools/build-preview.py</code>), not a deployment. Nothing
+here is an official DOE or BetterGovPH publication.</p>
+<p>When a deployment exists, this section will record the URL, the host, the deployed dataset
+version and the API base URL. Until then, treat any URL that is not a source citation (DOE,
+the public Google Sheet, BetterGov.ph) as not ours.</p>
+<h2 class="has-anchor" id="quickstart">Quickstart<a class="h-anchor" href="#quickstart" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Requirements: <strong>Python 3.12</strong> with <code>pip</code>, and network access for the first workbook fetch.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># 1. Get the source (a public remote is pending publication; clone or copy as available)
+# 2. Install the build dependencies (PyYAML, markdown-it-py)
+python3 -m pip install -r requirements.txt
+
+# 3. (Optional) Rebuild the geometries from the pinned boundary release: the region
+#    choropleth (geo.json) and the LGU coverage layer (coverage-geo.json)
+python3 tools/build-geo.py             # network only on the first cached fetch
+
+# 4. Assemble the service-area dataset: LGU-level franchise areas for all 141
+#    utilities (OSM/Wikipedia extraction inputs under research/coverage/), the
+#    RA 12146 Meralco override, and region fallbacks where nothing is sourced
+python3 tools/build-service-areas.py   # -&gt; data/seed/service_areas.csv + source registry
+
+# 5. Ingest the DOE workbook: fetch -&gt; snapshot raw bytes -&gt; SHA-256 -&gt; parse -&gt; validate -&gt; publish
+python3 tools/ingest-doe-rates.py
+#    ...or force a fresh download of all four tabs (rewrites today's snapshot):
+python3 tools/ingest-doe-rates.py --refresh
+
+# 6. Build the static JSON API mirror (read-only JSON payloads, no server)
+python3 tools/build-api.py             # -&gt; draft/api/v1/
+
+# 7. Build the documentation site from the markdown sources
+python3 tools/build-docs.py            # -&gt; draft/docs/
+
+# 8. Build the page (uses the ingested payload and the generated API; the provider
+#    lens and API explorer degrade gracefully if their inputs are missing)
+python3 tools/build-map-page.py        # -&gt; draft/map-table-prototype.html
+
+# 9. Optional: rebuild the local review hub (docs, API reference, downloads; gitignored)
+python3 tools/build-preview.py         # -&gt; preview/
+
+# 10. Validate the repository offline (data contracts, service areas, page, docs,
+#     OpenAPI, static API, packaging)
+python3 tools/validate.py              # add --check-page for the deterministic rebuild check
+
+# 11. Browser QA of the built page and the docs site
+#     (Node.js 20+: npm ci, then npx playwright install chromium)
+npm ci
+node tests/qa.mjs
+node tests/qa-docs.mjs
+</code></pre></div>
+<p>The ingest prints per-tab row/month/hash information, then the 17 rate checks and the seven
+service-area checks, and finishes with <code>ALL CHECKS PASSED</code>; a failed check exits non-zero and
+stops publication. The first run of a given day fetches the four CSV exports and snapshots
+them under <code>data/raw/doe-rates/&lt;date&gt;/</code>; later runs reuse that snapshot, so rebuilds are
+reproducible (set <code>OPEN_ENERGY_RETRIEVED_AT</code> to the recorded snapshot timestamp to reproduce
+an existing build byte-for-byte). The API mirror, docs site, page and review hub are built
+from the published files in <code>data/seed/</code>. The recommended rebuild order is exactly the order
+above: geometry → service areas → ingest → API → docs → page → preview.</p>
+<p>Optional extras: <code>research/coverage/extract.py</code> re-derives the raw service-area extraction
+from pinned wikitext snapshots (offline, deterministic). CI runs static validation, a
+deterministic page/docs rebuild check and both browser QA suites on every push/PR to <code>main</code>.</p>
+<h2 class="has-anchor" id="repository-layout">Repository layout<a class="h-anchor" href="#repository-layout" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/ingest-doe-rates.py</code></td>
+<td><strong>Data pipeline.</strong> Fetch → snapshot raw bytes → SHA-256 → parse → validate → publish. The 17 checks are asserted on every run; reference-anchor mismatches fail the build.</td>
+</tr>
+<tr>
+<td><code>tools/build-map-page.py</code></td>
+<td><strong>Page builder.</strong> Inlines design assets, rate data, region geometry and the 1,642-polygon LGU coverage layer from <code>data/seed/</code> + <code>draft/assets/</code> into the single-file page.</td>
+</tr>
+<tr>
+<td><code>tools/build-api.py</code></td>
+<td><strong>Static API builder.</strong> Generates the read-only JSON API mirror under <code>draft/api/v1/</code> from the published data; every response uses the documented envelope.</td>
+</tr>
+<tr>
+<td><code>tools/build-preview.py</code></td>
+<td><strong>Review-hub builder.</strong> Renders the markdown docs, the API contract, a copy of the page and the data downloads into <code>preview/</code> (gitignored).</td>
+</tr>
+<tr>
+<td><code>tools/build-geo.py</code></td>
+<td><strong>Geometry builder.</strong> Regenerates the region choropleth (<code>draft/assets/geo.json</code>) and the LGU coverage layer (<code>draft/assets/coverage-geo.json</code>) from the pinned, SHA-256-verified boundary release; deterministic and offline after the first cached fetch.</td>
+</tr>
+<tr>
+<td><code>tools/build-service-areas.py</code></td>
+<td><strong>Service-area assembler.</strong> Merges the LGU-level franchise extraction with the RA 12146 Meralco override and DOE region fallbacks, validates every PSGC join, and publishes <code>data/seed/service_areas.csv</code> + <code>data/seed/service_area_sources.csv</code>.</td>
+</tr>
+<tr>
+<td><code>tools/build-docs.py</code></td>
+<td><strong>Docs builder.</strong> Renders every markdown source into the styled static docs site under <code>draft/docs/</code> (sidebar, TOC, code copy, prev/next, mobile drawer); deterministic.</td>
+</tr>
+<tr>
+<td><code>tools/validate.py</code></td>
+<td><strong>Offline repository validation.</strong> Checks data contracts, the built page, the OpenAPI document, the static API and packaging; exits non-zero on failure and can prove a deterministic page rebuild (<code>--check-page</code>).</td>
+</tr>
+<tr>
+<td><code>draft/map-table-prototype.html</code></td>
+<td><strong>Generated page.</strong> Single self-contained file — do not edit by hand.</td>
+</tr>
+<tr>
+<td><code>draft/openapi.yaml</code></td>
+<td><strong>API contract</strong>, OpenAPI 3.1 (API version 1.0.0); a JSON mirror is generated at <code>draft/api/v1/openapi.json</code>.</td>
+</tr>
+<tr>
+<td><code>draft/api-docs.md</code></td>
+<td><strong>API guide</strong> (human-readable): access, datasets and units, conventions, endpoint reference, attribution, disclaimers and versioning.</td>
+</tr>
+<tr>
+<td><code>draft/api/v1/</code></td>
+<td><strong>Generated static JSON API.</strong> Dataset metadata, health, months, latest rates, utilities (one file per utility), regions (one file per region), service areas (one file per utility), sources, changes, conflicts and the validation report — read-only JSON, no server required.</td>
+</tr>
+<tr>
+<td><code>draft/docs/</code></td>
+<td><strong>Generated documentation site</strong> (21 pages + shared assets, deterministic): project README, data model, API guide, frontend/backend architecture, component map &amp; agent guide, seed/asset/brand/testing docs, contributing, security, changelog and research notes — a styled UI with sidebar, TOC and raw-markdown downloads.</td>
+</tr>
+<tr>
+<td><code>draft/data-model.md</code></td>
+<td>Canonical entities, IDs, provenance, versioning and licensing policy.</td>
+</tr>
+<tr>
+<td><code>draft/frontend.md</code>, <code>draft/backend.md</code>, <code>draft/component-map.md</code></td>
+<td><strong>Architecture docs</strong>: the frontend surfaces and UI contracts, the backend/pipeline design and failure modes, and the component map &amp; agent guide. Hand-maintained; rendered as <code>frontend.html</code>, <code>backend.html</code>, <code>component-map.html</code> in the docs site.</td>
+</tr>
+<tr>
+<td><code>AGENTS.md</code>, <code>tools/AGENTS.md</code>, <code>data/AGENTS.md</code>, <code>draft/AGENTS.md</code>, <code>tests/AGENTS.md</code></td>
+<td><strong>Agent maps</strong> for coding assistants: repository orientation/component map at the root plus per-area source-of-truth files, commands, generated artefacts, contracts and pitfalls.</td>
+</tr>
+<tr>
+<td><code>data/raw/doe-rates/2026-11-10/</code></td>
+<td><strong>Raw byte snapshots</strong> of the four source tabs — the source of truth for every published number. Tracked; never edited.</td>
+</tr>
+<tr>
+<td><code>data/seed/</code></td>
+<td><strong>Published data</strong>: <code>utilities.csv</code> (141), <code>rates_monthly.csv</code> (60,348), <code>regions.csv</code> (18), <code>sources.csv</code> (4), <code>service_areas.csv</code> (1,648 LGU rows + 17 barangay rows), <code>service_area_sources.csv</code> (4 source records), <code>validation.json</code> (17 rate checks + 7 coverage checks), <code>page-data.json</code> (page payload), plus a data dictionary. Generated — do not hand-edit.</td>
+</tr>
+<tr>
+<td><code>data/seed/plants.csv</code></td>
+<td><strong>Illustrative</strong> sample plants (13 rows) for a future asset layer; not displayed and not generated by the current pipeline.</td>
+</tr>
+<tr>
+<td><code>draft/assets/</code></td>
+<td>Design assets: OFL fonts, BetterGov brand assets, favicon set and social card, vendored Lucide icon sprite, the region geometry and the LGU coverage geometry, with provenance (<code>geo-sources.json</code>) and contract (<code>README.md</code>).</td>
+</tr>
+<tr>
+<td><code>tests/qa.mjs</code></td>
+<td><strong>Browser QA suite.</strong> Playwright/Chromium checks of the built page at desktop and mobile widths (map, provider coverage lens, table, filters, API explorer, CSV export, sticky nav, zero console errors/external requests).</td>
+</tr>
+<tr>
+<td><code>tests/qa-docs.mjs</code></td>
+<td><strong>Docs-site QA suite.</strong> Crawls every generated docs page over HTTP: loads, zero third-party requests, sidebar/TOC, code copy, internal link + fragment resolution, desktop/mobile overflow, mobile drawer.</td>
+</tr>
+<tr>
+<td><code>research/coverage/</code></td>
+<td>Service-area extraction: deterministic script, pinned wikitext snapshots, raw operator table, methodology and known-gap report (CC BY-SA sources).</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>Node tooling for the QA suite (Playwright pinned; convenience scripts for QA, validation and builds).</td>
+</tr>
+<tr>
+<td><code>.github/workflows/ci.yml</code></td>
+<td><strong>CI.</strong> On push/PR to <code>main</code>: static validation + deterministic rebuild check, then Chromium browser QA; QA screenshots are uploaded as artifacts.</td>
+</tr>
+<tr>
+<td><code>plan/</code></td>
+<td>Internal working notes and plans (not part of the published product).</td>
+</tr>
+<tr>
+<td><code>research/</code></td>
+<td>Source ledger and evidence: data landscape, API/interop landscape and API documentation conventions.</td>
+</tr>
+<tr>
+<td><code>preview/</code></td>
+<td>Generated local review hub (gitignored).</td>
+</tr>
+<tr>
+<td><code>LICENSE</code>, <code>NOTICE.md</code>, <code>CONTRIBUTING.md</code>, <code>SECURITY.md</code>, <code>CHANGELOG.md</code>, <code>requirements.txt</code></td>
+<td>Project packaging and governance.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="data">Data<a class="h-anchor" href="#data" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="source">Source<a class="h-anchor" href="#source" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Publisher</td>
+<td>Department of Energy (DOE), Philippines</td>
+</tr>
+<tr>
+<td>Source page</td>
+<td><a href="https://doe.gov.ph/data-and-prices/electricity" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/electricity<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (the <em>Electricity Rates &amp; Power Market Monitor</em>)</td>
+</tr>
+<tr>
+<td>Machine-readable source</td>
+<td>Public Google Sheet <code>1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I</code>, four tabs: residential, commercial, industrial, blended generation charge</td>
+</tr>
+<tr>
+<td>Retrieval method</td>
+<td>Unauthenticated CSV export of each tab (<code>/export?format=csv&amp;gid=…</code>) — the same bytes a browser downloads</td>
+</tr>
+<tr>
+<td>Retrieval date</td>
+<td>2026-11-10 (Asia/Manila)</td>
+</tr>
+<tr>
+<td>Snapshot</td>
+<td><code>data/raw/doe-rates/2026-11-10/{0,441532959,1244383053,714337242}.csv</code> with SHA-256 recorded in <code>data/seed/sources.csv</code> and <code>data/seed/validation.json</code></td>
+</tr>
+<tr>
+<td>Licence</td>
+<td><strong>Not confirmed</strong> — see <a href="notice.html">NOTICE.md</a>; the project asserts no licence over the DOE workbook or the figures extracted from it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="pipeline-fetch--snapshot--hash--parse--validate--publish">Pipeline: fetch → snapshot → hash → parse → validate → publish<a class="h-anchor" href="#pipeline-fetch--snapshot--hash--parse--validate--publish" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li><strong>Fetch</strong> each customer-class tab through Google's public CSV export, with a timeout and
+a size sanity check.</li>
+<li><strong>Snapshot</strong> the raw bytes under a retrieval-dated directory; a same-day run reuses the
+existing snapshot (which is why rebuilds are reproducible), and <code>--refresh</code> re-fetches.</li>
+<li><strong>Hash</strong> each tab (SHA-256) and record it alongside the source URL, retrieval timestamp
+and licence note in <code>data/seed/sources.csv</code> and <code>data/seed/validation.json</code>.</li>
+<li><strong>Parse</strong> the wide month columns into tidy <code>utility × month × customer class</code>
+observations. Each cell is classified as <code>published</code>, <code>nda</code> (the publisher says no data),
+<code>missing</code> (blank) or <code>invalid</code> (unparseable text); the four tabs are resolved into one
+canonical utility row.</li>
+<li><strong>Validate</strong> 17 structural and anchor checks — row/month counts, naming, off-grid count,
+region totals, conflict counts, and the June-2026 figures pinned as ingest anchors —
+plus 7 service-area checks. A mismatch stops publication.</li>
+<li><strong>Assemble service areas</strong> separately (<code>tools/build-service-areas.py</code>): LGU-level franchise
+areas are joined to PSGC 3Q 2026, the RA 12146 Meralco territory overrides the secondary
+source, and every utility without an LGU-level area gets a labelled region fallback.</li>
+<li><strong>Publish</strong> the tidy CSVs, the coverage dataset, the validation report and the compact page
+payload.</li>
+</ol>
+<h3 class="has-anchor" id="data-semantics">Data semantics<a class="h-anchor" href="#data-semantics" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>No imputation.</strong> <code>published</code>, <code>nda</code>, <code>missing</code> and <code>invalid</code> are preserved as distinct
+states. All aggregates use published values only and are reported together with the
+reporting count.</li>
+<li><strong>Disagreements are disclosed, not smoothed.</strong> The four source tabs disagree in five
+places: ILECO II/III grid status (2–2 split → published as <code>CONFLICT</code>), the CLPC region,
+one island label, and a <code>DANECO</code> / <code>DANECO/NORDECO</code> name variant. Each is logged in
+<code>data/seed/validation.json</code> and surfaced in the page's method section.</li>
+<li><strong>142 names, 141 rows.</strong> The workbook has 141 DU/EC rows; across the four tabs there are
+142 distinct names because one row is spelled differently in the generation tab. That
+reconciles the headline &quot;142 utilities&quot; figure.</li>
+<li><strong>Latest month (October 2026).</strong> Residential: 113 of 141 reporting, 27 NDA, 1 invalid
+cell; median ₱12.72/kWh, mean ₱13.23/kWh, range ₱5.33–₱19.36/kWh. Commercial, industrial
+and generation have larger NDA shares, so always read the reporting count with the number.</li>
+</ul>
+<h3 class="has-anchor" id="service-areas-provider-coverage">Service areas (provider coverage)<a class="h-anchor" href="#service-areas-provider-coverage" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The DOE workbook is organised by region and names each utility once, under a single region.
+That is enough for a regional median, but it is not the utility's service area — most electric
+cooperatives cover a handful of municipalities, and Meralco's franchise spans three regions.
+The provider lens therefore uses a separate, LGU-level coverage layer:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Published files</td>
+<td><code>data/seed/service_areas.csv</code> (1,648 LGU rows + 17 barangay rows) and <code>data/seed/service_area_sources.csv</code> (source registry)</td>
+</tr>
+<tr>
+<td>MERALCO</td>
+<td><strong>RA 12146</strong> (approved 11 April 2025), Section 1: 108 cities/municipalities in Metro Manila, Bulacan, Rizal, plus parts of Cavite, Laguna, Quezon, Batangas, and 17 barangays in Pampanga. This law wins over the secondary sources.</td>
+</tr>
+<tr>
+<td>Other utilities</td>
+<td>LGU-level franchise areas from the OpenStreetMap Wiki &quot;Power networks/Philippines/Operators&quot; table (revision 2836797, 2025-04-14, CC BY-SA 2.0), compiled from DOE franchise records; a Wikipedia supplement (CC BY-SA 4.0) fills 22 utilities the OSM table lists without a franchise-area table.</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>If no LGU-level area is sourced, the DOE workbook region is published as a single region-level area and labelled as such — the 2026 edition needed zero fallbacks.</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td>1,642 municipality/city polygons (<code>draft/assets/coverage-geo.json</code>), simplified from the same pinned PSGC 3Q 2026 boundary release as the region map; the page inlines them.</td>
+</tr>
+<tr>
+<td>Checks</td>
+<td>7 service-area checks on every ingest (every utility covered, MERALCO 108 LGU + 17 barangay rows, valid PSGC joins, every DOE region inside its service area or a documented PSGC reassignment).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three utilities (PROSIELCO, SIASELCO, SULECO) are listed under a legacy DOE region because
+PSGC 3Q 2026 moved Sulu to Region IX and Siquijor to the Negros Island Region; their coverage
+notes record the reassignment rather than forcing the old region. Partial coverage (an LGU
+split between two utilities, or a franchise that covers only part of an LGU) is recorded in
+the row's <code>coverage_note</code>. The coverage dataset is a <strong>CC BY-SA derivative</strong> of the OSM and
+Wikipedia sources and is licensed separately from the MIT code — see <a href="notice.html">NOTICE.md</a>.
+57 of the 1,642 LGUs have no DU in the current sources; they are listed with reasons in
+<a href="coverage-method.html"><code>research/coverage/README.md</code></a>.</p>
+<h3 class="has-anchor" id="reproducibility">Reproducibility<a class="h-anchor" href="#reproducibility" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The pipeline is deterministic: with the same raw snapshots, a rebuild reproduces
+<code>data/seed/*.csv</code> and the generated page byte-for-byte except for the retrieval timestamp
+stamped by the ingest. To audit a number, start from its <code>source_row</code> in
+<code>data/seed/utilities.csv</code>, then check the tab hash and raw snapshot in
+<code>data/seed/validation.json</code>.</p>
+<h2 class="has-anchor" id="data-model-and-api">Data model and API<a class="h-anchor" href="#data-model-and-api" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><a href="data-model.html"><code>draft/data-model.md</code></a> defines the canonical entities — utility
+registry and name crosswalk, source documents and ingest runs, monthly rate observations,
+assets, indicators, change events and gated citizen submissions — with PSGC geography,
+stable <code>utility_code</code> IDs, provenance fields, publication states and versioning.</li>
+<li><a href="../openapi.yaml"><code>draft/openapi.yaml</code></a> is the OpenAPI 3.1 contract for the public API
+(API version <strong>1.0.0</strong>): keyless public reads, a BetterGovPH-compatible
+<code>{meta, data, next_cursor}</code> envelope, provenance on every observation, and metadata.</li>
+<li><a href="api-docs.html"><code>draft/api-docs.md</code></a> is the human-readable API guide: overview, base
+URL and access, datasets and units, conventions, endpoint reference with real example
+payloads, sources and attribution, disclaimers, data files and versioning.</li>
+<li><a href="api-docs.html"><code>draft/api/v1/</code></a> is a generated, read-only <strong>static JSON API</strong> built from
+the same published data by <code>tools/build-api.py</code>: dataset metadata, health, months, latest
+rates per customer class, the utility registry plus one JSON file per utility, region
+aggregates plus one file per region, <strong>service areas plus one file per utility</strong>, sources,
+changes, conflicts, the validation report and a JSON mirror of the contract.</li>
+<li><a href="index.html"><code>draft/docs/</code></a> is the generated documentation site for all of the above
+(<code>tools/build-docs.py</code>): project README, data model, API guide, seed/asset/brand/testing
+docs, contributing, security, changelog and research notes, with a
+sidebar, per-page table of contents, code-block copy buttons and raw-markdown downloads. It needs no server, no key and no database — serve the
+directory from any static host.</li>
+<li><strong>Nothing is deployed yet.</strong> There is no API host, and any hostnames in the contract are
+proposed values, not live services. The page's API section documents the same envelopes
+and files that the generated mirror contains.</li>
+</ul>
+<p>Consumers who want the data today should use the static JSON API in <code>draft/api/v1/</code>
+(start at <code>draft/api/v1/index.json</code>, the machine-readable catalogue), the CSVs in
+<code>data/seed/</code>, the raw snapshots in <code>data/raw/</code>, or the page payload
+<code>data/seed/page-data.json</code>.</p>
+<h2 class="has-anchor" id="quality-and-validation">Quality and validation<a class="h-anchor" href="#quality-and-validation" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><strong>17 automated ingest checks + 7 service-area checks</strong> run on every publication
+(structure, naming, counts, conflicts, reference anchors, coverage joins); a failure exits
+non-zero and stops publication.</li>
+<li><strong>Deterministic rebuilds</strong>: same snapshots → same CSVs, page, docs site and static API
+(timestamps aside). <code>python3 tools/validate.py --check-page</code> proves the committed page
+rebuilds reproducibly; CI also verifies the generated docs tree.</li>
+<li><strong>Offline repository validation</strong>: <code>tools/validate.py</code> checks the data contracts, the
+service-area dataset and provider-lens markup, the docs site, the built page, the OpenAPI
+document, the static JSON API and packaging, and exits non-zero on failure.</li>
+<li><strong>Browser QA</strong>: <code>tests/qa.mjs</code> drives the built page in headless Chromium at desktop and
+mobile widths — zero console errors, zero external network requests, no horizontal
+overflow, the 18-region map, the 141-row table, the provider service-area lens (search,
+zoom, tooltip, region-level fallback, clearing), filters/sort/search, the custom dropdown
+keyboard UX, the API explorer, CSV export and the sticky scrollspy navigation.
+<code>tests/qa-docs.mjs</code> crawls every docs page over HTTP and checks loading, third-party
+requests, sidebar/TOC, internal links and fragments, and mobile overflow.</li>
+<li><strong>CI</strong>: <code>.github/workflows/ci.yml</code> runs the static validation (including the
+deterministic-rebuild check), the docs build check and both browser QA suites on every
+push and pull request to <code>main</code>.</li>
+<li><strong>Provenance per number</strong>: source tab, gid, SHA-256, retrieval time and the workbook row
+behind each utility's values.</li>
+<li><strong>Self-contained page</strong>: verified to have no external runtime asset references and no
+client-side storage, analytics or fetch calls; outbound traffic is limited to user clicks
+on citation links.</li>
+<li><strong>Manual review</strong>: the data dictionary, the validation report and the disclosed conflict
+log are part of the published tree, and <code>CONTRIBUTING.md</code> defines the review checklist.</li>
+</ul>
+<p>Known limits are stated rather than hidden: there is no component-level bill breakdown yet
+(v1 covers the blended published rates), the asset/plants layer is illustrative, the
+upstream workbook has no documented refresh SLA or licence, and some commercial/industrial
+cells are NDA. Service areas are derived from community-maintained franchise tables (OSM
+Wiki / Wikipedia, CC BY-SA) rather than a single DOE publication; they carry per-row notes
+for partial coverage, 57 LGUs are currently uncovered, and Meralco's law-based territory is
+authoritative only for Meralco. The API is a contract, not a running service.</p>
+<h2 class="has-anchor" id="contributing">Contributing<a class="h-anchor" href="#contributing" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Contributions are welcome — especially data-quality checks, parsing fixes, accessibility
+improvements and API/schema feedback. See <strong><a href="contributing.html">CONTRIBUTING.md</a></strong> for the
+development setup, the data and page rules, and the pull-request checklist. For security
+issues, follow <strong><a href="security.html">SECURITY.md</a></strong> instead of opening a public issue. Changes are
+recorded in <strong><a href="changelog.html">CHANGELOG.md</a></strong>.</p>
+<h2 class="has-anchor" id="licence">Licence<a class="h-anchor" href="#licence" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>Licence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source code, generated page, design layer</td>
+<td><strong>MIT</strong> — see <a href="license.html">LICENSE</a> (© 2026 Open Energy Data Layer contributors)</td>
+</tr>
+<tr>
+<td>Design language derived from BetterGovPH <code>transparency-portal</code></td>
+<td>MIT (© 2026 BetterGov.ph)</td>
+</tr>
+<tr>
+<td>Fonts (Figtree, Inter, JetBrains Mono)</td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+<tr>
+<td>Icons (Lucide)</td>
+<td>ISC License; Feather-derived icons MIT</td>
+</tr>
+<tr>
+<td>Region + LGU geometry</td>
+<td>MIT (repository scripts/maps, © James Faeldon / <code>faeldon/philippines-json-maps</code>); boundaries <strong>CC BY 3.0 IGO</strong> (© NAMRIA and PSA, via OCHA COD-AB)</td>
+</tr>
+<tr>
+<td>Service-area dataset (<code>service_areas.csv</code>, derived coverage layer)</td>
+<td><strong>CC BY-SA 2.0 / 4.0 derivative</strong> — © OpenStreetMap Wiki contributors (CC BY-SA 2.0) and © Wikipedia contributors (CC BY-SA 4.0), with RA 12146 (Philippine public law) for Meralco; attribution + share-alike apply to the derived coverage data</td>
+</tr>
+<tr>
+<td>BetterGov brand assets</td>
+<td>BetterGovPH brand property — not MIT; used with attribution for this BetterGovPH open-data project</td>
+</tr>
+<tr>
+<td>DOE workbook data and derived figures</td>
+<td><strong>No confirmed licence</strong> — the project asserts none; see <a href="notice.html">NOTICE.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Third-party terms, provenance and attribution notes are in <strong><a href="notice.html">NOTICE.md</a></strong>.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><span class="pager-spacer"></span><a class="pager-link pager-next" href="frontend.html"><span class="label">Next</span><span class="pager-title">Frontend architecture &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#what-it-does">What it does</a><a class="toc-link l3" href="#dataset-at-a-glance">Dataset at a glance</a><a class="toc-link" href="#architecture-and-agent-maps">Architecture and agent maps</a><a class="toc-link" href="#the-page">The page</a><a class="toc-link" href="#deployment-status">Deployment status</a><a class="toc-link" href="#quickstart">Quickstart</a><a class="toc-link" href="#repository-layout">Repository layout</a><a class="toc-link" href="#data">Data</a><a class="toc-link l3" href="#source">Source</a><a class="toc-link l3" href="#pipeline-fetch--snapshot--hash--parse--validate--publish">Pipeline: fetch → snapshot → hash → parse → validate → publish</a><a class="toc-link l3" href="#data-semantics">Data semantics</a><a class="toc-link l3" href="#service-areas-provider-coverage">Service areas (provider coverage)</a><a class="toc-link l3" href="#reproducibility">Reproducibility</a><a class="toc-link" href="#data-model-and-api">Data model and API</a><a class="toc-link" href="#quality-and-validation">Quality and validation</a><a class="toc-link" href="#contributing">Contributing</a><a class="toc-link" href="#licence">Licence</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

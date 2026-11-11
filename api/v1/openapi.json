@@ -1,0 +1,5029 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Open Energy Data Layer — Philippine Electricity Rates Data API",
+    "version": "1.0.0",
+    "summary": "Static, read-only JSON API over the DOE Electricity Rates & Power Market Monitor workbook.",
+    "description": "Production OpenAPI 3.1 contract for the static, read-only energy-data API built from the\nDepartment of Energy (DOE) **Electricity Rates & Power Market Monitor** workbook by\n`tools/build-api.py`. The contract matches the emitted files under `draft/api/v1/` exactly:\n19 routes over 318 JSON files, no invented endpoints. Every route's `x-static-file` names\nthe file that serves it; the four per-entity route families (utilities, service areas,\nregions, sources) point at a concrete example file because the served URL is the path\ntemplate in the operation path (`/utilities/{code}.json`, `/service-areas/{code}.json`,\n`/regions/{psgc}.json`, `/sources/{source_id}.json`).\n\n**Source.** Department of Energy (DOE), *Electricity Rates & Power Market Monitor*\n(https://doe.gov.ph/data-and-prices/electricity), retrieved 2026-11-10T17:00:34+08:00 by CSV\nexport of the public Google Sheet. The dataset covers 141 distribution utilities and electric\ncooperatives, 18 PSA PSGC regions and 107 monthly columns (2018-01 to 2026-11; the latest\npublished month is 2026-10). Every value resolves to a source row and a per-tab SHA-256; the\nfull record is in `/sources.json`.\n\n**Units.** Every rate is the published monthly average in **PHP per kWh**\n(`currency: \"PHP\"`, `unit: \"PHP per kWh\"` in each response's `meta`). There is no rescaling:\nthe two decimals are the source's own. NDA, missing and invalid source cells are published as\nexplicit states — never as zero, never imputed, never modelled.\n\n**Service areas.** The dataset also publishes a provider service-area (coverage) layer for\nthe map's provider filter: one row per utility x covered LGU where sourced, barangay-level\nrows where the franchise is barangay-only, and a single region-level fallback row where no\nLGU-level service area is available. Coverage is **derived data, not a DOE rate\npublication**: a franchise/service area is not verified household-level billing territory,\nand region-level rows are an explicit fallback, not LGU-level confirmation. Sources are\npublished with the rows and carry their own licences: RA 12146 (public law) for MERALCO,\nthe DOE workbook region column for the fallback (terms unconfirmed), and — where present —\nthe OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility\nlist (CC BY-SA 4.0), both requiring attribution and share-alike. Because the layer merges\nthose CC BY-SA rows with the public-law MERALCO area, **the combined coverage layer is a\nCC BY-SA derivative**: attribution is required and share-alike applies to redistributed\ncoverage data (the DOE rate data is unaffected). See `/service-areas.json` and the\n`disclaimer-coverage` disclaimer.\n\n**Access.** These are static JSON files: GET and HEAD only, no authentication, no API key and\nno request body. When served by the deployment host they SHOULD carry\n`Cache-Control: public, max-age=300, s-maxage=3600` and open CORS\n(`Access-Control-Allow-Origin: *`), following the BetterGov Budget API convention\n(https://budget.bettergov.ph/api); each file is immutable within a `dataset_version`, so\naggressive client-side caching is safe. Identify heavy automated use with a descriptive\n`User-Agent` (fair use). This is a dated snapshot, not a live service.\n\n**Base URL.** The server URL is relative (`api/v1`, no leading slash): it resolves against\nthe location of this document, not the host root. The canonical origin is set at deployment\nand no domain is invented here: the spec is `draft/openapi.yaml`, the files are served under\n`draft/api/v1/`, and a page links to them relatively (e.g. `api/v1/meta.json`).\n\n**Envelope and pagination.** Every data file returns\n`{ \"meta\": ..., \"data\": ..., \"next_cursor\": null }`. `meta` states api_version,\ndataset_version, latest_month, generated_at, source, attribution, licence and disclaimers,\nplus `count`. `next_cursor` is always null: a static snapshot has no query layer or page\nsize. The field is reserved so a future dynamic deployment can paginate without breaking\nclients. `index.json` (the catalog) and `openapi.json` (this document) are not envelopes.\n\n**Versioning.** `api_version` (\"1.0\") is the JSON contract version; `dataset_version`\n(\"2026-11-10\") is the retrieval date and changes with every new snapshot. Files are never\nsilently rewritten inside one dataset_version. See `x-changelog`.\n\n**Licence.** The upstream DOE workbook is not stated by publisher: it carries no explicit\nreuse licence, so the data is served with licence status \"Not stated by publisher\". No\nlicence is asserted over the upstream data; reuse terms are to be confirmed with DOE in\nwriting. Do not presume an open licence for these figures.\n\n**Disclaimers.** Every response carries the same five disclaimers, quoted in full below in\nthe `Meta` schema and visible in any response's `meta.disclaimers`:\n`disclaimer-unofficial` (not an official DOE publication — verify against the source),\n`disclaimer-licence` (upstream rate-data reuse terms unconfirmed),\n`disclaimer-nda` (NDA / missing / invalid are preserved, never imputed),\n`disclaimer-rates` (monthly averages; not financial advice) and\n`disclaimer-coverage` (coverage is derived data, not a DOE rate publication, and is not\nverified billing territory). Keep them with any figure you republish. Attribution:\nDepartment of Energy (DOE) as the rate-data source; each coverage source as recorded in\n`meta.service_area.sources`; the Open Energy Data Layer for the compilation.\n",
+    "contact": {
+      "name": "Open Energy Data Layer contributors"
+    },
+    "license": {
+      "name": "Upstream data: licence not stated by publisher (no licence asserted)"
+    }
+  },
+  "servers": [
+    {
+      "url": "api/v1",
+      "description": "Relative base URL: paths resolve against the location of this OpenAPI document (draft/), so api/v1/meta.json is the served path in this repository. The canonical origin is set at deployment; no domain is asserted here."
+    }
+  ],
+  "security": [],
+  "tags": [
+    {
+      "name": "meta",
+      "description": "API discovery, dataset metadata, month coverage and build health."
+    },
+    {
+      "name": "quality",
+      "description": "The source conflicts and validation checks behind the snapshot."
+    },
+    {
+      "name": "rates",
+      "description": "Monthly average rates by customer class for the latest published month."
+    },
+    {
+      "name": "utilities",
+      "description": "The 141-entity utility / electric cooperative registry and full monthly series."
+    },
+    {
+      "name": "service-areas",
+      "description": "Provider service-area coverage: the LGUs/barangays each utility serves, with provenance. Derived data, not a DOE rate publication."
+    },
+    {
+      "name": "regions",
+      "description": "PSGC regions with latest-month aggregates and member utilities."
+    },
+    {
+      "name": "changes",
+      "description": "Month-over-month movements between the two most recent published months."
+    },
+    {
+      "name": "sources",
+      "description": "The DOE workbook behind every published value, with per-tab checksums."
+    }
+  ],
+  "paths": {
+    "/meta.json": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "operationId": "getMeta",
+        "summary": "Dataset metadata: source, licence, coverage, identifiers, checksums",
+        "description": "The full dataset metadata document: rate coverage, units, identifier schemes, the\nstatus vocabulary, the complete rate-source record, licence status, disclaimers, the\nservice-area coverage block (stats, sources, checks, files), SHA-256 checksums of the six\nseed data files, archived raw snapshots and links to every machine-readable artefact.\nThis is the file to read first when onboarding to the dataset.\n",
+        "x-static-file": "api/v1/meta.json",
+        "x-data-files": [
+          "../data/seed/utilities.csv",
+          "../data/seed/regions.csv",
+          "../data/seed/rates_monthly.csv",
+          "../data/seed/sources.csv"
+        ],
+        "responses": {
+          "200": {
+            "description": "Dataset metadata document. Full response: api/v1/meta.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/health.json": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "operationId": "getHealth",
+        "summary": "Snapshot health: build identity and the data-quality check result",
+        "description": "Build identity plus the result of the recorded data-quality checks (17 rate checks and\nthe coverage checks). `status: \"ok\"` means the published snapshot is internally\nconsistent and every recorded check passes; it is not an uptime or live-service signal.\nA failed check would set the status to `degraded` and the individual checks are always\nreadable at `/validation.json`.\n",
+        "x-static-file": "api/v1/health.json",
+        "responses": {
+          "200": {
+            "description": "Snapshot health. Full response: api/v1/health.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 1,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "status": "ok",
+                    "snapshot": true,
+                    "dataset_version": "2026-11-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "source_retrieved_at": "2026-11-10T17:00:34+08:00",
+                    "latest_month": "2026-10",
+                    "prev_month": "2026-09",
+                    "checks": {
+                      "validation": 17,
+                      "validation_passed": 17,
+                      "validation_failed": 0,
+                      "utilities": 141,
+                      "regions": 18,
+                      "months": 107,
+                      "rate_rows": 60348,
+                      "coverage_checks": 7,
+                      "coverage_checks_passed": 7,
+                      "coverage_checks_failed": 0,
+                      "service_area_rows": 1665,
+                      "service_area_sources": 4
+                    },
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "rows_by_area_level": {
+                        "lgu": 108,
+                        "barangay": 17,
+                        "region": 140
+                      },
+                      "sources": [
+                        "SRC-OSM-OPERATORS",
+                        "SRC-WIKI-DUS",
+                        "SRC-RA-12146",
+                        "SRC-DOE-RATES"
+                      ]
+                    },
+                    "notes": [
+                      "\"ok\" means the published snapshot is internally consistent and every recorded data-quality check passes. It is not an uptime or live-service signal."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/months.json": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "operationId": "getMonths",
+        "summary": "Month coverage 2018-01 to 2026-11 with per-class state counts",
+        "description": "The 107 month columns of the source workbook, the latest published month (2026-10) and,\nfor every customer class, the number of published / NDA / missing / invalid cells in each\nmonth. Use this to know which months are complete before charting or aggregating.\n",
+        "x-static-file": "api/v1/months.json",
+        "responses": {
+          "200": {
+            "description": "Month coverage. Full response: api/v1/months.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthsResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 107,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "months": [
+                      "2026-09",
+                      "2026-10",
+                      "2026-11"
+                    ],
+                    "first_month": "2018-01",
+                    "last_month": "2026-11",
+                    "latest_month": "2026-10",
+                    "prev_month": "2026-09",
+                    "anchor_month": "2026-06",
+                    "classes": [
+                      "residential",
+                      "commercial",
+                      "industrial",
+                      "generation"
+                    ],
+                    "availability": {
+                      "residential": {
+                        "published": [
+                          127,
+                          113,
+                          0
+                        ],
+                        "nda": [
+                          14,
+                          27,
+                          0
+                        ],
+                        "missing": [
+                          0,
+                          0,
+                          141
+                        ],
+                        "invalid": [
+                          0,
+                          1,
+                          0
+                        ]
+                      },
+                      "commercial": {
+                        "published": [
+                          101,
+                          87,
+                          0
+                        ],
+                        "nda": [
+                          40,
+                          54,
+                          0
+                        ],
+                        "missing": [
+                          0,
+                          0,
+                          141
+                        ],
+                        "invalid": [
+                          0,
+                          0,
+                          0
+                        ]
+                      },
+                      "industrial": {
+                        "published": [
+                          93,
+                          84,
+                          0
+                        ],
+                        "nda": [
+                          48,
+                          57,
+                          0
+                        ],
+                        "missing": [
+                          0,
+                          0,
+                          141
+                        ],
+                        "invalid": [
+                          0,
+                          0,
+                          0
+                        ]
+                      },
+                      "generation": {
+                        "published": [
+                          113,
+                          96,
+                          0
+                        ],
+                        "nda": [
+                          28,
+                          45,
+                          0
+                        ],
+                        "missing": [
+                          0,
+                          0,
+                          141
+                        ],
+                        "invalid": [
+                          0,
+                          0,
+                          0
+                        ]
+                      }
+                    },
+                    "notes": [
+                      "availability.<class>.<state> are arrays of counts aligned to the months array: availability.residential.published[i] counts utilities whose residential cell for months[i] has that state."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/validation.json": {
+      "get": {
+        "tags": [
+          "quality"
+        ],
+        "operationId": "getValidation",
+        "summary": "The 17 data-quality checks run against the retrieved workbook",
+        "description": "Row counts, month coverage, known spot values, derived aggregates and checksum checks, as\nrun at retrieval time and published verbatim, plus the separate coverage checks that\nvalidate the service-area layer. In this snapshot every check passes; a failure would set\n`/health.json` status to `degraded`.\n",
+        "x-static-file": "api/v1/validation.json",
+        "responses": {
+          "200": {
+            "description": "Validation checks. Full response: api/v1/validation.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/conflicts.json": {
+      "get": {
+        "tags": [
+          "quality"
+        ],
+        "operationId": "getConflicts",
+        "summary": "Source disagreements, with the resolution rule",
+        "description": "Rows where the workbook's four tabs disagree: region, island-group and grid-connection\nconflicts, plus name variants. Resolved by tab majority where a majority exists; a 2-2\ngrid split is published as `CONFLICT` rather than guessed.\n",
+        "x-static-file": "api/v1/conflicts.json",
+        "responses": {
+          "200": {
+            "description": "Source conflicts. Full response: api/v1/conflicts.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/rates/latest.json": {
+      "get": {
+        "tags": [
+          "rates"
+        ],
+        "operationId": "getLatestRates",
+        "summary": "Index of the latest published month per customer class",
+        "description": "Points at the four per-class files for 2026-10 with their summary statistics, sizes and\nSHA-256 checksums. Start here for one customer class; use `/utilities/{code}.json` for\none utility's full history.\n",
+        "x-static-file": "api/v1/rates/latest.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest-month rate index. Full response: api/v1/rates/latest.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestRatesResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/rates/latest/residential.json": {
+      "get": {
+        "tags": [
+          "rates"
+        ],
+        "operationId": "getLatestResidentialRates",
+        "summary": "Latest published residential rate per utility (2026-10)",
+        "description": "The 2026-10 residential cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. `value: null` with `status: \"nda\"` is a published NDA marker; it is never zero.\n",
+        "x-static-file": "api/v1/rates/latest/residential.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest residential rates. Full response: api/v1/rates/latest/residential.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestRateClassResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 141,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "month": "2026-10",
+                    "previous_month": "2026-09",
+                    "customer_class": "residential",
+                    "label": "Residential",
+                    "unit": "PHP per kWh",
+                    "stats": {
+                      "month": "2026-10",
+                      "reporting": 113,
+                      "nda": 27,
+                      "missing": 0,
+                      "invalid": 1,
+                      "total": 141,
+                      "mean": 13.23,
+                      "median": 12.72,
+                      "min": 5.33,
+                      "max": 19.36
+                    },
+                    "rows": [
+                      {
+                        "code": "ABRECO",
+                        "name": "ABRECO",
+                        "region_short": "CAR",
+                        "type": "EC",
+                        "grid": "ONGRID",
+                        "value": 12.58,
+                        "status": "published",
+                        "previous_value": 12.57,
+                        "change_pct": 0.1
+                      },
+                      {
+                        "code": "AEC",
+                        "name": "AEC",
+                        "region_short": "Region III",
+                        "type": "PIOU",
+                        "grid": "ONGRID",
+                        "value": 12.31,
+                        "status": "published",
+                        "previous_value": 11.84,
+                        "change_pct": 4.0
+                      }
+                    ],
+                    "notes": [
+                      "Rows are sorted by utility_code. value is the 2026-10 cell when the source publishes one and null otherwise; null never means zero."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/rates/latest/commercial.json": {
+      "get": {
+        "tags": [
+          "rates"
+        ],
+        "operationId": "getLatestCommercialRates",
+        "summary": "Latest published commercial rate per utility (2026-10)",
+        "description": "The 2026-10 commercial cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. Same shape as the residential file.\n",
+        "x-static-file": "api/v1/rates/latest/commercial.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest commercial rates. Full response: api/v1/rates/latest/commercial.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestRateClassResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/rates/latest/industrial.json": {
+      "get": {
+        "tags": [
+          "rates"
+        ],
+        "operationId": "getLatestIndustrialRates",
+        "summary": "Latest published industrial rate per utility (2026-10)",
+        "description": "The 2026-10 industrial cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. Same shape as the residential file.\n",
+        "x-static-file": "api/v1/rates/latest/industrial.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest industrial rates. Full response: api/v1/rates/latest/industrial.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestRateClassResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/rates/latest/generation.json": {
+      "get": {
+        "tags": [
+          "rates"
+        ],
+        "operationId": "getLatestGenerationCharge",
+        "summary": "Latest published blended generation charge per utility (2026-10)",
+        "description": "The 2026-10 blended generation-charge cell for all 141 utilities, with explicit\nnon-published states, the previous month's value and the month-over-month change where\nboth cells are published. Same shape as the residential file; the measure is the DOE\nworkbook's blended generation charge, not a full bill.\n",
+        "x-static-file": "api/v1/rates/latest/generation.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest generation charges. Full response: api/v1/rates/latest/generation.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LatestRateClassResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/utilities.json": {
+      "get": {
+        "tags": [
+          "utilities"
+        ],
+        "operationId": "listUtilities",
+        "summary": "Utility / electric-cooperative registry (141 entities)",
+        "description": "Identity, type, grid connection, PSGC region, data status, latest/previous month values\nand a compact `coverage` summary (service-area detail, source ids, regions, LGU /\nprovince / barangay counts) for all 141 utilities, sorted by `code`. The codes discovered\nhere resolve to `/utilities/{code}.json`. `latest` and `prev` are the 2026-10 and\n2026-09 cells; `latest_status` says why a missing value is missing.\n",
+        "x-static-file": "api/v1/utilities.json",
+        "x-data-files": [
+          "../data/seed/utilities.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Utility registry. Full response: api/v1/utilities.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilitiesResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 141,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "latest_month": "2026-10",
+                    "previous_month": "2026-09",
+                    "counts": {
+                      "total": 141,
+                      "by_type": {
+                        "EC": 120,
+                        "PIOU": 21
+                      },
+                      "by_grid": {
+                        "CONFLICT": 2,
+                        "OFFGRID": 21,
+                        "ONGRID": 118
+                      },
+                      "by_data_status": {
+                        "nda": 24,
+                        "partial": 4,
+                        "published": 113
+                      }
+                    },
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "rows_by_area_level": {
+                        "lgu": 108,
+                        "barangay": 17,
+                        "region": 140
+                      },
+                      "sources": [
+                        "SRC-OSM-OPERATORS",
+                        "SRC-WIKI-DUS",
+                        "SRC-RA-12146",
+                        "SRC-DOE-RATES"
+                      ],
+                      "note": "Derived coverage, not a DOE rate publication; full rows at /v1/service-areas/<CODE>.json."
+                    },
+                    "rows": [
+                      {
+                        "code": "ABRECO",
+                        "name": "ABRECO",
+                        "name_variants": {},
+                        "type": "EC",
+                        "grid": "ONGRID",
+                        "grid_conflict": null,
+                        "psgc": "1400000000",
+                        "region_short": "CAR",
+                        "region_name": "Cordillera Administrative Region",
+                        "island": "Luzon",
+                        "on_grid": true,
+                        "data_status": "published",
+                        "latest": {
+                          "residential": 12.58,
+                          "commercial": null,
+                          "industrial": null,
+                          "generation": 6.76
+                        },
+                        "prev": {
+                          "residential": 12.57,
+                          "commercial": null,
+                          "industrial": null,
+                          "generation": 6.59
+                        },
+                        "latest_status": {
+                          "residential": "published",
+                          "commercial": "nda",
+                          "industrial": "nda",
+                          "generation": "published"
+                        },
+                        "res_delta_pct": 0.1,
+                        "source_row": 40,
+                        "coverage": {
+                          "detail": "lgu",
+                          "source_ids": [
+                            "SRC-OSM-OPERATORS"
+                          ],
+                          "regions": [
+                            "1400000000"
+                          ],
+                          "lgu_count": 27,
+                          "province_count": 1,
+                          "barangay_count": 0
+                        }
+                      }
+                    ],
+                    "notes": [
+                      "latest / prev are the 2026-10 and 2026-09 cells. A null means the cell is not published; latest_status says whether it is nda, missing or invalid."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/utilities/{code}.json": {
+      "get": {
+        "tags": [
+          "utilities"
+        ],
+        "operationId": "getUtility",
+        "summary": "One utility with its full monthly series per customer class",
+        "description": "The registry record, all four customer-class series for one utility (grouped by\nexplicit source state: `published` maps month to PHP/kWh, while `nda`, `missing` and\n`invalid` list the months with those states) and the full `service_area` coverage block\n(provinces, LGU codes, barangays, source ids). All four series states together cover every\nmonth in `coverage.months_total` exactly once. Codes come from `/utilities.json`; an\nunknown code is simply not a file (the host returns 404). There is one file per code\n(`api/v1/utilities/<CODE>.json`, 141 files); `x-static-file` names the MERALCO example.\n",
+        "x-static-file": "api/v1/utilities/MERALCO.json",
+        "x-data-files": [
+          "../data/seed/utilities.csv",
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "description": "utility_code from /utilities.json (e.g. MERALCO). Case-sensitive.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._-]+$"
+            },
+            "example": "MERALCO"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One utility with series. Full response: api/v1/utilities/MERALCO.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UtilityResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/service-areas.json": {
+      "get": {
+        "tags": [
+          "service-areas"
+        ],
+        "operationId": "listServiceAreas",
+        "summary": "Provider service-area coverage registry, with source records",
+        "description": "One item per utility with a compact coverage summary (`detail`, `source_ids`, `regions`,\n`lgu_count`, `province_count`, `barangay_count`), the coverage-source registry\n(franchise law, DOE region fallback, OSM Wiki / Wikipedia tables) with each source's\nlicence, attribution and `used_for` counts, and the aggregate coverage statistics.\n`coverage.detail` says the strongest published level; `coverage.regions` lists every\nPSGC region the published rows touch, so a multi-region franchise is visible even when\nthe DOE workbook lists one region. Coverage is derived data, not a DOE rate publication.\n",
+        "x-static-file": "api/v1/service-areas.json",
+        "x-data-files": [
+          "../data/seed/service_areas.csv",
+          "../data/seed/service_area_sources.csv"
+        ],
+        "x-source": [
+          "SRC-RA-12146",
+          "SRC-OSM-OPERATORS",
+          "SRC-DOE-RATES"
+        ],
+        "responses": {
+          "200": {
+            "description": "Coverage registry. Full response: api/v1/service-areas.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAreasResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/service-areas/{code}.json": {
+      "get": {
+        "tags": [
+          "service-areas"
+        ],
+        "operationId": "getServiceArea",
+        "summary": "One utility's full service-area coverage rows",
+        "description": "The published coverage rows for one utility, each carrying its `source_id`, area level\n(`lgu`, `barangay` or `region`), the PSGC hierarchy (region, province, `adm3`, `adm4`)\nand the source's `coverage_note`; plus the full coverage summary block (provinces, LGU\ncodes, barangays) and the source records used by that utility. One file per utility\n(`api/v1/service-areas/<CODE>.json`, 141 files); `x-static-file` names the MERALCO\nexample. Region-level rows are an explicit fallback, not LGU-level confirmation.\n",
+        "x-static-file": "api/v1/service-areas/MERALCO.json",
+        "x-data-files": [
+          "../data/seed/service_areas.csv",
+          "../data/seed/service_area_sources.csv",
+          "../data/seed/regions.csv"
+        ],
+        "x-source": [
+          "SRC-RA-12146",
+          "SRC-OSM-OPERATORS",
+          "SRC-DOE-RATES"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "description": "utility_code from /utilities.json (e.g. MERALCO). Case-sensitive.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._-]+$"
+            },
+            "example": "MERALCO"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One utility's coverage rows. Full response: api/v1/service-areas/MERALCO.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceAreaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/regions.json": {
+      "get": {
+        "tags": [
+          "regions"
+        ],
+        "operationId": "listRegions",
+        "summary": "18 PSGC regions with latest-month aggregates",
+        "description": "Latest-month medians, means and ranges per customer class, reporting counts, island group\nand the DOE workbook's own region label for all 18 PSA PSGC regions. Aggregates use\npublished cells only and exclude NDA, missing and invalid values.\n",
+        "x-static-file": "api/v1/regions.json",
+        "x-data-files": [
+          "../data/seed/regions.csv",
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Region aggregates. Full response: api/v1/regions.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/regions/{psgc}.json": {
+      "get": {
+        "tags": [
+          "regions"
+        ],
+        "operationId": "getRegion",
+        "summary": "One region plus its member utilities",
+        "description": "One region's aggregates plus every member utility with its latest-month values and\nexplicit states. PSGC codes come from `/regions.json`; an unknown code is simply not a\nfile (the host returns 404). There is one file per region\n(`api/v1/regions/<psgc>.json`, 18 files); `x-static-file` names the NCR example.\n",
+        "x-static-file": "api/v1/regions/1300000000.json",
+        "x-data-files": [
+          "../data/seed/regions.csv",
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "parameters": [
+          {
+            "name": "psgc",
+            "in": "path",
+            "required": true,
+            "description": "10-digit PSA PSGC region code from /regions.json (e.g. 1300000000 for NCR).",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{10}$"
+            },
+            "example": "1300000000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One region with members. Full response: api/v1/regions/1300000000.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegionResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 1,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "region": {
+                      "psgc": "1300000000",
+                      "name": "National Capital Region",
+                      "short": "NCR",
+                      "island": "Luzon",
+                      "sheet_label": "NCR",
+                      "utility_count": 1,
+                      "reporting": 1,
+                      "res_median": 15.06,
+                      "res_mean": 15.06,
+                      "res_min": 15.06,
+                      "res_max": 15.06,
+                      "com_median": 12.88,
+                      "ind_median": 11.33,
+                      "gen_median": 10.2
+                    },
+                    "latest_month": "2026-10",
+                    "utilities": [
+                      {
+                        "code": "MERALCO",
+                        "name": "MERALCO",
+                        "type": "PIOU",
+                        "grid": "ONGRID",
+                        "latest": {
+                          "residential": 15.06,
+                          "commercial": 12.88,
+                          "industrial": 11.33,
+                          "generation": 10.2
+                        },
+                        "latest_status": {
+                          "residential": "published",
+                          "commercial": "published",
+                          "industrial": "published",
+                          "generation": "published"
+                        },
+                        "res_delta_pct": 2.2
+                      }
+                    ],
+                    "notes": [
+                      "Region aggregates cover published cells only. Member utilities resolve to full monthly series at utilities/<CODE>.json."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/changes/latest.json": {
+      "get": {
+        "tags": [
+          "changes"
+        ],
+        "operationId": "getLatestChanges",
+        "summary": "What moved between 2026-09 and 2026-10",
+        "description": "Month-over-month movements for utility/class pairs published in both months, sorted by\ncustomer class then largest absolute change, plus cells whose explicit state changed\nbetween the two months. This is a movement feed, not a dataset revision history: a new\nsnapshot is a new `dataset_version`.\n",
+        "x-static-file": "api/v1/changes/latest.json",
+        "x-data-files": [
+          "../data/seed/rates_monthly.csv"
+        ],
+        "x-source": "SRC-DOE-RATES",
+        "responses": {
+          "200": {
+            "description": "Latest movements. Full response: api/v1/changes/latest.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangesResponse"
+                },
+                "example": {
+                  "meta": {
+                    "api_version": "1.0",
+                    "dataset": "doe-electricity-rates",
+                    "dataset_version": "2026-11-10",
+                    "latest_month": "2026-10",
+                    "generated_at": "2026-11-10T17:00:34+08:00",
+                    "currency": "PHP",
+                    "unit": "PHP per kWh",
+                    "source": {
+                      "id": "SRC-DOE-RATES",
+                      "publisher": "Department of Energy (DOE)",
+                      "title": "Electricity Rates & Power Market Monitor",
+                      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+                      "retrieved_at": "2026-11-10T17:00:34+08:00",
+                      "extraction_method": "csv_export"
+                    },
+                    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation.",
+                    "licence": {
+                      "name": "Not stated by publisher",
+                      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                      "url": null
+                    },
+                    "disclaimers": [
+                      {
+                        "id": "disclaimer-unofficial",
+                        "title": "Unofficial compilation.",
+                        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-licence",
+                        "title": "Upstream reuse terms unconfirmed.",
+                        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-nda",
+                        "title": "NDA, missing and invalid are preserved, never imputed.",
+                        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+                        "url": "#disclaimers"
+                      },
+                      {
+                        "id": "disclaimer-rates",
+                        "title": "Rates are monthly averages as published.",
+                        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+                        "url": "#disclaimers"
+                      }
+                    ],
+                    "count": 374,
+                    "service_area": {
+                      "detail_counts": {
+                        "total": 141,
+                        "lgu": 141,
+                        "barangay": 0,
+                        "region": 0
+                      },
+                      "sources": [
+                        {
+                          "source_id": "SRC-OSM-OPERATORS",
+                          "licence": {
+                            "name": "CC BY-SA 2.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-WIKI-DUS",
+                          "licence": {
+                            "name": "CC BY-SA 4.0",
+                            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+                          }
+                        },
+                        {
+                          "source_id": "SRC-RA-12146",
+                          "licence": {
+                            "name": "Public document (Philippine law)",
+                            "url": null
+                          }
+                        },
+                        {
+                          "source_id": "SRC-DOE-RATES",
+                          "licence": {
+                            "name": "Not stated by publisher",
+                            "url": null
+                          }
+                        }
+                      ],
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                    }
+                  },
+                  "data": {
+                    "from_month": "2026-09",
+                    "to_month": "2026-10",
+                    "unit": "PHP per kWh",
+                    "counts": {
+                      "movements": 374,
+                      "availability_changes": 66
+                    },
+                    "movements": [
+                      {
+                        "code": "LEYECO-II",
+                        "name": "LEYECO II",
+                        "region_short": "Region VIII",
+                        "customer_class": "residential",
+                        "from_value": 14.05,
+                        "to_value": 10.44,
+                        "delta_php_kwh": -3.61,
+                        "delta_pct": -25.7
+                      },
+                      {
+                        "code": "MOELCI-II",
+                        "name": "MOELCI II",
+                        "region_short": "Region X",
+                        "customer_class": "residential",
+                        "from_value": 12.83,
+                        "to_value": 15.32,
+                        "delta_php_kwh": 2.49,
+                        "delta_pct": 19.4
+                      }
+                    ],
+                    "availability_changes": [
+                      {
+                        "code": "ASELCO",
+                        "name": "ASELCO",
+                        "customer_class": "residential",
+                        "from": "published",
+                        "to": "nda"
+                      }
+                    ],
+                    "notes": [
+                      "movements lists utility/class pairs published in both months, sorted by customer class then absolute change (largest first)."
+                    ]
+                  },
+                  "next_cursor": null
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/sources.json": {
+      "get": {
+        "tags": [
+          "sources"
+        ],
+        "operationId": "listSources",
+        "summary": "Source registry: the DOE workbook and its checksums",
+        "description": "The single upstream source record: canonical DOE URL, workbook URL and sheet id,\nretrieval timestamp and extraction method, per-tab SHA-256 and byte counts, archived raw\nsnapshots, licence status and provenance notes. Every value in this API resolves to this\nrecord and to a tab checksum.\n",
+        "x-static-file": "api/v1/sources.json",
+        "x-data-files": [
+          "../data/seed/sources.csv"
+        ],
+        "responses": {
+          "200": {
+            "description": "Source registry. Full response: api/v1/sources.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    },
+    "/sources/{source_id}.json": {
+      "get": {
+        "tags": [
+          "sources"
+        ],
+        "operationId": "getSource",
+        "summary": "One source record",
+        "description": "The full source record for one `source_id`. This snapshot has exactly one upstream source,\n`SRC-DOE-RATES`; unknown ids are simply not a file (the host returns 404). There is one\nfile per source (`api/v1/sources/<source_id>.json`); `x-static-file` names the only one.\n",
+        "x-static-file": "api/v1/sources/SRC-DOE-RATES.json",
+        "x-data-files": [
+          "../data/seed/sources.csv"
+        ],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "description": "Source id from /sources.json.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SRC-DOE-RATES"
+              ]
+            },
+            "example": "SRC-DOE-RATES"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "One source record. Full response: api/v1/sources/SRC-DOE-RATES.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/StaticNotFound"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "StaticNotFound": {
+        "description": "The static host returns its own 404 page for a path it does not serve; this snapshot does\nnot emit a JSON error body. A JSON error envelope with machine-readable slugs\n(`bad_request`, `not_found`, `method_not_allowed`, ...) is reserved for a future dynamic\ndeployment, which can adopt it without changing the success payloads.\n"
+      }
+    },
+    "schemas": {
+      "MonthToken": {
+        "type": "string",
+        "pattern": "^[0-9]{4}-[0-9]{2}$",
+        "description": "Billing month as YYYY-MM, as labelled in the source workbook.",
+        "example": "2026-10"
+      },
+      "Psgc": {
+        "type": "string",
+        "pattern": "^[0-9]{10}$",
+        "description": "10-digit PSA PSGC region code.",
+        "example": "1300000000"
+      },
+      "Status": {
+        "type": "string",
+        "enum": [
+          "published",
+          "nda",
+          "missing",
+          "invalid"
+        ],
+        "description": "Explicit source state for one utility/class/month cell: published (a numeric rate exists), nda (\"No Data Available\" as published by the source), missing (the month column exists but the cell is blank / not yet published) or invalid (the cell failed extraction validation). null never means zero."
+      },
+      "RateClass": {
+        "type": "string",
+        "enum": [
+          "residential",
+          "commercial",
+          "industrial",
+          "generation"
+        ],
+        "description": "Customer class; generation is the DOE workbook's blended generation charge."
+      },
+      "NullableNumber": {
+        "description": "A number, or null when the source does not publish a value.",
+        "oneOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "NullableMonthToken": {
+        "description": "A YYYY-MM month, or null when the series has no published month.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "Licence": {
+        "type": "object",
+        "description": "Licence status of the upstream data. The DOE workbook states no explicit reuse licence, so this API asserts none: name is \"Not stated by publisher\", url is null, and reuse terms are to be confirmed with DOE in writing.",
+        "required": [
+          "name",
+          "note",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "const": "Not stated by publisher"
+          },
+          "note": {
+            "type": "string",
+            "description": "Plain-language explanation of the licence status."
+          },
+          "url": {
+            "type": "null",
+            "description": "Always null: no licence URL exists for the upstream data."
+          }
+        }
+      },
+      "Disclaimer": {
+        "type": "object",
+        "description": "One disclaimer paragraph. Keep it with any figure republished from this API; `url` points at the Disclaimers section of the API documentation.",
+        "required": [
+          "id",
+          "title",
+          "text",
+          "url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "disclaimer-unofficial",
+              "disclaimer-licence",
+              "disclaimer-nda",
+              "disclaimer-rates",
+              "disclaimer-coverage"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "example": "Unofficial compilation."
+          },
+          "text": {
+            "type": "string",
+            "description": "The disclaimer text, reproduced from the API documentation."
+          },
+          "url": {
+            "type": "string",
+            "example": "#disclaimers"
+          }
+        }
+      },
+      "SourceRef": {
+        "type": "object",
+        "description": "Compact source reference repeated in every response meta.",
+        "required": [
+          "id",
+          "publisher",
+          "title",
+          "canonical_url",
+          "retrieved_at",
+          "extraction_method"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "SRC-DOE-RATES"
+          },
+          "publisher": {
+            "type": "string",
+            "example": "Department of Energy (DOE)"
+          },
+          "title": {
+            "type": "string",
+            "example": "Electricity Rates & Power Market Monitor"
+          },
+          "canonical_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The DOE page that embeds the public workbook."
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When this snapshot was retrieved from the source."
+          },
+          "extraction_method": {
+            "type": "string",
+            "example": "csv_export"
+          }
+        },
+        "additionalProperties": true
+      },
+      "SourceTab": {
+        "type": "object",
+        "description": "One tab of the DOE workbook, with the SHA-256 of the exact CSV bytes retrieved.",
+        "required": [
+          "gid",
+          "customer_class",
+          "sha256",
+          "bytes",
+          "rows"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "description": "Google Sheet tab gid used in the CSV export URL.",
+            "example": 0
+          },
+          "customer_class": {
+            "$ref": "#/components/schemas/RateClass"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer"
+          },
+          "rows": {
+            "type": "integer"
+          }
+        }
+      },
+      "RawSnapshot": {
+        "type": "object",
+        "description": "Archived raw CSV bytes for one source tab, kept in the repository.",
+        "required": [
+          "path",
+          "gid",
+          "customer_class",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Repository-relative path of the archived raw CSV."
+          },
+          "gid": {
+            "type": "integer"
+          },
+          "customer_class": {
+            "$ref": "#/components/schemas/RateClass"
+          },
+          "bytes": {
+            "type": "integer"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "SourceCoverage": {
+        "type": "object",
+        "required": [
+          "months",
+          "month_columns",
+          "utility_rows",
+          "latest_published_month",
+          "latest_available_month"
+        ],
+        "properties": {
+          "months": {
+            "type": "string",
+            "example": "2018-01 to 2026-11"
+          },
+          "month_columns": {
+            "type": "integer"
+          },
+          "utility_rows": {
+            "type": "integer"
+          },
+          "latest_published_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "latest_available_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          }
+        }
+      },
+      "SourceRecord": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SourceRef"
+          },
+          {
+            "type": "object",
+            "description": "The complete source record published at /sources.json.",
+            "required": [
+              "workbook_url",
+              "sheet_id",
+              "licence",
+              "tabs",
+              "raw_snapshots",
+              "coverage",
+              "notes"
+            ],
+            "properties": {
+              "workbook_url": {
+                "type": "string",
+                "format": "uri",
+                "description": "The public Google Sheet the four CSVs were exported from."
+              },
+              "sheet_id": {
+                "type": "string"
+              },
+              "licence": {
+                "$ref": "#/components/schemas/Licence"
+              },
+              "tabs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SourceTab"
+                }
+              },
+              "raw_snapshots": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RawSnapshot"
+                }
+              },
+              "coverage": {
+                "$ref": "#/components/schemas/SourceCoverage"
+              },
+              "notes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DataFile": {
+        "type": "object",
+        "description": "A tidy seed CSV that ships beside the API (path relative to draft/).",
+        "required": [
+          "name",
+          "path",
+          "rows",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "rates_monthly.csv"
+          },
+          "path": {
+            "type": "string",
+            "example": "../data/seed/rates_monthly.csv"
+          },
+          "rows": {
+            "type": "integer",
+            "example": 60348
+          },
+          "bytes": {
+            "type": "integer"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      },
+      "CoverageDetail": {
+        "type": "string",
+        "enum": [
+          "lgu",
+          "barangay",
+          "region"
+        ],
+        "description": "Strongest published coverage level for a utility: lgu (LGU-level rows), barangay (barangay-level rows only) or region (a single region-level fallback row; no LGU-level service area is sourced)."
+      },
+      "LicenceRef": {
+        "type": "object",
+        "required": [
+          "name",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "CoverageLicence": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/LicenceRef"
+          },
+          {
+            "type": "object",
+            "required": [
+              "note"
+            ],
+            "properties": {
+              "note": {
+                "type": "string",
+                "description": "Attribution / share-alike note for this coverage source."
+              }
+            }
+          }
+        ]
+      },
+      "CoverageDetailCounts": {
+        "type": "object",
+        "required": [
+          "total",
+          "lgu",
+          "barangay",
+          "region"
+        ],
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "lgu": {
+            "type": "integer"
+          },
+          "barangay": {
+            "type": "integer"
+          },
+          "region": {
+            "type": "integer"
+          }
+        }
+      },
+      "CoverageRowsByLevel": {
+        "type": "object",
+        "required": [
+          "lgu",
+          "barangay",
+          "region"
+        ],
+        "properties": {
+          "lgu": {
+            "type": "integer"
+          },
+          "barangay": {
+            "type": "integer"
+          },
+          "region": {
+            "type": "integer"
+          }
+        }
+      },
+      "ServiceAreaMeta": {
+        "type": "object",
+        "description": "Derived service-area coverage context repeated in every response meta: how many utilities have LGU-level, barangay-level or region-level coverage, and which coverage sources (with licences) back the layer. Coverage is derived data, not a DOE rate publication.",
+        "required": [
+          "detail_counts",
+          "sources",
+          "note"
+        ],
+        "properties": {
+          "detail_counts": {
+            "$ref": "#/components/schemas/CoverageDetailCounts"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "source_id",
+                "licence"
+              ],
+              "properties": {
+                "source_id": {
+                  "type": "string"
+                },
+                "licence": {
+                  "$ref": "#/components/schemas/LicenceRef"
+                }
+              }
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "CoverageCheck": {
+        "type": "object",
+        "description": "One coverage validation check as recorded at build/ingest time.",
+        "required": [
+          "check",
+          "ok"
+        ],
+        "properties": {
+          "check": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      },
+      "ServiceAreaStats": {
+        "type": "object",
+        "description": "Aggregate coverage statistics derived from the coverage seed. Keys are published as supplied by the seed (additional keys are allowed as the seed grows).",
+        "required": [
+          "utilities_total",
+          "utilities_with_lgu_coverage",
+          "utilities_region_only",
+          "lgu_rows",
+          "barangay_rows",
+          "region_rows",
+          "distinct_lgus",
+          "multi_region_utilities",
+          "sources"
+        ],
+        "properties": {
+          "utilities_total": {
+            "type": "integer"
+          },
+          "utilities_with_lgu_coverage": {
+            "type": "integer"
+          },
+          "utilities_region_only": {
+            "type": "integer"
+          },
+          "lgu_rows": {
+            "type": "integer"
+          },
+          "barangay_rows": {
+            "type": "integer"
+          },
+          "region_rows": {
+            "type": "integer"
+          },
+          "distinct_lgus": {
+            "type": "integer"
+          },
+          "multi_region_utilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      },
+      "CoverageSummary": {
+        "type": "object",
+        "description": "Compact coverage block published on registry rows and list endpoints.",
+        "required": [
+          "detail",
+          "source_ids",
+          "regions",
+          "lgu_count",
+          "province_count",
+          "barangay_count"
+        ],
+        "properties": {
+          "detail": {
+            "$ref": "#/components/schemas/CoverageDetail"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Psgc"
+            }
+          },
+          "lgu_count": {
+            "type": "integer"
+          },
+          "province_count": {
+            "type": "integer"
+          },
+          "barangay_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "CoverageProvince": {
+        "type": "object",
+        "required": [
+          "psgc",
+          "name",
+          "region_psgc",
+          "lgu_count"
+        ],
+        "properties": {
+          "psgc": {
+            "$ref": "#/components/schemas/Psgc"
+          },
+          "name": {
+            "type": "string"
+          },
+          "region_psgc": {
+            "$ref": "#/components/schemas/Psgc"
+          },
+          "lgu_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "CoverageBarangay": {
+        "type": "object",
+        "required": [
+          "adm4",
+          "name",
+          "lgu",
+          "lgu_name"
+        ],
+        "properties": {
+          "adm4": {
+            "type": "string",
+            "pattern": "^[0-9]{10}$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lgu": {
+            "type": "string",
+            "pattern": "^[0-9]{10}$"
+          },
+          "lgu_name": {
+            "type": "string"
+          }
+        }
+      },
+      "CoverageFull": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CoverageSummary"
+          },
+          {
+            "type": "object",
+            "description": "Full coverage block for one utility: provinces, LGU PSGC codes, barangays and a note.",
+            "required": [
+              "provinces",
+              "lgus",
+              "barangays",
+              "barangay_provinces",
+              "note"
+            ],
+            "properties": {
+              "provinces": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoverageProvince"
+                }
+              },
+              "lgus": {
+                "type": "array",
+                "description": "Canonical 10-digit PSGC city/municipality codes, sorted.",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[0-9]{10}$"
+                }
+              },
+              "barangays": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoverageBarangay"
+                }
+              },
+              "barangay_provinces": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "note": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CoverageUsedFor": {
+        "type": "object",
+        "description": "How many published rows/utilities a coverage source backs.",
+        "required": [
+          "rows",
+          "utilities",
+          "rows_by_area_level"
+        ],
+        "properties": {
+          "rows": {
+            "type": "integer"
+          },
+          "utilities": {
+            "type": "integer"
+          },
+          "rows_by_area_level": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "CoverageSource": {
+        "type": "object",
+        "description": "One source of the service-area coverage layer, with its own licence and attribution (public law, CC BY-SA where OSM Wiki / Wikipedia tables are used, or the DOE workbook terms for the region-level fallback).",
+        "required": [
+          "source_id",
+          "short_title",
+          "publisher",
+          "dataset_title",
+          "page_url",
+          "revision_id",
+          "retrieved_at",
+          "licence",
+          "attribution",
+          "notes",
+          "used_for"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "example": "SRC-RA-12146"
+          },
+          "short_title": {
+            "type": "string",
+            "example": "Republic Act No. 12146 (Meralco franchise)"
+          },
+          "publisher": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "dataset_title": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "page_url": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "revision_id": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "retrieved_at": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "licence": {
+            "$ref": "#/components/schemas/CoverageLicence"
+          },
+          "attribution": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "notes": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "used_for": {
+            "$ref": "#/components/schemas/CoverageUsedFor"
+          }
+        }
+      },
+      "CoverageSourceRegistry": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CoverageSource"
+        }
+      },
+      "ServiceAreaRow": {
+        "type": "object",
+        "description": "One published coverage row: a covered LGU (area_level: lgu), a covered barangay (area_level: barangay), or a single region-level fallback row (area_level: region). Every row carries its source_id.",
+        "required": [
+          "utility_code",
+          "area_level",
+          "source_id",
+          "region_psgc",
+          "region_short",
+          "region_name",
+          "province_psgc",
+          "province_name",
+          "adm3_psgc",
+          "lgu_name",
+          "adm4_psgc",
+          "barangay_name",
+          "coverage_note"
+        ],
+        "properties": {
+          "utility_code": {
+            "type": "string"
+          },
+          "area_level": {
+            "$ref": "#/components/schemas/CoverageDetail"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "region_psgc": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Psgc"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "region_short": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "region_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "province_psgc": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{10}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "province_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "adm3_psgc": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{10}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lgu_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "adm4_psgc": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{10}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "barangay_name": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "coverage_note": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "ServiceAreaRegistryEntry": {
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "type",
+          "region_short",
+          "region_name",
+          "coverage"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PIOU",
+              "EC"
+            ]
+          },
+          "region_short": {
+            "type": "string"
+          },
+          "region_name": {
+            "type": "string"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/CoverageSummary"
+          }
+        }
+      },
+      "ServiceAreaUtility": {
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "type",
+          "grid",
+          "psgc",
+          "region_short",
+          "region_name",
+          "data_status"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PIOU",
+              "EC"
+            ]
+          },
+          "grid": {
+            "type": "string",
+            "enum": [
+              "ONGRID",
+              "OFFGRID",
+              "CONFLICT"
+            ]
+          },
+          "psgc": {
+            "$ref": "#/components/schemas/Psgc"
+          },
+          "region_short": {
+            "type": "string"
+          },
+          "region_name": {
+            "type": "string"
+          },
+          "data_status": {
+            "type": "string",
+            "enum": [
+              "published",
+              "partial",
+              "nda"
+            ]
+          }
+        }
+      },
+      "ServiceAreaTally": {
+        "type": "object",
+        "description": "Coverage tally published on list endpoints.",
+        "required": [
+          "detail_counts",
+          "rows_by_area_level",
+          "sources",
+          "note"
+        ],
+        "properties": {
+          "detail_counts": {
+            "$ref": "#/components/schemas/CoverageDetailCounts"
+          },
+          "rows_by_area_level": {
+            "$ref": "#/components/schemas/CoverageRowsByLevel"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "HealthServiceArea": {
+        "type": "object",
+        "required": [
+          "detail_counts",
+          "rows_by_area_level",
+          "sources"
+        ],
+        "properties": {
+          "detail_counts": {
+            "$ref": "#/components/schemas/CoverageDetailCounts"
+          },
+          "rows_by_area_level": {
+            "$ref": "#/components/schemas/CoverageRowsByLevel"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ServiceAreaDocument": {
+        "type": "object",
+        "description": "The service_area block of /meta.json: coverage stats, sources, checks and files.",
+        "required": [
+          "description",
+          "coverage",
+          "detail_counts",
+          "rows_by_area_level",
+          "sources",
+          "checks",
+          "files",
+          "disclaimer_id",
+          "notes"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/ServiceAreaStats"
+          },
+          "detail_counts": {
+            "$ref": "#/components/schemas/CoverageDetailCounts"
+          },
+          "rows_by_area_level": {
+            "$ref": "#/components/schemas/CoverageRowsByLevel"
+          },
+          "sources": {
+            "$ref": "#/components/schemas/CoverageSourceRegistry"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoverageCheck"
+            }
+          },
+          "files": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": [
+                "rows",
+                "bytes",
+                "sha256"
+              ],
+              "properties": {
+                "rows": {
+                  "type": "integer"
+                },
+                "bytes": {
+                  "type": "integer"
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          },
+          "disclaimer_id": {
+            "type": "string",
+            "const": "disclaimer-coverage"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ServiceAreasData": {
+        "type": "object",
+        "required": [
+          "coverage",
+          "detail_counts",
+          "rows_by_area_level",
+          "sources",
+          "utilities",
+          "notes"
+        ],
+        "properties": {
+          "coverage": {
+            "$ref": "#/components/schemas/ServiceAreaStats"
+          },
+          "detail_counts": {
+            "$ref": "#/components/schemas/CoverageDetailCounts"
+          },
+          "rows_by_area_level": {
+            "$ref": "#/components/schemas/CoverageRowsByLevel"
+          },
+          "sources": {
+            "$ref": "#/components/schemas/CoverageSourceRegistry"
+          },
+          "utilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceAreaRegistryEntry"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ServiceAreaData": {
+        "type": "object",
+        "required": [
+          "utility",
+          "service_area",
+          "rows",
+          "sources",
+          "notes"
+        ],
+        "properties": {
+          "utility": {
+            "$ref": "#/components/schemas/ServiceAreaUtility"
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/CoverageFull"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServiceAreaRow"
+            }
+          },
+          "sources": {
+            "$ref": "#/components/schemas/CoverageSourceRegistry"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Meta": {
+        "type": "object",
+        "description": "Response metadata repeated in every envelope. States the API and dataset versions, the latest published month, the rate-data source, attribution, licence status, all five disclaimers and the derived service-area coverage context (detail counts and the coverage sources with their licences). `count` is the number of primary records in `data` (rows for a list, months for the month series, 1 for a single record).",
+        "required": [
+          "api_version",
+          "dataset",
+          "dataset_version",
+          "latest_month",
+          "generated_at",
+          "currency",
+          "unit",
+          "source",
+          "attribution",
+          "licence",
+          "disclaimers",
+          "service_area",
+          "count"
+        ],
+        "properties": {
+          "api_version": {
+            "type": "string",
+            "const": "1.0"
+          },
+          "dataset": {
+            "type": "string",
+            "const": "doe-electricity-rates"
+          },
+          "dataset_version": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+            "description": "Retrieval date; changes with every new snapshot."
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currency": {
+            "type": "string",
+            "const": "PHP"
+          },
+          "unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceRef"
+          },
+          "attribution": {
+            "type": "string",
+            "description": "Attribution text to carry with republished figures."
+          },
+          "licence": {
+            "$ref": "#/components/schemas/Licence"
+          },
+          "disclaimers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Disclaimer"
+            }
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/ServiceAreaMeta"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true
+      },
+      "StatusVocabulary": {
+        "type": "object",
+        "required": [
+          "published",
+          "nda",
+          "missing",
+          "invalid"
+        ],
+        "properties": {
+          "published": {
+            "type": "string"
+          },
+          "nda": {
+            "type": "string"
+          },
+          "missing": {
+            "type": "string"
+          },
+          "invalid": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Coverage": {
+        "type": "object",
+        "required": [
+          "months_total",
+          "first_month",
+          "last_month",
+          "latest_month",
+          "prev_month",
+          "anchor_month",
+          "utilities",
+          "regions",
+          "rate_classes",
+          "rate_rows"
+        ],
+        "properties": {
+          "months_total": {
+            "type": "integer",
+            "example": 107
+          },
+          "first_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "last_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "prev_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "anchor_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "utilities": {
+            "type": "integer"
+          },
+          "regions": {
+            "type": "integer"
+          },
+          "rate_classes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RateClass"
+            }
+          },
+          "rate_rows": {
+            "type": "integer"
+          }
+        }
+      },
+      "Units": {
+        "type": "object",
+        "required": [
+          "currency",
+          "rate_unit",
+          "scale"
+        ],
+        "properties": {
+          "currency": {
+            "type": "string",
+            "const": "PHP"
+          },
+          "rate_unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "scale": {
+            "type": "string",
+            "example": "pesos per kilowatt-hour"
+          }
+        }
+      },
+      "Identifiers": {
+        "type": "object",
+        "required": [
+          "utility",
+          "region",
+          "month"
+        ],
+        "properties": {
+          "utility": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "month": {
+            "type": "string"
+          }
+        }
+      },
+      "MachineAccess": {
+        "type": "object",
+        "required": [
+          "catalog",
+          "openapi_json",
+          "openapi_yaml",
+          "docs",
+          "data_model"
+        ],
+        "properties": {
+          "catalog": {
+            "type": "string",
+            "example": "api/v1/index.json"
+          },
+          "openapi_json": {
+            "type": "string",
+            "example": "api/v1/openapi.json"
+          },
+          "openapi_yaml": {
+            "type": "string",
+            "example": "openapi.yaml"
+          },
+          "docs": {
+            "type": "string",
+            "example": "api-docs.md"
+          },
+          "data_model": {
+            "type": "string",
+            "example": "data-model.md"
+          }
+        }
+      },
+      "MetaDocument": {
+        "type": "object",
+        "description": "The payload of /meta.json.",
+        "required": [
+          "name",
+          "description",
+          "api_version",
+          "dataset",
+          "dataset_version",
+          "generated_at",
+          "source",
+          "attribution",
+          "licence",
+          "disclaimers",
+          "coverage",
+          "units",
+          "identifiers",
+          "status_vocabulary",
+          "data_files",
+          "raw_snapshots",
+          "service_area",
+          "machine_access",
+          "not_included",
+          "notes"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "api_version": {
+            "type": "string",
+            "const": "1.0"
+          },
+          "dataset": {
+            "type": "string",
+            "const": "doe-electricity-rates"
+          },
+          "dataset_version": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceRecord"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "licence": {
+            "$ref": "#/components/schemas/Licence"
+          },
+          "disclaimers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Disclaimer"
+            }
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "units": {
+            "$ref": "#/components/schemas/Units"
+          },
+          "identifiers": {
+            "$ref": "#/components/schemas/Identifiers"
+          },
+          "status_vocabulary": {
+            "$ref": "#/components/schemas/StatusVocabulary"
+          },
+          "data_files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataFile"
+            }
+          },
+          "raw_snapshots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RawSnapshot"
+            }
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/ServiceAreaDocument"
+          },
+          "machine_access": {
+            "$ref": "#/components/schemas/MachineAccess"
+          },
+          "not_included": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "HealthChecks": {
+        "type": "object",
+        "required": [
+          "validation",
+          "validation_passed",
+          "validation_failed",
+          "utilities",
+          "regions",
+          "months",
+          "rate_rows",
+          "coverage_checks",
+          "coverage_checks_passed",
+          "coverage_checks_failed",
+          "service_area_rows",
+          "service_area_sources"
+        ],
+        "properties": {
+          "validation": {
+            "type": "integer"
+          },
+          "validation_passed": {
+            "type": "integer"
+          },
+          "validation_failed": {
+            "type": "integer"
+          },
+          "utilities": {
+            "type": "integer"
+          },
+          "regions": {
+            "type": "integer"
+          },
+          "months": {
+            "type": "integer"
+          },
+          "rate_rows": {
+            "type": "integer"
+          },
+          "coverage_checks": {
+            "type": "integer"
+          },
+          "coverage_checks_passed": {
+            "type": "integer"
+          },
+          "coverage_checks_failed": {
+            "type": "integer"
+          },
+          "service_area_rows": {
+            "type": "integer"
+          },
+          "service_area_sources": {
+            "type": "integer"
+          }
+        }
+      },
+      "HealthData": {
+        "type": "object",
+        "required": [
+          "status",
+          "snapshot",
+          "dataset_version",
+          "generated_at",
+          "source_retrieved_at",
+          "latest_month",
+          "prev_month",
+          "checks",
+          "service_area",
+          "notes"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "degraded"
+            ]
+          },
+          "snapshot": {
+            "type": "boolean",
+            "const": true
+          },
+          "dataset_version": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source_retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "prev_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "checks": {
+            "$ref": "#/components/schemas/HealthChecks"
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/HealthServiceArea"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "StateArrays": {
+        "type": "object",
+        "description": "Counts aligned to the months array in MonthsData.",
+        "required": [
+          "published",
+          "nda",
+          "missing",
+          "invalid"
+        ],
+        "properties": {
+          "published": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "nda": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "invalid": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Availability": {
+        "type": "object",
+        "required": [
+          "residential",
+          "commercial",
+          "industrial",
+          "generation"
+        ],
+        "properties": {
+          "residential": {
+            "$ref": "#/components/schemas/StateArrays"
+          },
+          "commercial": {
+            "$ref": "#/components/schemas/StateArrays"
+          },
+          "industrial": {
+            "$ref": "#/components/schemas/StateArrays"
+          },
+          "generation": {
+            "$ref": "#/components/schemas/StateArrays"
+          }
+        }
+      },
+      "MonthsData": {
+        "type": "object",
+        "required": [
+          "months",
+          "first_month",
+          "last_month",
+          "latest_month",
+          "prev_month",
+          "anchor_month",
+          "classes",
+          "availability",
+          "notes"
+        ],
+        "properties": {
+          "months": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthToken"
+            }
+          },
+          "first_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "last_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "prev_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "anchor_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "classes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RateClass"
+            }
+          },
+          "availability": {
+            "$ref": "#/components/schemas/Availability"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ValidationCheck": {
+        "type": "object",
+        "required": [
+          "check",
+          "ok",
+          "got",
+          "expected"
+        ],
+        "properties": {
+          "check": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "got": {
+            "description": "Observed value (number, string or boolean)."
+          },
+          "expected": {
+            "description": "Expected value (number, string or boolean)."
+          }
+        }
+      },
+      "ValidationSummary": {
+        "type": "object",
+        "required": [
+          "checks",
+          "passed",
+          "failed"
+        ],
+        "properties": {
+          "checks": {
+            "type": "integer"
+          },
+          "passed": {
+            "type": "integer"
+          },
+          "failed": {
+            "type": "integer"
+          }
+        }
+      },
+      "ValidationData": {
+        "type": "object",
+        "required": [
+          "dataset",
+          "retrieved_at",
+          "latest_month",
+          "prev_month",
+          "anchor_month",
+          "summary",
+          "checks",
+          "coverage_checks",
+          "coverage_summary",
+          "coverage",
+          "notes"
+        ],
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "example": "SRC-DOE-RATES"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "prev_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "anchor_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/ValidationSummary"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationCheck"
+            }
+          },
+          "coverage_checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoverageCheck"
+            }
+          },
+          "coverage_summary": {
+            "$ref": "#/components/schemas/ValidationSummary"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/ServiceAreaStats"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "type": "object",
+        "description": "One source disagreement and how it was resolved.",
+        "required": [
+          "type",
+          "source_row",
+          "canonical",
+          "note"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "region_conflict",
+              "island_conflict",
+              "grid_conflict",
+              "name_variant"
+            ]
+          },
+          "source_row": {
+            "type": "integer"
+          },
+          "canonical": {
+            "type": "string",
+            "description": "The value published after resolution; \"CONFLICT\" marks an unresolved 2-2 split."
+          },
+          "claims": {
+            "type": "object",
+            "description": "Per-tab claims; shape depends on the conflict type.",
+            "additionalProperties": true
+          },
+          "variants": {
+            "type": "object",
+            "description": "Tab-specific name variants for name_variant rows.",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "ConflictsData": {
+        "type": "object",
+        "required": [
+          "count",
+          "conflicts",
+          "notes"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "conflicts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Conflict"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RateClassStats": {
+        "type": "object",
+        "description": "Summary statistics for one customer class in the latest (or anchor) month, over published values only.",
+        "required": [
+          "month",
+          "reporting",
+          "nda",
+          "missing",
+          "invalid",
+          "total",
+          "mean",
+          "median",
+          "min",
+          "max"
+        ],
+        "properties": {
+          "month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "reporting": {
+            "type": "integer"
+          },
+          "nda": {
+            "type": "integer"
+          },
+          "missing": {
+            "type": "integer"
+          },
+          "invalid": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "mean": {
+            "type": "number"
+          },
+          "median": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          }
+        }
+      },
+      "RateClassIndexEntry": {
+        "type": "object",
+        "required": [
+          "label",
+          "file",
+          "count",
+          "size_bytes",
+          "sha256",
+          "stats"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string",
+            "description": "Relative path of the per-class file.",
+            "example": "api/v1/rates/latest/residential.json"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "size_bytes": {
+            "type": "integer"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/RateClassStats"
+          }
+        }
+      },
+      "LatestRatesData": {
+        "type": "object",
+        "required": [
+          "month",
+          "previous_month",
+          "unit",
+          "classes",
+          "notes"
+        ],
+        "properties": {
+          "month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "previous_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "classes": {
+            "type": "object",
+            "required": [
+              "residential",
+              "commercial",
+              "industrial",
+              "generation"
+            ],
+            "properties": {
+              "residential": {
+                "$ref": "#/components/schemas/RateClassIndexEntry"
+              },
+              "commercial": {
+                "$ref": "#/components/schemas/RateClassIndexEntry"
+              },
+              "industrial": {
+                "$ref": "#/components/schemas/RateClassIndexEntry"
+              },
+              "generation": {
+                "$ref": "#/components/schemas/RateClassIndexEntry"
+              }
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RateRow": {
+        "type": "object",
+        "description": "One utility in a latest-month class file.",
+        "required": [
+          "code",
+          "name",
+          "region_short",
+          "type",
+          "grid",
+          "value",
+          "status",
+          "previous_value",
+          "change_pct"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "region_short": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PIOU",
+              "EC"
+            ]
+          },
+          "grid": {
+            "type": "string",
+            "enum": [
+              "ONGRID",
+              "OFFGRID",
+              "CONFLICT"
+            ]
+          },
+          "value": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "previous_value": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "change_pct": {
+            "$ref": "#/components/schemas/NullableNumber"
+          }
+        }
+      },
+      "LatestRateClassData": {
+        "type": "object",
+        "required": [
+          "month",
+          "previous_month",
+          "customer_class",
+          "label",
+          "unit",
+          "stats",
+          "rows",
+          "notes"
+        ],
+        "properties": {
+          "month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "previous_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "customer_class": {
+            "$ref": "#/components/schemas/RateClass"
+          },
+          "label": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/RateClassStats"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RateRow"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ClassValues": {
+        "type": "object",
+        "description": "One value per customer class; null where the cell is not published.",
+        "required": [
+          "residential",
+          "commercial",
+          "industrial",
+          "generation"
+        ],
+        "properties": {
+          "residential": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "commercial": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "industrial": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "generation": {
+            "$ref": "#/components/schemas/NullableNumber"
+          }
+        }
+      },
+      "ClassStatuses": {
+        "type": "object",
+        "required": [
+          "residential",
+          "commercial",
+          "industrial",
+          "generation"
+        ],
+        "properties": {
+          "residential": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "commercial": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "industrial": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "generation": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      },
+      "UtilitySummary": {
+        "type": "object",
+        "description": "Compact registry row: identity, geography, latest/previous month cells and their states.",
+        "required": [
+          "code",
+          "name",
+          "name_variants",
+          "type",
+          "grid",
+          "grid_conflict",
+          "psgc",
+          "region_short",
+          "region_name",
+          "island",
+          "on_grid",
+          "data_status",
+          "latest",
+          "prev",
+          "latest_status",
+          "res_delta_pct",
+          "source_row",
+          "coverage"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "description": "Stable slug used by this dataset, not an official DOE/ERC/NEA identifier."
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_variants": {
+            "type": "object",
+            "description": "Tab-specific alternative names keyed by customer class.",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PIOU",
+              "EC"
+            ]
+          },
+          "grid": {
+            "type": "string",
+            "enum": [
+              "ONGRID",
+              "OFFGRID",
+              "CONFLICT"
+            ]
+          },
+          "grid_conflict": {
+            "description": "Present when the tabs split 2-2 on grid connection; null otherwise.",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "psgc": {
+            "$ref": "#/components/schemas/Psgc"
+          },
+          "region_short": {
+            "type": "string"
+          },
+          "region_name": {
+            "type": "string"
+          },
+          "island": {
+            "type": "string",
+            "enum": [
+              "Luzon",
+              "Visayas",
+              "Mindanao"
+            ]
+          },
+          "on_grid": {
+            "description": "Whether the source tabs agree the utility is on-grid. Null when the tabs split 2-2 (see grid_conflict, and grid: CONFLICT).",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "data_status": {
+            "type": "string",
+            "enum": [
+              "published",
+              "partial",
+              "nda"
+            ],
+            "description": "Utility-level summary of the latest month: published (residential value exists), partial (some classes published), nda (no latest-month values)."
+          },
+          "latest": {
+            "$ref": "#/components/schemas/ClassValues"
+          },
+          "prev": {
+            "$ref": "#/components/schemas/ClassValues"
+          },
+          "latest_status": {
+            "$ref": "#/components/schemas/ClassStatuses"
+          },
+          "res_delta_pct": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "source_row": {
+            "type": "integer",
+            "description": "1-based row in each DOE workbook tab."
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/CoverageSummary"
+          }
+        }
+      },
+      "SeriesCounts": {
+        "type": "object",
+        "required": [
+          "published",
+          "nda",
+          "missing",
+          "invalid",
+          "total"
+        ],
+        "properties": {
+          "published": {
+            "type": "integer"
+          },
+          "nda": {
+            "type": "integer"
+          },
+          "missing": {
+            "type": "integer"
+          },
+          "invalid": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
+      "SeriesClass": {
+        "type": "object",
+        "description": "One customer-class series grouped by explicit source state. `published` maps month to PHP/kWh; `nda`, `missing` and `invalid` list the months with those states. The four states together cover every month in `coverage.months_total` exactly once.",
+        "required": [
+          "unit",
+          "counts",
+          "first_published_month",
+          "last_published_month",
+          "published",
+          "nda",
+          "missing",
+          "invalid"
+        ],
+        "properties": {
+          "unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/SeriesCounts"
+          },
+          "first_published_month": {
+            "$ref": "#/components/schemas/NullableMonthToken"
+          },
+          "last_published_month": {
+            "$ref": "#/components/schemas/NullableMonthToken"
+          },
+          "published": {
+            "type": "object",
+            "description": "Published values: YYYY-MM -> PHP per kWh.",
+            "propertyNames": {
+              "pattern": "^[0-9]{4}-[0-9]{2}$"
+            },
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "nda": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthToken"
+            }
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthToken"
+            }
+          },
+          "invalid": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthToken"
+            }
+          }
+        }
+      },
+      "UtilitySeries": {
+        "type": "object",
+        "required": [
+          "residential",
+          "commercial",
+          "industrial",
+          "generation"
+        ],
+        "properties": {
+          "residential": {
+            "$ref": "#/components/schemas/SeriesClass"
+          },
+          "commercial": {
+            "$ref": "#/components/schemas/SeriesClass"
+          },
+          "industrial": {
+            "$ref": "#/components/schemas/SeriesClass"
+          },
+          "generation": {
+            "$ref": "#/components/schemas/SeriesClass"
+          }
+        }
+      },
+      "UtilityCoverage": {
+        "type": "object",
+        "required": [
+          "months_total",
+          "first_month",
+          "last_month",
+          "latest_month",
+          "previous_month"
+        ],
+        "properties": {
+          "months_total": {
+            "type": "integer"
+          },
+          "first_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "last_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "previous_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          }
+        }
+      },
+      "UtilitySource": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_row",
+          "source_url",
+          "retrieved_at",
+          "extraction_method"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "source_row": {
+            "type": "integer"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "extraction_method": {
+            "type": "string"
+          }
+        }
+      },
+      "UtilityData": {
+        "type": "object",
+        "required": [
+          "utility",
+          "coverage",
+          "series",
+          "service_area",
+          "source",
+          "notes"
+        ],
+        "properties": {
+          "utility": {
+            "$ref": "#/components/schemas/UtilitySummary"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/UtilityCoverage"
+          },
+          "series": {
+            "$ref": "#/components/schemas/UtilitySeries"
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/CoverageFull"
+          },
+          "source": {
+            "$ref": "#/components/schemas/UtilitySource"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "UtilitiesCounts": {
+        "type": "object",
+        "required": [
+          "total",
+          "by_type",
+          "by_grid",
+          "by_data_status"
+        ],
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "by_type": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "by_grid": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          },
+          "by_data_status": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "UtilitiesData": {
+        "type": "object",
+        "required": [
+          "latest_month",
+          "previous_month",
+          "counts",
+          "rows",
+          "service_area",
+          "notes"
+        ],
+        "properties": {
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "previous_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/UtilitiesCounts"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UtilitySummary"
+            }
+          },
+          "service_area": {
+            "$ref": "#/components/schemas/ServiceAreaTally"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RegionRow": {
+        "type": "object",
+        "description": "One PSGC region with latest-month aggregates over published cells only.",
+        "required": [
+          "psgc",
+          "name",
+          "short",
+          "island",
+          "sheet_label",
+          "utility_count",
+          "reporting",
+          "res_median",
+          "res_mean",
+          "res_min",
+          "res_max",
+          "com_median",
+          "ind_median",
+          "gen_median"
+        ],
+        "properties": {
+          "psgc": {
+            "$ref": "#/components/schemas/Psgc"
+          },
+          "name": {
+            "type": "string"
+          },
+          "short": {
+            "type": "string"
+          },
+          "island": {
+            "type": "string",
+            "enum": [
+              "Luzon",
+              "Visayas",
+              "Mindanao"
+            ]
+          },
+          "sheet_label": {
+            "type": "string",
+            "description": "Region label as it appears in the DOE workbook."
+          },
+          "utility_count": {
+            "type": "integer"
+          },
+          "reporting": {
+            "type": "integer",
+            "description": "Utilities with a published residential value in the latest month."
+          },
+          "res_median": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "res_mean": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "res_min": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "res_max": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "com_median": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "ind_median": {
+            "$ref": "#/components/schemas/NullableNumber"
+          },
+          "gen_median": {
+            "$ref": "#/components/schemas/NullableNumber"
+          }
+        }
+      },
+      "RegionsData": {
+        "type": "object",
+        "required": [
+          "latest_month",
+          "counts",
+          "rows",
+          "notes"
+        ],
+        "properties": {
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "counts": {
+            "type": "object",
+            "required": [
+              "regions",
+              "utilities"
+            ],
+            "properties": {
+              "regions": {
+                "type": "integer"
+              },
+              "utilities": {
+                "type": "integer"
+              }
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegionRow"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "RegionMember": {
+        "type": "object",
+        "required": [
+          "code",
+          "name",
+          "type",
+          "grid",
+          "latest",
+          "latest_status",
+          "res_delta_pct"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PIOU",
+              "EC"
+            ]
+          },
+          "grid": {
+            "type": "string",
+            "enum": [
+              "ONGRID",
+              "OFFGRID",
+              "CONFLICT"
+            ]
+          },
+          "latest": {
+            "$ref": "#/components/schemas/ClassValues"
+          },
+          "latest_status": {
+            "$ref": "#/components/schemas/ClassStatuses"
+          },
+          "res_delta_pct": {
+            "$ref": "#/components/schemas/NullableNumber"
+          }
+        }
+      },
+      "RegionData": {
+        "type": "object",
+        "required": [
+          "region",
+          "latest_month",
+          "utilities",
+          "notes"
+        ],
+        "properties": {
+          "region": {
+            "$ref": "#/components/schemas/RegionRow"
+          },
+          "latest_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "utilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegionMember"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Movement": {
+        "type": "object",
+        "description": "One utility/class month-over-month movement.",
+        "required": [
+          "code",
+          "name",
+          "region_short",
+          "customer_class",
+          "from_value",
+          "to_value",
+          "delta_php_kwh",
+          "delta_pct"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "region_short": {
+            "type": "string"
+          },
+          "customer_class": {
+            "$ref": "#/components/schemas/RateClass"
+          },
+          "from_value": {
+            "type": "number"
+          },
+          "to_value": {
+            "type": "number"
+          },
+          "delta_php_kwh": {
+            "type": "number"
+          },
+          "delta_pct": {
+            "$ref": "#/components/schemas/NullableNumber"
+          }
+        }
+      },
+      "AvailabilityChange": {
+        "type": "object",
+        "description": "One cell whose explicit state changed between the two months.",
+        "required": [
+          "code",
+          "name",
+          "customer_class",
+          "from",
+          "to"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "customer_class": {
+            "$ref": "#/components/schemas/RateClass"
+          },
+          "from": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "to": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      },
+      "ChangesData": {
+        "type": "object",
+        "required": [
+          "from_month",
+          "to_month",
+          "unit",
+          "counts",
+          "movements",
+          "availability_changes",
+          "notes"
+        ],
+        "properties": {
+          "from_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "to_month": {
+            "$ref": "#/components/schemas/MonthToken"
+          },
+          "unit": {
+            "type": "string",
+            "const": "PHP per kWh"
+          },
+          "counts": {
+            "type": "object",
+            "required": [
+              "movements",
+              "availability_changes"
+            ],
+            "properties": {
+              "movements": {
+                "type": "integer"
+              },
+              "availability_changes": {
+                "type": "integer"
+              }
+            }
+          },
+          "movements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Movement"
+            }
+          },
+          "availability_changes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityChange"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SourcesData": {
+        "type": "object",
+        "required": [
+          "count",
+          "sources",
+          "coverage_sources",
+          "counts",
+          "notes"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SourceRecord"
+            }
+          },
+          "coverage_sources": {
+            "$ref": "#/components/schemas/CoverageSourceRegistry"
+          },
+          "counts": {
+            "type": "object",
+            "required": [
+              "rate_sources",
+              "coverage_sources"
+            ],
+            "properties": {
+              "rate_sources": {
+                "type": "integer"
+              },
+              "coverage_sources": {
+                "type": "integer"
+              }
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Envelope": {
+        "type": "object",
+        "description": "The response envelope shared by every data file: meta, data and next_cursor.",
+        "required": [
+          "meta",
+          "data",
+          "next_cursor"
+        ],
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "data": {
+            "description": "Response payload; its concrete schema is the endpoint-specific Response schema."
+          },
+          "next_cursor": {
+            "type": "null",
+            "description": "Always null: this static snapshot has no pagination or query layer. The field is reserved so a future dynamic deployment can paginate without breaking clients."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "Reserved for a future dynamic deployment, not emitted by this static snapshot. Follows the BetterGov Budget API error convention: a machine-readable slug plus a human-readable message.",
+        "required": [
+          "error",
+          "message"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Machine-readable slug: bad_request, bad_cursor, not_found, method_not_allowed, not_loaded, query_failed."
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "MetaResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/MetaDocument"
+              }
+            }
+          }
+        ]
+      },
+      "HealthResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/HealthData"
+              }
+            }
+          }
+        ]
+      },
+      "MonthsResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/MonthsData"
+              }
+            }
+          }
+        ]
+      },
+      "ValidationResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ValidationData"
+              }
+            }
+          }
+        ]
+      },
+      "ConflictsResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ConflictsData"
+              }
+            }
+          }
+        ]
+      },
+      "LatestRatesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/LatestRatesData"
+              }
+            }
+          }
+        ]
+      },
+      "LatestRateClassResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/LatestRateClassData"
+              }
+            }
+          }
+        ]
+      },
+      "UtilitiesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/UtilitiesData"
+              }
+            }
+          }
+        ]
+      },
+      "UtilityResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/UtilityData"
+              }
+            }
+          }
+        ]
+      },
+      "ServiceAreasResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ServiceAreasData"
+              }
+            }
+          }
+        ]
+      },
+      "ServiceAreaResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ServiceAreaData"
+              }
+            }
+          }
+        ]
+      },
+      "RegionsResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/RegionsData"
+              }
+            }
+          }
+        ]
+      },
+      "RegionResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/RegionData"
+              }
+            }
+          }
+        ]
+      },
+      "ChangesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/ChangesData"
+              }
+            }
+          }
+        ]
+      },
+      "SourcesResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SourcesData"
+              }
+            }
+          }
+        ]
+      },
+      "SourceResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Envelope"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "$ref": "#/components/schemas/SourceRecord"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "x-static-api": {
+    "api_version": "1.0",
+    "dataset_version": "2026-11-10",
+    "catalog": "api/v1/index.json",
+    "base_url": "api/v1",
+    "note": "Static read-only snapshot: every path is a JSON file; no query parameters, no auth; next_cursor is always null."
+  },
+  "x-changelog": [
+    {
+      "version": "1.0.0",
+      "dataset_version": "2026-11-10",
+      "date": "2026-11-10",
+      "changes": [
+        "Initial static snapshot: 17 routes, 176 JSON files, 141 utilities, 18 regions, 107 month columns (2018-01 to 2026-11; latest published month 2026-10).",
+        "Contract version 1.0: envelope {meta, data, next_cursor} with explicit NDA/missing/invalid states and no imputed values.",
+        "Licence status published as \"Not stated by publisher\"; upstream reuse terms to be confirmed with DOE.",
+        "v1.1 coverage layer (additive to contract 1.0): 19 routes over 318 JSON files. Added GET /v1/service-areas.json (registry + source provenance) and GET /v1/service-areas/<CODE>.json (141 per-utility files); a compact coverage summary on /v1/utilities rows and the full service_area block on /v1/utilities/<CODE>; coverage stats/sources in meta, index, health, validation and sources; and a fifth disclaimer, disclaimer-coverage. Coverage is derived data, not a DOE rate publication.",
+        "The wire envelope (meta/data/next_cursor) and every rate endpoint are unchanged by the coverage layer."
+      ]
+    }
+  ],
+  "x-data-files": [
+    {
+      "name": "utilities.csv",
+      "path": "../data/seed/utilities.csv",
+      "rows": 141,
+      "bytes": 30091,
+      "sha256": "3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912"
+    },
+    {
+      "name": "regions.csv",
+      "path": "../data/seed/regions.csv",
+      "rows": 18,
+      "bytes": 2738,
+      "sha256": "ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d"
+    },
+    {
+      "name": "rates_monthly.csv",
+      "path": "../data/seed/rates_monthly.csv",
+      "rows": 60348,
+      "bytes": 6550268,
+      "sha256": "07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373"
+    },
+    {
+      "name": "sources.csv",
+      "path": "../data/seed/sources.csv",
+      "rows": 4,
+      "bytes": 2780,
+      "sha256": "36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a"
+    },
+    {
+      "name": "service_areas.csv",
+      "path": "../data/seed/service_areas.csv",
+      "rows": 1665,
+      "bytes": 152768,
+      "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+    },
+    {
+      "name": "service_area_sources.csv",
+      "path": "../data/seed/service_area_sources.csv",
+      "rows": 4,
+      "bytes": 2584,
+      "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
+    }
+  ],
+  "x-coverage-sources": [
+    {
+      "source_id": "SRC-OSM-OPERATORS",
+      "publisher": "OpenStreetMap Wiki contributors",
+      "short_title": "OpenStreetMap Wiki operator table",
+      "dataset_title": "Power networks/Philippines/Operators",
+      "page_url": "https://wiki.openstreetmap.org/wiki/Power_networks/Philippines/Operators",
+      "revision_id": "2836797",
+      "retrieved_at": "2026-11-10T19:28:07+08:00",
+      "licence": {
+        "name": "CC BY-SA 2.0",
+        "url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "note": "Attribution required; share-alike applies to service-area coverage derived from this source."
+      },
+      "attribution": "© OpenStreetMap Wiki contributors, “Power networks/Philippines/Operators”, revision 2836797 (2025-04-14), CC BY-SA 2.0. Franchise areas are tabulated on that page as “per Department of Energy”."
+    },
+    {
+      "source_id": "SRC-WIKI-DUS",
+      "publisher": "Wikipedia contributors",
+      "short_title": "Wikipedia distribution-utility list",
+      "dataset_title": "List of electric distribution utilities in the Philippines",
+      "page_url": "https://en.wikipedia.org/wiki/List_of_electric_distribution_utilities_in_the_Philippines",
+      "revision_id": "1374171231",
+      "retrieved_at": "2026-11-10T19:28:08+08:00",
+      "licence": {
+        "name": "CC BY-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "note": "Attribution required; share-alike applies to service-area coverage derived from this source."
+      },
+      "attribution": "© Wikipedia contributors, “List of electric distribution utilities in the Philippines”, revision 1374171231 (2026-09-10), CC BY-SA 4.0."
+    },
+    {
+      "source_id": "SRC-RA-12146",
+      "publisher": "Congress of the Philippines / Supreme Court e-Library",
+      "short_title": "Republic Act No. 12146 (Meralco franchise)",
+      "dataset_title": "Republic Act No. 12146 - renewal of the Meralco franchise, Section 1",
+      "page_url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850",
+      "revision_id": "RA 12146 (2025-04-11)",
+      "retrieved_at": "2026-11-10T19:13:21+08:00",
+      "licence": {
+        "name": "Public document (Philippine law)",
+        "url": null,
+        "note": "Works of the Government are not subject to copyright (IP Code, Sec. 176); cite the law."
+      },
+      "attribution": "Republic Act No. 12146, official text via the Supreme Court e-Library."
+    },
+    {
+      "source_id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "short_title": "DOE workbook region column",
+      "dataset_title": "Electricity Rates & Power Market Monitor - distribution utility region column",
+      "page_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "revision_id": "workbook snapshot 2026-11-10",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "licence": {
+        "name": "Not stated by publisher",
+        "url": null,
+        "note": "The DOE workbook states no explicit reuse licence; terms are to be confirmed with DOE. Used only as a region-level fallback for coverage."
+      },
+      "attribution": "Department of Energy (Philippines), Electricity Rates & Power Market Monitor."
+    }
+  ],
+  "x-source": {
+    "id": "SRC-DOE-RATES",
+    "publisher": "Department of Energy (DOE)",
+    "title": "Electricity Rates & Power Market Monitor",
+    "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+    "workbook_url": "https://docs.google.com/spreadsheets/d/1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I",
+    "sheet_id": "1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I",
+    "retrieved_at": "2026-11-10T17:00:34+08:00",
+    "extraction_method": "csv_export",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "tabs": [
+      {
+        "gid": 0,
+        "customer_class": "residential",
+        "sha256": "17c746168e77f045891d5d3c7ade147b172396de952ae88952ca04b30bb35718",
+        "bytes": 106827,
+        "rows": 141
+      },
+      {
+        "gid": 441532959,
+        "customer_class": "commercial",
+        "sha256": "55c8ccc0f2b7a3269e586f5711e9f664d74221cc32593fce34307c56478f639c",
+        "bytes": 102822,
+        "rows": 141
+      },
+      {
+        "gid": 1244383053,
+        "customer_class": "industrial",
+        "sha256": "96e8f42e28e9b55bf05f4e49817580901c96c969fd6b60873fd2655593de5462",
+        "bytes": 99862,
+        "rows": 141
+      },
+      {
+        "gid": 714337242,
+        "customer_class": "generation",
+        "sha256": "66002d90c2b3fd8d5cfd6b96a306863ad8512a609ef6056084331524514efe8b",
+        "bytes": 97863,
+        "rows": 141
+      }
+    ]
+  }
+}

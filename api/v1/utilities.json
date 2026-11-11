@@ -1,0 +1,6668 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 141
+  },
+  "data": {
+    "latest_month": "2026-10",
+    "previous_month": "2026-09",
+    "counts": {
+      "total": 141,
+      "by_type": {
+        "EC": 120,
+        "PIOU": 21
+      },
+      "by_grid": {
+        "CONFLICT": 2,
+        "OFFGRID": 21,
+        "ONGRID": 118
+      },
+      "by_data_status": {
+        "nda": 24,
+        "partial": 4,
+        "published": 113
+      }
+    },
+    "rows": [
+      {
+        "code": "ABRECO",
+        "name": "ABRECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1400000000",
+        "region_short": "CAR",
+        "region_name": "Cordillera Administrative Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.58,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.76
+        },
+        "prev": {
+          "residential": 12.57,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.59
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.1,
+        "source_row": 40,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1400000000"
+          ],
+          "lgu_count": 27,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "AEC",
+        "name": "AEC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.31,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.25
+        },
+        "prev": {
+          "residential": 11.84,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.74
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 4.0,
+        "source_row": 11,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.07,
+          "commercial": 14.13,
+          "industrial": 11.79,
+          "generation": 5.39
+        },
+        "prev": {
+          "residential": 15.11,
+          "commercial": 14.17,
+          "industrial": 11.96,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.3,
+        "source_row": 117,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 19,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.83,
+          "commercial": 10.85,
+          "industrial": 9.28,
+          "generation": 6.61
+        },
+        "prev": {
+          "residential": 11.73,
+          "commercial": 10.75,
+          "industrial": 9.02,
+          "generation": 6.25
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.9,
+        "source_row": 97,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 18,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.11,
+          "commercial": 9.1,
+          "industrial": 8.08,
+          "generation": 5.9
+        },
+        "prev": {
+          "residential": 11.66,
+          "commercial": 9.87,
+          "industrial": 8.92,
+          "generation": 6.64
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -4.7,
+        "source_row": 178,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ANTECO",
+        "name": "ANTECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.46
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 118,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 16,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "partial",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": 9.7,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.29,
+          "commercial": 11.47,
+          "industrial": null,
+          "generation": 7.71
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 179,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 14,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "AURELCO",
+        "name": "AURELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.51,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.06
+        },
+        "prev": {
+          "residential": 14.09,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.61
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 10.1,
+        "source_row": 64,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000",
+            "0300000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.13,
+          "commercial": 11.13,
+          "industrial": 11.42,
+          "generation": 8.19
+        },
+        "prev": {
+          "residential": 11.12,
+          "commercial": 11.36,
+          "industrial": 11.41,
+          "generation": 8.19
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.1,
+        "source_row": 126,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BASELCO",
+        "name": "BASELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.73
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 187,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000",
+            "1900000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BATANELCO",
+        "name": "BATANELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.18,
+          "commercial": 12.12,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.72,
+          "commercial": 11.22,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 3.6,
+        "source_row": 55,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.55,
+          "commercial": 10.67,
+          "industrial": 9.44,
+          "generation": 7.0
+        },
+        "prev": {
+          "residential": 11.34,
+          "commercial": 10.46,
+          "industrial": 9.1,
+          "generation": 6.71
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.9,
+        "source_row": 80,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.53,
+          "commercial": 9.84,
+          "industrial": 8.73,
+          "generation": 6.09
+        },
+        "prev": {
+          "residential": 9.89,
+          "commercial": 9.16,
+          "industrial": 7.99,
+          "generation": 5.45
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 6.5,
+        "source_row": 81,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 16,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1400000000",
+        "region_short": "CAR",
+        "region_name": "Cordillera Administrative Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.65,
+          "commercial": 10.97,
+          "industrial": 9.21,
+          "generation": 6.86
+        },
+        "prev": {
+          "residential": 11.8,
+          "commercial": 11.16,
+          "industrial": 11.16,
+          "generation": 6.61
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.3,
+        "source_row": 41,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1400000000"
+          ],
+          "lgu_count": 14,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BILECO",
+        "name": "BILECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 19.36,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.33
+        },
+        "prev": {
+          "residential": 18.93,
+          "commercial": null,
+          "industrial": null,
+          "generation": 9.5
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.3,
+        "source_row": 136,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BISELCO",
+        "name": "BISELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.03,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.16
+        },
+        "prev": {
+          "residential": 13.02,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.4
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -7.6,
+        "source_row": 87,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 4,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BLCI",
+        "name": "BLCI",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.1,
+          "commercial": 13.54,
+          "industrial": null,
+          "generation": 7.86
+        },
+        "prev": {
+          "residential": 13.32,
+          "commercial": 12.76,
+          "industrial": null,
+          "generation": 7.36
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 5.9,
+        "source_row": 25,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.9,
+          "commercial": 10.94,
+          "industrial": 8.7,
+          "generation": null
+        },
+        "prev": {
+          "residential": 11.12,
+          "commercial": 10.17,
+          "industrial": 8.0,
+          "generation": 5.95
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 7.0,
+        "source_row": 127,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 26,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.91,
+          "commercial": 12.81,
+          "industrial": 9.97,
+          "generation": 7.27
+        },
+        "prev": {
+          "residential": 12.98,
+          "commercial": 11.7,
+          "industrial": 9.0,
+          "generation": 6.82
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 7.2,
+        "source_row": 128,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 21,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "partial",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": 8.48,
+          "generation": null
+        },
+        "prev": {
+          "residential": 11.41,
+          "commercial": 9.95,
+          "industrial": 9.1,
+          "generation": 6.32
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 156,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.39,
+          "commercial": 11.75,
+          "industrial": 9.77,
+          "generation": 7.03
+        },
+        "prev": {
+          "residential": 11.89,
+          "commercial": 11.04,
+          "industrial": 9.02,
+          "generation": 6.38
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 4.2,
+        "source_row": 56,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.88,
+          "commercial": 10.54,
+          "industrial": 8.58,
+          "generation": 6.05
+        },
+        "prev": {
+          "residential": 11.55,
+          "commercial": 8.15,
+          "industrial": 8.15,
+          "generation": 5.74
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.9,
+        "source_row": 57,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000",
+            "1400000000"
+          ],
+          "lgu_count": 21,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CAMELCO",
+        "name": "CAMELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.79,
+          "commercial": 14.52,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 16.05,
+          "commercial": 14.76,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": -1.6,
+        "source_row": 157,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.91,
+          "commercial": 9.95,
+          "industrial": 8.2,
+          "generation": 5.44
+        },
+        "prev": {
+          "residential": 11.21,
+          "commercial": 10.25,
+          "industrial": 8.39,
+          "generation": 5.55
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -2.7,
+        "source_row": 98,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CAPELCO",
+        "name": "CAPELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 15.78,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.04
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 119,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CASELCO",
+        "name": "CASELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 188,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1900000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.25,
+          "commercial": 11.18,
+          "industrial": 10.32,
+          "generation": 6.3
+        },
+        "prev": {
+          "residential": 12.81,
+          "commercial": 11.74,
+          "industrial": 10.87,
+          "generation": 6.51
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -4.4,
+        "source_row": 99,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.17,
+          "commercial": 10.3,
+          "industrial": 9.26,
+          "generation": 6.12
+        },
+        "prev": {
+          "residential": 10.31,
+          "commercial": 9.44,
+          "industrial": 8.33,
+          "generation": 5.69
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 8.3,
+        "source_row": 100,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.18,
+          "commercial": 9.84,
+          "industrial": 7.9,
+          "generation": 5.2
+        },
+        "prev": {
+          "residential": 10.78,
+          "commercial": 9.43,
+          "industrial": 7.35,
+          "generation": 11.56
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.7,
+        "source_row": 101,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.6,
+          "commercial": 11.32,
+          "industrial": 9.26,
+          "generation": 6.43
+        },
+        "prev": {
+          "residential": 12.25,
+          "commercial": 10.96,
+          "industrial": 8.81,
+          "generation": 6.03
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.9,
+        "source_row": 102,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.85,
+          "commercial": null,
+          "industrial": null,
+          "generation": 9.08
+        },
+        "prev": {
+          "residential": 15.24,
+          "commercial": 14.27,
+          "industrial": 12.01,
+          "generation": 8.62
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 4.0,
+        "source_row": 129,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 18,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 15.91,
+          "commercial": 15.06,
+          "industrial": 12.31,
+          "generation": 8.78
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 130,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.06,
+          "commercial": 13.11,
+          "industrial": 11.99,
+          "generation": 10.04
+        },
+        "prev": {
+          "residential": 13.74,
+          "commercial": 12.79,
+          "industrial": 11.73,
+          "generation": 9.86
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.3,
+        "source_row": 131,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 7.15,
+          "commercial": 6.99,
+          "industrial": 6.59,
+          "generation": 4.24
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 12,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CELCO",
+        "name": "CELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.9,
+          "commercial": 11.62,
+          "industrial": null,
+          "generation": 8.16
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 132,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 4,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.0,
+          "commercial": 12.1,
+          "industrial": 10.46,
+          "generation": 7.5
+        },
+        "prev": {
+          "residential": 13.07,
+          "commercial": 11.86,
+          "industrial": 10.33,
+          "generation": 7.37
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.5,
+        "source_row": 13,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 2,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CENECO-NEPC",
+        "name": "CENECO/NEPC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1800000000",
+        "region_short": "NIR",
+        "region_name": "Negros Island Region",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.27,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.92
+        },
+        "prev": {
+          "residential": 14.25,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.42
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.1,
+        "source_row": 26,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.33,
+          "commercial": 11.66,
+          "industrial": 9.88,
+          "generation": 7.49
+        },
+        "prev": {
+          "residential": 11.79,
+          "commercial": 11.14,
+          "industrial": 9.19,
+          "generation": 6.92
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 4.6,
+        "source_row": 47,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CEPALCO",
+        "name": "CEPALCO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.85,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 13.6,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 9.2,
+        "source_row": 32,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 2,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.12,
+          "commercial": 12.93,
+          "industrial": 12.15,
+          "generation": 6.1
+        },
+        "prev": {
+          "residential": 12.18,
+          "commercial": 12.51,
+          "industrial": 11.85,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.5,
+        "source_row": 33,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1900000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1200000000",
+        "region_short": "Region XII",
+        "region_name": "SOCCSKSARGEN",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.69,
+          "commercial": 12.53,
+          "industrial": 10.46,
+          "generation": 6.96
+        },
+        "prev": {
+          "residential": 13.7,
+          "commercial": null,
+          "industrial": 10.75,
+          "generation": 7.16
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.1,
+        "source_row": 171,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1200000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DANECO-NORDECO",
+        "name": "DANECO/NORDECO",
+        "name_variants": {
+          "generation": "DANECO"
+        },
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1100000000",
+        "region_short": "Region XI",
+        "region_name": "Davao Region",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 166,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1100000000"
+          ],
+          "lgu_count": 18,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1100000000",
+        "region_short": "Region XI",
+        "region_name": "Davao Region",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.86,
+          "commercial": 12.68,
+          "industrial": 11.03,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.0,
+          "commercial": 11.75,
+          "industrial": 10.22,
+          "generation": 7.16
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 7.2,
+        "source_row": 167,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1100000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DECORP",
+        "name": "DECORP",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.35,
+          "commercial": null,
+          "industrial": null,
+          "generation": 5.94
+        },
+        "prev": {
+          "residential": 10.96,
+          "commercial": null,
+          "industrial": null,
+          "generation": 5.42
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.6,
+        "source_row": 14,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DIELCO",
+        "name": "DIELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 180,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1100000000",
+        "region_short": "Region XI",
+        "region_name": "Davao Region",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.33,
+          "commercial": 13.61,
+          "industrial": 11.67,
+          "generation": 7.24
+        },
+        "prev": {
+          "residential": 13.24,
+          "commercial": 13.45,
+          "industrial": 11.43,
+          "generation": 7.03
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.7,
+        "source_row": 34,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1100000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1100000000",
+        "region_short": "Region XI",
+        "region_name": "Davao Region",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.16,
+          "commercial": 13.19,
+          "industrial": 11.54,
+          "generation": 7.96
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 168,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1100000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.37,
+          "commercial": 15.08,
+          "industrial": null,
+          "generation": 8.6
+        },
+        "prev": {
+          "residential": 14.86,
+          "commercial": 13.59,
+          "industrial": 13.59,
+          "generation": 7.8
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 10.2,
+        "source_row": 137,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 23,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "FBPC",
+        "name": "FBPC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 15,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.92,
+          "commercial": 12.61,
+          "industrial": 10.55,
+          "generation": 7.3
+        },
+        "prev": {
+          "residential": 13.46,
+          "commercial": 12.21,
+          "industrial": 10.33,
+          "generation": 7.16
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.4,
+        "source_row": 158,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000",
+            "1900000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "FICELCO",
+        "name": "FICELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 18.89,
+          "commercial": 16.18,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 18.14,
+          "commercial": 15.44,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 4.1,
+        "source_row": 103,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 9.68,
+          "commercial": null,
+          "industrial": 8.09,
+          "generation": null
+        },
+        "prev": {
+          "residential": 9.68,
+          "commercial": 11.03,
+          "industrial": 8.09,
+          "generation": 5.36
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 0.0,
+        "source_row": 82,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.55,
+          "commercial": 15.2,
+          "industrial": 12.21,
+          "generation": 8.92
+        },
+        "prev": {
+          "residential": 16.33,
+          "commercial": 14.99,
+          "industrial": 12.22,
+          "generation": 9.14
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.3,
+        "source_row": 120,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "IEEC",
+        "name": "IEEC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.42,
+          "commercial": null,
+          "industrial": null,
+          "generation": 5.59
+        },
+        "prev": {
+          "residential": 12.82,
+          "commercial": null,
+          "industrial": null,
+          "generation": 5.75
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -3.1,
+        "source_row": 16,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "IFELCO",
+        "name": "IFELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1400000000",
+        "region_short": "CAR",
+        "region_name": "Cordillera Administrative Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.19,
+          "commercial": null,
+          "industrial": null,
+          "generation": 4.57
+        },
+        "prev": {
+          "residential": 10.25,
+          "commercial": null,
+          "industrial": null,
+          "generation": 4.57
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.6,
+        "source_row": 42,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1400000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.89,
+          "commercial": 15.1,
+          "industrial": 12.84,
+          "generation": 9.99
+        },
+        "prev": {
+          "residential": 15.78,
+          "commercial": 14.13,
+          "industrial": 12.0,
+          "generation": 9.12
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 7.0,
+        "source_row": 121,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "CONFLICT",
+        "grid_conflict": {
+          "claims": {
+            "ONGRID": [
+              "residential",
+              "generation"
+            ],
+            "OFFGRID": [
+              "commercial",
+              "industrial"
+            ]
+          }
+        },
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": null,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.42,
+          "commercial": 13.13,
+          "industrial": 10.84,
+          "generation": 8.62
+        },
+        "prev": {
+          "residential": 15.85,
+          "commercial": null,
+          "industrial": 12.19,
+          "generation": 9.04
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -9.0,
+        "source_row": 122,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "CONFLICT",
+        "grid_conflict": {
+          "claims": {
+            "ONGRID": [
+              "residential",
+              "generation"
+            ],
+            "OFFGRID": [
+              "commercial",
+              "industrial"
+            ]
+          }
+        },
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": null,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.03,
+          "commercial": 14.97,
+          "industrial": 12.68,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.94,
+          "commercial": 13.88,
+          "industrial": 11.75,
+          "generation": 9.56
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 7.3,
+        "source_row": 123,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ILPI",
+        "name": "ILPI",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.19,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.54
+        },
+        "prev": {
+          "residential": 14.1,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.44
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.6,
+        "source_row": 35,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.2,
+          "commercial": 10.11,
+          "industrial": 8.32,
+          "generation": 6.45
+        },
+        "prev": {
+          "residential": 11.14,
+          "commercial": 10.03,
+          "industrial": 8.1,
+          "generation": 6.3
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.5,
+        "source_row": 48,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 23,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.37,
+          "commercial": 11.7,
+          "industrial": 9.91,
+          "generation": 7.98
+        },
+        "prev": {
+          "residential": 13.23,
+          "commercial": 12.45,
+          "industrial": 10.38,
+          "generation": 10.21
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -6.5,
+        "source_row": 49,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 34,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.37,
+          "commercial": 11.5,
+          "industrial": 9.97,
+          "generation": 7.47
+        },
+        "prev": {
+          "residential": 12.97,
+          "commercial": 12.1,
+          "industrial": 10.46,
+          "generation": 7.94
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -4.6,
+        "source_row": 58,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.73,
+          "commercial": 8.96,
+          "industrial": 11.48,
+          "generation": 6.17
+        },
+        "prev": {
+          "residential": 11.3,
+          "commercial": 10.11,
+          "industrial": 8.19,
+          "generation": 5.41
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -5.0,
+        "source_row": 59,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 21,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "KAELCO",
+        "name": "KAELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1400000000",
+        "region_short": "CAR",
+        "region_name": "Cordillera Administrative Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.46,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.9,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 4.3,
+        "source_row": 43,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1400000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.09,
+          "commercial": 11.02,
+          "industrial": 8.31,
+          "generation": 5.69
+        },
+        "prev": {
+          "residential": 11.76,
+          "commercial": 10.66,
+          "industrial": 8.21,
+          "generation": 5.61
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.8,
+        "source_row": 159,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 20,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 5.33,
+          "commercial": 4.51,
+          "industrial": 4.42,
+          "generation": 2.67
+        },
+        "prev": {
+          "residential": 5.26,
+          "commercial": 4.44,
+          "industrial": 4.38,
+          "generation": 2.63
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.3,
+        "source_row": 189,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000",
+            "1900000000"
+          ],
+          "lgu_count": 41,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.59,
+          "commercial": 14.82,
+          "industrial": 12.5,
+          "generation": 9.96
+        },
+        "prev": {
+          "residential": 16.23,
+          "commercial": 14.64,
+          "industrial": 12.29,
+          "generation": 9.87
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.2,
+        "source_row": 138,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LEYECO-II",
+        "name": "LEYECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.44,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.05,
+          "commercial": null,
+          "industrial": null,
+          "generation": 9.82
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": -25.7,
+        "source_row": 139,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LEYECO-III",
+        "name": "LEYECO III",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 140,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 17.01,
+          "commercial": 15.72,
+          "industrial": 12.88,
+          "generation": 9.41
+        },
+        "prev": {
+          "residential": 15.52,
+          "commercial": 15.68,
+          "industrial": 12.97,
+          "generation": 9.56
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 9.6,
+        "source_row": 141,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.29,
+          "commercial": 14.55,
+          "industrial": 12.16,
+          "generation": 9.06
+        },
+        "prev": {
+          "residential": 16.38,
+          "commercial": 15.48,
+          "industrial": 12.71,
+          "generation": 9.49
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.5,
+        "source_row": 142,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LUBELCO",
+        "name": "LUBELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 88,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 2,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.22,
+          "commercial": 14.01,
+          "industrial": 11.73,
+          "generation": 6.44
+        },
+        "prev": {
+          "residential": 12.35,
+          "commercial": 14.43,
+          "industrial": 11.91,
+          "generation": 6.43
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.1,
+        "source_row": 17,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.49,
+          "commercial": 12.61,
+          "industrial": 12.17,
+          "generation": 10.86
+        },
+        "prev": {
+          "residential": 12.73,
+          "commercial": 11.85,
+          "industrial": 11.41,
+          "generation": 10.12
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 6.0,
+        "source_row": 50,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MAGELCO",
+        "name": "MAGELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 190,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1900000000"
+          ],
+          "lgu_count": 36,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 9.96,
+          "commercial": 9.78,
+          "industrial": 9.6,
+          "generation": 7.29
+        },
+        "prev": {
+          "residential": 11.43,
+          "commercial": 9.7,
+          "industrial": 9.53,
+          "generation": 7.29
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -12.9,
+        "source_row": 89,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MASELCO",
+        "name": "MASELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.62,
+          "commercial": 10.71,
+          "industrial": 10.72,
+          "generation": null
+        },
+        "prev": {
+          "residential": 10.67,
+          "commercial": 10.76,
+          "industrial": 10.77,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": -0.5,
+        "source_row": 104,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MECO",
+        "name": "MECO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.72,
+          "commercial": null,
+          "industrial": null,
+          "generation": 9.21
+        },
+        "prev": {
+          "residential": 15.98,
+          "commercial": null,
+          "industrial": null,
+          "generation": 9.76
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.6,
+        "source_row": 27,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 2,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1300000000",
+        "region_short": "NCR",
+        "region_name": "National Capital Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.06,
+          "commercial": 12.88,
+          "industrial": 11.33,
+          "generation": 10.2
+        },
+        "prev": {
+          "residential": 14.74,
+          "commercial": 13.35,
+          "industrial": 10.73,
+          "generation": 9.7
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.2,
+        "source_row": 18,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-RA-12146"
+          ],
+          "regions": [
+            "0300000000",
+            "0400000000",
+            "1300000000"
+          ],
+          "lgu_count": 108,
+          "province_count": 10,
+          "barangay_count": 17
+        }
+      },
+      {
+        "code": "MOELCI-I",
+        "name": "MOELCI I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.35,
+          "commercial": 12.81,
+          "industrial": 10.57,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.71,
+          "commercial": 13.15,
+          "industrial": 11.15,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": -2.4,
+        "source_row": 160,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.32,
+          "commercial": 15.64,
+          "industrial": 12.81,
+          "generation": 7.16
+        },
+        "prev": {
+          "residential": 12.83,
+          "commercial": 12.89,
+          "industrial": 10.42,
+          "generation": 7.57
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 19.4,
+        "source_row": 161,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1400000000",
+        "region_short": "CAR",
+        "region_name": "Cordillera Administrative Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.46,
+          "commercial": 11.58,
+          "industrial": 11.14,
+          "generation": 9.06
+        },
+        "prev": {
+          "residential": 13.67,
+          "commercial": 12.9,
+          "industrial": 12.35,
+          "generation": 10.21
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -8.9,
+        "source_row": 44,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1400000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0600000000",
+        "region_short": "Region VI",
+        "region_name": "Western Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.74,
+          "commercial": 13.87,
+          "industrial": 13.96,
+          "generation": 7.63
+        },
+        "prev": {
+          "residential": 14.42,
+          "commercial": 13.55,
+          "industrial": 13.64,
+          "generation": 7.57
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.2,
+        "source_row": 28,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0600000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 13.18,
+          "commercial": 12.77,
+          "industrial": 10.86,
+          "generation": 8.39
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 162,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "MORESCO-II",
+        "name": "MORESCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1000000000",
+        "region_short": "Region X",
+        "region_name": "Northern Mindanao",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.72,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.65
+        },
+        "prev": {
+          "residential": 12.35,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.47
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.0,
+        "source_row": 163,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1000000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.25,
+          "commercial": 11.4,
+          "industrial": 9.45,
+          "generation": 7.08
+        },
+        "prev": {
+          "residential": 11.81,
+          "commercial": 10.96,
+          "industrial": 8.83,
+          "generation": 6.42
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.7,
+        "source_row": 65,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.96,
+          "commercial": 10.11,
+          "industrial": 7.97,
+          "generation": 6.22
+        },
+        "prev": {
+          "residential": 10.88,
+          "commercial": 10.03,
+          "industrial": 7.7,
+          "generation": 6.03
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.7,
+        "source_row": 66,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.42,
+          "commercial": 13.68,
+          "industrial": 11.49,
+          "generation": 7.28
+        },
+        "prev": {
+          "residential": 14.33,
+          "commercial": 13.6,
+          "industrial": 11.29,
+          "generation": 6.92
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.6,
+        "source_row": 67,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NOCECO",
+        "name": "NOCECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1800000000",
+        "region_short": "NIR",
+        "region_name": "Negros Island Region",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 16.01,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.96
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 111,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1800000000",
+        "region_short": "NIR",
+        "region_name": "Negros Island Region",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "partial",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.31
+        },
+        "prev": {
+          "residential": 17.15,
+          "commercial": 16.19,
+          "industrial": 13.95,
+          "generation": 9.9
+        },
+        "latest_status": {
+          "residential": "invalid",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": null,
+        "source_row": 112,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1800000000",
+        "region_short": "NIR",
+        "region_name": "Negros Island Region",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.88,
+          "commercial": 15.55,
+          "industrial": 12.86,
+          "generation": 9.27
+        },
+        "prev": {
+          "residential": 15.04,
+          "commercial": 13.71,
+          "industrial": 11.19,
+          "generation": 8.16
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 12.2,
+        "source_row": 113,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 11,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1800000000",
+        "region_short": "NIR",
+        "region_name": "Negros Island Region",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.44,
+          "commercial": 13.59,
+          "industrial": 10.89,
+          "generation": 7.85
+        },
+        "prev": {
+          "residential": 14.35,
+          "commercial": 13.5,
+          "industrial": 10.97,
+          "generation": 8.12
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.6,
+        "source_row": 114,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 14,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.98,
+          "commercial": 15.75,
+          "industrial": 13.31,
+          "generation": 9.55
+        },
+        "prev": {
+          "residential": 15.87,
+          "commercial": 14.63,
+          "industrial": 12.32,
+          "generation": 8.53
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 7.0,
+        "source_row": 143,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 24,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "NUVELCO",
+        "name": "NUVELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.17,
+          "commercial": 11.22,
+          "industrial": 10.71,
+          "generation": null
+        },
+        "prev": {
+          "residential": 9.95,
+          "commercial": 9.0,
+          "industrial": 8.49,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 22.3,
+        "source_row": 60,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "OEDC",
+        "name": "OEDC",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.01,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.96
+        },
+        "prev": {
+          "residential": 13.18,
+          "commercial": null,
+          "industrial": null,
+          "generation": 8.0
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.3,
+        "source_row": 19,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.52,
+          "commercial": 11.29,
+          "industrial": 11.63,
+          "generation": 7.38
+        },
+        "prev": {
+          "residential": 12.55,
+          "commercial": 11.32,
+          "industrial": 11.66,
+          "generation": 7.39
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.2,
+        "source_row": 90,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ORMECO",
+        "name": "ORMECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.31,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.26
+        },
+        "prev": {
+          "residential": 15.35,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.2
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.3,
+        "source_row": 91,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PALECO",
+        "name": "PALECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.82,
+          "commercial": 12.75,
+          "industrial": 12.72,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.86,
+          "commercial": 12.79,
+          "industrial": 12.76,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": -0.3,
+        "source_row": 92,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 19,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PAMES",
+        "name": "PAMES",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 20,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.61,
+          "commercial": null,
+          "industrial": 8.89,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.55,
+          "commercial": 11.74,
+          "industrial": 9.69,
+          "generation": 7.51
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": -7.5,
+        "source_row": 51,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0100000000",
+        "region_short": "Region I",
+        "region_name": "Ilocos Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.03,
+          "commercial": 14.11,
+          "industrial": 10.96,
+          "generation": 7.67
+        },
+        "prev": {
+          "residential": 12.66,
+          "commercial": 14.07,
+          "industrial": 10.52,
+          "generation": 7.23
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.9,
+        "source_row": 52,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0100000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 10.83,
+          "commercial": 9.98,
+          "industrial": 7.78,
+          "generation": 6.34
+        },
+        "prev": {
+          "residential": 10.76,
+          "commercial": 9.91,
+          "industrial": 7.52,
+          "generation": 6.14
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.7,
+        "source_row": 68,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.03,
+          "commercial": 10.05,
+          "industrial": 8.11,
+          "generation": 5.77
+        },
+        "prev": {
+          "residential": 10.92,
+          "commercial": 9.88,
+          "industrial": 7.74,
+          "generation": 5.77
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.0,
+        "source_row": 69,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.91,
+          "commercial": 12.25,
+          "industrial": 10.38,
+          "generation": 7.72
+        },
+        "prev": {
+          "residential": 12.12,
+          "commercial": 11.46,
+          "industrial": 9.61,
+          "generation": 7.04
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 6.5,
+        "source_row": 70,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.61,
+          "commercial": 10.63,
+          "industrial": 9.07,
+          "generation": 6.84
+        },
+        "prev": {
+          "residential": 11.24,
+          "commercial": 10.26,
+          "industrial": 7.65,
+          "generation": 6.4
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.3,
+        "source_row": 71,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1200000000",
+        "region_short": "Region XII",
+        "region_name": "SOCCSKSARGEN",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.96,
+          "commercial": 11.84,
+          "industrial": 9.8,
+          "generation": 6.96
+        },
+        "prev": {
+          "residential": 11.58,
+          "commercial": 10.51,
+          "industrial": 8.64,
+          "generation": 6.04
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 11.9,
+        "source_row": 172,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1200000000",
+            "1900000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 3,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.38,
+          "commercial": 12.07,
+          "industrial": 11.31,
+          "generation": 6.99
+        },
+        "prev": {
+          "residential": 11.94,
+          "commercial": 11.63,
+          "industrial": 11.12,
+          "generation": 6.46
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 3.7,
+        "source_row": 72,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 3,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.88,
+          "commercial": 12.09,
+          "industrial": 11.98,
+          "generation": 8.55
+        },
+        "prev": {
+          "residential": 12.87,
+          "commercial": 12.08,
+          "industrial": 11.98,
+          "generation": 8.5
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.1,
+        "source_row": 133,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1800000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.24,
+          "commercial": 11.29,
+          "industrial": 9.3,
+          "generation": 6.21
+        },
+        "prev": {
+          "residential": 12.02,
+          "commercial": 11.07,
+          "industrial": 11.07,
+          "generation": 5.94
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.8,
+        "source_row": 83,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000",
+            "0500000000"
+          ],
+          "lgu_count": 24,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "QUEZELCO-II",
+        "name": "QUEZELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0400000000",
+        "region_short": "Region IV-A",
+        "region_name": "CALABARZON",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.22,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.28
+        },
+        "prev": {
+          "residential": 12.86,
+          "commercial": null,
+          "industrial": null,
+          "generation": 5.94
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.8,
+        "source_row": 84,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0400000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "QUIRELCO",
+        "name": "QUIRELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0200000000",
+        "region_short": "Region II",
+        "region_name": "Cagayan Valley",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.87,
+          "commercial": 11.36,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.26,
+          "commercial": 10.75,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 5.0,
+        "source_row": 61,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0200000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ROMELCO",
+        "name": "ROMELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.9,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.37
+        },
+        "prev": {
+          "residential": 11.88,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.2,
+        "source_row": 93,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 4,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.22,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.7
+        },
+        "prev": {
+          "residential": 10.45,
+          "commercial": 9.47,
+          "industrial": 7.39,
+          "generation": 5.82
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 16.9,
+        "source_row": 73,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 4,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.85,
+          "commercial": 13.31,
+          "industrial": 12.04,
+          "generation": 8.85
+        },
+        "prev": {
+          "residential": 15.47,
+          "commercial": 13.21,
+          "industrial": 11.87,
+          "generation": 8.76
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.5,
+        "source_row": 144,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.23,
+          "commercial": 14.79,
+          "industrial": 12.22,
+          "generation": 9.0
+        },
+        "prev": {
+          "residential": 14.77,
+          "commercial": 13.47,
+          "industrial": 10.93,
+          "generation": 7.92
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 9.9,
+        "source_row": 145,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 13,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SFELAPCO",
+        "name": "SFELAPCO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.36,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.05
+        },
+        "prev": {
+          "residential": 13.12,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.66
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.8,
+        "source_row": 21,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 2,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SIARELCO",
+        "name": "SIARELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 10.52,
+          "commercial": 9.19,
+          "industrial": null,
+          "generation": 4.53
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 181,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SIASELCO",
+        "name": "SIASELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 191,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1200000000",
+        "region_short": "Region XII",
+        "region_name": "SOCCSKSARGEN",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.36,
+          "commercial": 13.08,
+          "industrial": 11.53,
+          "generation": 7.9
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 173,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1200000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1200000000",
+        "region_short": "Region XII",
+        "region_name": "SOCCSKSARGEN",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.64,
+          "commercial": 12.79,
+          "industrial": 10.72,
+          "generation": 7.84
+        },
+        "prev": {
+          "residential": 12.5,
+          "commercial": 12.44,
+          "industrial": 10.83,
+          "generation": 7.71
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.1,
+        "source_row": 174,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1200000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0800000000",
+        "region_short": "Region VIII",
+        "region_name": "Eastern Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.81,
+          "commercial": 15.5,
+          "industrial": 12.42,
+          "generation": 8.81
+        },
+        "prev": {
+          "residential": 16.6,
+          "commercial": 15.29,
+          "industrial": 12.4,
+          "generation": 8.88
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.3,
+        "source_row": 146,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0800000000"
+          ],
+          "lgu_count": 19,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "partial",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.84
+        },
+        "prev": {
+          "residential": 15.27,
+          "commercial": 13.16,
+          "industrial": 11.61,
+          "generation": 8.3
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": null,
+        "source_row": 105,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.42,
+          "commercial": 12.46,
+          "industrial": 10.56,
+          "generation": 6.84
+        },
+        "prev": {
+          "residential": 13.61,
+          "commercial": 12.66,
+          "industrial": 10.71,
+          "generation": 7.02
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.4,
+        "source_row": 106,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1200000000",
+        "region_short": "Region XII",
+        "region_name": "SOCCSKSARGEN",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.85,
+          "commercial": 10.85,
+          "industrial": 9.18,
+          "generation": 6.41
+        },
+        "prev": {
+          "residential": 9.4,
+          "commercial": 8.4,
+          "industrial": 6.89,
+          "generation": 4.52
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 26.1,
+        "source_row": 175,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1200000000",
+            "1900000000"
+          ],
+          "lgu_count": 17,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SULECO",
+        "name": "SULECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 192,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000"
+          ],
+          "lgu_count": 7,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.98,
+          "commercial": 13.7,
+          "industrial": 11.22,
+          "generation": 8.06
+        },
+        "prev": {
+          "residential": 12.05,
+          "commercial": 11.78,
+          "industrial": 9.48,
+          "generation": 6.71
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 16.0,
+        "source_row": 182,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 12,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.7,
+          "commercial": 11.4,
+          "industrial": 11.54,
+          "generation": 6.15
+        },
+        "prev": {
+          "residential": 12.04,
+          "commercial": 10.75,
+          "industrial": 10.86,
+          "generation": 5.7
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 5.5,
+        "source_row": 183,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "SURSECO-II",
+        "name": "SURSECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "1600000000",
+        "region_short": "Region XIII",
+        "region_name": "Caraga",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 13.03,
+          "commercial": 10.9,
+          "industrial": null,
+          "generation": 6.56
+        },
+        "prev": {
+          "residential": 12.83,
+          "commercial": 11.77,
+          "industrial": null,
+          "generation": 7.61
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.6,
+        "source_row": 184,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1600000000"
+          ],
+          "lgu_count": 14,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.27,
+          "commercial": 12.0,
+          "industrial": 9.15,
+          "generation": 7.93
+        },
+        "prev": {
+          "residential": 11.65,
+          "commercial": 11.41,
+          "industrial": 11.22,
+          "generation": 7.5
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 5.3,
+        "source_row": 74,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 15,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.34,
+          "commercial": 11.38,
+          "industrial": 9.62,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.28,
+          "commercial": 11.33,
+          "industrial": 9.41,
+          "generation": 6.53
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 0.5,
+        "source_row": 75,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 5,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TAWELCO",
+        "name": "TAWELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1900000000",
+        "region_short": "BARMM",
+        "region_name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "island": "Mindanao",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 193,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "1900000000"
+          ],
+          "lgu_count": 9,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.72,
+          "commercial": 12.7,
+          "industrial": 7.48,
+          "generation": 6.75
+        },
+        "prev": {
+          "residential": 12.07,
+          "commercial": 12.04,
+          "industrial": 6.8,
+          "generation": 6.13
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 5.4,
+        "source_row": 22,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TIELCO",
+        "name": "TIELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "1700000000",
+        "region_short": "Region IV-B",
+        "region_name": "MIMAROPA",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "published",
+        "latest": {
+          "residential": 11.94,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.31
+        },
+        "prev": {
+          "residential": 11.95,
+          "commercial": null,
+          "industrial": null,
+          "generation": 7.31
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.1,
+        "source_row": 94,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "1700000000"
+          ],
+          "lgu_count": 10,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "TISELCO",
+        "name": "TISELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "OFFGRID",
+        "grid_conflict": null,
+        "psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "island": "Luzon",
+        "on_grid": false,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.02,
+          "commercial": 10.95,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 107,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-WIKI-DUS"
+          ],
+          "regions": [
+            "0500000000"
+          ],
+          "lgu_count": 4,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "name_variants": {},
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0700000000",
+        "region_short": "Region VII",
+        "region_name": "Central Visayas",
+        "island": "Visayas",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 15.3,
+          "commercial": 14.97,
+          "industrial": 13.82,
+          "generation": 8.33
+        },
+        "prev": {
+          "residential": 14.89,
+          "commercial": 14.42,
+          "industrial": 13.27,
+          "generation": 8.04
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.8,
+        "source_row": 29,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0700000000"
+          ],
+          "lgu_count": 8,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0900000000",
+        "region_short": "Region IX",
+        "region_name": "Zamboanga Peninsula",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.65,
+          "commercial": 11.99,
+          "industrial": 10.39,
+          "generation": 7.66
+        },
+        "prev": {
+          "residential": 13.47,
+          "commercial": 12.8,
+          "industrial": 11.38,
+          "generation": 8.47
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -6.1,
+        "source_row": 150,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000"
+          ],
+          "lgu_count": 1,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.44,
+          "commercial": 11.58,
+          "industrial": 9.76,
+          "generation": 7.25
+        },
+        "prev": {
+          "residential": 12.48,
+          "commercial": 11.63,
+          "industrial": 9.69,
+          "generation": 7.22
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.3,
+        "source_row": 76,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZAMECO-II",
+        "name": "ZAMECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0300000000",
+        "region_short": "Region III",
+        "region_name": "Central Luzon",
+        "island": "Luzon",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 12.56,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": 12.48,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 0.6,
+        "source_row": 77,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0300000000"
+          ],
+          "lgu_count": 6,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZAMSURECO-I",
+        "name": "ZAMSURECO I",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0900000000",
+        "region_short": "Region IX",
+        "region_name": "Zamboanga Peninsula",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "nda",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "prev": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null,
+        "source_row": 151,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000",
+            "1000000000"
+          ],
+          "lgu_count": 25,
+          "province_count": 2,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZAMSURECO-II",
+        "name": "ZAMSURECO II",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0900000000",
+        "region_short": "Region IX",
+        "region_name": "Zamboanga Peninsula",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 16.8,
+          "commercial": 15.87,
+          "industrial": 14.01,
+          "generation": null
+        },
+        "prev": {
+          "residential": 14.82,
+          "commercial": 13.91,
+          "industrial": 12.25,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "nda"
+        },
+        "res_delta_pct": 13.4,
+        "source_row": 152,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000"
+          ],
+          "lgu_count": 24,
+          "province_count": 3,
+          "barangay_count": 0
+        }
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "name_variants": {},
+        "type": "EC",
+        "grid": "ONGRID",
+        "grid_conflict": null,
+        "psgc": "0900000000",
+        "region_short": "Region IX",
+        "region_name": "Zamboanga Peninsula",
+        "island": "Mindanao",
+        "on_grid": true,
+        "data_status": "published",
+        "latest": {
+          "residential": 14.83,
+          "commercial": 13.82,
+          "industrial": 11.72,
+          "generation": 8.41
+        },
+        "prev": {
+          "residential": 14.18,
+          "commercial": 13.21,
+          "industrial": 11.32,
+          "generation": 8.07
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 4.6,
+        "source_row": 153,
+        "coverage": {
+          "detail": "lgu",
+          "source_ids": [
+            "SRC-OSM-OPERATORS"
+          ],
+          "regions": [
+            "0900000000"
+          ],
+          "lgu_count": 23,
+          "province_count": 1,
+          "barangay_count": 0
+        }
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "rows_by_area_level": {
+        "lgu": 1648,
+        "barangay": 17,
+        "region": 0
+      },
+      "sources": [
+        "SRC-OSM-OPERATORS",
+        "SRC-WIKI-DUS",
+        "SRC-RA-12146",
+        "SRC-DOE-RATES"
+      ],
+      "note": "Every row's coverage object is a compact service-area summary (detail, source_ids, regions, lgu_count, province_count, barangay_count). Full rows and provenance: /v1/service-areas/<CODE>.json."
+    },
+    "notes": [
+      "latest / prev are the 2026-10 and 2026-09 cells. A null means the cell is not published; latest_status says whether it is nda, missing or invalid.",
+      "coverage is derived data, not a DOE rate publication; see /v1/service-areas.json.",
+      "data_status restates the utility's latest-month outcome: published (a residential value exists), partial (some classes published), nda (no latest-month values).",
+      "Codes are this dataset's stable slugs, not official DOE/ERC/NEA identifiers; name_variants records tab labels that differ."
+    ]
+  },
+  "next_cursor": null
+}

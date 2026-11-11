@@ -1,0 +1,399 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 18
+  },
+  "data": {
+    "latest_month": "2026-10",
+    "counts": {
+      "regions": 18,
+      "utilities": 141
+    },
+    "rows": [
+      {
+        "psgc": "0100000000",
+        "name": "Ilocos Region",
+        "short": "Region I",
+        "island": "Luzon",
+        "sheet_label": "Region 1",
+        "utility_count": 8,
+        "reporting": 8,
+        "res_median": 12.28,
+        "res_mean": 12.2,
+        "res_min": 11.2,
+        "res_max": 13.49,
+        "com_median": 12.15,
+        "ind_median": 9.91,
+        "gen_median": 7.49
+      },
+      {
+        "psgc": "0200000000",
+        "name": "Cagayan Valley",
+        "short": "Region II",
+        "island": "Luzon",
+        "sheet_label": "Region 2",
+        "utility_count": 7,
+        "reporting": 7,
+        "res_median": 12.37,
+        "res_mean": 12.23,
+        "res_min": 10.73,
+        "res_max": 13.18,
+        "com_median": 11.36,
+        "ind_median": 9.97,
+        "gen_median": 6.6
+      },
+      {
+        "psgc": "0300000000",
+        "name": "Central Luzon",
+        "short": "Region III",
+        "island": "Luzon",
+        "sheet_label": "Region 3",
+        "utility_count": 21,
+        "reporting": 19,
+        "res_median": 12.38,
+        "res_mean": 12.53,
+        "res_min": 10.83,
+        "res_max": 15.51,
+        "com_median": 11.58,
+        "ind_median": 9.45,
+        "gen_median": 7.08
+      },
+      {
+        "psgc": "0400000000",
+        "name": "CALABARZON",
+        "short": "Region IV-A",
+        "island": "Luzon",
+        "sheet_label": "Region 4A",
+        "utility_count": 7,
+        "reporting": 6,
+        "res_median": 11.89,
+        "res_mean": 11.61,
+        "res_min": 9.68,
+        "res_max": 13.22,
+        "com_median": 10.67,
+        "ind_median": 9.02,
+        "gen_median": 6.21
+      },
+      {
+        "psgc": "0500000000",
+        "name": "Bicol Region",
+        "short": "Region V",
+        "island": "Luzon",
+        "sheet_label": "Region 5",
+        "utility_count": 11,
+        "reporting": 9,
+        "res_median": 11.83,
+        "res_mean": 12.54,
+        "res_min": 10.62,
+        "res_max": 18.89,
+        "com_median": 10.85,
+        "ind_median": 9.27,
+        "gen_median": 6.37
+      },
+      {
+        "psgc": "0600000000",
+        "name": "Western Visayas",
+        "short": "Region VI",
+        "island": "Visayas",
+        "sheet_label": "Region 6",
+        "utility_count": 8,
+        "reporting": 6,
+        "res_median": 15.55,
+        "res_mean": 15.62,
+        "res_min": 14.42,
+        "res_max": 16.89,
+        "com_median": 14.55,
+        "ind_median": 12.45,
+        "gen_median": 8.62
+      },
+      {
+        "psgc": "0700000000",
+        "name": "Central Visayas",
+        "short": "Region VII",
+        "island": "Visayas",
+        "sheet_label": "Region 7",
+        "utility_count": 11,
+        "reporting": 9,
+        "res_median": 14.06,
+        "res_mean": 13.87,
+        "res_min": 11.13,
+        "res_max": 15.85,
+        "com_median": 12.81,
+        "ind_median": 11.7,
+        "gen_median": 8.44
+      },
+      {
+        "psgc": "0800000000",
+        "name": "Eastern Visayas",
+        "short": "Region VIII",
+        "island": "Visayas",
+        "sheet_label": "Region 8",
+        "utility_count": 11,
+        "reporting": 10,
+        "res_median": 16.48,
+        "res_mean": 16.19,
+        "res_min": 10.44,
+        "res_max": 19.36,
+        "com_median": 14.95,
+        "ind_median": 12.42,
+        "gen_median": 9.06
+      },
+      {
+        "psgc": "0900000000",
+        "name": "Zamboanga Peninsula",
+        "short": "Region IX",
+        "island": "Mindanao",
+        "sheet_label": "Region 9",
+        "utility_count": 4,
+        "reporting": 3,
+        "res_median": 14.83,
+        "res_mean": 14.76,
+        "res_min": 12.65,
+        "res_max": 16.8,
+        "com_median": 13.82,
+        "ind_median": 11.72,
+        "gen_median": 8.04
+      },
+      {
+        "psgc": "1000000000",
+        "name": "Northern Mindanao",
+        "short": "Region X",
+        "island": "Mindanao",
+        "sheet_label": "Region 10",
+        "utility_count": 10,
+        "reporting": 8,
+        "res_median": 14.27,
+        "res_mean": 14.15,
+        "res_min": 12.09,
+        "res_max": 15.79,
+        "com_median": 12.81,
+        "ind_median": 10.55,
+        "gen_median": 7.16
+      },
+      {
+        "psgc": "1100000000",
+        "name": "Davao Region",
+        "short": "Region XI",
+        "island": "Mindanao",
+        "sheet_label": "Region 11",
+        "utility_count": 4,
+        "reporting": 2,
+        "res_median": 13.09,
+        "res_mean": 13.09,
+        "res_min": 12.86,
+        "res_max": 13.33,
+        "com_median": 13.14,
+        "ind_median": 11.35,
+        "gen_median": 7.24
+      },
+      {
+        "psgc": "1200000000",
+        "name": "SOCCSKSARGEN",
+        "short": "Region XII",
+        "island": "Mindanao",
+        "sheet_label": "Region 12",
+        "utility_count": 5,
+        "reporting": 4,
+        "res_median": 12.8,
+        "res_mean": 12.79,
+        "res_min": 11.85,
+        "res_max": 13.69,
+        "com_median": 12.18,
+        "ind_median": 10.13,
+        "gen_median": 6.96
+      },
+      {
+        "psgc": "1300000000",
+        "name": "National Capital Region",
+        "short": "NCR",
+        "island": "Luzon",
+        "sheet_label": "NCR",
+        "utility_count": 1,
+        "reporting": 1,
+        "res_median": 15.06,
+        "res_mean": 15.06,
+        "res_min": 15.06,
+        "res_max": 15.06,
+        "com_median": 12.88,
+        "ind_median": 11.33,
+        "gen_median": 10.2
+      },
+      {
+        "psgc": "1400000000",
+        "name": "Cordillera Administrative Region",
+        "short": "CAR",
+        "island": "Luzon",
+        "sheet_label": "CAR",
+        "utility_count": 5,
+        "reporting": 5,
+        "res_median": 12.46,
+        "res_mean": 12.07,
+        "res_min": 10.19,
+        "res_max": 13.46,
+        "com_median": 11.28,
+        "ind_median": 10.18,
+        "gen_median": 6.81
+      },
+      {
+        "psgc": "1600000000",
+        "name": "Caraga",
+        "short": "Region XIII",
+        "island": "Mindanao",
+        "sheet_label": "CARAGA",
+        "utility_count": 7,
+        "reporting": 4,
+        "res_median": 12.86,
+        "res_mean": 12.71,
+        "res_min": 11.11,
+        "res_max": 13.98,
+        "com_median": 11.15,
+        "ind_median": 10.46,
+        "gen_median": 6.36
+      },
+      {
+        "psgc": "1700000000",
+        "name": "MIMAROPA",
+        "short": "Region IV-B",
+        "island": "Luzon",
+        "sheet_label": "Region 4B",
+        "utility_count": 8,
+        "reporting": 7,
+        "res_median": 12.03,
+        "res_mean": 12.35,
+        "res_min": 9.96,
+        "res_max": 15.31,
+        "com_median": 11.29,
+        "ind_median": 11.63,
+        "gen_median": 7.34
+      },
+      {
+        "psgc": "1800000000",
+        "name": "Negros Island Region",
+        "short": "NIR",
+        "island": "Visayas",
+        "sheet_label": "NIR",
+        "utility_count": 5,
+        "reporting": 3,
+        "res_median": 14.44,
+        "res_mean": 15.2,
+        "res_min": 14.27,
+        "res_max": 16.88,
+        "com_median": 14.57,
+        "ind_median": 11.88,
+        "gen_median": 8.59
+      },
+      {
+        "psgc": "1900000000",
+        "name": "Bangsamoro Autonomous Region in Muslim Mindanao",
+        "short": "BARMM",
+        "island": "Mindanao",
+        "sheet_label": "BARMM",
+        "utility_count": 8,
+        "reporting": 2,
+        "res_median": 8.72,
+        "res_mean": 8.72,
+        "res_min": 5.33,
+        "res_max": 12.12,
+        "com_median": 8.72,
+        "ind_median": 8.29,
+        "gen_median": 4.38
+      }
+    ],
+    "notes": [
+      "reporting is the number of utilities with a published residential value in 2026-10; the medians/means/ranges use published values only and exclude nda, missing and invalid cells.",
+      "sheet_label is the region label as it appears in the DOE workbook; short is the public shorthand and psgc is the PSA PSGC region code."
+    ]
+  },
+  "next_cursor": null
+}

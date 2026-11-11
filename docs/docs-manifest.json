@@ -1,0 +1,366 @@
+{
+  "generated_by": "tools/build-docs.py",
+  "site_title": "Open Energy Data Layer — documentation",
+  "dataset_version": "2026-11-10",
+  "page_count": 21,
+  "groups": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "blurb": "What the project is, how it is organised, and how to start.",
+      "docs": [
+        {
+          "id": "readme",
+          "label": "Project README",
+          "html": "readme.html",
+          "source": "README.md",
+          "lines": 426,
+          "bytes": 32157,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "label": "Architecture",
+      "blurb": "How the frontend, the data pipeline and the generated artefacts fit together, with a component map for contributors and agents.",
+      "docs": [
+        {
+          "id": "frontend",
+          "label": "Frontend architecture",
+          "html": "frontend.html",
+          "source": "draft/frontend.md",
+          "lines": 331,
+          "bytes": 38096,
+          "kind": "markdown"
+        },
+        {
+          "id": "backend",
+          "label": "Backend & pipeline architecture",
+          "html": "backend.html",
+          "source": "draft/backend.md",
+          "lines": 350,
+          "bytes": 27807,
+          "kind": "markdown"
+        },
+        {
+          "id": "component-map",
+          "label": "Component map & agent guide",
+          "html": "component-map.html",
+          "source": "draft/component-map.md",
+          "lines": 134,
+          "bytes": 10944,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": "Data",
+      "blurb": "The schema, the published seed data and the design-asset provenance.",
+      "docs": [
+        {
+          "id": "data-model",
+          "label": "Data model",
+          "html": "data-model.html",
+          "source": "draft/data-model.md",
+          "lines": 488,
+          "bytes": 38017,
+          "kind": "markdown"
+        },
+        {
+          "id": "data-seed",
+          "label": "Seed data dictionary",
+          "html": "data-seed.html",
+          "source": "data/seed/README.md",
+          "lines": 154,
+          "bytes": 9351,
+          "kind": "markdown"
+        },
+        {
+          "id": "coverage-method",
+          "label": "Service-area extraction",
+          "html": "coverage-method.html",
+          "source": "research/coverage/README.md",
+          "lines": 555,
+          "bytes": 29780,
+          "kind": "markdown"
+        },
+        {
+          "id": "assets",
+          "label": "Design assets",
+          "html": "assets.html",
+          "source": "draft/assets/README.md",
+          "lines": 52,
+          "bytes": 5551,
+          "kind": "markdown"
+        },
+        {
+          "id": "brand-assets",
+          "label": "Brand & UI assets",
+          "html": "brand-assets.html",
+          "source": "draft/assets/brand/README.md",
+          "lines": 200,
+          "bytes": 12090,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "blurb": "The read-only JSON API: access, conventions and endpoint reference.",
+      "docs": [
+        {
+          "id": "api-docs",
+          "label": "API guide",
+          "html": "api-docs.html",
+          "source": "draft/api-docs.md",
+          "lines": 673,
+          "bytes": 38115,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "label": "Project",
+      "blurb": "Delivery notes, testing, contribution and release history.",
+      "docs": [
+        {
+          "id": "contributing",
+          "label": "Contributing",
+          "html": "contributing.html",
+          "source": "CONTRIBUTING.md",
+          "lines": 241,
+          "bytes": 15785,
+          "kind": "markdown"
+        },
+        {
+          "id": "changelog",
+          "label": "Changelog",
+          "html": "changelog.html",
+          "source": "CHANGELOG.md",
+          "lines": 240,
+          "bytes": 16869,
+          "kind": "markdown"
+        },
+        {
+          "id": "tests",
+          "label": "Testing & validation",
+          "html": "tests.html",
+          "source": "tests/README.md",
+          "lines": 301,
+          "bytes": 18521,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "blurb": "The evidence base and design research behind the data layer.",
+      "docs": [
+        {
+          "id": "research-api-docs-conventions",
+          "label": "Research: API docs conventions",
+          "html": "research-api-docs-conventions.html",
+          "source": "research/api-docs-conventions.md",
+          "lines": 70,
+          "bytes": 9224,
+          "kind": "markdown"
+        },
+        {
+          "id": "research-api-landscape",
+          "label": "Research: API landscape",
+          "html": "research-api-landscape.html",
+          "source": "research/api-landscape.md",
+          "lines": 219,
+          "bytes": 37352,
+          "kind": "markdown"
+        },
+        {
+          "id": "research-data-landscape",
+          "label": "Research: Data landscape",
+          "html": "research-data-landscape.html",
+          "source": "research/data-landscape.md",
+          "lines": 367,
+          "bytes": 49824,
+          "kind": "markdown"
+        },
+        {
+          "id": "research-service-areas",
+          "label": "Research: Service areas",
+          "html": "research-service-areas.html",
+          "source": "research/service-areas.md",
+          "lines": 398,
+          "bytes": 33742,
+          "kind": "markdown"
+        }
+      ]
+    },
+    {
+      "id": "legal",
+      "label": "Legal",
+      "blurb": "Licensing, third-party notices and the security policy.",
+      "docs": [
+        {
+          "id": "notice",
+          "label": "Notices & attribution",
+          "html": "notice.html",
+          "source": "NOTICE.md",
+          "lines": 166,
+          "bytes": 11735,
+          "kind": "markdown"
+        },
+        {
+          "id": "license",
+          "label": "Licence (MIT)",
+          "html": "license.html",
+          "source": "LICENSE",
+          "lines": 33,
+          "bytes": 1623,
+          "kind": "plain"
+        },
+        {
+          "id": "security",
+          "label": "Security policy",
+          "html": "security.html",
+          "source": "SECURITY.md",
+          "lines": 61,
+          "bytes": 4094,
+          "kind": "markdown"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "id": "readme",
+      "label": "Project README",
+      "html": "readme.html",
+      "source": "README.md"
+    },
+    {
+      "id": "frontend",
+      "label": "Frontend architecture",
+      "html": "frontend.html",
+      "source": "draft/frontend.md"
+    },
+    {
+      "id": "backend",
+      "label": "Backend & pipeline architecture",
+      "html": "backend.html",
+      "source": "draft/backend.md"
+    },
+    {
+      "id": "component-map",
+      "label": "Component map & agent guide",
+      "html": "component-map.html",
+      "source": "draft/component-map.md"
+    },
+    {
+      "id": "data-model",
+      "label": "Data model",
+      "html": "data-model.html",
+      "source": "draft/data-model.md"
+    },
+    {
+      "id": "data-seed",
+      "label": "Seed data dictionary",
+      "html": "data-seed.html",
+      "source": "data/seed/README.md"
+    },
+    {
+      "id": "coverage-method",
+      "label": "Service-area extraction",
+      "html": "coverage-method.html",
+      "source": "research/coverage/README.md"
+    },
+    {
+      "id": "assets",
+      "label": "Design assets",
+      "html": "assets.html",
+      "source": "draft/assets/README.md"
+    },
+    {
+      "id": "brand-assets",
+      "label": "Brand & UI assets",
+      "html": "brand-assets.html",
+      "source": "draft/assets/brand/README.md"
+    },
+    {
+      "id": "api-docs",
+      "label": "API guide",
+      "html": "api-docs.html",
+      "source": "draft/api-docs.md"
+    },
+    {
+      "id": "contributing",
+      "label": "Contributing",
+      "html": "contributing.html",
+      "source": "CONTRIBUTING.md"
+    },
+    {
+      "id": "changelog",
+      "label": "Changelog",
+      "html": "changelog.html",
+      "source": "CHANGELOG.md"
+    },
+    {
+      "id": "tests",
+      "label": "Testing & validation",
+      "html": "tests.html",
+      "source": "tests/README.md"
+    },
+    {
+      "id": "research-api-docs-conventions",
+      "label": "Research: API docs conventions",
+      "html": "research-api-docs-conventions.html",
+      "source": "research/api-docs-conventions.md"
+    },
+    {
+      "id": "research-api-landscape",
+      "label": "Research: API landscape",
+      "html": "research-api-landscape.html",
+      "source": "research/api-landscape.md"
+    },
+    {
+      "id": "research-data-landscape",
+      "label": "Research: Data landscape",
+      "html": "research-data-landscape.html",
+      "source": "research/data-landscape.md"
+    },
+    {
+      "id": "research-service-areas",
+      "label": "Research: Service areas",
+      "html": "research-service-areas.html",
+      "source": "research/service-areas.md"
+    },
+    {
+      "id": "notice",
+      "label": "Notices & attribution",
+      "html": "notice.html",
+      "source": "NOTICE.md"
+    },
+    {
+      "id": "license",
+      "label": "Licence (MIT)",
+      "html": "license.html",
+      "source": "LICENSE"
+    },
+    {
+      "id": "security",
+      "label": "Security policy",
+      "html": "security.html",
+      "source": "SECURITY.md"
+    }
+  ],
+  "html_bytes": 1019369,
+  "search_index": {
+    "pages": 20,
+    "sections": 266,
+    "bytes": 109587,
+    "asset_bytes": 129027
+  }
+}

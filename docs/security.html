@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Security policy — Open Energy Data Layer — documentation</title>
+<meta name="description" content="The static-site threat model, data-integrity reporting and the private vulnerability-disclosure process.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" class="current" aria-current="page" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-legal">Legal</a><span class="sep">/</span><span aria-current="page">Security policy</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Legal <span class="sep">&middot;</span> documentation</p>
+  <h1 id="security-policy">Security policy</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>SECURITY.md</code> &middot; 61 lines &middot; 4 KB &middot; 616 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/SECURITY.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>This repository publishes a <strong>static, self-contained page</strong> and a set of
+<strong>generated data files</strong>. It has no server-side application, no accounts, no
+cookies and no write path. The security surface is therefore small, and the
+highest-value risk is <strong>data integrity</strong>, not remote code execution.</p>
+<h2 class="has-anchor" id="supported-versions">Supported versions<a class="h-anchor" href="#supported-versions" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The project is pre-release (<code>0.x</code>, pre-deployment). Only the <code>main</code> branch is
+maintained; there are no supported release lines yet. Once a public deployment
+exists, this section will list the supported versions and the disclosure
+window.</p>
+<h2 class="has-anchor" id="threat-model">Threat model<a class="h-anchor" href="#threat-model" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Exposure</th>
+<th>Mitigation in this repository</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>draft/map-table-prototype.html</code></td>
+<td>Served as a single static HTML file</td>
+<td>All styles, scripts, fonts, the logo, map geometry and data are inlined at build time. The page makes <strong>no external requests</strong>; the only network activity is a user clicking a citation link (<code>target=&quot;_blank&quot; rel=&quot;noopener&quot;</code>). There is no runtime JavaScript that fetches data, sets cookies, uses <code>localStorage</code>/<code>sessionStorage</code>, or loads third-party analytics.</td>
+</tr>
+<tr>
+<td>Data files (<code>data/seed/</code>, raw snapshots)</td>
+<td>Published as plain CSV/JSON</td>
+<td>Every published number carries provenance. Raw publisher bytes are snapshotted and SHA-256 hashed before parsing; the hashes are recorded in <code>data/seed/validation.json</code> and <code>data/seed/sources.csv</code>. A failed validation check stops publication (<code>tools/ingest-doe-rates.py</code> exits non-zero).</td>
+</tr>
+<tr>
+<td>Build tooling (<code>tools/</code>)</td>
+<td>Run by maintainers/CI</td>
+<td>Python 3.12, standard library for the ingest and page builders; <code>PyYAML</code> and <code>markdown-it-py</code> are the only third-party runtime dependencies (see <code>requirements.txt</code>). The pipeline only fetches the public DOE workbook via HTTPS and writes inside the repository.</td>
+</tr>
+<tr>
+<td>Repository secrets</td>
+<td>None present</td>
+<td>The pipeline uses no API keys, tokens or credentials, and reads no <code>.env</code> files (<code>.env*</code> is gitignored). If a future step adds authenticated sources, secrets must go through CI secret storage and must never be committed.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="out-of-scope--acknowledged-limits">Out of scope / acknowledged limits<a class="h-anchor" href="#out-of-scope--acknowledged-limits" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Third-party links.</strong> The page links to <code>doe.gov.ph</code>, the public Google Sheet
+and <code>bettergov.ph</code>. Those sites have their own security posture; this
+repository cannot vouch for them.</li>
+<li><strong>Upstream data supply chain.</strong> The DOE workbook is fetched from a public
+Google Sheets CSV export. Its availability and content are outside our
+control; the hash snapshot is how we detect content changes.</li>
+<li><strong>Client-side rendering.</strong> The page renders embedded JSON with DOM APIs. The
+data is publisher data, not user input, and is inserted as text (no <code>eval</code>,
+no dynamic code execution), but a compromised build machine could still
+produce a malicious page — hence the deterministic-build and review rules in
+<code>CONTRIBUTING.md</code>.</li>
+</ul>
+<h2 class="has-anchor" id="data-integrity-reporting">Data-integrity reporting<a class="h-anchor" href="#data-integrity-reporting" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>If you find a value on the page or in <code>data/seed/</code> that does not match the
+source workbook, treat it as a <strong>data-integrity bug</strong>: open a normal issue with
+the utility, month, customer class, the page/file you saw, and the workbook row
+if you can find it. Do not report data errors as security vulnerabilities.</p>
+<h2 class="has-anchor" id="reporting-a-vulnerability">Reporting a vulnerability<a class="h-anchor" href="#reporting-a-vulnerability" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>Do not open a public issue for a security report.</strong></p>
+<p>The public GitHub repository and its private vulnerability-reporting channel
+are <strong>pending</strong> (the project is not yet deployed or published; see the README's
+status section). When the repository is published, use GitHub's <strong>Security →
+Report a vulnerability</strong> (private security advisories) for this repository and
+the maintainers will respond there. Until the repository exists, raise the
+report privately with the maintainers through the project's BetterGov.ph
+contact channel; a dedicated security contact will be
+added to this file at publication.</p>
+<p>Please include: affected file/URL, reproduction steps, impact, and whether the
+issue affects the static page, the generated data, or the build tooling. We aim
+to acknowledge reports within 5 working days and to publish a fix or mitigation
+note in <code>CHANGELOG.md</code> once the report can be disclosed.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="license.html"><span class="label">Previous</span><span class="pager-title">&larr; Licence (MIT)</span></a><span class="pager-spacer"></span></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#supported-versions">Supported versions</a><a class="toc-link" href="#threat-model">Threat model</a><a class="toc-link l3" href="#out-of-scope--acknowledged-limits">Out of scope / acknowledged limits</a><a class="toc-link" href="#data-integrity-reporting">Data-integrity reporting</a><a class="toc-link" href="#reporting-a-vulnerability">Reporting a vulnerability</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

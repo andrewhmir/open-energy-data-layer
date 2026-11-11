@@ -1,0 +1,1673 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 141
+  },
+  "data": {
+    "month": "2026-10",
+    "previous_month": "2026-09",
+    "customer_class": "commercial",
+    "label": "Commercial",
+    "unit": "PHP per kWh",
+    "stats": {
+      "month": "2026-10",
+      "reporting": 87,
+      "nda": 54,
+      "missing": 0,
+      "invalid": 0,
+      "total": 141,
+      "mean": 12.35,
+      "median": 12.1,
+      "min": 4.51,
+      "max": 16.18
+    },
+    "rows": [
+      {
+        "code": "ABRECO",
+        "name": "ABRECO",
+        "region_short": "CAR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "AEC",
+        "name": "AEC",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.13,
+        "status": "published",
+        "previous_value": 14.17,
+        "change_pct": -0.3
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.85,
+        "status": "published",
+        "previous_value": 10.75,
+        "change_pct": 0.9
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 9.1,
+        "status": "published",
+        "previous_value": 9.87,
+        "change_pct": -7.8
+      },
+      {
+        "code": "ANTECO",
+        "name": "ANTECO",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 11.47,
+        "change_pct": null
+      },
+      {
+        "code": "AURELCO",
+        "name": "AURELCO",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 11.13,
+        "status": "published",
+        "previous_value": 11.36,
+        "change_pct": -2.0
+      },
+      {
+        "code": "BASELCO",
+        "name": "BASELCO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "BATANELCO",
+        "name": "BATANELCO",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 12.12,
+        "status": "published",
+        "previous_value": 11.22,
+        "change_pct": 8.0
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "region_short": "Region IV-A",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.67,
+        "status": "published",
+        "previous_value": 10.46,
+        "change_pct": 2.0
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "region_short": "Region IV-A",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 9.84,
+        "status": "published",
+        "previous_value": 9.16,
+        "change_pct": 7.4
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "region_short": "CAR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.97,
+        "status": "published",
+        "previous_value": 11.16,
+        "change_pct": -1.7
+      },
+      {
+        "code": "BILECO",
+        "name": "BILECO",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "BISELCO",
+        "name": "BISELCO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "BLCI",
+        "name": "BLCI",
+        "region_short": "Region VII",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 13.54,
+        "status": "published",
+        "previous_value": 12.76,
+        "change_pct": 6.1
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.94,
+        "status": "published",
+        "previous_value": 10.17,
+        "change_pct": 7.6
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.81,
+        "status": "published",
+        "previous_value": 11.7,
+        "change_pct": 9.5
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 9.95,
+        "change_pct": null
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.75,
+        "status": "published",
+        "previous_value": 11.04,
+        "change_pct": 6.4
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.54,
+        "status": "published",
+        "previous_value": 8.15,
+        "change_pct": 29.3
+      },
+      {
+        "code": "CAMELCO",
+        "name": "CAMELCO",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.52,
+        "status": "published",
+        "previous_value": 14.76,
+        "change_pct": -1.6
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 9.95,
+        "status": "published",
+        "previous_value": 10.25,
+        "change_pct": -2.9
+      },
+      {
+        "code": "CAPELCO",
+        "name": "CAPELCO",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "CASELCO",
+        "name": "CASELCO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.18,
+        "status": "published",
+        "previous_value": 11.74,
+        "change_pct": -4.8
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.3,
+        "status": "published",
+        "previous_value": 9.44,
+        "change_pct": 9.1
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 9.84,
+        "status": "published",
+        "previous_value": 9.43,
+        "change_pct": 4.3
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.32,
+        "status": "published",
+        "previous_value": 10.96,
+        "change_pct": 3.3
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 14.27,
+        "change_pct": null
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 15.06,
+        "change_pct": null
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.11,
+        "status": "published",
+        "previous_value": 12.79,
+        "change_pct": 2.5
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 6.99,
+        "change_pct": null
+      },
+      {
+        "code": "CELCO",
+        "name": "CELCO",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 11.62,
+        "change_pct": null
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 12.1,
+        "status": "published",
+        "previous_value": 11.86,
+        "change_pct": 2.0
+      },
+      {
+        "code": "CENECO-NEPC",
+        "name": "CENECO/NEPC",
+        "region_short": "NIR",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.66,
+        "status": "published",
+        "previous_value": 11.14,
+        "change_pct": 4.7
+      },
+      {
+        "code": "CEPALCO",
+        "name": "CEPALCO",
+        "region_short": "Region X",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "region_short": "BARMM",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 12.93,
+        "status": "published",
+        "previous_value": 12.51,
+        "change_pct": 3.4
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "region_short": "Region XII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.53,
+        "status": "published",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "DANECO-NORDECO",
+        "name": "DANECO/NORDECO",
+        "region_short": "Region XI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "region_short": "Region XI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.68,
+        "status": "published",
+        "previous_value": 11.75,
+        "change_pct": 7.9
+      },
+      {
+        "code": "DECORP",
+        "name": "DECORP",
+        "region_short": "Region I",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "DIELCO",
+        "name": "DIELCO",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "region_short": "Region XI",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 13.61,
+        "status": "published",
+        "previous_value": 13.45,
+        "change_pct": 1.2
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "region_short": "Region XI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 13.19,
+        "change_pct": null
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.08,
+        "status": "published",
+        "previous_value": 13.59,
+        "change_pct": 11.0
+      },
+      {
+        "code": "FBPC",
+        "name": "FBPC",
+        "region_short": "Region IV-A",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.61,
+        "status": "published",
+        "previous_value": 12.21,
+        "change_pct": 3.3
+      },
+      {
+        "code": "FICELCO",
+        "name": "FICELCO",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 16.18,
+        "status": "published",
+        "previous_value": 15.44,
+        "change_pct": 4.8
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "region_short": "Region IV-A",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 11.03,
+        "change_pct": null
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.2,
+        "status": "published",
+        "previous_value": 14.99,
+        "change_pct": 1.4
+      },
+      {
+        "code": "IEEC",
+        "name": "IEEC",
+        "region_short": "Region IV-A",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "IFELCO",
+        "name": "IFELCO",
+        "region_short": "CAR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.1,
+        "status": "published",
+        "previous_value": 14.13,
+        "change_pct": 6.9
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "CONFLICT",
+        "value": 13.13,
+        "status": "published",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "region_short": "Region VI",
+        "type": "EC",
+        "grid": "CONFLICT",
+        "value": 14.97,
+        "status": "published",
+        "previous_value": 13.88,
+        "change_pct": 7.9
+      },
+      {
+        "code": "ILPI",
+        "name": "ILPI",
+        "region_short": "Region X",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.11,
+        "status": "published",
+        "previous_value": 10.03,
+        "change_pct": 0.8
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.7,
+        "status": "published",
+        "previous_value": 12.45,
+        "change_pct": -6.0
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.5,
+        "status": "published",
+        "previous_value": 12.1,
+        "change_pct": -5.0
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 8.96,
+        "status": "published",
+        "previous_value": 10.11,
+        "change_pct": -11.4
+      },
+      {
+        "code": "KAELCO",
+        "name": "KAELCO",
+        "region_short": "CAR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.02,
+        "status": "published",
+        "previous_value": 10.66,
+        "change_pct": 3.4
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 4.51,
+        "status": "published",
+        "previous_value": 4.44,
+        "change_pct": 1.6
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.82,
+        "status": "published",
+        "previous_value": 14.64,
+        "change_pct": 1.2
+      },
+      {
+        "code": "LEYECO-II",
+        "name": "LEYECO II",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "LEYECO-III",
+        "name": "LEYECO III",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.72,
+        "status": "published",
+        "previous_value": 15.68,
+        "change_pct": 0.3
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.55,
+        "status": "published",
+        "previous_value": 15.48,
+        "change_pct": -6.0
+      },
+      {
+        "code": "LUBELCO",
+        "name": "LUBELCO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "region_short": "Region I",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 14.01,
+        "status": "published",
+        "previous_value": 14.43,
+        "change_pct": -2.9
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.61,
+        "status": "published",
+        "previous_value": 11.85,
+        "change_pct": 6.4
+      },
+      {
+        "code": "MAGELCO",
+        "name": "MAGELCO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 9.78,
+        "status": "published",
+        "previous_value": 9.7,
+        "change_pct": 0.8
+      },
+      {
+        "code": "MASELCO",
+        "name": "MASELCO",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 10.71,
+        "status": "published",
+        "previous_value": 10.76,
+        "change_pct": -0.5
+      },
+      {
+        "code": "MECO",
+        "name": "MECO",
+        "region_short": "Region VII",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "region_short": "NCR",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 12.88,
+        "status": "published",
+        "previous_value": 13.35,
+        "change_pct": -3.5
+      },
+      {
+        "code": "MOELCI-I",
+        "name": "MOELCI I",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.81,
+        "status": "published",
+        "previous_value": 13.15,
+        "change_pct": -2.6
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.64,
+        "status": "published",
+        "previous_value": 12.89,
+        "change_pct": 21.3
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "region_short": "CAR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.58,
+        "status": "published",
+        "previous_value": 12.9,
+        "change_pct": -10.2
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "region_short": "Region VI",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 13.87,
+        "status": "published",
+        "previous_value": 13.55,
+        "change_pct": 2.4
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 12.77,
+        "change_pct": null
+      },
+      {
+        "code": "MORESCO-II",
+        "name": "MORESCO II",
+        "region_short": "Region X",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.4,
+        "status": "published",
+        "previous_value": 10.96,
+        "change_pct": 4.0
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.11,
+        "status": "published",
+        "previous_value": 10.03,
+        "change_pct": 0.8
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.68,
+        "status": "published",
+        "previous_value": 13.6,
+        "change_pct": 0.6
+      },
+      {
+        "code": "NOCECO",
+        "name": "NOCECO",
+        "region_short": "NIR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "region_short": "NIR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 16.19,
+        "change_pct": null
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "region_short": "NIR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.55,
+        "status": "published",
+        "previous_value": 13.71,
+        "change_pct": 13.4
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "region_short": "NIR",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.59,
+        "status": "published",
+        "previous_value": 13.5,
+        "change_pct": 0.7
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.75,
+        "status": "published",
+        "previous_value": 14.63,
+        "change_pct": 7.7
+      },
+      {
+        "code": "NUVELCO",
+        "name": "NUVELCO",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.22,
+        "status": "published",
+        "previous_value": 9.0,
+        "change_pct": 24.7
+      },
+      {
+        "code": "OEDC",
+        "name": "OEDC",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 11.29,
+        "status": "published",
+        "previous_value": 11.32,
+        "change_pct": -0.3
+      },
+      {
+        "code": "ORMECO",
+        "name": "ORMECO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "PALECO",
+        "name": "PALECO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 12.75,
+        "status": "published",
+        "previous_value": 12.79,
+        "change_pct": -0.3
+      },
+      {
+        "code": "PAMES",
+        "name": "PAMES",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 11.74,
+        "change_pct": null
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "region_short": "Region I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.11,
+        "status": "published",
+        "previous_value": 14.07,
+        "change_pct": 0.3
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 9.98,
+        "status": "published",
+        "previous_value": 9.91,
+        "change_pct": 0.7
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.05,
+        "status": "published",
+        "previous_value": 9.88,
+        "change_pct": 1.7
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.25,
+        "status": "published",
+        "previous_value": 11.46,
+        "change_pct": 6.9
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.63,
+        "status": "published",
+        "previous_value": 10.26,
+        "change_pct": 3.6
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "region_short": "Region XII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.84,
+        "status": "published",
+        "previous_value": 10.51,
+        "change_pct": 12.7
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.07,
+        "status": "published",
+        "previous_value": 11.63,
+        "change_pct": 3.8
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "region_short": "Region VII",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": 12.09,
+        "status": "published",
+        "previous_value": 12.08,
+        "change_pct": 0.1
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "region_short": "Region IV-A",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.29,
+        "status": "published",
+        "previous_value": 11.07,
+        "change_pct": 2.0
+      },
+      {
+        "code": "QUEZELCO-II",
+        "name": "QUEZELCO II",
+        "region_short": "Region IV-A",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "QUIRELCO",
+        "name": "QUIRELCO",
+        "region_short": "Region II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.36,
+        "status": "published",
+        "previous_value": 10.75,
+        "change_pct": 5.7
+      },
+      {
+        "code": "ROMELCO",
+        "name": "ROMELCO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 9.47,
+        "change_pct": null
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.31,
+        "status": "published",
+        "previous_value": 13.21,
+        "change_pct": 0.8
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 14.79,
+        "status": "published",
+        "previous_value": 13.47,
+        "change_pct": 9.8
+      },
+      {
+        "code": "SFELAPCO",
+        "name": "SFELAPCO",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "SIARELCO",
+        "name": "SIARELCO",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 9.19,
+        "change_pct": null
+      },
+      {
+        "code": "SIASELCO",
+        "name": "SIASELCO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "region_short": "Region XII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 13.08,
+        "change_pct": null
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "region_short": "Region XII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.79,
+        "status": "published",
+        "previous_value": 12.44,
+        "change_pct": 2.8
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "region_short": "Region VIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.5,
+        "status": "published",
+        "previous_value": 15.29,
+        "change_pct": 1.4
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 13.16,
+        "change_pct": null
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.46,
+        "status": "published",
+        "previous_value": 12.66,
+        "change_pct": -1.6
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "region_short": "Region XII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.85,
+        "status": "published",
+        "previous_value": 8.4,
+        "change_pct": 29.2
+      },
+      {
+        "code": "SULECO",
+        "name": "SULECO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.7,
+        "status": "published",
+        "previous_value": 11.78,
+        "change_pct": 16.3
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.4,
+        "status": "published",
+        "previous_value": 10.75,
+        "change_pct": 6.0
+      },
+      {
+        "code": "SURSECO-II",
+        "name": "SURSECO II",
+        "region_short": "Region XIII",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 10.9,
+        "status": "published",
+        "previous_value": 11.77,
+        "change_pct": -7.4
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 12.0,
+        "status": "published",
+        "previous_value": 11.41,
+        "change_pct": 5.2
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.38,
+        "status": "published",
+        "previous_value": 11.33,
+        "change_pct": 0.4
+      },
+      {
+        "code": "TAWELCO",
+        "name": "TAWELCO",
+        "region_short": "BARMM",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "region_short": "Region III",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 12.7,
+        "status": "published",
+        "previous_value": 12.04,
+        "change_pct": 5.5
+      },
+      {
+        "code": "TIELCO",
+        "name": "TIELCO",
+        "region_short": "Region IV-B",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "TISELCO",
+        "name": "TISELCO",
+        "region_short": "Region V",
+        "type": "EC",
+        "grid": "OFFGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": 10.95,
+        "change_pct": null
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "region_short": "Region VII",
+        "type": "PIOU",
+        "grid": "ONGRID",
+        "value": 14.97,
+        "status": "published",
+        "previous_value": 14.42,
+        "change_pct": 3.8
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "region_short": "Region IX",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.99,
+        "status": "published",
+        "previous_value": 12.8,
+        "change_pct": -6.3
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 11.58,
+        "status": "published",
+        "previous_value": 11.63,
+        "change_pct": -0.4
+      },
+      {
+        "code": "ZAMECO-II",
+        "name": "ZAMECO II",
+        "region_short": "Region III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "ZAMSURECO-I",
+        "name": "ZAMSURECO I",
+        "region_short": "Region IX",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": null,
+        "status": "nda",
+        "previous_value": null,
+        "change_pct": null
+      },
+      {
+        "code": "ZAMSURECO-II",
+        "name": "ZAMSURECO II",
+        "region_short": "Region IX",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 15.87,
+        "status": "published",
+        "previous_value": 13.91,
+        "change_pct": 14.1
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "region_short": "Region IX",
+        "type": "EC",
+        "grid": "ONGRID",
+        "value": 13.82,
+        "status": "published",
+        "previous_value": 13.21,
+        "change_pct": 4.6
+      }
+    ],
+    "notes": [
+      "Rows are sorted by utility_code. value is the 2026-10 cell when the source publishes one and null otherwise; null never means zero. status says why a value is absent. previous_value is the 2026-09 cell when published; change_pct is month over month on the two published cells only."
+    ]
+  },
+  "next_cursor": null
+}

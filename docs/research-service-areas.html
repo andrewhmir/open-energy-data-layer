@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Research: Service areas — Open Energy Data Layer — documentation</title>
+<meta name="description" content="MERALCO service-area coverage — RA 12146 mapped to PSGC 2026-3Q">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" class="current" aria-current="page" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-research">Research</a><span class="sep">/</span><span aria-current="page">Research: Service areas</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Research <span class="sep">&middot;</span> documentation</p>
+  <h1 id="meralco-service-area-coverage--ra-12146-mapped-to-psgc-2026-3q">MERALCO service-area coverage — RA 12146 mapped to PSGC 2026-3Q</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>research/service-areas.md</code> &middot; 398 lines &middot; 33 KB &middot; 5,242 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/research/service-areas.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p><strong>Task:</strong> task-9 — structured Meralco franchise coverage for the provider filter on the data page.<br />
+<strong>Repo:</strong> <code>/home/sysadmin/Test2</code> (Open Energy Data Layer).<br />
+<strong>Researched / generated:</strong> 2026-11-10 (Asia/Manila).<br />
+<strong>Deliverables:</strong> <code>research/service-areas.md</code> (this file), <code>research/service-areas.json</code> (canonical, machine-readable), <code>research/source-snapshots/ra-12146-section1.txt</code> + <code>ra-9209-section1.txt</code> + <code>.provenance.json</code> files.<br />
+<strong>Verification labels:</strong> <code>verified</code> = fetched live and inspected; <code>derived</code> = computed from verified inputs; <code>unverified</code> = flagged, not asserted.</p>
+<hr />
+<h2 class="has-anchor" id="0-tldr-for-the-mapprovider-filter">0. TL;DR for the map/provider filter<a class="h-anchor" href="#0-tldr-for-the-mapprovider-filter" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>Meralco is a 3-region DU</strong>: NCR (17/17 LGUs, fully covered), Central Luzon / Region III (Bulacan 24/24 fully + <strong>17 barangays in 3 Pampanga LGUs</strong>), CALABARZON / Region IV-A (67 of 142 LGUs across Batangas, Cavite, Laguna, Quezon, Rizal — Rizal is 14/14 full).</li>
+<li><strong>108 LGUs</strong> are enumerated in RA 12146 Section 1 and each is mapped to an exact <code>adm3_psgc</code>; <strong>0 unmatched names</strong>. The canonical list is <code>covered_adm3_psgc</code> in <code>service-areas.json</code>.</li>
+<li>The DOE workbook assigns MERALCO the single region <code>1300000000</code> (NCR). The map must override that with a <strong>multi-region provider record</strong>: regions <code>[1300000000, 0300000000, 0400000000]</code> plus the LGU set; a region-only filter would wrongly show Meralco as NCR-only.</li>
+<li><strong>Pampanga has no whole LGU in the franchise</strong> — only barangays. If the map renders LGU polygons, render the 3 touched Pampanga LGUs as <em>partial / barangay-level</em> (or filter by the 17 <code>adm4_psgc</code> values), never as fully covered.</li>
+<li>No other utility in the 141-row DOE seed dataset spans more than one region; <strong>Meralco is the only multi-region DU franchise identified</strong>. Caveats in §8.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="1-why-the-doe-region-assignment-is-wrong-for-meralco">1. Why the DOE region assignment is wrong for Meralco<a class="h-anchor" href="#1-why-the-doe-region-assignment-is-wrong-for-meralco" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The DOE <em>Electricity Rates &amp; Power Market Monitor</em> workbook lists each distribution utility exactly once, with one <code>Region</code> value (and one <code>GRID</code>/<code>Island</code> value). MERALCO is listed as <code>PIOU / ONGRID / NCR / Luzon</code> and therefore aggregates into NCR-only statistics (e.g. <code>data/seed/regions.csv</code> shows NCR with <code>utility_count=1</code> and Meralco's rate as the entire NCR median/mean).</p>
+<p>But Meralco's legislative franchise has always covered territory in Central Luzon and CALABARZON as well. The current franchise, <strong>RA 12146 (approved 11 April 2025)</strong>, re-enumerates it explicitly. Any provider filter or per-region aggregation that trusts the DOE single-region field will misstate both Meralco's footprint and every region it serves.</p>
+<hr />
+<h2 class="has-anchor" id="2-legal-source-of-truth">2. Legal source of truth<a class="h-anchor" href="#2-legal-source-of-truth" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>field</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Law</td>
+<td><strong>RA 12146</strong> — An Act Renewing for Another Twenty-Five (25) Years the Franchise Granted to the Manila Electric Company Under Republic Act No. 9209</td>
+</tr>
+<tr>
+<td>Approved</td>
+<td>2025-04-11</td>
+</tr>
+<tr>
+<td>Publication</td>
+<td>121 OG No. 17, 3729 (April 28, 2025)</td>
+</tr>
+<tr>
+<td>Official text URL</td>
+<td><a href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850" target="_blank" rel="noopener">https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (Supreme Court E-Library, printer-friendly)</td>
+</tr>
+<tr>
+<td>Retrieved</td>
+<td>2026-11-10T19:13:21+08:00 (HTTP 200; page 32531 bytes)</td>
+</tr>
+<tr>
+<td>Section used</td>
+<td><code>Section 1. Nature and Scope</code> — verbatim snapshot <code>research/source-snapshots/ra-12146-section1.txt</code> (2285 bytes UTF-8, 2277 chars)</td>
+</tr>
+<tr>
+<td>Snapshot SHA-256</td>
+<td><code>515341ac88f6fe943636c3ea1d1c6c9862eb80e4f798bf9600198db7cb1e376b</code></td>
+</tr>
+<tr>
+<td>Effective date rule</td>
+<td>Sec. 24: effective 15 days after completion of publication (published 2025-04-28); derived date ~2025-05-13, not asserted as authoritative.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Section 1 is a single sentence of enumeration: the franchise is renewed for the cities/municipalities/barangays of (a) Metro Manila, (b) Bulacan, (c) Cavite, (d) Rizal, (e) Batangas, (f) Laguna, (g) Quezon, and (h) named barangays in Pampanga. The full verbatim text is stored in the snapshot; quoted opening and the Pampanga clause:</p>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>&quot;SECTION 1. Nature and Scope. - Subject to the provisions of the Constitutions and applicable laws, rules, and regulations, the franchise granted to Manila Electric Company (MERALCO) ... to construct, operate, and maintain ... a distribution system for the conveyance of electric power to the end-users in the cities of Caloocan, Las Piñas, Makati, Malabon, Mandaluyong, Manila, Marikina, Muntinlupa, Navotas, Parañaque, Pasay, Pasig, Quezon, San Juan, Taguig, and Valenzuela and in the Municipality of Pateros in Metro Manila; ...&quot;</p></div></div>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>&quot;... barangays of Balucuc and Calantipe in Apalit, Pampanga; Barnagay Concepcion in San Simon, Pampanga; and barangays of Bahay Pare, Barangca, Dulong Ilog, Magumbali, Mandili, Mapaniqui, Paliqui, Pangclara, Pulong Gubat, Pulong Palazan, Salapungan, Vizal San Pablo, Vizal Santo Cristo, and Vizal Sto. Niño in Candaba, Pampanga, is hereby renewed.&quot;</p></div></div>
+<p>Ellipses above mark omitted middle clauses only; the snapshot is the unmodified text.</p>
+<h3 class="has-anchor" id="21-prior-franchise-ra-9209-and-the-title-vs-text-trap">2.1 Prior franchise (RA 9209) and the title-vs-text trap<a class="h-anchor" href="#21-prior-franchise-ra-9209-and-the-title-vs-text-trap" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>field</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prior law</td>
+<td><strong>RA 9209</strong> (approved 2003-06-09)</td>
+</tr>
+<tr>
+<td>URL</td>
+<td><a href="https://lawphil.net/statutes/repacts/ra2003/ra_9209_2003.html" target="_blank" rel="noopener">https://lawphil.net/statutes/repacts/ra2003/ra_9209_2003.html<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (LawPhil)</td>
+</tr>
+<tr>
+<td>Retrieved</td>
+<td>2026-11-10T19:13:21+08:00 (HTTP 200)</td>
+</tr>
+<tr>
+<td>Snapshot SHA-256</td>
+<td><code>66f17c83dd64eeef8a973014902ed741084df3f92cb62080a3eabcb48c782a3d</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Batangas nuance (verified):</strong> the RA 9209 <em>title</em> says &quot;...AND CERTAIN CITIES/MUNICIPALITIES/BARANGAYS IN BATANGAS, LAGUNA, QUEZON AND PAMPANGA&quot;, but its <strong>Section 1 enumerates no Batangas LGU at all</strong> — the enumeration proceeds Metro Manila → Bulacan → Cavite → Rizal → Laguna → Quezon → Pampanga. RA 12146 adds the Batangas territory explicitly (Batangas City, Sto. Tomas, San Pascual). Do not infer pre-2025 Batangas coverage from the old title.</p>
+<h3 class="has-anchor" id="22-ra-9209-vs-ra-12146--what-changed-derived-from-both-section-1-texts">2.2 RA 9209 vs RA 12146 — what changed (derived from both Section 1 texts)<a class="h-anchor" href="#22-ra-9209-vs-ra-12146--what-changed-derived-from-both-section-1-texts" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>RA 9209 (2003)</th>
+<th>RA 12146 (2025)</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NCR</td>
+<td>17</td>
+<td>17</td>
+<td>same set (spellings/city titles updated)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>24</td>
+<td>24</td>
+<td>same set (spellings/city titles updated)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>23</td>
+<td>20</td>
+<td>dropped Amadeo, Gen. Alvarez, Gen. E. Aguinaldo</td>
+</tr>
+<tr>
+<td>Rizal</td>
+<td>14</td>
+<td>14</td>
+<td>same set (spellings/city titles updated)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>15</td>
+<td>19</td>
+<td>added San Pablo, San Pedro, Rizal, Sta. Cruz</td>
+</tr>
+<tr>
+<td>Quezon</td>
+<td>6</td>
+<td>11</td>
+<td>added Lucena, Lucban, Mauban, Pagbilao, Sampaloc</td>
+</tr>
+<tr>
+<td>Pampanga (barangays)</td>
+<td>16 brgys (Balucuc, Concepcion listed under San Simon + Candaba 14)</td>
+<td><strong>17 brgys</strong> (Apalit 2, San Simon 1, Candaba 14)</td>
+<td>+Calantipe; corrected Apalit/Simon attribution</td>
+</tr>
+<tr>
+<td>Batangas</td>
+<td>0 enumerated</td>
+<td><strong>3 LGUs</strong></td>
+<td>added Batangas City, Sto. Tomas, San Pascual</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cavite is the one place coverage shrank:</strong> RA 9209 enumerated all 23 Cavite LGUs (including Amadeo, Gen. Emilio Aguinaldo, Gen. Mariano Alvarez); RA 12146 enumerates 20 and omits those three. The law text gives no reason; no other Cavite-based utility appears in the 141-utility DOE workbook (its seven Region IV-A utilities are FBPC, IEEC, BATELEC-I, BATELEC-II, FLECO, QUEZELCO-I, QUEZELCO-II). This is flagged as U1 for DOE/partner verification — the JSON encodes exactly what the law enumerates.</p>
+<hr />
+<h2 class="has-anchor" id="3-coverage-summary-verified-mapping-vs-psgc-2026-3q-lgu-counts">3. Coverage summary (verified mapping vs PSGC 2026-3Q LGU counts)<a class="h-anchor" href="#3-coverage-summary-verified-mapping-vs-psgc-2026-3q-lgu-counts" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>LGU totals are the <code>adm3</code> feature counts in the pinned map package (<code>faeldon/philippines-json-maps</code> v1.1.1, PSGC 2026-3Q) for the same administrative layer that the map uses.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Province / group</th>
+<th>Coverage status</th>
+<th>LGUs covered / total</th>
+<th>adm3_psgc count</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NCR (1300000000)</td>
+<td>Metro Manila (4 map districts)</td>
+<td><strong>full</strong></td>
+<td>17 / 17</td>
+<td>17</td>
+<td>16 cities + Pateros</td>
+</tr>
+<tr>
+<td>Region III (0300000000)</td>
+<td>Bulacan</td>
+<td><strong>full</strong></td>
+<td>24 / 24</td>
+<td>24</td>
+<td>4 cities + 20 municipalities</td>
+</tr>
+<tr>
+<td>Region III (0300000000)</td>
+<td>Pampanga</td>
+<td><strong>barangay-only</strong></td>
+<td>0 / 22</td>
+<td>0 LGUs (17 brgys in 3 LGUs)</td>
+<td>No whole LGU; Apalit, San Simon, Candaba only</td>
+</tr>
+<tr>
+<td>Region IV-A (0400000000)</td>
+<td>Rizal</td>
+<td><strong>full</strong></td>
+<td>14 / 14</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>Region IV-A (0400000000)</td>
+<td>Cavite</td>
+<td>partial</td>
+<td>20 / 23</td>
+<td>20</td>
+<td>3 LGUs not enumerated (U1)</td>
+</tr>
+<tr>
+<td>Region IV-A (0400000000)</td>
+<td>Laguna</td>
+<td>partial</td>
+<td>19 / 30</td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>Region IV-A (0400000000)</td>
+<td>Quezon</td>
+<td>partial</td>
+<td>11 / 41</td>
+<td>11</td>
+<td>incl. Lucena HUC and Tayabas</td>
+</tr>
+<tr>
+<td>Region IV-A (0400000000)</td>
+<td>Batangas</td>
+<td>partial</td>
+<td>3 / 34</td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Totals:</strong> 108 distinct LGUs covered (108 fully enumerated LGUs; Pampanga barangays add 17 <code>adm4_psgc</code> but no whole LGU). Region totals in the same layer: NCR 17, Region III 130, Region IV-A 142 → Meralco touches 3 of 18 regions and ~37% of the LGUs in those three regions, but no region outside NCR is fully covered.</p>
+<hr />
+<h2 class="has-anchor" id="4-enumeration--psgc-mapping-every-name-mapped-no-guesses">4. Enumeration → PSGC mapping (every name mapped; no guesses)<a class="h-anchor" href="#4-enumeration--psgc-mapping-every-name-mapped-no-guesses" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><code>match</code> values: <code>exact</code> = same string in the law and the PSGC layer; <code>normalized/alias</code> = case/abbreviation/alias/rename normalization only (no inference); each alias is listed in §6.</p>
+<h3 class="has-anchor" id="41-ncr--1717-region_psgc-1300000000">4.1 NCR — 17/17 (region_psgc 1300000000)<a class="h-anchor" href="#41-ncr--1717-region_psgc-1300000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>NCR has no province level in the map package: the 17 LGUs sit in 4 district features (<code>adm2</code> codes 1303900000, 1307400000, 1307500000, 1307600000). District composition below is verified from those features.</p>
+<ul>
+<li><strong>District <code>1303900000</code></strong> (1 LGUs): City of Manila (<code>1380600000</code>)</li>
+<li><strong>District <code>1307400000</code></strong> (5 LGUs): City of Mandaluyong (<code>1380500000</code>), City of Marikina (<code>1380700000</code>), City of Pasig (<code>1381200000</code>), Quezon City (<code>1381300000</code>), City of San Juan (<code>1381400000</code>)</li>
+<li><strong>District <code>1307500000</code></strong> (4 LGUs): City of Caloocan (<code>1380100000</code>), City of Malabon (<code>1380400000</code>), City of Navotas (<code>1380900000</code>), City of Valenzuela (<code>1381600000</code>)</li>
+<li><strong>District <code>1307600000</code></strong> (7 LGUs): City of Las Piñas (<code>1380200000</code>), City of Makati (<code>1380300000</code>), City of Muntinlupa (<code>1380800000</code>), City of Parañaque (<code>1381000000</code>), Pasay City (<code>1381100000</code>), City of Taguig (<code>1381500000</code>), Pateros (<code>1381701000</code>)</li>
+</ul>
+<p>Full table:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manila</td>
+<td>City of Manila</td>
+<td><code>1380600000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Mandaluyong</td>
+<td>City of Mandaluyong</td>
+<td><code>1380500000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Marikina</td>
+<td>City of Marikina</td>
+<td><code>1380700000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Pasig</td>
+<td>City of Pasig</td>
+<td><code>1381200000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Quezon</td>
+<td>Quezon City</td>
+<td><code>1381300000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Juan</td>
+<td>City of San Juan</td>
+<td><code>1381400000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Caloocan</td>
+<td>City of Caloocan</td>
+<td><code>1380100000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Malabon</td>
+<td>City of Malabon</td>
+<td><code>1380400000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Navotas</td>
+<td>City of Navotas</td>
+<td><code>1380900000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Valenzuela</td>
+<td>City of Valenzuela</td>
+<td><code>1381600000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Las Piñas</td>
+<td>City of Las Piñas</td>
+<td><code>1380200000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Makati</td>
+<td>City of Makati</td>
+<td><code>1380300000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Muntinlupa</td>
+<td>City of Muntinlupa</td>
+<td><code>1380800000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Parañaque</td>
+<td>City of Parañaque</td>
+<td><code>1381000000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Pasay</td>
+<td>Pasay City</td>
+<td><code>1381100000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Taguig</td>
+<td>City of Taguig</td>
+<td><code>1381500000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Pateros</td>
+<td>Pateros</td>
+<td><code>1381701000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="42-bulacan--2424-full-province-layer-code-301400000-canonical-psgc-0301400000-region-0300000000">4.2 Bulacan — 24/24 (full; province layer code <code>301400000</code>, canonical PSGC <code>0301400000</code>, region <code>0300000000</code>)<a class="h-anchor" href="#42-bulacan--2424-full-province-layer-code-301400000-canonical-psgc-0301400000-region-0300000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baliwag</td>
+<td>City of Baliwag</td>
+<td><code>301403000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Malolos</td>
+<td>City of Malolos</td>
+<td><code>301410000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Meycauayan</td>
+<td>City of Meycauayan</td>
+<td><code>301412000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Jose del Monte</td>
+<td>City of San Jose Del Monte</td>
+<td><code>301420000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Angat</td>
+<td>Angat</td>
+<td><code>301401000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Balagtas</td>
+<td>Balagtas</td>
+<td><code>301402000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Bocaue</td>
+<td>Bocaue</td>
+<td><code>301404000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Bulakan</td>
+<td>Bulacan</td>
+<td><code>301405000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Bustos</td>
+<td>Bustos</td>
+<td><code>301406000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Calumpit</td>
+<td>Calumpit</td>
+<td><code>301407000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Doña Remedios Trinidad</td>
+<td>Doña Remedios Trinidad</td>
+<td><code>301424000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Guiguinto</td>
+<td>Guiguinto</td>
+<td><code>301408000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Hagonoy</td>
+<td>Hagonoy</td>
+<td><code>301409000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Marilao</td>
+<td>Marilao</td>
+<td><code>301411000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Norzagarayn</td>
+<td>Norzagaray</td>
+<td><code>301413000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Obando</td>
+<td>Obando</td>
+<td><code>301414000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Pandi</td>
+<td>Pandi</td>
+<td><code>301415000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Paombong</td>
+<td>Paombong</td>
+<td><code>301416000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Plaridel</td>
+<td>Plaridel</td>
+<td><code>301417000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Pulilan</td>
+<td>Pulilan</td>
+<td><code>301418000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>San Ildefonso</td>
+<td>San Ildefonso</td>
+<td><code>301419000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>San Miguel</td>
+<td>San Miguel</td>
+<td><code>301421000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>San Rafael</td>
+<td>San Rafael</td>
+<td><code>301422000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Sta. Maria</td>
+<td>Santa Maria</td>
+<td><code>301423000</code></td>
+<td>normalized/alias</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="43-cavite--2023-partial-province-layer-code-402100000-canonical-psgc-0402100000-region-0400000000">4.3 Cavite — 20/23 (partial; province layer code <code>402100000</code>, canonical PSGC <code>0402100000</code>, region <code>0400000000</code>)<a class="h-anchor" href="#43-cavite--2023-partial-province-layer-code-402100000-canonical-psgc-0402100000-region-0400000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bacoor</td>
+<td>City of Bacoor</td>
+<td><code>402103000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Carmona</td>
+<td>City of Carmona</td>
+<td><code>402104000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>City of Cavite</td>
+<td><code>402105000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Dasmariñas</td>
+<td>City of Dasmariñas</td>
+<td><code>402106000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>General Trias</td>
+<td>City of General Trias</td>
+<td><code>402108000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Imus</td>
+<td>City of Imus</td>
+<td><code>402109000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Tagaytay</td>
+<td>City of Tagaytay</td>
+<td><code>402119000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Trece Martires</td>
+<td>City of Trece Martires</td>
+<td><code>402122000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Alfonso</td>
+<td>Alfonso</td>
+<td><code>402101000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Indang</td>
+<td>Indang</td>
+<td><code>402110000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Kawit</td>
+<td>Kawit</td>
+<td><code>402111000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Magallanes</td>
+<td>Magallanes</td>
+<td><code>402112000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Maragondon</td>
+<td>Maragondon</td>
+<td><code>402113000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Mendez</td>
+<td>Mendez</td>
+<td><code>402114000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Naic</td>
+<td>Naic</td>
+<td><code>402115000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Noveleta</td>
+<td>Noveleta</td>
+<td><code>402116000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Rosario</td>
+<td>Rosario</td>
+<td><code>402117000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Silang</td>
+<td>Silang</td>
+<td><code>402118000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Tanza</td>
+<td>Tanza</td>
+<td><code>402120000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Ternate</td>
+<td>Ternate</td>
+<td><code>402121000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="44-rizal--1414-full-province-layer-code-405800000-canonical-psgc-0405800000-region-0400000000">4.4 Rizal — 14/14 (full; province layer code <code>405800000</code>, canonical PSGC <code>0405800000</code>, region <code>0400000000</code>)<a class="h-anchor" href="#44-rizal--1414-full-province-layer-code-405800000-canonical-psgc-0405800000-region-0400000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antipolo</td>
+<td>City of Antipolo</td>
+<td><code>405802000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Angono</td>
+<td>Angono</td>
+<td><code>405801000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Baras</td>
+<td>Baras</td>
+<td><code>405803000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Binangonan</td>
+<td>Binangonan</td>
+<td><code>405804000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Cainta</td>
+<td>Cainta</td>
+<td><code>405805000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Cardona</td>
+<td>Cardona</td>
+<td><code>405806000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Jala-Jala</td>
+<td>Jala-Jala</td>
+<td><code>405807000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Montalban</td>
+<td>Rodriguez</td>
+<td><code>405808000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Morong</td>
+<td>Morong</td>
+<td><code>405809000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Pililia</td>
+<td>Pililla</td>
+<td><code>405810000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Mateo</td>
+<td>San Mateo</td>
+<td><code>405811000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Tanay</td>
+<td>Tanay</td>
+<td><code>405812000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Taytay</td>
+<td>Taytay</td>
+<td><code>405813000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Teresa</td>
+<td>Teresa</td>
+<td><code>405814000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="45-batangas--334-partial-province-layer-code-401000000-canonical-psgc-0401000000-region-0400000000">4.5 Batangas — 3/34 (partial; province layer code <code>401000000</code>, canonical PSGC <code>0401000000</code>, region <code>0400000000</code>)<a class="h-anchor" href="#45-batangas--334-partial-province-layer-code-401000000-canonical-psgc-0401000000-region-0400000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batangas</td>
+<td>Batangas City</td>
+<td><code>401005000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Sto. Tomas</td>
+<td>City of Sto. Tomas</td>
+<td><code>401028000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Pascual</td>
+<td>San Pascual</td>
+<td><code>401026000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="46-laguna--1930-partial-province-layer-code-403400000-canonical-psgc-0403400000-region-0400000000">4.6 Laguna — 19/30 (partial; province layer code <code>403400000</code>, canonical PSGC <code>0403400000</code>, region <code>0400000000</code>)<a class="h-anchor" href="#46-laguna--1930-partial-province-layer-code-403400000-canonical-psgc-0403400000-region-0400000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Biñan</td>
+<td>City of Biñan</td>
+<td><code>403403000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Cabuyao</td>
+<td>City of Cabuyao</td>
+<td><code>403404000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Calamba</td>
+<td>City of Calamba</td>
+<td><code>403405000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Pablo</td>
+<td>City of San Pablo</td>
+<td><code>403424000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>San Pedro</td>
+<td>City of San Pedro</td>
+<td><code>403425000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Sta. Rosa</td>
+<td>City of Santa Rosa</td>
+<td><code>403428000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Alaminos</td>
+<td>Alaminos</td>
+<td><code>403401000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Bay</td>
+<td>Bay</td>
+<td><code>403402000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Calauan</td>
+<td>Calauan</td>
+<td><code>403406000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Liliw</td>
+<td>Liliw</td>
+<td><code>403410000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Los Baños</td>
+<td>Los Baños</td>
+<td><code>403411000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Luisiana</td>
+<td>Luisiana</td>
+<td><code>403412000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Magdalena</td>
+<td>Magdalena</td>
+<td><code>403415000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Majayjay</td>
+<td>Majayjay</td>
+<td><code>403416000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Nagcarlan</td>
+<td>Nagcarlan</td>
+<td><code>403417000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Pila</td>
+<td>Pila</td>
+<td><code>403422000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Rizal</td>
+<td>Rizal</td>
+<td><code>403423000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Sta. Cruz</td>
+<td>Santa Cruz</td>
+<td><code>403426000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Victoria</td>
+<td>Victoria</td>
+<td><code>403430000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="47-quezon--1141-partial-province-layer-code-405600000-canonical-psgc-0405600000-region-0400000000">4.7 Quezon — 11/41 (partial; province layer code <code>405600000</code>, canonical PSGC <code>0405600000</code>, region <code>0400000000</code>)<a class="h-anchor" href="#47-quezon--1141-partial-province-layer-code-405600000-canonical-psgc-0405600000-region-0400000000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Law name (RA 12146)</th>
+<th>adm3_en (PSGC 2026-3Q)</th>
+<th>adm3_psgc</th>
+<th>match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lucena</td>
+<td>City of Lucena</td>
+<td><code>431200000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Tayabas</td>
+<td>City of Tayabas</td>
+<td><code>405647000</code></td>
+<td>normalized/alias</td>
+</tr>
+<tr>
+<td>Candelaria</td>
+<td>Candelaria</td>
+<td><code>405608000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Dolores</td>
+<td>Dolores</td>
+<td><code>405615000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Lucban</td>
+<td>Lucban</td>
+<td><code>405623000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Mauban</td>
+<td>Mauban</td>
+<td><code>405627000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Pagbilao</td>
+<td>Pagbilao</td>
+<td><code>405630000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Sampaloc</td>
+<td>Sampaloc</td>
+<td><code>405639000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>San Antonio</td>
+<td>San Antonio</td>
+<td><code>405641000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Sariaya</td>
+<td>Sariaya</td>
+<td><code>405645000</code></td>
+<td>exact</td>
+</tr>
+<tr>
+<td>Tiaong</td>
+<td>Tiaong</td>
+<td><code>405648000</code></td>
+<td>exact</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="48-pampanga--barangay-level-only-province-layer-code-305400000-canonical-psgc-0305400000">4.8 Pampanga — barangay-level only (province layer code <code>305400000</code>, canonical PSGC <code>0305400000</code>)<a class="h-anchor" href="#48-pampanga--barangay-level-only-province-layer-code-305400000-canonical-psgc-0305400000" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>RA 12146 Section 1 names only Pampanga <strong>barangays</strong>, not LGUs. 17 barangays in 3 municipalities are covered; no whole Pampanga LGU is covered. Barangay identities verified against the <code>bgysubmuns-municity-*</code> adm4 layer of the same map package.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Municipality</th>
+<th>adm3_psgc</th>
+<th>Law barangays</th>
+<th>Verified barangays (adm4_en / adm4_psgc)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apalit</td>
+<td><code>305402000</code></td>
+<td>Balucuc, Calantipe</td>
+<td>Balucuc (<code>305402001</code>), Calantipe (<code>305402003</code>)</td>
+</tr>
+<tr>
+<td>San Simon</td>
+<td><code>305418000</code></td>
+<td>Concepcion</td>
+<td>Concepcion (<code>305418001</code>)</td>
+</tr>
+<tr>
+<td>Candaba</td>
+<td><code>305405000</code></td>
+<td>Bahay Pare, Barangca, Dulong Ilog, Magumbali, Mandili, Mapaniqui, Paliqui, Pangclara, Pulong Gubat, Pulong Palazan, Salapungan, Vizal San Pablo, Vizal Santo Cristo, Vizal Sto. Niño</td>
+<td>Bahay Pare (<code>305405001</code>), Barangca (<code>305405003</code>), Dulong Ilog (<code>305405010</code>), Magumbali (<code>305405014</code>), Mandili (<code>305405016</code>), Mapaniqui (<code>305405018</code>), Paligui (<code>305405020</code>) ← law: Paliqui, Pangclara (<code>305405021</code>), Pulong Gubat (<code>305405026</code>), Pulong Palazan (<code>305405027</code>), Salapungan (<code>305405028</code>), Vizal San Pablo (<code>305405035</code>), Vizal Santo Cristo (<code>305405036</code>), Vizal Santo Niño (<code>305405037</code>) ← law: Vizal Sto. Niño</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aliases applied here: <code>Paliqui</code> → <code>Paligui</code> (<code>305405020</code>, Candaba — the same barangay name also exists in Apalit but the law groups it under Candaba), <code>Vizal Sto. Niño</code> → <code>Vizal Santo Niño</code> (<code>305405037</code>). Note RA 12146 typo &quot;Barnagay&quot; in the San Simon clause (preserved in the snapshot).</p>
+<hr />
+<h2 class="has-anchor" id="5-name-matching--alias-log-all-normalized-pairs">5. Name-matching / alias log (all normalized pairs)<a class="h-anchor" href="#5-name-matching--alias-log-all-normalized-pairs" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The parser first normalizes case, accents (NFKD), punctuation, hyphens, <code>Sta.</code>→<code>Santa</code>, <code>Sto.</code>→<code>Santo</code>, <code>Gen.</code>→<code>General</code>, and strips <code>City of</code>/<code>City</code>. Anything still different was resolved with an explicit alias (never fuzzy matching). The 45 <code>normalized/alias</code> pairs are:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Province</th>
+<th>Law name</th>
+<th>PSGC name</th>
+<th>adm3_psgc</th>
+<th>reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bulacan</td>
+<td>Baliwag</td>
+<td>City of Baliwag</td>
+<td><code>301403000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>Malolos</td>
+<td>City of Malolos</td>
+<td><code>301410000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>Meycauayan</td>
+<td>City of Meycauayan</td>
+<td><code>301412000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>San Jose del Monte</td>
+<td>City of San Jose Del Monte</td>
+<td><code>301420000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>Bulakan</td>
+<td>Bulacan</td>
+<td><code>301405000</code></td>
+<td>law spelling &quot;Bulakan&quot;; PSGC layer uses &quot;Bulacan&quot; (municipality, 301405000); name collides with the province</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>Norzagarayn</td>
+<td>Norzagaray</td>
+<td><code>301413000</code></td>
+<td>law typo (RA 12146 prints &quot;Norzagarayn&quot;)</td>
+</tr>
+<tr>
+<td>Bulacan</td>
+<td>Sta. Maria</td>
+<td>Santa Maria</td>
+<td><code>301423000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Batangas</td>
+<td>Batangas</td>
+<td>Batangas City</td>
+<td><code>401005000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Batangas</td>
+<td>Sto. Tomas</td>
+<td>City of Sto. Tomas</td>
+<td><code>401028000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Bacoor</td>
+<td>City of Bacoor</td>
+<td><code>402103000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Carmona</td>
+<td>City of Carmona</td>
+<td><code>402104000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Cavite</td>
+<td>City of Cavite</td>
+<td><code>402105000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Dasmariñas</td>
+<td>City of Dasmariñas</td>
+<td><code>402106000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>General Trias</td>
+<td>City of General Trias</td>
+<td><code>402108000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Imus</td>
+<td>City of Imus</td>
+<td><code>402109000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Tagaytay</td>
+<td>City of Tagaytay</td>
+<td><code>402119000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Cavite</td>
+<td>Trece Martires</td>
+<td>City of Trece Martires</td>
+<td><code>402122000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>Biñan</td>
+<td>City of Biñan</td>
+<td><code>403403000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>Cabuyao</td>
+<td>City of Cabuyao</td>
+<td><code>403404000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>Calamba</td>
+<td>City of Calamba</td>
+<td><code>403405000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>San Pablo</td>
+<td>City of San Pablo</td>
+<td><code>403424000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>San Pedro</td>
+<td>City of San Pedro</td>
+<td><code>403425000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>Sta. Rosa</td>
+<td>City of Santa Rosa</td>
+<td><code>403428000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>Sta. Cruz</td>
+<td>Santa Cruz</td>
+<td><code>403426000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Quezon</td>
+<td>Lucena</td>
+<td>City of Lucena</td>
+<td><code>431200000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Quezon</td>
+<td>Tayabas</td>
+<td>City of Tayabas</td>
+<td><code>405647000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Rizal</td>
+<td>Antipolo</td>
+<td>City of Antipolo</td>
+<td><code>405802000</code></td>
+<td>abbreviation/case/city-title normalization (Sta./Sto., City of, etc.)</td>
+</tr>
+<tr>
+<td>Rizal</td>
+<td>Montalban</td>
+<td>Rodriguez</td>
+<td><code>405808000</code></td>
+<td>LGU renamed Rodriguez (2009); PSGC 2026-3Q uses Rodriguez</td>
+</tr>
+<tr>
+<td>Rizal</td>
+<td>Pililia</td>
+<td>Pililla</td>
+<td><code>405810000</code></td>
+<td>law typo; official name Pililla</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Manila</td>
+<td>City of Manila</td>
+<td><code>1380600000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Mandaluyong</td>
+<td>City of Mandaluyong</td>
+<td><code>1380500000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Marikina</td>
+<td>City of Marikina</td>
+<td><code>1380700000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Pasig</td>
+<td>City of Pasig</td>
+<td><code>1381200000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Quezon</td>
+<td>Quezon City</td>
+<td><code>1381300000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>San Juan</td>
+<td>City of San Juan</td>
+<td><code>1381400000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Caloocan</td>
+<td>City of Caloocan</td>
+<td><code>1380100000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Malabon</td>
+<td>City of Malabon</td>
+<td><code>1380400000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Navotas</td>
+<td>City of Navotas</td>
+<td><code>1380900000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Valenzuela</td>
+<td>City of Valenzuela</td>
+<td><code>1381600000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Las Piñas</td>
+<td>City of Las Piñas</td>
+<td><code>1380200000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Makati</td>
+<td>City of Makati</td>
+<td><code>1380300000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Muntinlupa</td>
+<td>City of Muntinlupa</td>
+<td><code>1380800000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Parañaque</td>
+<td>City of Parañaque</td>
+<td><code>1381000000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Pasay</td>
+<td>Pasay City</td>
+<td><code>1381100000</code></td>
+<td>city-title normalization</td>
+</tr>
+<tr>
+<td>NCR</td>
+<td>Taguig</td>
+<td>City of Taguig</td>
+<td><code>1381500000</code></td>
+<td>city-title normalization</td>
+</tr>
+</tbody>
+</table></div>
+<p>Unmatched names: <strong>none</strong> (0). Ambiguous matches: <strong>none</strong>. Every RA 12146 Section 1 name has exactly one PSGC adm3 (or adm4, for Pampanga) counterpart.</p>
+<hr />
+<h2 class="has-anchor" id="6-multi-region-verification-against-the-141-utility-seed-dataset">6. Multi-region verification against the 141-utility seed dataset<a class="h-anchor" href="#6-multi-region-verification-against-the-141-utility-seed-dataset" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Checked <code>data/seed/utilities.csv</code> (the ingested DOE workbook; 141 rows):</p>
+<ul>
+<li>Rows: <strong>141</strong>; distinct <code>utility_code</code>: 141 (no duplicates).</li>
+<li>Each row carries exactly <strong>one</strong> <code>region_psgc</code>; there is no row with multiple regions, no duplicate utility spanning regions, and no utility duplicated across regions.</li>
+<li>18 regions are represented. <strong>MERALCO is the only utility in NCR</strong>, at <code>region_psgc=1300000000</code>, <code>region_short=NCR</code>, <code>du_type=PIOU</code>, <code>grid_connection=ONGRID</code> — confirming the DOE workbook's single-region assignment.</li>
+<li><strong>Conclusion:</strong> no other utility in the seed dataset spans more than one DOE region. <strong>Meralco is the only multi-region DU franchise identified</strong> (NCR + Region III + Region IV-A). No other multi-region DU franchise was verified in this research; boundary-crossing cooperative cases (e.g. the BARMM Special Geographic Area barangays formerly part of Cotabato, or the recreated Negros Island Region) were <strong>not</strong> verified and are deliberately not encoded (U8).</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="7-pinned-input-provenance">7. Pinned input provenance<a class="h-anchor" href="#7-pinned-input-provenance" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>Map/PSGC layer: <strong>faeldon/philippines-json-maps v1.1.1</strong> (released 2026-11-07, PSGC 2026-3Q), archive <code>e7a00ff5a65c525557ff716658b579dab5c20322bd6b710495bf74e6cf2377d3</code> retrieved 2026-11-10T10:02:57Z; <code>topojson/provdists/hires/municities-provdist-&lt;adm2code&gt;.topo.0.1.json (adm3 features); topojson/municities/hires/bgysubmuns-municity-&lt;adm3code&gt;.topo.0.1.json (adm4 features, Pampanga)</code>; join keys <code>adm3_psgc</code>, <code>adm4_psgc</code>. Licence: MIT (repository scripts/maps); boundaries CC BY 3.0 IGO (CC BY-IGO), © NAMRIA and PSA via OCHA Philippines COD-AB.</li>
+<li>Law texts: Supreme Court E-Library (RA 12146) and LawPhil (RA 9209); snapshots + SHA-256 + retrieval timestamps in <code>research/source-snapshots/</code>.</li>
+<li>Utility/region cross-check: <code>data/seed/utilities.csv</code> (DOE workbook ingest, retrieved 2026-11-10; see <code>data/seed/README.md</code> and <code>data/seed/sources.csv</code>).</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="8-caveats-and-uncertainties-do-not-publish-past-these">8. Caveats and uncertainties (do not publish past these)<a class="h-anchor" href="#8-caveats-and-uncertainties-do-not-publish-past-these" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>U1 — Cavite coverage shrank between laws.</strong> RA 9209 Section 1 enumerated all 23 Cavite LGUs; RA 12146 enumerates 20 and omits Amadeo, General Emilio Aguinaldo and Gen. Mariano Alvarez. The reason is not stated in the law text and was not verified. No other Cavite-based utility appears in the 141-utility DOE workbook (its seven Region IV-A utilities are FBPC, IEEC, BATELEC-I, BATELEC-II, FLECO, QUEZELCO-I, QUEZELCO-II). Flag for DOE/coalition verification before publishing any map claim about who serves those three LGUs.</p>
+<p><strong>U2 — RA 9209 title vs Section 1 on Batangas.</strong> The RA 9209 title says &quot;...AND CERTAIN CITIES/MUNICIPALITIES/BARANGAYS IN BATANGAS, LAGUNA, QUEZON AND PAMPANGA&quot; but Section 1 enumerates zero Batangas LGUs. RA 12146 adds Batangas City, Sto. Tomas City and San Pascual. Historical Batangas coverage therefore cannot be inferred from the older title.</p>
+<p><strong>U3 — Pampanga attribution in RA 9209.</strong> RA 9209 wording &quot;barangays of Balucuc and Concepcion in San Simon&quot; mis-attributes Balucuc (which is in Apalit) and omits Calantipe. RA 12146 corrects: Apalit = Balucuc + Calantipe; San Simon = Concepcion; Candaba = 14 barangays. Barangay-level coverage only; no whole Pampanga LGU is in the franchise.</p>
+<p><strong>U4 — Franchise vs actual billing territory.</strong> This dataset encodes the legislative franchise area from RA 12146 Section 1, not verified household-level service territory. Distribution service can differ (unenergized areas, ERC-approved arrangements, contested areas). Use as a coverage/filter layer, not as proof of who bills an address.</p>
+<p><strong>U5 — PSGC code width and NCR districts.</strong> adm3_psgc/adm4_psgc values are copied verbatim from the map package layer. That layer stores PSGC codes as integers, so the leading zero of regions 01-09 is dropped: LGUs outside NCR are 9-digit strings (e.g. 301401000 for Angat; canonical 10-digit PSGC 0301401000), NCR LGUs are 10-digit (e.g. 1380600000), and province-layer adm2 codes are 9-digit (301400000) vs canonical 10-digit (0301400000). Both forms are provided: adm3_psgc/adm4_psgc are the exact map-layer strings (join to the same topojson layer with these), and adm3_psgc_canonical/adm4_psgc_canonical are the zero-padded 10-digit form (cross-dataset joins). Province entries also carry province_psgc_topojson (map layer) and province_psgc (canonical). NCR has no province-level code: the package splits NCR into 4 districts (1303900000/1307400000/1307500000/1307600000), and all 17 NCR LGUs are mapped under ncr.districts[].lgus.</p>
+<p><strong>U6 — Renamed LGU: Montalban -&gt; Rodriguez.</strong> RA 12146 uses &quot;Montalban&quot;; PSGC 2026-3Q and the map package use &quot;Rodriguez&quot; (renamed by law in 2009). Mapped to adm3_psgc 405808000.</p>
+<p><strong>U7 — Name mismatches forced by law typos.</strong> Norzagarayn-&gt;Norzagaray (301413000); Pililia-&gt;Pililla (405810000); Bulakan-&gt;Bulacan municipality (301405000; name collision with the province); Paliqui-&gt;Paligui (Candaba, 305405020); Vizal Sto. Niño-&gt;Vizal Santo Niño (305405037); Sta./Sto. expanded to Santa/Santo; Mendez Nuñez (RA 9209) -&gt; Mendez (RA 12146 and PSGC).</p>
+<p><strong>U8 — Multi-region DUs other than Meralco.</strong> None found in the 141-row DOE seed dataset and none verified in this research. Meralco is the only known multi-region DU franchise (NCR + Region III + Region IV-A). Possible boundary oddities among electric cooperatives (BARMM Special Geographic Area / Cotabato; recreated NIR) were not verified and are not encoded.</p>
+<p><strong>U9 — Source spelling of Quezon enumeration.</strong> RA 12146 enumerates &quot;cities of Lucena and Tayabas&quot; (Lucena is an independent/Highly Urbanized City, PSGC 431200000, appearing in the Quezon province map layer) plus 9 municipalities; Quezon province has 41 LGUs in the 2026-3Q PSGC layer (39 municipalities + 1 component city + 1 HUC).</p>
+<hr />
+<h2 class="has-anchor" id="9-recommended-use-on-the-map--api">9. Recommended use on the map / API<a class="h-anchor" href="#9-recommended-use-on-the-map--api" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>Canonical filter fields:</strong> <code>covered_regions_psgc</code> (3 regions), <code>covered_adm3_psgc</code> (108 LGU codes), plus <code>pampanga_barangays[].municipalities[].barangays[].adm4_psgc</code> (17 codes). Treat <code>service-areas.json</code> as the source of truth; do not re-parse the law in the frontend.</li>
+<li><strong>Multi-region override:</strong> MERALCO's provider record should carry <code>regions = [1300000000, 0300000000, 0400000000]</code> and <code>multi_region = true</code>, while its DOE rate row keeps <code>region_psgc = 1300000000</code> (do not rewrite the source row; expose an explicit <code>service_area_regions</code> overlay, otherwise region aggregates/medians double-count or misattribute Meralco).</li>
+<li><strong>Region-level rendering:</strong> NCR = full; Region III = partial (Bulacan full + Pampanga barangays); Region IV-A = partial (all five provinces touched, only Rizal complete). Use a <code>partial</code> hatch/badge rather than a full fill.</li>
+<li><strong>LGU-level rendering:</strong> if an LGU layer is added, join on <code>adm3_psgc</code>; the 108 codes are exact and all exist in the PSGC 2026-3Q province-level topology. <strong>Code width matters:</strong> map-layer codes for regions 01-09 are 9-digit strings (e.g. <code>301401000</code>); <code>adm3_psgc_canonical</code> in the JSON is the zero-padded 10-digit PSGC (<code>0301401000</code>). Join to the same topojson layer with the map-layer string. For Pampanga, LGU polygons are only partially in-franchise — use the 17 <code>adm4_psgc</code> for barangay-level shading, or label &quot;partial&quot; at LGU level.</li>
+<li><strong>Pampanga has zero whole-LGU coverage:</strong> never mark the three Pampanga LGUs as fully served.</li>
+<li><strong>Convenience join:</strong> <code>adm2_units</code> in the JSON lists the 11 map adm2 units (4 NCR district codes + 7 province codes) with <code>coverage</code>, <code>lgu_count_covered</code> and <code>lgu_count_total</code>, so a region/adm2-level filter can consume one array without re-deriving it.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="10-verification-log-all-done-2026-11-10">10. Verification log (all done 2026-11-10)<a class="h-anchor" href="#10-verification-log-all-done-2026-11-10" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>URL</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RA 12146, Section 1</td>
+<td><a href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850" target="_blank" rel="noopener">https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>HTTP 200, Section 1 extracted verbatim (2278 chars), SHA-256 <code>515341ac88f6fe94…</code></td>
+</tr>
+<tr>
+<td>RA 9209, Section 1</td>
+<td><a href="https://lawphil.net/statutes/repacts/ra2003/ra_9209_2003.html" target="_blank" rel="noopener">https://lawphil.net/statutes/repacts/ra2003/ra_9209_2003.html<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>HTTP 200, Section 1 extracted verbatim, SHA-256 <code>66f17c83dd64eeef…</code></td>
+</tr>
+<tr>
+<td>Map/PSGC layer</td>
+<td><a href="https://github.com/faeldon/philippines-json-maps/releases/tag/v1.1.1" target="_blank" rel="noopener">https://github.com/faeldon/philippines-json-maps/releases/tag/v1.1.1<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>release verified via repo provenance + cached archive SHA-256 (the map asset already pinned in <code>draft/assets/geo-sources.json</code>)</td>
+</tr>
+<tr>
+<td>LGU identity check</td>
+<td>adm3/adm4 features in the archive</td>
+<td>all 108 adm3 codes and 17 adm4 codes exist in the package; 0 unmatched, 0 ambiguous</td>
+</tr>
+<tr>
+<td>Multi-region check</td>
+<td><code>data/seed/utilities.csv</code></td>
+<td>141 rows, one region each, no duplicates; only MERALCO in NCR</td>
+</tr>
+<tr>
+<td>Cross-check of law text</td>
+<td>DOE hosts a copy of RA 12146</td>
+<td><a href="https://doe.gov.ph/republic-act-12146" target="_blank" rel="noopener">https://doe.gov.ph/republic-act-12146<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> returns 200 and links the RA 12146 PDF; used only as existence cross-check (e-Library text is the source used)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="11-files">11. Files<a class="h-anchor" href="#11-files" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>research/service-areas.json</code></td>
+<td>Canonical structured coverage (machine-readable; schema below)</td>
+</tr>
+<tr>
+<td><code>research/service-areas.md</code></td>
+<td>This research note (narrative + audit tables)</td>
+</tr>
+<tr>
+<td><code>research/source-snapshots/ra-12146-section1.txt</code></td>
+<td>Verbatim RA 12146 Section 1</td>
+</tr>
+<tr>
+<td><code>research/source-snapshots/ra-9209-section1.txt</code></td>
+<td>Verbatim RA 9209 Section 1</td>
+</tr>
+<tr>
+<td><code>research/source-snapshots/*.provenance.json</code></td>
+<td>URL, retrieval time, HTTP status, bytes, SHA-256, extraction notes</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>service-areas.json</code> top-level shape: <code>utility_code</code>, <code>utility_name</code>, <code>multi_region</code>, <code>schema_version</code>, <code>law</code>, <code>prior_law</code>, <code>entity_kind</code>, <code>coverage_semantics</code>, <code>regions[]</code>, <code>adm2_units[]</code> (the 11 map adm2 units: 4 NCR districts + 7 provinces — easiest join for a provider filter), <code>ncr</code> (districts → LGUs), <code>provinces[]</code> (each with <code>lgus[]</code>; each LGU carries <code>adm3_psgc</code> + <code>adm3_psgc_canonical</code>), <code>pampanga_barangays</code> (each barangay carries <code>adm4_psgc</code> + <code>adm4_psgc_canonical</code>), <code>covered_adm3_psgc[]</code>, <code>covered_adm3_count</code>, <code>covered_regions_psgc[]</code>, <code>counts</code>, <code>cross_checks</code>, <code>uncertainties[]</code>, <code>topology_source</code>.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="research-data-landscape.html"><span class="label">Previous</span><span class="pager-title">&larr; Research: Data landscape</span></a><a class="pager-link pager-next" href="notice.html"><span class="label">Next</span><span class="pager-title">Notices &amp; attribution &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#0-tldr-for-the-mapprovider-filter">0. TL;DR for the map/provider filter</a><a class="toc-link" href="#1-why-the-doe-region-assignment-is-wrong-for-meralco">1. Why the DOE region assignment is wrong for Meralco</a><a class="toc-link" href="#2-legal-source-of-truth">2. Legal source of truth</a><a class="toc-link l3" href="#21-prior-franchise-ra-9209-and-the-title-vs-text-trap">2.1 Prior franchise (RA 9209) and the title-vs-text trap</a><a class="toc-link l3" href="#22-ra-9209-vs-ra-12146--what-changed-derived-from-both-section-1-texts">2.2 RA 9209 vs RA 12146 — what changed (derived from both Section 1 texts)</a><a class="toc-link" href="#3-coverage-summary-verified-mapping-vs-psgc-2026-3q-lgu-counts">3. Coverage summary (verified mapping vs PSGC 2026-3Q LGU counts)</a><a class="toc-link" href="#4-enumeration--psgc-mapping-every-name-mapped-no-guesses">4. Enumeration → PSGC mapping (every name mapped; no guesses)</a><a class="toc-link l3" href="#41-ncr--1717-region_psgc-1300000000">4.1 NCR — 17/17 (region_psgc 1300000000)</a><a class="toc-link l3" href="#42-bulacan--2424-full-province-layer-code-301400000-canonical-psgc-0301400000-region-0300000000">4.2 Bulacan — 24/24 (full; province layer code 301400000, canonical PSGC 0301400000, region 0300000000)</a><a class="toc-link l3" href="#43-cavite--2023-partial-province-layer-code-402100000-canonical-psgc-0402100000-region-0400000000">4.3 Cavite — 20/23 (partial; province layer code 402100000, canonical PSGC 0402100000, region 0400000000)</a><a class="toc-link l3" href="#44-rizal--1414-full-province-layer-code-405800000-canonical-psgc-0405800000-region-0400000000">4.4 Rizal — 14/14 (full; province layer code 405800000, canonical PSGC 0405800000, region 0400000000)</a><a class="toc-link l3" href="#45-batangas--334-partial-province-layer-code-401000000-canonical-psgc-0401000000-region-0400000000">4.5 Batangas — 3/34 (partial; province layer code 401000000, canonical PSGC 0401000000, region 0400000000)</a><a class="toc-link l3" href="#46-laguna--1930-partial-province-layer-code-403400000-canonical-psgc-0403400000-region-0400000000">4.6 Laguna — 19/30 (partial; province layer code 403400000, canonical PSGC 0403400000, region 0400000000)</a><a class="toc-link l3" href="#47-quezon--1141-partial-province-layer-code-405600000-canonical-psgc-0405600000-region-0400000000">4.7 Quezon — 11/41 (partial; province layer code 405600000, canonical PSGC 0405600000, region 0400000000)</a><a class="toc-link l3" href="#48-pampanga--barangay-level-only-province-layer-code-305400000-canonical-psgc-0305400000">4.8 Pampanga — barangay-level only (province layer code 305400000, canonical PSGC 0305400000)</a><a class="toc-link" href="#5-name-matching--alias-log-all-normalized-pairs">5. Name-matching / alias log (all normalized pairs)</a><a class="toc-link" href="#6-multi-region-verification-against-the-141-utility-seed-dataset">6. Multi-region verification against the 141-utility seed dataset</a><a class="toc-link" href="#7-pinned-input-provenance">7. Pinned input provenance</a><a class="toc-link" href="#8-caveats-and-uncertainties-do-not-publish-past-these">8. Caveats and uncertainties (do not publish past these)</a><a class="toc-link" href="#9-recommended-use-on-the-map--api">9. Recommended use on the map / API</a><a class="toc-link" href="#10-verification-log-all-done-2026-11-10">10. Verification log (all done 2026-11-10)</a><a class="toc-link" href="#11-files">11. Files</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

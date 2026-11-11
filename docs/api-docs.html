@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>API guide — Open Energy Data Layer — documentation</title>
+<meta name="description" content="The static JSON API: base URL and access, datasets and units, conventions, endpoint reference, attribution, disclaimers and versioning.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" class="current" aria-current="page" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-api">API</a><span class="sep">/</span><span aria-current="page">API guide</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">API <span class="sep">&middot;</span> documentation</p>
+  <h1 id="open-energy-data-layer--philippine-electricity-rates-data-api">Open Energy Data Layer — Philippine Electricity Rates Data API</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>draft/api-docs.md</code> &middot; 673 lines &middot; 37 KB &middot; 4,801 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/draft/api-docs.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>A small, public, read-only JSON API over the DOE <strong>Electricity Rates &amp; Power Market Monitor</strong>
+workbook: monthly average electricity rates for residential, commercial, industrial and blended
+generation-charge customers across <strong>141</strong> distribution utilities and electric cooperatives in
+<strong>18</strong> PSA PSGC regions, <strong>107</strong> monthly columns from <strong>2018-01</strong> to <strong>2026-11</strong> (latest published
+month <strong>2026-10</strong>). Built from the same snapshot as this page by <code>tools/build-api.py</code>.</p>
+<p>The API is a set of plain JSON files, not a running service: every endpoint below is one file under
+<code>api/v1/</code>, served read-only with no authentication. The contract is <code>openapi.yaml</code> (OpenAPI 3.1);
+the machine-readable catalog is <code>api/v1/index.json</code>.</p>
+<hr />
+<h2 class="has-anchor" id="overview">Overview<a class="h-anchor" href="#overview" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>API version</strong></td>
+<td><code>1.0</code> (contract version, stable across dataset snapshots)</td>
+</tr>
+<tr>
+<td><strong>Dataset version</strong></td>
+<td><code>2026-11-10</code> (retrieval date; changes with every new snapshot)</td>
+</tr>
+<tr>
+<td><strong>Latest published month</strong></td>
+<td><code>2026-10</code> (the source's 2026-11 column is not yet published)</td>
+</tr>
+<tr>
+<td><strong>Coverage</strong></td>
+<td>141 utilities/electric cooperatives · 18 PSGC regions · 4 customer classes · 107 months</td>
+</tr>
+<tr>
+<td><strong>Service-area coverage</strong></td>
+<td>141 utilities — 141 with LGU-level rows, 0 with barangay-only rows, none needing the region fallback</td>
+</tr>
+<tr>
+<td><strong>Endpoints</strong></td>
+<td>19 static GET routes: 17 rate/quality/source + 2 provider service-area</td>
+</tr>
+<tr>
+<td><strong>Rate unit</strong></td>
+<td><code>PHP per kWh</code> — the published monthly average, exact to the source's two decimals</td>
+</tr>
+<tr>
+<td><strong>Upstream source</strong></td>
+<td>Department of Energy (DOE), <em>Electricity Rates &amp; Power Market Monitor</em></td>
+</tr>
+<tr>
+<td><strong>Source retrieved</strong></td>
+<td><code>2026-11-10T17:00:34+08:00</code> (CSV export of the public Google Sheet)</td>
+</tr>
+<tr>
+<td><strong>Licence</strong></td>
+<td><strong>Not stated by publisher</strong> — see <a href="#sources--attribution">Sources &amp; attribution</a></td>
+</tr>
+<tr>
+<td><strong>Auth</strong></td>
+<td>None. Public read; fair-use conditions apply.</td>
+</tr>
+<tr>
+<td><strong>Format</strong></td>
+<td>Static JSON files with a <code>{meta, data, next_cursor}</code> envelope</td>
+</tr>
+</tbody>
+</table></div>
+<p>What it is: a provenance-first view of the DOE workbook with stable utility codes, PSGC geography,
+explicit source states and checksums behind every value — plus a sourced <strong>provider service-area
+(coverage) layer</strong> for the page's provider filter, with per-row provenance, its own source registry
+and its own licences. Coverage is derived data, not a DOE rate publication.</p>
+<p>What it is not: an official DOE product; a live feed; a query API (there are no query parameters);
+a bill-component breakdown (generation, transmission, system loss, distribution, subsidies,
+FIT-All and taxes are not in the source); and it contains <strong>no imputed, interpolated or modelled
+values</strong>.</p>
+<hr />
+<h2 class="has-anchor" id="base-url--access">Base URL &amp; access<a class="h-anchor" href="#base-url--access" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The API is not hosted as a service yet. The canonical origin is set at deployment; in this
+repository the files are served at <code>api/v1/</code> (relative to this <code>draft/</code> directory), which the page
+links to directly. No domain is invented here. The OpenAPI server URL is the relative <code>api/v1</code>
+(no leading slash), so it resolves against wherever the spec or page is served, not the host
+root.</p>
+<p>All requests are <code>GET</code> (or <code>HEAD</code>) on static files:</p>
+<ul>
+<li><strong>No authentication</strong>, no API key, no request body.</li>
+<li><strong>CORS</strong>: when served by the deployment host, responses should carry
+<code>Access-Control-Allow-Origin: *</code>, following the BetterGov Budget API convention.</li>
+<li><strong>Caching</strong>: responses should carry <code>Cache-Control: public, max-age=300, s-maxage=3600</code>.
+Every file is immutable within a <code>dataset_version</code>, so aggressive client-side caching is safe.</li>
+<li><strong>Fair use</strong>: identify heavy automated use with a descriptive <code>User-Agent</code>.</li>
+<li><strong>Errors</strong>: a path that is not a served file returns the host's normal 404. This snapshot has no
+JSON error envelope; the machine-readable error format (<code>bad_request</code>, <code>not_found</code>,
+<code>method_not_allowed</code>, …) is reserved for a future dynamic deployment.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># Relative to this draft/ directory; prepend the deployment origin when hosted.
+curl -s api/v1/meta.json | jq '.data.coverage'
+curl -s api/v1/rates/latest/residential.json | jq '.data.stats'
+curl -s api/v1/utilities/MERALCO.json | jq '.data.series.residential.counts'
+curl -s api/v1/regions/1300000000.json | jq '.data.region'
+curl -s api/v1/changes/latest.json | jq '.data.movements[0]'
+curl -s api/v1/sources/SRC-DOE-RATES.json | jq '.data.tabs'
+curl -s api/v1/service-areas.json | jq '.data.coverage'
+curl -s api/v1/service-areas/MERALCO.json | jq '.data.rows[:2]'
+</code></pre></div>
+<hr />
+<h2 class="has-anchor" id="datasets--units">Datasets &amp; units<a class="h-anchor" href="#datasets--units" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Key</th>
+<th>Coverage</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rates by customer class</td>
+<td><code>rates/latest/{class}.json</code></td>
+<td>2026-10 column, 141 utilities, 4 classes</td>
+<td>The newest published monthly average per utility, with explicit non-published states</td>
+</tr>
+<tr>
+<td>Utility registry</td>
+<td><code>utilities.json</code></td>
+<td>141 entities</td>
+<td>Stable <code>utility_code</code>, name, type, grid connection, PSGC region, latest/previous month cells</td>
+</tr>
+<tr>
+<td>Utility series</td>
+<td><code>utilities/&lt;CODE&gt;.json</code></td>
+<td>2018-01 → 2026-11</td>
+<td>Full monthly series per utility and customer class, grouped by source state</td>
+</tr>
+<tr>
+<td>Service areas / provider coverage</td>
+<td><code>service-areas.json</code>, <code>service-areas/&lt;CODE&gt;.json</code></td>
+<td>1,648 LGU rows · 17 barangay rows · 0 region fallbacks</td>
+<td>The sourced service area of every utility (LGU / barangay / region fallback), with per-row provenance and per-source licences</td>
+</tr>
+<tr>
+<td>Region aggregates</td>
+<td><code>regions.json</code>, <code>regions/&lt;psgc&gt;.json</code></td>
+<td>18 PSGC regions</td>
+<td>Latest-month medians/means/ranges and member utilities</td>
+</tr>
+<tr>
+<td>Month coverage</td>
+<td><code>months.json</code></td>
+<td>107 months</td>
+<td>Published / NDA / missing / invalid counts per class per month</td>
+</tr>
+<tr>
+<td>Changes</td>
+<td><code>changes/latest.json</code></td>
+<td>2026-09 → 2026-10</td>
+<td>Month-over-month movements and state changes</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td><code>validation.json</code>, <code>conflicts.json</code></td>
+<td>snapshot</td>
+<td>The 17 rate checks, 7 coverage checks and the 5 recorded source conflicts</td>
+</tr>
+<tr>
+<td>Source</td>
+<td><code>sources.json</code>, <code>sources/SRC-DOE-RATES.json</code></td>
+<td>1 rate source + 4 coverage sources</td>
+<td>DOE workbook identity, links, per-tab SHA-256 and retrieval provenance; the coverage-source registry with licences</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Units.</strong> Every rate is in <strong>PHP per kWh</strong> (<code>currency: &quot;PHP&quot;</code>, <code>unit: &quot;PHP per kWh&quot;</code> in every
+<code>meta</code>). No rescaling, no rounding beyond the source's own two decimals. Amounts are averages as
+published; they are not bills and not estimates.</p>
+<p><strong>Identifiers.</strong> <code>utility_code</code> is this dataset's stable slug (e.g. <code>MERALCO</code>, <code>ABRECO</code>) — not an
+official DOE/ERC/NEA identifier. <code>region_psgc</code> is the 10-digit PSA PSGC region code (e.g.
+<code>1300000000</code> for NCR). Months are <code>YYYY-MM</code>. Coverage rows join the same geography through
+<code>region_psgc</code> / <code>province_psgc</code> / <code>adm3_psgc</code> / <code>adm4_psgc</code> (canonical 10-digit PSGC); the API
+publishes coverage areas as codes, not as polygons.</p>
+<p><strong>Explicit source states.</strong> Every utility/class/month cell has exactly one state:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>published</code></td>
+<td>The source workbook has a numeric rate; it is published here as-is.</td>
+</tr>
+<tr>
+<td><code>nda</code></td>
+<td>&quot;No Data Available&quot;, as published by the source. Never zero, never estimated.</td>
+</tr>
+<tr>
+<td><code>missing</code></td>
+<td>The month column exists but the cell is blank / not yet published (all of 2026-11).</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td>The cell failed extraction validation; no value is published for it (1 cell in 2026-10).</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>null</code> never means zero. An aggregate is only computed over <code>published</code> values.</p>
+<hr />
+<h2 class="has-anchor" id="conventions">Conventions<a class="h-anchor" href="#conventions" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="envelope">Envelope<a class="h-anchor" href="#envelope" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Every data file returns the same envelope:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">{
+  &quot;meta&quot;: {
+    &quot;api_version&quot;: &quot;1.0&quot;,
+    &quot;dataset&quot;: &quot;doe-electricity-rates&quot;,
+    &quot;dataset_version&quot;: &quot;2026-11-10&quot;,
+    &quot;latest_month&quot;: &quot;2026-10&quot;,
+    &quot;generated_at&quot;: &quot;2026-11-10T17:00:34+08:00&quot;,
+    &quot;currency&quot;: &quot;PHP&quot;,
+    &quot;unit&quot;: &quot;PHP per kWh&quot;,
+    &quot;source&quot;: {
+      &quot;id&quot;: &quot;SRC-DOE-RATES&quot;,
+      &quot;publisher&quot;: &quot;Department of Energy (DOE)&quot;,
+      &quot;title&quot;: &quot;Electricity Rates &amp; Power Market Monitor&quot;,
+      &quot;canonical_url&quot;: &quot;https://doe.gov.ph/data-and-prices/electricity&quot;,
+      &quot;retrieved_at&quot;: &quot;2026-11-10T17:00:34+08:00&quot;,
+      &quot;extraction_method&quot;: &quot;csv_export&quot;
+    },
+    &quot;attribution&quot;: &quot;Source: Department of Energy (DOE) — Electricity Rates &amp; Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. …&quot;,
+    &quot;licence&quot;: { &quot;name&quot;: &quot;Not stated by publisher&quot;, &quot;note&quot;: &quot;…&quot;, &quot;url&quot;: null },
+    &quot;service_area&quot;: {
+      &quot;detail_counts&quot;: { &quot;total&quot;: 141, &quot;lgu&quot;: 141, &quot;barangay&quot;: 0, &quot;region&quot;: 0 },
+      &quot;sources&quot;: [{ &quot;source_id&quot;: &quot;SRC-RA-12146&quot;, &quot;licence&quot;: { &quot;name&quot;: &quot;Public document (Philippine law)&quot;, &quot;url&quot;: null } }, &quot;…&quot;],
+      &quot;note&quot;: &quot;Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json.&quot;
+    },
+    &quot;disclaimers&quot;: [{ &quot;id&quot;: &quot;disclaimer-unofficial&quot;, &quot;title&quot;: &quot;Unofficial compilation.&quot;, &quot;text&quot;: &quot;…&quot;, &quot;url&quot;: &quot;#disclaimers&quot; }],
+    &quot;count&quot;: 141
+  },
+  &quot;data&quot;: { &quot;…&quot;: &quot;endpoint-specific payload&quot; },
+  &quot;next_cursor&quot;: null
+}
+</code></pre></div>
+<ul>
+<li><code>meta.count</code> is the number of primary records in <code>data</code> (rows for a list, months for the month
+series, <code>1</code> for a single record).</li>
+<li><code>next_cursor</code> is <strong>always <code>null</code></strong> in this static snapshot: there is no pagination and no query
+layer. The field is reserved so a future dynamic deployment can paginate without breaking
+clients.</li>
+<li><code>meta.service_area</code> states the coverage context: how many utilities are covered at LGU,
+barangay or region level, and which sources (with their licences) back the layer. Coverage is
+derived data, not a DOE rate publication — see <code>disclaimer-coverage</code>.</li>
+<li><code>api/v1/index.json</code> (the catalog) and <code>api/v1/openapi.json</code> (the contract) are documents, not
+envelope responses.</li>
+</ul>
+<h3 class="has-anchor" id="errors">Errors<a class="h-anchor" href="#errors" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Static files do not emit JSON errors; unknown paths are the host's 404. A future dynamic deployment
+can adopt the BetterGov Budget API error shape — <code>{ &quot;error&quot;: &quot;not_found&quot;, &quot;message&quot;: &quot;…&quot; }</code> with
+slugs <code>bad_request</code>, <code>bad_cursor</code>, <code>not_found</code>, <code>method_not_allowed</code>, <code>not_loaded</code>, <code>query_failed</code> —
+without changing any success payload.</p>
+<h3 class="has-anchor" id="versioning">Versioning<a class="h-anchor" href="#versioning" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>api_version</code> (<code>1.0</code>) is the JSON contract version. <code>dataset_version</code> (<code>2026-11-10</code>) is the retrieval
+date; a new snapshot gets a new <code>dataset_version</code> and the old files are never silently rewritten.
+The changelog is <code>x-changelog</code> in <code>openapi.yaml</code> (contract 1.0.0 / dataset 2026-11-10; the v1.1
+service-area coverage layer is an <strong>additive</strong> change — 19 routes now, but the envelope and every
+rate endpoint are unchanged).</p>
+<hr />
+<h2 class="has-anchor" id="endpoint-reference">Endpoint reference<a class="h-anchor" href="#endpoint-reference" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>All paths are GET-only static files and every served path ends in <code>.json</code>; prepend the deployment
+origin or, in this repository, read them relative to <code>draft/</code>. Nineteen routes: 17 discovery,
+rate, quality, utility, region, change and source routes, plus 2 provider service-area routes.
+Four routes are per-entity file families — the catalog (<code>api/v1/index.json</code>) names a concrete
+example file for each (<code>/v1/utilities/MERALCO.json</code>, <code>/v1/service-areas/MERALCO.json</code>,
+<code>/v1/regions/1300000000.json</code>, <code>/v1/sources/SRC-DOE-RATES.json</code>); substitute the entity code to
+read any member, e.g. <code>api/v1/service-areas/&lt;CODE&gt;.json</code> (141 files).</p>
+<h3 class="has-anchor" id="meta--quality">Meta &amp; quality<a class="h-anchor" href="#meta--quality" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/meta.json</code></td>
+<td><a href="../api/v1/meta.json"><code>api/v1/meta.json</code></a></td>
+<td>Full dataset metadata: rate source, licence, coverage, identifiers, status vocabulary, service-area block, seed-file checksums</td>
+</tr>
+<tr>
+<td><code>GET /v1/health.json</code></td>
+<td><a href="../api/v1/health.json"><code>api/v1/health.json</code></a></td>
+<td>Build identity and the rate + coverage quality check results</td>
+</tr>
+<tr>
+<td><code>GET /v1/months.json</code></td>
+<td><a href="../api/v1/months.json"><code>api/v1/months.json</code></a></td>
+<td>107 month columns and per-class published/nda/missing/invalid counts</td>
+</tr>
+<tr>
+<td><code>GET /v1/validation.json</code></td>
+<td><a href="../api/v1/validation.json"><code>api/v1/validation.json</code></a></td>
+<td>The 17 rate checks and the 7 coverage checks run against the snapshot (all pass)</td>
+</tr>
+<tr>
+<td><code>GET /v1/conflicts.json</code></td>
+<td><a href="../api/v1/conflicts.json"><code>api/v1/conflicts.json</code></a></td>
+<td>5 recorded source conflicts and how each was resolved</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/health.json → data
+{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;snapshot&quot;: true,
+  &quot;dataset_version&quot;: &quot;2026-11-10&quot;,
+  &quot;latest_month&quot;: &quot;2026-10&quot;,
+  &quot;prev_month&quot;: &quot;2026-09&quot;,
+  &quot;checks&quot;: {
+    &quot;validation&quot;: 17, &quot;validation_passed&quot;: 17, &quot;validation_failed&quot;: 0,
+    &quot;utilities&quot;: 141, &quot;regions&quot;: 18, &quot;months&quot;: 107, &quot;rate_rows&quot;: 60348
+  }
+}
+</code></pre></div>
+<h3 class="has-anchor" id="rates">Rates<a class="h-anchor" href="#rates" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/rates/latest.json</code></td>
+<td><a href="../api/v1/rates/latest.json"><code>api/v1/rates/latest.json</code></a></td>
+<td>Index of the four class files with stats, sizes and SHA-256</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates/latest/residential.json</code></td>
+<td><a href="../api/v1/rates/latest/residential.json"><code>api/v1/rates/latest/residential.json</code></a></td>
+<td>2026-10 residential cell for all 141 utilities</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates/latest/commercial.json</code></td>
+<td><a href="../api/v1/rates/latest/commercial.json"><code>api/v1/rates/latest/commercial.json</code></a></td>
+<td>2026-10 commercial cell for all 141 utilities</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates/latest/industrial.json</code></td>
+<td><a href="../api/v1/rates/latest/industrial.json"><code>api/v1/rates/latest/industrial.json</code></a></td>
+<td>2026-10 industrial cell for all 141 utilities</td>
+</tr>
+<tr>
+<td><code>GET /v1/rates/latest/generation.json</code></td>
+<td><a href="../api/v1/rates/latest/generation.json"><code>api/v1/rates/latest/generation.json</code></a></td>
+<td>2026-10 blended generation-charge cell for all 141 utilities</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/rates/latest/residential.json → data (abridged: 2 of 141 rows)
+{
+  &quot;month&quot;: &quot;2026-10&quot;,
+  &quot;previous_month&quot;: &quot;2026-09&quot;,
+  &quot;customer_class&quot;: &quot;residential&quot;,
+  &quot;unit&quot;: &quot;PHP per kWh&quot;,
+  &quot;stats&quot;: { &quot;reporting&quot;: 113, &quot;nda&quot;: 27, &quot;missing&quot;: 0, &quot;invalid&quot;: 1,
+             &quot;total&quot;: 141, &quot;mean&quot;: 13.23, &quot;median&quot;: 12.72, &quot;min&quot;: 5.33, &quot;max&quot;: 19.36 },
+  &quot;rows&quot;: [
+    { &quot;code&quot;: &quot;ABRECO&quot;, &quot;name&quot;: &quot;ABRECO&quot;, &quot;region_short&quot;: &quot;CAR&quot;, &quot;type&quot;: &quot;EC&quot;, &quot;grid&quot;: &quot;ONGRID&quot;,
+      &quot;value&quot;: 12.58, &quot;status&quot;: &quot;published&quot;, &quot;previous_value&quot;: 12.57, &quot;change_pct&quot;: 0.1 },
+    { &quot;code&quot;: &quot;AEC&quot;, &quot;name&quot;: &quot;AEC&quot;, &quot;region_short&quot;: &quot;Region III&quot;, &quot;type&quot;: &quot;PIOU&quot;, &quot;grid&quot;: &quot;ONGRID&quot;,
+      &quot;value&quot;: 12.31, &quot;status&quot;: &quot;published&quot;, &quot;previous_value&quot;: 11.84, &quot;change_pct&quot;: 4.0 }
+  ]
+}
+</code></pre></div>
+<h3 class="has-anchor" id="utilities">Utilities<a class="h-anchor" href="#utilities" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/utilities.json</code></td>
+<td><a href="../api/v1/utilities.json"><code>api/v1/utilities.json</code></a></td>
+<td>Registry of 141 utilities: identity, PSGC region, type, grid, latest/previous cells, compact coverage summary</td>
+</tr>
+<tr>
+<td><code>GET /v1/utilities/{code}.json</code></td>
+<td><a href="../api/v1/utilities/MERALCO.json"><code>api/v1/utilities/&lt;CODE&gt;.json</code></a></td>
+<td>One utility with all four full monthly series and the full <code>service_area</code> block (141 files)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/utilities/MERALCO.json → data (abridged series)
+{
+  &quot;utility&quot;: { &quot;code&quot;: &quot;MERALCO&quot;, &quot;name&quot;: &quot;MERALCO&quot;, &quot;type&quot;: &quot;PIOU&quot;, &quot;grid&quot;: &quot;ONGRID&quot;,
+               &quot;psgc&quot;: &quot;1300000000&quot;, &quot;region_short&quot;: &quot;NCR&quot;, &quot;region_name&quot;: &quot;National Capital Region&quot;,
+               &quot;data_status&quot;: &quot;published&quot;,
+               &quot;latest&quot;: { &quot;residential&quot;: 15.06, &quot;commercial&quot;: 12.88, &quot;industrial&quot;: 11.33, &quot;generation&quot;: 10.2 },
+               &quot;res_delta_pct&quot;: 2.2, &quot;source_row&quot;: 18,
+               &quot;coverage&quot;: { &quot;detail&quot;: &quot;lgu&quot;, &quot;source_ids&quot;: [&quot;SRC-RA-12146&quot;],
+                             &quot;regions&quot;: [&quot;0300000000&quot;, &quot;0400000000&quot;, &quot;1300000000&quot;],
+                             &quot;lgu_count&quot;: 108, &quot;province_count&quot;: 10, &quot;barangay_count&quot;: 17 } },
+  &quot;coverage&quot;: { &quot;months_total&quot;: 107, &quot;first_month&quot;: &quot;2018-01&quot;, &quot;last_month&quot;: &quot;2026-11&quot;,
+                &quot;latest_month&quot;: &quot;2026-10&quot;, &quot;previous_month&quot;: &quot;2026-09&quot; },
+  &quot;series&quot;: {
+    &quot;residential&quot;: {
+      &quot;counts&quot;: { &quot;published&quot;: 106, &quot;nda&quot;: 0, &quot;missing&quot;: 1, &quot;invalid&quot;: 0, &quot;total&quot;: 107 },
+      &quot;first_published_month&quot;: &quot;2018-01&quot;,
+      &quot;last_published_month&quot;: &quot;2026-10&quot;,
+      &quot;published&quot;: { &quot;2018-01&quot;: 9.04, &quot;2018-02&quot;: 10.11, &quot;…&quot;: &quot;…&quot; },
+      &quot;nda&quot;: [], &quot;missing&quot;: [&quot;2026-11&quot;], &quot;invalid&quot;: []
+    }
+  }
+}
+</code></pre></div>
+<p>Utility-level totals in <code>api/v1/utilities.json</code>: <code>EC</code> 120, <code>PIOU</code> 21; <code>ONGRID</code> 118, <code>OFFGRID</code> 21,
+<code>CONFLICT</code> 2 (published unresolved, never guessed); data status <code>published</code> 113, <code>partial</code> 4,
+<code>nda</code> 24.</p>
+<h3 class="has-anchor" id="service-areas">Service areas<a class="h-anchor" href="#service-areas" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/service-areas.json</code></td>
+<td><a href="../api/v1/service-areas.json"><code>api/v1/service-areas.json</code></a></td>
+<td>Coverage registry: one item per utility with a compact coverage summary, the coverage-source registry (franchise law, DOE fallback, OSM Wiki / Wikipedia) with licences, and aggregate stats</td>
+</tr>
+<tr>
+<td><code>GET /v1/service-areas/{code}.json</code></td>
+<td><a href="../api/v1/service-areas/MERALCO.json"><code>api/v1/service-areas/&lt;CODE&gt;.json</code></a></td>
+<td>One utility's published coverage rows (LGU / barangay / region fallback) with the PSGC hierarchy and a per-row <code>source_id</code> (141 files)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/service-areas/MERALCO.json → data (abridged: 2 of 125 rows, 1 source)
+{
+  &quot;utility&quot;: { &quot;code&quot;: &quot;MERALCO&quot;, &quot;name&quot;: &quot;MERALCO&quot;, &quot;type&quot;: &quot;PIOU&quot;, &quot;grid&quot;: &quot;ONGRID&quot;,
+               &quot;psgc&quot;: &quot;1300000000&quot;, &quot;region_short&quot;: &quot;NCR&quot;, &quot;region_name&quot;: &quot;National Capital Region&quot;,
+               &quot;data_status&quot;: &quot;published&quot; },
+  &quot;service_area&quot;: { &quot;detail&quot;: &quot;lgu&quot;, &quot;source_ids&quot;: [&quot;SRC-RA-12146&quot;],
+                    &quot;regions&quot;: [&quot;0300000000&quot;, &quot;0400000000&quot;, &quot;1300000000&quot;],
+                    &quot;lgu_count&quot;: 108, &quot;province_count&quot;: 10, &quot;barangay_count&quot;: 17,
+                    &quot;provinces&quot;: [ { &quot;psgc&quot;: &quot;0301400000&quot;, &quot;name&quot;: &quot;Bulacan&quot;,
+                                     &quot;region_psgc&quot;: &quot;0300000000&quot;, &quot;lgu_count&quot;: 24 }, &quot;…&quot; ],
+                    &quot;lgus&quot;: [&quot;0301401000&quot;, &quot;0301402000&quot;, &quot;…&quot;],
+                    &quot;barangays&quot;: [ { &quot;adm4&quot;: &quot;0305402001&quot;, &quot;name&quot;: &quot;Balucuc&quot;,
+                                     &quot;lgu&quot;: &quot;0305402000&quot;, &quot;lgu_name&quot;: &quot;Apalit&quot; }, &quot;…&quot; ],
+                    &quot;barangay_provinces&quot;: [&quot;Pampanga&quot;],
+                    &quot;note&quot;: &quot;…&quot; },
+  &quot;rows&quot;: [
+    { &quot;utility_code&quot;: &quot;MERALCO&quot;, &quot;area_level&quot;: &quot;lgu&quot;, &quot;source_id&quot;: &quot;SRC-RA-12146&quot;,
+      &quot;region_psgc&quot;: &quot;0300000000&quot;, &quot;region_short&quot;: &quot;Region III&quot;, &quot;region_name&quot;: &quot;Central Luzon&quot;,
+      &quot;province_psgc&quot;: &quot;0301400000&quot;, &quot;province_name&quot;: &quot;Bulacan&quot;,
+      &quot;adm3_psgc&quot;: &quot;0301401000&quot;, &quot;lgu_name&quot;: &quot;Angat&quot;,
+      &quot;adm4_psgc&quot;: null, &quot;barangay_name&quot;: null,
+      &quot;coverage_note&quot;: null },
+    { &quot;utility_code&quot;: &quot;MERALCO&quot;, &quot;area_level&quot;: &quot;barangay&quot;, &quot;source_id&quot;: &quot;SRC-RA-12146&quot;,
+      &quot;region_psgc&quot;: &quot;0300000000&quot;, &quot;region_short&quot;: &quot;Region III&quot;, &quot;region_name&quot;: &quot;Central Luzon&quot;,
+      &quot;province_psgc&quot;: &quot;0305400000&quot;, &quot;province_name&quot;: &quot;Pampanga&quot;,
+      &quot;adm3_psgc&quot;: &quot;0305402000&quot;, &quot;lgu_name&quot;: &quot;Apalit&quot;,
+      &quot;adm4_psgc&quot;: &quot;0305402001&quot;, &quot;barangay_name&quot;: &quot;Balucuc&quot;,
+      &quot;coverage_note&quot;: &quot;barangay-level franchise area (Pampanga): 17 of 22 LGUs have no whole-LGU coverage&quot; }
+  ],
+  &quot;sources&quot;: [ { &quot;source_id&quot;: &quot;SRC-RA-12146&quot;, &quot;short_title&quot;: &quot;Republic Act No. 12146 (Meralco franchise)&quot;,
+                 &quot;licence&quot;: { &quot;name&quot;: &quot;Public document (Philippine law)&quot;, &quot;url&quot;: null, &quot;note&quot;: &quot;…&quot; },
+                 &quot;used_for&quot;: { &quot;rows&quot;: 125, &quot;utilities&quot;: 1, &quot;rows_by_area_level&quot;: { &quot;lgu&quot;: 108, &quot;barangay&quot;: 17 } }, &quot;…&quot;: &quot;…&quot; } ],
+  &quot;notes&quot;: [&quot;…&quot;]
+}
+</code></pre></div>
+<h3 class="has-anchor" id="regions">Regions<a class="h-anchor" href="#regions" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/regions.json</code></td>
+<td><a href="../api/v1/regions.json"><code>api/v1/regions.json</code></a></td>
+<td>18 PSGC regions with latest-month medians/means/ranges and reporting counts</td>
+</tr>
+<tr>
+<td><code>GET /v1/regions/{psgc}.json</code></td>
+<td><a href="../api/v1/regions/1300000000.json"><code>api/v1/regions/&lt;psgc&gt;.json</code></a></td>
+<td>One region plus its member utilities (18 files)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/regions/1300000000.json → data.region
+{ &quot;psgc&quot;: &quot;1300000000&quot;, &quot;name&quot;: &quot;National Capital Region&quot;, &quot;short&quot;: &quot;NCR&quot;, &quot;island&quot;: &quot;Luzon&quot;,
+  &quot;sheet_label&quot;: &quot;NCR&quot;, &quot;utility_count&quot;: 1, &quot;reporting&quot;: 1,
+  &quot;res_median&quot;: 15.06, &quot;res_mean&quot;: 15.06, &quot;res_min&quot;: 15.06, &quot;res_max&quot;: 15.06,
+  &quot;com_median&quot;: 12.88, &quot;ind_median&quot;: 11.33, &quot;gen_median&quot;: 10.2 }
+</code></pre></div>
+<h3 class="has-anchor" id="changes">Changes<a class="h-anchor" href="#changes" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/changes/latest.json</code></td>
+<td><a href="../api/v1/changes/latest.json"><code>api/v1/changes/latest.json</code></a></td>
+<td>374 month-over-month movements and 66 state changes between 2026-09 and 2026-10</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/changes/latest.json → data (abridged: 2 of 374 movements)
+{
+  &quot;from_month&quot;: &quot;2026-09&quot;, &quot;to_month&quot;: &quot;2026-10&quot;,
+  &quot;counts&quot;: { &quot;movements&quot;: 374, &quot;availability_changes&quot;: 66 },
+  &quot;movements&quot;: [
+    { &quot;code&quot;: &quot;LEYECO-II&quot;, &quot;name&quot;: &quot;LEYECO II&quot;, &quot;region_short&quot;: &quot;Region VIII&quot;,
+      &quot;customer_class&quot;: &quot;residential&quot;, &quot;from_value&quot;: 14.05, &quot;to_value&quot;: 10.44,
+      &quot;delta_php_kwh&quot;: -3.61, &quot;delta_pct&quot;: -25.7 },
+    { &quot;code&quot;: &quot;MOELCI-II&quot;, &quot;name&quot;: &quot;MOELCI II&quot;, &quot;region_short&quot;: &quot;Region X&quot;,
+      &quot;customer_class&quot;: &quot;residential&quot;, &quot;from_value&quot;: 12.83, &quot;to_value&quot;: 15.32,
+      &quot;delta_php_kwh&quot;: 2.49, &quot;delta_pct&quot;: 19.4 }
+  ]
+}
+</code></pre></div>
+<h3 class="has-anchor" id="sources">Sources<a class="h-anchor" href="#sources" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>File</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET /v1/sources.json</code></td>
+<td><a href="../api/v1/sources.json"><code>api/v1/sources.json</code></a></td>
+<td>The source registry (1 record): DOE workbook identity, links, per-tab SHA-256, retrieval provenance</td>
+</tr>
+<tr>
+<td><code>GET /v1/sources/{source_id}.json</code></td>
+<td><a href="../api/v1/sources/SRC-DOE-RATES.json"><code>api/v1/sources/SRC-DOE-RATES.json</code></a></td>
+<td>One full source record</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/sources/SRC-DOE-RATES.json → data (abridged)
+{ &quot;id&quot;: &quot;SRC-DOE-RATES&quot;, &quot;publisher&quot;: &quot;Department of Energy (DOE)&quot;,
+  &quot;title&quot;: &quot;Electricity Rates &amp; Power Market Monitor&quot;,
+  &quot;canonical_url&quot;: &quot;https://doe.gov.ph/data-and-prices/electricity&quot;,
+  &quot;workbook_url&quot;: &quot;https://docs.google.com/spreadsheets/d/1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-10T17:00:34+08:00&quot;, &quot;extraction_method&quot;: &quot;csv_export&quot;,
+  &quot;tabs&quot;: [ { &quot;gid&quot;: 0, &quot;customer_class&quot;: &quot;residential&quot;, &quot;rows&quot;: 141,
+              &quot;sha256&quot;: &quot;17c746168e77f045891d5d3c7ade147b172396de952ae88952ca04b30bb35718&quot; } ] }
+</code></pre></div>
+<hr />
+<h2 class="has-anchor" id="service-areas--provider-coverage">Service areas &amp; provider coverage<a class="h-anchor" href="#service-areas--provider-coverage" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The DOE workbook assigns each utility exactly <strong>one</strong> region. That is enough to filter by region,
+but it is not the utility's service area: an electric cooperative usually covers a handful of
+municipalities, and Meralco's franchise spans three regions. The coverage layer publishes a
+<strong>sourced, row-level service area</strong> so the provider filter can show what a utility actually covers
+and every coverage row can be traced to a source. It is derived data, not a DOE rate publication.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Where</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coverage summary</td>
+<td><code>meta.service_area</code> in every response; <code>utilities.json</code> rows</td>
+<td><code>{detail, source_ids, regions, lgu_count, province_count, barangay_count}</code></td>
+</tr>
+<tr>
+<td>Full coverage</td>
+<td><code>utilities/&lt;CODE&gt;.json</code> → <code>service_area</code>; <code>service-areas/&lt;CODE&gt;.json</code> → <code>service_area</code></td>
+<td>summary + <code>provinces[]</code>, <code>lgus[]</code>, <code>barangays[]</code>, <code>barangay_provinces[]</code>, <code>note</code></td>
+</tr>
+<tr>
+<td>Coverage rows</td>
+<td><code>service-areas/&lt;CODE&gt;.json</code> → <code>rows[]</code> (published from the seed CSV)</td>
+<td><code>utility_code</code>, <code>area_level</code>, <code>source_id</code>, <code>region_psgc</code>/<code>region_short</code>/<code>region_name</code>, <code>province_psgc</code>/<code>province_name</code>, <code>adm3_psgc</code>/<code>lgu_name</code>, <code>adm4_psgc</code>/<code>barangay_name</code>, <code>coverage_note</code></td>
+</tr>
+<tr>
+<td>Source registry</td>
+<td><code>service-areas.json</code> → <code>sources[]</code>; <code>sources.json</code> → <code>coverage_sources[]</code>; <code>meta.json</code> → <code>service_area.sources[]</code></td>
+<td><code>{source_id, short_title, publisher, dataset_title, page_url, revision_id, retrieved_at, licence {name, url, note}, attribution, notes, used_for {rows, utilities, rows_by_area_level}}</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>area_level</code> is one of:</p>
+<ul>
+<li><code>lgu</code> — one covered city/municipality (<code>adm3_psgc</code>, canonical 10-digit PSGC).</li>
+<li><code>barangay</code> — one covered barangay (<code>adm4_psgc</code>), used where the franchise grants barangays only.</li>
+<li><code>region</code> — a single fallback row that repeats the DOE workbook region when no LGU-level source
+is available. It means &quot;not sourced at LGU level&quot;, never &quot;one LGU&quot;.</li>
+</ul>
+<p>Coverage at this snapshot: 141 of 141 utilities have LGU-level coverage, 0 have barangay-only coverage and 0 publish only the region-level fallback (1,648 LGU rows, 17 barangay rows, 0 fallback rows, 1,602 distinct LGUs, 10 multi-region utilities). The registry (abridged: 1 of 141 utilities,
+1 of 4 sources):</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">json</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-json">// api/v1/service-areas.json → data (abridged)
+{
+  &quot;coverage&quot;: {
+    &quot;utilities_total&quot;: 141,
+    &quot;utilities_with_lgu_coverage&quot;: 141,
+    &quot;utilities_region_only&quot;: 0,
+    &quot;lgu_rows&quot;: 1648,
+    &quot;barangay_rows&quot;: 17,
+    &quot;region_rows&quot;: 0,
+    &quot;distinct_lgus&quot;: 1602,
+    &quot;multi_region_utilities&quot;: [
+      &quot;AURELCO&quot;,
+      &quot;BASELCO&quot;,
+      &quot;CAGELCO-II&quot;,
+      &quot;FIBECO&quot;,
+      &quot;LASURECO&quot;,
+      &quot;MERALCO&quot;,
+      &quot;PPALMA&quot;,
+      &quot;QUEZELCO-I&quot;,
+      &quot;SUKELCO&quot;,
+      &quot;ZAMSURECO-I&quot;
+    ],
+    &quot;sources&quot;: [
+      &quot;SRC-OSM-OPERATORS&quot;,
+      &quot;SRC-WIKI-DUS&quot;,
+      &quot;SRC-RA-12146&quot;,
+      &quot;SRC-DOE-RATES&quot;
+    ]
+  },
+  &quot;detail_counts&quot;: {
+    &quot;total&quot;: 141,
+    &quot;lgu&quot;: 141,
+    &quot;barangay&quot;: 0,
+    &quot;region&quot;: 0
+  },
+  &quot;rows_by_area_level&quot;: {
+    &quot;lgu&quot;: 1648,
+    &quot;barangay&quot;: 17,
+    &quot;region&quot;: 0
+  },
+  &quot;sources&quot;: [
+    {
+      &quot;source_id&quot;: &quot;SRC-OSM-OPERATORS&quot;,
+      &quot;short_title&quot;: &quot;OpenStreetMap Wiki operator table&quot;,
+      &quot;publisher&quot;: &quot;OpenStreetMap Wiki contributors&quot;,
+      &quot;dataset_title&quot;: &quot;Power networks/Philippines/Operators&quot;,
+      &quot;page_url&quot;: &quot;https://wiki.openstreetmap.org/wiki/Power_networks/Philippines/Operators&quot;,
+      &quot;revision_id&quot;: &quot;2836797&quot;,
+      &quot;retrieved_at&quot;: &quot;2026-11-10T19:28:07+08:00&quot;,
+      &quot;licence&quot;: {
+        &quot;name&quot;: &quot;CC BY-SA 2.0&quot;,
+        &quot;url&quot;: &quot;https://creativecommons.org/licenses/by-sa/2.0/&quot;,
+        &quot;note&quot;: &quot;Attribution required; share-alike applies to service-area coverage derived from this source.&quot;
+      },
+      &quot;attribution&quot;: &quot;© OpenStreetMap Wiki contributors, “Power networks/Philippines/Operators”, revision 2836797 (2025-04-14), CC BY-SA 2.0. Franchise areas are tabulated on that page as “per Department of Energy”.&quot;,
+      &quot;notes&quot;: &quot;Primary source. Municipality-level franchise areas grouped by region; repeated operator rows merged. Page revision date 2025-04-14. Raw wikitext snapshot: research/coverage/snapshots/osm-wiki-2836797.wikitext&quot;,
+      &quot;used_for&quot;: {
+        &quot;rows&quot;: 1343,
+        &quot;utilities&quot;: 118,
+        &quot;rows_by_area_level&quot;: {
+          &quot;lgu&quot;: 1343
+        }
+      }
+    }
+  ],
+  &quot;utilities&quot;: [
+    {
+      &quot;code&quot;: &quot;ABRECO&quot;,
+      &quot;name&quot;: &quot;ABRECO&quot;,
+      &quot;type&quot;: &quot;EC&quot;,
+      &quot;region_short&quot;: &quot;CAR&quot;,
+      &quot;region_name&quot;: &quot;Cordillera Administrative Region&quot;,
+      &quot;coverage&quot;: {
+        &quot;detail&quot;: &quot;lgu&quot;,
+        &quot;source_ids&quot;: [
+          &quot;SRC-OSM-OPERATORS&quot;
+        ],
+        &quot;regions&quot;: [
+          &quot;1400000000&quot;
+        ],
+        &quot;lgu_count&quot;: 27,
+        &quot;province_count&quot;: 1,
+        &quot;barangay_count&quot;: 0
+      }
+    }
+  ],
+  &quot;notes&quot;: [
+    &quot;One item per utility. coverage.detail says the strongest published level: lgu (LGU-level rows), barangay (barangay-level rows only) or region (region-level fallback). coverage.regions lists every PSGC region the published rows touch, so a multi-region franchise is visible even when the DOE workbook lists one region.&quot;
+  ]
+}
+</code></pre></div>
+<h3 class="has-anchor" id="coverage-sources-and-licences">Coverage sources and licences<a class="h-anchor" href="#coverage-sources-and-licences" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>source_id</th>
+<th>used for</th>
+<th>licence / terms</th>
+<th>what to carry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SRC-RA-12146</code></td>
+<td>MERALCO only: RA 12146 Section 1 — 108 cities/municipalities in NCR, Region III and Region IV-A, plus 17 Pampanga barangays</td>
+<td>Public document (Philippine law); works of the Government are not subject to copyright (IP Code, Sec. 176)</td>
+<td>cite the law (official text, Supreme Court e-Library)</td>
+</tr>
+<tr>
+<td><code>SRC-OSM-OPERATORS</code></td>
+<td>LGU-level service areas for the other utilities (OpenStreetMap Wiki operator table, itself compiled &quot;per Department of Energy&quot;)</td>
+<td><strong>CC BY-SA 2.0</strong></td>
+<td>attribution required; <strong>share-alike applies to coverage derived from it</strong></td>
+</tr>
+<tr>
+<td><code>SRC-WIKI-DUS</code></td>
+<td>supplementary LGU areas where the OSM table has none (Wikipedia DU list)</td>
+<td><strong>CC BY-SA 4.0</strong></td>
+<td>attribution + share-alike</td>
+</tr>
+<tr>
+<td><code>SRC-DOE-RATES</code></td>
+<td><code>region</code> fallback rows only (DOE workbook region column)</td>
+<td>no explicit licence; reuse terms to be confirmed with DOE</td>
+<td>keep the DOE caveat; fallback rows only</td>
+</tr>
+</tbody>
+</table></div>
+<p>These licences apply <strong>only</strong> to the coverage layer, not to the DOE rate data (which has no
+confirmed licence of any kind). Keep the per-source attribution and licence with any republished
+coverage row.</p>
+<p><strong>The combined coverage layer is a CC BY-SA derivative.</strong> Because it merges OpenStreetMap Wiki
+(CC BY-SA 2.0) and Wikipedia (CC BY-SA 4.0) rows with the public-law MERALCO area, any
+redistribution of the coverage data must preserve attribution to those sources and keep the
+share-alike terms. The DOE rate figures shipped alongside it are not affected by that obligation.</p>
+<h3 class="has-anchor" id="caveats--read-before-using-coverage-as-a-filter">Caveats — read before using coverage as a filter<a class="h-anchor" href="#caveats--read-before-using-coverage-as-a-filter" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Multi-region coverage.</strong> 10 utilities have published coverage in more than
+one region: MERALCO (the franchise-law case — RA 12146 Section 1 enumerates its LGUs in NCR,
+Region III and Region IV-A plus 17 Pampanga barangays, while the DOE workbook lists MERALCO under
+NCR only) and 9 other cross-region / PSGC-reassignment franchises whose
+published LGU areas span regional boundaries. <code>coverage.regions</code> lists every PSGC region the rows
+touch; a filter built from the DOE single-region field alone understates their footprint.</li>
+<li><strong>PSGC reassignment is not an error.</strong> Three utilities — PROSIELCO, SIASELCO and SULECO —
+publish coverage in a different region than their DOE workbook row because PSGC 3Q 2026
+reassigned Sulu to Region IX and Siquijor to NIR; their <code>coverage.note</code> documents this. Use the
+published coverage for the provider filter and keep the DOE row as the rate-aggregation region.</li>
+<li><strong>Partial province coverage.</strong> <code>coverage_note</code> is the source's own qualification. For example,
+RA 12146 covers 20 of Cavite's 23 LGUs (it omits Amadeo, General Emilio Aguinaldo and Gen.
+Mariano Alvarez relative to the prior franchise; the reason is not stated in the law), and only
+parts of Batangas, Laguna and Quezon. Do not round partial provinces up to full coverage.</li>
+<li><strong>Barangay-level coverage.</strong> Pampanga has <strong>no</strong> whole-LGU coverage in the MERALCO franchise —
+only 17 barangays in Apalit, San Simon and Candaba. <code>area_level: barangay</code> rows count barangays,
+not LGUs; never render the touched LGUs as fully covered.</li>
+<li><strong>Region fallback.</strong> A utility whose <code>coverage.detail</code> is <code>region</code> has one fallback row repeating
+its DOE region. That is an explicit &quot;not sourced at LGU level&quot;, not a claim that it serves the
+whole region or a single LGU.</li>
+<li><strong>Franchise ≠ billing territory.</strong> Coverage encodes the legislative franchise / published
+operator area; it is not verified household-level service territory. Distribution service can
+differ (unenergized areas, ERC-approved arrangements, contested areas). Use it as a coverage and
+filter layer, not as proof of who bills an address.</li>
+<li><strong>Codes, not polygons.</strong> Coverage rows join the map geometry through canonical 10-digit
+<code>adm3_psgc</code> / <code>adm4_psgc</code>; the API does not publish polygons. NCR has no province layer, so
+<code>provinces[]</code> for Meralco lists the map package's NCR districts under the same &quot;Metro Manila&quot;
+name; use <code>lgus[]</code> / <code>adm3_psgc</code> for LGU-level joins.</li>
+<li><strong>Validation.</strong> Seven coverage checks are recorded at ingest (<code>coverage_checks</code> in
+<code>api/v1/validation.json</code>, summarised in <code>api/v1/health.json</code>); the API build additionally
+re-verifies that every utility's coverage block matches its published rows and that both seed
+files match their pinned rows/bytes/SHA-256.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="sources--attribution">Sources &amp; attribution<a class="h-anchor" href="#sources--attribution" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Source data: <strong>Department of Energy (DOE)</strong>, <em>Electricity Rates &amp; Power Market Monitor</em>
+(<a href="https://doe.gov.ph/data-and-prices/electricity" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/electricity<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>), retrieved <strong>2026-11-10T17:00:34+08:00</strong> by CSV
+export of the public Google Sheet (<code>1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I</code>).</p>
+<ul>
+<li>The workbook has four tabs — residential (<code>gid=0</code>), commercial (<code>gid=441532959</code>), industrial
+(<code>gid=1244383053</code>) and blended generation (<code>gid=714337242</code>). The exact bytes of each retrieved
+tab are archived under <code>data/raw/doe-rates/2026-11-10/</code>; their SHA-256 hashes are in
+<code>api/v1/sources.json</code> and checked by the build.</li>
+<li>Every published number resolves to a source tab and a row in the workbook; utility records carry
+<code>source_row</code> for traceability.</li>
+<li><strong>Attribution:</strong> if you republish these figures, credit the <strong>Department of Energy (DOE)</strong> as the
+source and the <strong>Open Energy Data Layer</strong> for the compilation, and keep the disclaimers below
+with the figures.</li>
+<li>The DOE workbook is unversioned and has no documented refresh calendar, so each release is a
+dated snapshot (<code>dataset_version</code>), not a live feed. Always verify against the DOE workbook or the
+utility's own published tariff before citing in formal work.</li>
+</ul>
+<p><strong>Coverage sources.</strong> The provider service-area layer is a separate, derived layer with its own
+source registry (full records, licences, attribution and <code>used_for</code> counts in
+<a href="../api/v1/service-areas.json"><code>api/v1/service-areas.json</code></a> → <code>data.sources</code> and
+<a href="../api/v1/sources.json"><code>api/v1/sources.json</code></a> → <code>data.coverage_sources</code>):</p>
+<ul>
+<li><strong>RA 12146</strong> Section 1 for MERALCO — a Philippine statute; the official text is published by the
+Supreme Court e-Library and works of the Government are not subject to copyright (IP Code,
+Sec. 176). Cite the law.</li>
+<li><strong>OpenStreetMap Wiki</strong> &quot;Power networks/Philippines/Operators&quot; for LGU-level coverage of other
+utilities — <strong>CC BY-SA 2.0</strong>. Attribution is required and the share-alike obligation applies to
+coverage data derived from it.</li>
+<li><strong>Wikipedia</strong> &quot;List of electric distribution utilities in the Philippines&quot; (supplementary LGU
+areas where the OSM table has none) — <strong>CC BY-SA 4.0</strong>, attribution + share-alike.</li>
+<li><strong>DOE workbook region column</strong> for <code>region</code> fallback rows — same unconfirmed DOE terms as the
+rates; fallback rows only.</li>
+</ul>
+<p>When republishing coverage rows, keep the row's <code>source_id</code> and the matching source record with its
+attribution and licence. The CC BY-SA obligations are on the coverage layer only and do not license
+the DOE rate data.</p>
+<p><strong>Licence status.</strong> The DOE workbook publishes <strong>no explicit reuse licence</strong>. The DOE site footer
+says content is in the public domain unless otherwise stated, but the dataset-level terms are
+<strong>unconfirmed</strong> and reuse terms are to be confirmed with DOE in writing. Accordingly this API
+asserts <strong>no licence over the upstream data</strong> — the <code>meta.licence</code> object says
+<code>&quot;Not stated by publisher&quot;</code>, with no licence URL. The rate data is <strong>not</strong> published under CC BY or
+any other open licence at this stage; do not represent it as such. The coverage layer has its own
+licences (CC BY-SA for OSM Wiki / Wikipedia-derived rows, public-law status for RA 12146; see
+above) and must not be relicensed as CC BY either. The API specification and build tooling in this
+repository are separate artefacts.</p>
+<p><strong>Citation.</strong> For the whole snapshot (also available as <code>citation</code> in <code>api/v1/index.json</code>):</p>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>Open Energy Data Layer (2026). <em>Open Energy Data Layer: Philippine electricity rates</em> [Data set,
+v1.0]. Source: Department of Energy (DOE), <em>Electricity Rates &amp; Power Market Monitor</em>, retrieved
+2026-11-10. No upstream licence is asserted for the DOE rate data; normalise and verify against
+the DOE workbook before citing.</p></div></div>
+<p>Every response's attribution string is in <code>meta.attribution</code>; keep it with republished figures.</p>
+<hr />
+<h2 class="has-anchor" id="disclaimers">Disclaimers<a class="h-anchor" href="#disclaimers" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Every response carries these five disclaimers in <code>meta.disclaimers</code> (id / title / text); keep them
+with any figure you republish.</p>
+<ol>
+<li><strong><code>disclaimer-unofficial</code> — Unofficial compilation.</strong> This is an independent compilation of a
+public DOE workbook, not an official DOE publication. Verify every figure against the source
+before citing or acting on it.</li>
+<li><strong><code>disclaimer-licence</code> — Upstream reuse terms unconfirmed.</strong> The DOE workbook publishes no
+explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the
+upstream data by this API.</li>
+<li><strong><code>disclaimer-nda</code> — NDA, missing and invalid are preserved, never imputed.</strong> NDA is the
+source's &quot;No Data Available&quot;; missing is a month not yet published; invalid is a cell that
+failed validation. <code>null</code> never means zero and is never an estimate.</li>
+<li><strong><code>disclaimer-rates</code> — Rates are monthly averages as published.</strong> Actual bills vary by
+consumption, charges, subsidies and timing. Figures are informational only and not financial
+advice.</li>
+<li><strong><code>disclaimer-coverage</code> — Coverage is derived data, not a DOE rate publication.</strong> Service-area
+coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as
+a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the
+Wikipedia distribution-utility list (CC BY-SA 4.0). A franchise area is not verified
+household-level billing territory; region-level rows are a fallback, not LGU-level confirmation.
+Keep each source's attribution and licence.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="data-files">Data files<a class="h-anchor" href="#data-files" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The tidy seed tables behind the API ship with the repository (six files; paths relative to
+<code>draft/</code>; rows, bytes and SHA-256 checksums are in <a href="../api/v1/index.json"><code>api/v1/index.json</code></a> under
+<code>data_files</code> and in <code>api/v1/meta.json</code>):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Rows</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../data/seed/rates_monthly.csv"><code>../data/seed/rates_monthly.csv</code></a></td>
+<td>60,348</td>
+<td>Long table: utility × customer class × month, with explicit <code>data_status</code></td>
+</tr>
+<tr>
+<td><a href="../data/seed/utilities.csv"><code>../data/seed/utilities.csv</code></a></td>
+<td>141</td>
+<td>Utility registry with provenance columns</td>
+</tr>
+<tr>
+<td><a href="../data/seed/regions.csv"><code>../data/seed/regions.csv</code></a></td>
+<td>18</td>
+<td>Region aggregates as published in this snapshot</td>
+</tr>
+<tr>
+<td><a href="../data/seed/sources.csv"><code>../data/seed/sources.csv</code></a></td>
+<td>4</td>
+<td>Rate-source registry, one row per workbook tab, with SHA-256</td>
+</tr>
+<tr>
+<td><a href="../data/seed/service_areas.csv"><code>../data/seed/service_areas.csv</code></a></td>
+<td>1,665</td>
+<td>Published coverage rows: one per covered LGU / barangay, or one <code>region</code> fallback per utility</td>
+</tr>
+<tr>
+<td><a href="../data/seed/service_area_sources.csv"><code>../data/seed/service_area_sources.csv</code></a></td>
+<td>4</td>
+<td>Coverage-source registry (law, OSM Wiki, Wikipedia, DOE fallback) with licences and attributions</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>data/seed/plants.csv</code> is illustrative sample data and is <strong>not</strong> part of this API.</p>
+<hr />
+<h2 class="has-anchor" id="machine-access">Machine access<a class="h-anchor" href="#machine-access" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAPI 3.1 contract</td>
+<td><a href="../openapi.yaml"><code>openapi.yaml</code></a> · <a href="../api/v1/openapi.json"><code>api/v1/openapi.json</code></a></td>
+<td>Every route, schema, example and provenance block</td>
+</tr>
+<tr>
+<td>API catalog</td>
+<td><a href="../api/v1/index.json"><code>api/v1/index.json</code></a></td>
+<td>Endpoints, files, sizes, SHA-256, data files and disclaimers</td>
+</tr>
+<tr>
+<td>Dataset metadata</td>
+<td><a href="../api/v1/meta.json"><code>api/v1/meta.json</code></a></td>
+<td>Same metadata as a response</td>
+</tr>
+<tr>
+<td>Data model</td>
+<td><a href="data-model.html"><code>data-model.md</code></a></td>
+<td>Entity/field design behind the dataset</td>
+</tr>
+<tr>
+<td>Builder</td>
+<td><a href="../source/tools/build-api.py"><code>../tools/build-api.py</code></a></td>
+<td>Deterministic generator for the whole tree</td>
+</tr>
+</tbody>
+</table></div>
+<p>The build is deterministic: re-running <code>python3 tools/build-api.py</code> produces byte-identical files.
+Validate the contract with
+<code>python3 -c &quot;import yaml; yaml.safe_load(open('draft/openapi.yaml'))&quot;</code> plus any OpenAPI 3.1
+validator.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="brand-assets.html"><span class="label">Previous</span><span class="pager-title">&larr; Brand &amp; UI assets</span></a><a class="pager-link pager-next" href="contributing.html"><span class="label">Next</span><span class="pager-title">Contributing &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#overview">Overview</a><a class="toc-link" href="#base-url--access">Base URL &amp; access</a><a class="toc-link" href="#datasets--units">Datasets &amp; units</a><a class="toc-link" href="#conventions">Conventions</a><a class="toc-link l3" href="#envelope">Envelope</a><a class="toc-link l3" href="#errors">Errors</a><a class="toc-link l3" href="#versioning">Versioning</a><a class="toc-link" href="#endpoint-reference">Endpoint reference</a><a class="toc-link l3" href="#meta--quality">Meta &amp; quality</a><a class="toc-link l3" href="#rates">Rates</a><a class="toc-link l3" href="#utilities">Utilities</a><a class="toc-link l3" href="#service-areas">Service areas</a><a class="toc-link l3" href="#regions">Regions</a><a class="toc-link l3" href="#changes">Changes</a><a class="toc-link l3" href="#sources">Sources</a><a class="toc-link" href="#service-areas--provider-coverage">Service areas &amp; provider coverage</a><a class="toc-link l3" href="#coverage-sources-and-licences">Coverage sources and licences</a><a class="toc-link l3" href="#caveats--read-before-using-coverage-as-a-filter">Caveats — read before using coverage as a filter</a><a class="toc-link" href="#sources--attribution">Sources &amp; attribution</a><a class="toc-link" href="#disclaimers">Disclaimers</a><a class="toc-link" href="#data-files">Data files</a><a class="toc-link" href="#machine-access">Machine access</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

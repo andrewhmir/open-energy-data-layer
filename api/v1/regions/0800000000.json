@@ -1,0 +1,331 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 11
+  },
+  "data": {
+    "region": {
+      "psgc": "0800000000",
+      "name": "Eastern Visayas",
+      "short": "Region VIII",
+      "island": "Visayas",
+      "sheet_label": "Region 8",
+      "utility_count": 11,
+      "reporting": 10,
+      "res_median": 16.48,
+      "res_mean": 16.19,
+      "res_min": 10.44,
+      "res_max": 19.36,
+      "com_median": 14.95,
+      "ind_median": 12.42,
+      "gen_median": 9.06
+    },
+    "latest_month": "2026-10",
+    "utilities": [
+      {
+        "code": "BILECO",
+        "name": "BILECO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 19.36,
+          "commercial": null,
+          "industrial": null,
+          "generation": 10.33
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.3
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.37,
+          "commercial": 15.08,
+          "industrial": null,
+          "generation": 8.6
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 10.2
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.59,
+          "commercial": 14.82,
+          "industrial": 12.5,
+          "generation": 9.96
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.2
+      },
+      {
+        "code": "LEYECO-II",
+        "name": "LEYECO II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 10.44,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": -25.7
+      },
+      {
+        "code": "LEYECO-III",
+        "name": "LEYECO III",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": null,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "nda",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": null
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 17.01,
+          "commercial": 15.72,
+          "industrial": 12.88,
+          "generation": 9.41
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 9.6
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.29,
+          "commercial": 14.55,
+          "industrial": 12.16,
+          "generation": 9.06
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.5
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.98,
+          "commercial": 15.75,
+          "industrial": 13.31,
+          "generation": 9.55
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 7.0
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 15.85,
+          "commercial": 13.31,
+          "industrial": 12.04,
+          "generation": 8.85
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 2.5
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.23,
+          "commercial": 14.79,
+          "industrial": 12.22,
+          "generation": 9.0
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 9.9
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 16.81,
+          "commercial": 15.5,
+          "industrial": 12.42,
+          "generation": 8.81
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": 1.3
+      }
+    ],
+    "notes": [
+      "Region aggregates cover published cells only. Member utilities resolve to full monthly series at utilities/<CODE>.json."
+    ]
+  },
+  "next_cursor": null
+}

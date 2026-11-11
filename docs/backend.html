@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Backend &amp; pipeline architecture — Open Energy Data Layer — documentation</title>
+<meta name="description" content="The deterministic static-artifact pipeline: source snapshots and hashes, ingest and validation, service areas, geometry, the static JSON API, the…">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" class="current" aria-current="page" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-architecture">Architecture</a><span class="sep">/</span><span aria-current="page">Backend &amp; pipeline architecture</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Architecture <span class="sep">&middot;</span> documentation</p>
+  <h1 id="backend--pipeline-architecture">Backend &amp; pipeline architecture</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>draft/backend.md</code> &middot; 350 lines &middot; 27 KB &middot; 3,597 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/draft/backend.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>There is no API server, database, queue or long-running process in this project. What plays the
+&quot;backend&quot; is a <strong>chain of deterministic static generators</strong>: Python scripts that turn one public
+spreadsheet into validated seed tables, a self-contained page, a read-only JSON API, a docs site and a
+local review pack. Every artefact is a committed file (or a copy) that can be rebuilt byte-for-byte.</p>
+<p>This page maps that chain: stages and contracts, build order and CI, hosting, safe changes and failure
+diagnosis. Rules: <a href="contributing.html">CONTRIBUTING</a> · QA evidence: <a href="tests.html">tests/README</a>
+· whole-repo component map: <a href="component-map.html">component-map.md</a>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dataset version</strong></td>
+<td><code>2026-11-10</code> (retrieved <code>2026-11-10T17:00:34+08:00</code>; latest published month <code>2026-10</code>)</td>
+</tr>
+<tr>
+<td><strong>Input coverage</strong></td>
+<td>141 DU/ECs · 18 PSGC regions · 107 header months (2018-01 → 2026-11) · 60,348 rate observations</td>
+</tr>
+<tr>
+<td><strong>Published artefacts</strong></td>
+<td>seed CSVs + page payload · 19-route static JSON API (OpenAPI 3.1, contract <code>1.0.0</code>) · single-file page · docs site · local review pack</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td>Pre-release <code>0.x</code>; 17 + 7 ingest checks and two browser QA suites gate it; <strong>no public deployment</strong> — the API is a contract, not a running service</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="what-backend-means-here">What &quot;backend&quot; means here<a class="h-anchor" href="#what-backend-means-here" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The system is a build pipeline whose outputs are the product: there is no request path, so its runtime
+is a static host (or a browser opening a file) and its state is the checkout — raw publisher bytes,
+validated seed tables, generated artefacts and git history.</p>
+<p>Concretely: the page is one self-contained HTML file; the API is a directory of JSON files; the docs
+site is static HTML; the review pack is a static directory; and the &quot;backend&quot; itself is eight Python
+CLI tools (Python 3.12 + <code>requirements.txt</code>) with no daemon.</p>
+<p><strong>Why static generation.</strong> No database, API uptime, key management or secrets, and any static host
+works; each data change is diffable next to its receipt; same snapshots produce the same bytes (CI
+proves it); and everything is reviewable offline.</p>
+<p>It is <strong>not</strong> a live feed, a query API (<code>next_cursor</code> is always <code>null</code>), an official DOE product or a deployed service.</p>
+<h2 class="has-anchor" id="source-of-truth-and-provenance">Source of truth and provenance<a class="h-anchor" href="#source-of-truth-and-provenance" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Everything derives from DOE's <em>Electricity Rates &amp; Power Market Monitor</em> workbook. It publishes no
+documented refresh calendar and no dataset-specific licence, so each retrieval is pinned as a dated
+snapshot rather than tracked as a feed.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Publisher / source</strong></td>
+<td>Department of Energy (DOE) — <a href="https://doe.gov.ph/data-and-prices/electricity" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/electricity<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>, embedding public Google Sheet <code>1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I</code> (four tabs)</td>
+</tr>
+<tr>
+<td><strong>Retrieval</strong></td>
+<td>unauthenticated CSV export per tab (<code>/export?format=csv&amp;gid=…</code>), same bytes a browser downloads; <code>2026-11-10T17:00:34+08:00</code></td>
+</tr>
+<tr>
+<td><strong>Raw snapshot</strong></td>
+<td><code>data/raw/doe-rates/2026-11-10/&lt;gid&gt;.csv</code> (tracked, immutable); hashes in <a href="../data/seed/sources.csv">sources.csv</a> and <a href="../data/seed/validation.json">validation.json</a></td>
+</tr>
+<tr>
+<td><strong>Licence</strong></td>
+<td><strong>not confirmed by the publisher</strong>; this project asserts none — see <a href="notice.html">NOTICE</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The four tabs are residential (<code>gid=0</code>), commercial (<code>441532959</code>), industrial (<code>1244383053</code>) and
+blended generation charge (<code>714337242</code>), each exported as <code>data/raw/doe-rates/2026-11-10/&lt;gid&gt;.csv</code>
+with 141 rows × 107 month columns per tab.</p>
+<h3 class="has-anchor" id="snapshots-and-hashes">Snapshots and hashes<a class="h-anchor" href="#snapshots-and-hashes" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Snapshot before parsing, hash before publishing.</strong> The ingest writes each tab's exact bytes under
+the retrieval-dated directory and only then parses them; the raw bytes are the source of truth.</li>
+<li><strong>Per-tab SHA-256</strong>, with URL, <code>tab_gid</code>, retrieval timestamp, cell count and snapshot path, is
+recorded in <code>sources.csv</code> and <code>validation.json</code>. <code>tools/build-api.py</code> re-verifies the committed
+snapshot bytes against those hashes on every build, so an edited CSV or stale tree is caught.</li>
+<li><strong>Immutable history.</strong> A new retrieval date creates a new <code>data/raw/doe-rates/&lt;date&gt;/</code> directory;
+old snapshots are never edited. A same-day rerun reuses the snapshot (hence reproducible rebuilds);
+<code>--refresh</code> is an explicit re-fetch.</li>
+<li><strong><code>dataset_version</code></strong> is the retrieval date (<code>2026-11-10</code>), stamped into the page payload, every API
+<code>meta</code> and the OpenAPI contract. It changes only with a new retrieval.</li>
+</ul>
+<h3 class="has-anchor" id="provenance-chain">Provenance chain<a class="h-anchor" href="#provenance-chain" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">workbook tab gid ─► data/raw/doe-rates/&lt;date&gt;/&lt;gid&gt;.csv   (immutable bytes, SHA-256)
+                         ├─► hash + retrieval time ─► data/seed/sources.csv, validation.json
+                         ▼
+              data/seed/utilities.csv, rates_monthly.csv   (source_row, retrieved_at, extraction_method)
+                         ├─► data/seed/regions.csv, page-data.json ─► page
+                         ├─► draft/api/v1/** (meta.dataset_version, meta.source) ─► API consumers
+                         └─► draft/docs/** (rendered markdown + data dictionary) ─► docs readers
+</code></pre></div>
+<p>Every row keeps <code>source_id</code>, <code>extraction_method</code>, <code>confidence</code>, <code>retrieved_at</code> and <code>source_row</code>, so a
+published value resolves to a workbook row → tab → SHA-256 → archived publisher bytes.</p>
+<h3 class="has-anchor" id="licence-status">Licence status<a class="h-anchor" href="#licence-status" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code, generated page, docs tooling, design layer</td>
+<td><strong>MIT</strong> — see <a href="license.html">LICENSE</a></td>
+</tr>
+<tr>
+<td>DOE workbook and extracted figures</td>
+<td><strong>No confirmed licence; none asserted</strong> — terms to be confirmed with DOE; no endorsement implied</td>
+</tr>
+<tr>
+<td>Service-area coverage layer</td>
+<td><strong>CC BY-SA derivative</strong> — OSM Wiki (CC BY-SA 2.0) + Wikipedia (CC BY-SA 4.0); RA 12146 public law for MERALCO</td>
+</tr>
+<tr>
+<td>Region / LGU geometry</td>
+<td>Boundaries <strong>CC BY 3.0 IGO</strong> (NAMRIA / PSA via OCHA COD-AB); source maps and scripts MIT</td>
+</tr>
+<tr>
+<td>Fonts, icons, brand marks</td>
+<td>OFL 1.1, ISC/MIT, and BetterGovPH brand property (not MIT) respectively</td>
+</tr>
+</tbody>
+</table></div>
+<p>Full attribution and obligations are in <a href="notice.html">NOTICE</a>; the coverage layer must keep its
+per-row <code>source_id</code> and CC BY-SA attribution when republished.</p>
+<h2 class="has-anchor" id="data-contracts-and-publication-states">Data contracts and publication states<a class="h-anchor" href="#data-contracts-and-publication-states" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="cell-states-null-never-means-zero">Cell states: <code>null</code> never means zero<a class="h-anchor" href="#cell-states-null-never-means-zero" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>Meaning</th>
+<th>Published as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>published</code></td>
+<td>the workbook has a numeric rate</td>
+<td>the value, unchanged</td>
+</tr>
+<tr>
+<td><code>nda</code></td>
+<td>publisher's &quot;No Data Available&quot;</td>
+<td>a state, <strong>never</strong> <code>0</code> or an estimate</td>
+</tr>
+<tr>
+<td><code>missing</code></td>
+<td>month column exists but the cell is blank / not yet published</td>
+<td>a state (all of 2026-11)</td>
+</tr>
+<tr>
+<td><code>invalid</code></td>
+<td>the cell failed extraction (one cell in 2026-10)</td>
+<td>a state, no value</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>No imputation.</strong> Cells are never filled, interpolated or averaged over; utility-level <code>data_status</code>
+is <code>published</code>, <code>partial</code> or <code>nda</code> for the latest month. Aggregates use published values only and are
+always published with their reporting count (October 2026 residential: 113 of 141 reporting, 27 NDA,
+1 invalid, median ₱12.72/kWh); commercial, industrial and generation have larger NDA shares, so a
+number never appears without the count that qualifies it. Pinned June-2026 anchor figures are
+asserted on every run, and row counts (141 utilities / 18 regions / 107 months / 60,348 observations)
+are hard contracts — a mismatch stops publication and is never silenced by editing the expectation.</p>
+<h3 class="has-anchor" id="conflicts-disclosed-not-smoothed">Conflicts: disclosed, not smoothed<a class="h-anchor" href="#conflicts-disclosed-not-smoothed" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>When tabs disagree the pipeline resolves by <strong>majority</strong>, keeps the losing claims verbatim, and
+publishes <code>CONFLICT</code> when there is no majority. All five current disagreements are logged in
+<code>data/seed/validation.json</code> and surfaced through the API and the page's method section:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Conflict</th>
+<th>Tabs say</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CLPC region (row 33)</td>
+<td>BARMM (residential/commercial/generation) vs Region 12 (industrial)</td>
+<td>majority BARMM; both claims kept</td>
+</tr>
+<tr>
+<td>Island label (row 33)</td>
+<td>industrial says &quot;BARMM&quot;; others Mindanao</td>
+<td>region mapping wins; logged</td>
+</tr>
+<tr>
+<td>ILECO II grid status (row 122)</td>
+<td>ONGRID 2 tabs vs OFFGRID 2 tabs</td>
+<td><code>grid_connection = CONFLICT</code> — never guessed</td>
+</tr>
+<tr>
+<td>ILECO III grid status (row 123)</td>
+<td>ONGRID 2 tabs vs OFFGRID 2 tabs</td>
+<td><code>grid_connection = CONFLICT</code> — never guessed</td>
+</tr>
+<tr>
+<td>DANECO name</td>
+<td><code>DANECO</code> vs <code>DANECO/NORDECO</code></td>
+<td>canonical name + <code>name_variants</code> kept</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="versioning-and-contract-stability">Versioning and contract stability<a class="h-anchor" href="#versioning-and-contract-stability" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><code>api_version</code> (<code>1.0</code>) is the JSON contract version, stable across refreshes; <code>dataset_version</code>
+(<code>2026-11-10</code>) identifies the snapshot and changes with every retrieval. Snapshots are immutable
+once published — a new retrieval is a new version and a new generated tree, never a silent
+rewrite. Contract changes are recorded in the OpenAPI <code>x-changelog</code> and <a href="api-docs.html">api-docs.md</a>;
+additive layers keep the major version (service areas were additive v1.1).</li>
+<li>Every response carries <code>meta.dataset_version</code>, source/attribution metadata, five disclaimers and a
+coverage context block; <code>draft/api/v1/index.json</code> adds a citation string.</li>
+</ul>
+<h3 class="has-anchor" id="contracts-enforced-by-the-build">Contracts enforced by the build<a class="h-anchor" href="#contracts-enforced-by-the-build" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Ingest gates publication on the 17 + 7 checks (<code>ALL CHECKS PASSED</code>). The API builder checks seed
+self-consistency (exit <code>2</code>, nothing written) and every emitted file against
+<a href="../openapi.yaml">openapi.yaml</a> (exit <code>1</code> on drift). <code>validate.py</code> covers ten contract groups, and every
+docs link and fragment must resolve when the site is built and crawled.</p>
+<h2 class="has-anchor" id="the-pipeline-stage-by-stage">The pipeline, stage by stage<a class="h-anchor" href="#the-pipeline-stage-by-stage" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Each tool is a standalone CLI that derives the repository root from its own path and is run from the
+repository root. Read a builder's module docstring before editing it: it declares role, inputs,
+outputs, flags, exit codes, network behaviour and determinism rules.</p>
+<h3 class="has-anchor" id="build-order-graph">Build-order graph<a class="h-anchor" href="#build-order-graph" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">[network] pinned geometry release v1.1.1 ─► (1) build-geo.py ─► draft/assets/{geo,coverage-geo,geo-sources}.json
+                                                                       │
+research/coverage/** ─► (2) build-service-areas.py ◄────────────────────┼── data/seed/utilities.csv, regions.csv
+                              └─► data/seed/{service_areas,service_area_sources}.csv
+                                                                       │
+DOE workbook ─► [network] ─► (3) ingest-doe-rates.py ◄─────────────────┘
+                              └─► data/raw/doe-rates/2026-11-10/&lt;gid&gt;.csv (bytes + SHA-256)
+                                  data/seed/{utilities,rates_monthly,regions,sources}.csv
+                                  data/seed/{validation,page-data}.json
+                                                                       │
+        ┌──────────────────────────────┬───────────────────────────────┴───────────┐
+        ▼                              ▼                                           ▼
+(4) build-api.py              build-map-page.py                         build-docs.py
+    (+ openapi.yaml)          (+ assets/geo*.json, optional API)        (+ markdown registry)
+    └─► draft/api/v1/         └─► draft/map-table-prototype.html        └─► draft/docs/
+        └──────────────────────────────┬───────────────────────────────────────────┘
+                                       ▼
+(5) build-preview.py ──► preview/ (gitignored)   (6) validate.py (+ --check-page) · tests/qa.mjs · tests/qa-docs.mjs
+</code></pre></div>
+<h3 class="has-anchor" id="stage-reference">Stage reference<a class="h-anchor" href="#stage-reference" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Stage</th>
+<th>Tool</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Network</th>
+<th>Determinism notes</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Geometry</td>
+<td><a href="../source/tools/build-geo.py">build-geo.py</a></td>
+<td>pinned <code>faeldon/philippines-json-maps</code> v1.1.1 release, per-file SHA-256</td>
+<td><code>draft/assets/geo.json</code> (18 regions), <code>coverage-geo.json</code> (1,642 LGUs), <code>geo-sources.json</code></td>
+<td>first fetch only; cached in a temp dir</td>
+<td>pure function of pinned inputs + constants; only <code>geo-sources.json</code> changes between runs</td>
+<td><code>python3 tools/build-geo.py</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Service areas</td>
+<td><a href="../source/tools/build-service-areas.py">build-service-areas.py</a></td>
+<td><code>research/coverage/osm-service-areas.csv</code>, <code>research/service-areas.json</code> (RA 12146), <code>data/seed/utilities.csv</code>, <code>draft/assets/coverage-geo.json</code></td>
+<td><code>data/seed/service_areas.csv</code>, <code>service_area_sources.csv</code></td>
+<td>none</td>
+<td>sorted output; refuses to write on bad joins, uncovered utilities or duplicate rows (exit <code>2</code>)</td>
+<td><code>python3 tools/build-service-areas.py</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ingest</td>
+<td><a href="../source/tools/ingest-doe-rates.py">ingest-doe-rates.py</a></td>
+<td>four DOE tabs via CSV export; the assembled service-area CSVs</td>
+<td><code>data/raw/doe-rates/&lt;date&gt;/&lt;gid&gt;.csv</code>; <code>data/seed/{utilities,rates_monthly,regions,sources}.csv</code>; <code>validation.json</code>; <code>page-data.json</code></td>
+<td>first run per retrieval date or <code>--refresh</code>; same-day rerun reuses snapshot</td>
+<td>reproducible via <code>OPEN_ENERGY_RETRIEVED_AT</code>; 17 + 7 checks gate publication; conflicts logged</td>
+<td><code>python3 tools/ingest-doe-rates.py [--refresh]</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Static API</td>
+<td><a href="../source/tools/build-api.py">build-api.py</a></td>
+<td><code>data/seed/**</code>, raw snapshots (hash-verified), <a href="../openapi.yaml">openapi.yaml</a></td>
+<td><code>draft/api/v1/**</code> incl. <code>openapi.json</code> mirror and <code>index.json</code> catalogue</td>
+<td>none</td>
+<td>fixed ordering, no wall clock; only seed timestamps; exit <code>1</code> contract drift, <code>2</code> seed inconsistency</td>
+<td><code>python3 tools/build-api.py [--sync-openapi]</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Docs site</td>
+<td><a href="../source/tools/build-docs.py">build-docs.py</a></td>
+<td>markdown registry + auto-discovered <code>research/*.md</code>, <code>draft/assets/**</code>, seed facts</td>
+<td><code>draft/docs/**</code> + <code>docs-manifest.json</code> + inlined search index</td>
+<td>none</td>
+<td>two runs byte-identical; unresolved internal links fail the build</td>
+<td><code>python3 tools/build-docs.py</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Product page</td>
+<td><a href="../source/tools/build-map-page.py">build-map-page.py</a></td>
+<td><code>data/seed/page-data.json</code>, <code>draft/assets/**</code> (fonts, brand, geometry), optional <code>draft/api/v1/</code></td>
+<td><code>draft/map-table-prototype.html</code> (one self-contained file)</td>
+<td>none</td>
+<td>byte-identical rebuild; everything inlined; API explorer degrades if the API is absent</td>
+<td><code>python3 tools/build-map-page.py</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Review pack</td>
+<td><a href="../source/tools/build-preview.py">build-preview.py</a></td>
+<td>built page, docs, API, OpenAPI, markdown sources, data files</td>
+<td><code>preview/</code> (gitignored review hub incl. downloads and a package zip)</td>
+<td>none</td>
+<td>copies upstream output, never authors it; rebuild upstream first</td>
+<td><code>python3 tools/build-preview.py</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Validation</td>
+<td><a href="../source/tools/validate.py">validate.py</a></td>
+<td>the committed tree; builders only for <code>--check-page</code></td>
+<td>console report + exit status</td>
+<td>none</td>
+<td>contract-based (never file hashes); <code>--check-page</code> rebuilds the page twice and compares</td>
+<td><code>python3 tools/validate.py [--check-page]</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="ordering-cost-and-failure-behaviour">Ordering, cost and failure behaviour<a class="h-anchor" href="#ordering-cost-and-failure-behaviour" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Geometry → service areas.</strong> The assembler joins every LGU row to canonical PSGC codes in
+<code>draft/assets/coverage-geo.json</code>, and reads the previous ingest's <code>utilities.csv</code> / <code>regions.csv</code>;
+a missing file stops it (the committed seed makes the documented order work).</li>
+<li><strong>Service areas → ingest.</strong> The ingest refuses to run without <code>service_areas.csv</code> /
+<code>service_area_sources.csv</code> and folds coverage into the payload and registry.</li>
+<li><strong>Ingest → API, page, docs.</strong> All three consume <code>data/seed/</code>. Build the API <strong>before</strong> the page so
+the API explorer is populated (the page still builds without it, minus the explorer). The review
+pack copies all outputs, and validation/QA run last.</li>
+</ul>
+<p>Measured single-run wall time on the dev VM for this snapshot (warm Python, warm geo cache): geometry
+≈3.5 s (first run also downloads the release); service areas &lt;0.1 s; ingest ≈0.1–0.2 s from snapshot;
+API ≈0.3–0.4 s; docs ≈0.2 s; page &lt;0.1 s; review pack seconds; <code>validate.py</code> ≈0.3 s (≈0.4–0.5 s with
+<code>--check-page</code>); browser QA ≈25 s / ≈15 s per suite.</p>
+<p>Failure is loud and non-destructive: failed ingest checks publish nothing; the service-area assembler
+prints <code>COVERAGE ASSEMBLY FAILED - nothing written</code>; the API exits <code>1</code> on contract drift and <code>2</code> on
+seed inconsistency (nothing written).</p>
+<h2 class="has-anchor" id="build-order-quickstart-and-ci">Build order, quickstart and CI<a class="h-anchor" href="#build-order-quickstart-and-ci" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Run the stages in dependency order (the README quickstart order):</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash">python3 -m pip install -r requirements.txt     # PyYAML + markdown-it-py
+python3 tools/build-geo.py                     # optional; network only on first cached fetch
+python3 tools/build-service-areas.py           # must run before ingest
+python3 tools/ingest-doe-rates.py              # add --refresh to re-fetch the four tabs
+python3 tools/build-api.py                     # add --sync-openapi to refresh volatile spec blocks
+python3 tools/build-docs.py                    # -&gt; draft/docs/
+python3 tools/build-map-page.py                # -&gt; draft/map-table-prototype.html
+python3 tools/build-preview.py                 # -&gt; preview/ (gitignored review hub)
+python3 tools/validate.py --check-page         # offline contracts + deterministic rebuild proof
+npm ci &amp;&amp; npx playwright install chromium      # once, for browser QA
+node tests/qa.mjs                              # page behaviour
+node tests/qa-docs.mjs                         # docs site crawl
+</code></pre></div>
+<p>Flags: <code>--refresh</code> (ingest/geo), <code>--sync-openapi</code> (API volatile spec blocks), <code>--check-page</code> /
+<code>--strict</code> / <code>--verbose</code> / <code>--timeout</code> (validation). Environment: <code>OPEN_ENERGY_RETRIEVED_AT</code>
+(reproduce an ingest timestamp), <code>OPEN_ENERGY_SITE_URL</code> (page canonical origin), <code>GEO_BUILD_CACHE</code>.</p>
+<p><a href="../source/.github/workflows/ci.yml"><code>.github/workflows/ci.yml</code></a> runs on every push/PR to <code>main</code> without
+fetching source data — committed snapshots and generated trees are the inputs:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Steps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Static validation and deterministic build</strong> (Python 3.12)</td>
+<td>rebuild the service areas and fail on any <code>data/seed/</code> diff; <code>validate.py</code>; <code>validate.py --check-page</code>; rebuild the API and fail on any diff/untracked file under <code>draft/api/</code>; rebuild the docs and fail on any diff/untracked file under <code>draft/docs/</code></td>
+</tr>
+<tr>
+<td><strong>Browser QA (Chromium)</strong> (after validation)</td>
+<td>build page + docs from source; <code>npm ci</code> + Playwright Chromium; <code>node tests/qa.mjs</code>; <code>node tests/qa-docs.mjs</code>; upload screenshots/results as artifacts even on failure</td>
+</tr>
+</tbody>
+</table></div>
+<p>CI enforces the determinism rules: tracked generated trees must rebuild byte-identically or the build fails.</p>
+<h2 class="has-anchor" id="hosting-and-deployment-model">Hosting and deployment model<a class="h-anchor" href="#hosting-and-deployment-model" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Everything after the build is served as plain static files. <strong>No public deployment exists</strong>; the page,
+docs and API are static artefacts that <em>can</em> be served by any host, and the review pack is local.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Artefact</th>
+<th>How it is served</th>
+<th>Deployment status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page <code>draft/map-table-prototype.html</code></td>
+<td>opened directly (<code>file://</code>) or on any static host/CDN; self-contained with a strict CSP</td>
+<td>not deployed; no public URL recorded</td>
+</tr>
+<tr>
+<td>Docs site <code>draft/docs/</code></td>
+<td>any static host or <code>file://</code>; same-origin/inline assets only</td>
+<td>not deployed; browsable locally</td>
+</tr>
+<tr>
+<td>API <code>draft/api/v1/</code></td>
+<td>any static file server; GET-only files, no auth, no query layer</td>
+<td><strong>contract + static mirror, not a live service</strong></td>
+</tr>
+<tr>
+<td>Review pack <code>preview/</code></td>
+<td>local static server (<code>python3 -m http.server</code>), tailnet via <code>tailscale serve</code> — <strong>not</strong> <code>funnel</code></td>
+<td>local review only; gitignored, never public</td>
+</tr>
+</tbody>
+</table></div>
+<p>The API's <code>servers</code> entry is the <strong>relative</strong> URL <code>api/v1</code> (no leading slash), so it resolves against
+wherever the files are served rather than an invented domain; proposed hostnames in the contract are
+not live services. When a host exists, documented conventions apply: CORS
+<code>Access-Control-Allow-Origin: *</code>, <code>Cache-Control: public, max-age=300, s-maxage=3600</code> (files are
+immutable within a <code>dataset_version</code>), and the host's own 404 for unknown paths. <code>OPEN_ENERGY_SITE_URL</code>
+sets the canonical/Open Graph origin at page build time; leaving it unset avoids a fabricated URL.
+README's <em>Deployment status</em> section records the URL, host, dataset version and API base URL once they
+exist; review-pack operational notes live in <code>preview/README.md</code>.</p>
+<h2 class="has-anchor" id="how-to-change-the-backend-safely">How to change the backend safely<a class="h-anchor" href="#how-to-change-the-backend-safely" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="the-change-loop">The change loop<a class="h-anchor" href="#the-change-loop" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li><strong>Find the owning stage</strong> below; edit the <em>source</em> (builder, markdown, OpenAPI, research evidence,
+asset), never the generated bytes.</li>
+<li><strong>Rebuild that stage and every downstream stage</strong> in dependency order, then <strong>inspect the generated
+diff</strong> — only bytes your change should affect may move.</li>
+<li><strong>Prove the contracts:</strong> <code>python3 tools/validate.py</code> (add <code>--check-page</code> when the page builder or
+its inputs changed), then <code>node tests/qa.mjs</code> and, when page or docs changed, <code>node tests/qa-docs.mjs</code>.</li>
+<li><strong>Update the human documentation</strong> in the same change (README, CONTRIBUTING, the
+<a href="data-seed.html">seed data dictionary</a>, <a href="data-model.html">data-model.md</a>,
+<a href="api-docs.html">api-docs.md</a>, <a href="notice.html">NOTICE</a>) and check scope with <code>git status --short</code> —
+only intended files, never <code>preview/</code>, <code>node_modules/</code>, QA artifacts or generated bytes.</li>
+</ol>
+<h3 class="has-anchor" id="where-a-change-lands">Where a change lands<a class="h-anchor" href="#where-a-change-lands" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Edit</th>
+<th>Rebuild and verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New data retrieval</td>
+<td>(network)</td>
+<td>ingest <code>--refresh</code> → API → docs → page → preview → <code>validate.py</code> → QA</td>
+</tr>
+<tr>
+<td>Parsing, states, conflicts, anchors</td>
+<td><code>tools/ingest-doe-rates.py</code> + its checks</td>
+<td>ingest → API → page → <code>validate.py</code> → QA</td>
+</tr>
+<tr>
+<td>Service-area evidence or fallback rules</td>
+<td><code>research/coverage/**</code>, <code>research/service-areas.json</code>, assembler</td>
+<td>service areas → ingest → API → page → docs → <code>validate.py</code></td>
+</tr>
+<tr>
+<td>Geometry (pinned inputs only)</td>
+<td><code>tools/build-geo.py</code></td>
+<td>geo → service areas → ingest → API → page → <code>validate.py --check-page</code> → QA</td>
+</tr>
+<tr>
+<td>Seed columns/semantics</td>
+<td>producing builder + data dictionary + <code>data-model.md</code></td>
+<td>rebuild producers, then the whole chain</td>
+</tr>
+<tr>
+<td>API response shape or routes</td>
+<td><a href="../openapi.yaml">openapi.yaml</a> + <a href="api-docs.html">api-docs.md</a> + builder</td>
+<td><code>build-api.py --sync-openapi</code> → <code>validate.py</code> → page API-explorer QA</td>
+</tr>
+<tr>
+<td>Page copy, layout, interactions</td>
+<td><code>tools/build-map-page.py</code> (+ <code>draft/assets/**</code>)</td>
+<td>page → <code>qa.mjs</code> → <code>validate.py --check-page</code></td>
+</tr>
+<tr>
+<td>Docs prose or a new docs page</td>
+<td>the markdown source; register new pages in <code>tools/build-docs.py</code> (<code>KNOWN_DOCS</code>, integration step)</td>
+<td><code>build-docs.py</code> → <code>qa-docs.mjs</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="never-hand-edit-these">Never hand-edit these<a class="h-anchor" href="#never-hand-edit-these" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Generated artefact</th>
+<th>Producer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data/raw/doe-rates/**</code></td>
+<td>ingest — <strong>immutable publisher bytes</strong>; never edited or overwritten</td>
+</tr>
+<tr>
+<td><code>data/seed/*.csv</code>, <code>validation.json</code>, <code>page-data.json</code></td>
+<td>ingest (the two service-area CSVs are assembled first)</td>
+</tr>
+<tr>
+<td><code>draft/api/v1/**</code> (including <code>openapi.json</code>)</td>
+<td><code>tools/build-api.py</code></td>
+</tr>
+<tr>
+<td><code>draft/docs/**</code> + <code>docs-manifest.json</code></td>
+<td><code>tools/build-docs.py</code></td>
+</tr>
+<tr>
+<td><code>draft/map-table-prototype.html</code></td>
+<td><code>tools/build-map-page.py</code></td>
+</tr>
+<tr>
+<td><code>draft/assets/{geo,coverage-geo}.json</code>, <code>geo-sources.json</code></td>
+<td><code>tools/build-geo.py</code></td>
+</tr>
+<tr>
+<td><code>preview/**</code></td>
+<td><code>tools/build-preview.py</code> (gitignored)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Inside <code>data/seed/</code> only <code>README.md</code> (data dictionary) and the illustrative <code>plants.csv</code> are
+hand-maintained; everything else there is generated.</p>
+<h3 class="has-anchor" id="determinism-and-reproducing-a-fresh-ingest">Determinism and reproducing a fresh ingest<a class="h-anchor" href="#determinism-and-reproducing-a-fresh-ingest" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Same inputs must produce the same bytes: no wall clock, randomness or unordered iteration; sorted
+collections and explicit ordering; UTF-8 + LF; JSON <code>indent=2</code> with a trailing newline; assets
+copied byte-for-byte. The only volatile metadata is provenance: ingest timestamps come from the
+snapshot (<code>OPEN_ENERGY_RETRIEVED_AT</code> reproduces them), and <code>geo-sources.json</code> records fetch/run
+times. A rebuild that changes any other byte is a signal to investigate, not commit; fix the input
+or parser rather than weakening a contract, run a builder twice and diff, and let CI's API/docs diff
+checks and <code>--check-page</code> enforce it mechanically.</li>
+<li><strong>Fresh ingest:</strong> choose the retrieval date (it becomes <code>dataset_version</code>) → run
+<code>ingest-doe-rates.py --refresh</code> (or a first run on a new date), committing a new
+<code>data/raw/doe-rates/&lt;date&gt;/</code> directory → confirm <code>ALL CHECKS PASSED</code> and review the <code>data/seed/</code>
+diff → rebuild downstream (service areas if its inputs changed, API → docs → page → preview) →
+<code>validate.py</code>, <code>--check-page</code>, both QA suites. For a byte-identical rerun set the recorded
+timestamp, e.g. <code>OPEN_ENERGY_RETRIEVED_AT=2026-11-10T17:00:34+08:00</code>.</li>
+<li>After a data refresh, refresh the volatile OpenAPI blocks with <code>build-api.py --sync-openapi</code> (seed
+file hashes, coverage-source metadata); structural contract changes still require editing
+<code>openapi.yaml</code> itself.</li>
+</ul>
+<h2 class="has-anchor" id="troubleshooting">Troubleshooting<a class="h-anchor" href="#troubleshooting" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>missing data/seed/service_areas.csv — run … first</code></td>
+<td>ingest ran before coverage assembly</td>
+<td>run <code>build-service-areas.py</code>, then ingest</td>
+</tr>
+<tr>
+<td>Fetch error / timeout / &quot;suspiciously small response&quot;</td>
+<td>no network, blocked export, or changed workbook export</td>
+<td>retry; reuse an existing same-date snapshot offline; investigate the source — never fabricate a snapshot</td>
+</tr>
+<tr>
+<td>Snapshot SHA-256 mismatch or <code>seed consistency check failed</code></td>
+<td>bytes changed / wrong date directory / stale seed data</td>
+<td>compare <code>sha256sum</code> of <code>data/raw/doe-rates/&lt;date&gt;/&lt;gid&gt;.csv</code> with <a href="../data/seed/sources.csv">sources.csv</a>; restore the correct snapshot (a genuine retrieval belongs in a new date directory), rebuild service areas and ingest, then the API</td>
+</tr>
+<tr>
+<td><code>OPENAPI CONTRACT DRIFT</code> (API exits <code>1</code>, payload written)</td>
+<td>emitted files no longer match <a href="../openapi.yaml">openapi.yaml</a></td>
+<td>update the contract (and <code>api-docs.md</code> / <code>data-model.md</code>) for structural changes; <code>--sync-openapi</code> only refreshes volatile metadata; never edit <code>draft/api/v1/</code></td>
+</tr>
+<tr>
+<td><code>validate.py</code> CSV/schema contract failure</td>
+<td>a column or field change was not propagated</td>
+<td>update the generator, data dictionary, <code>data-model.md</code> and the contract checks together</td>
+</tr>
+<tr>
+<td>Unexpected generated diff after a rebuild, or <code>--check-page</code> fails</td>
+<td>nondeterminism (wall clock, unordered iteration, newline/locale/format) or a stale committed page</td>
+<td>inspect the diff, remove the source, run the builder twice; rebuild the page and commit only intended output</td>
+</tr>
+<tr>
+<td>Docs build reports unresolved links / docs QA finds raw <code>.md</code> links</td>
+<td>missing target or unregistered markdown page</td>
+<td>fix the path; register new pages in <code>tools/build-docs.py</code></td>
+</tr>
+<tr>
+<td>Empty API explorer / explorer QA failure</td>
+<td>API tree not built before the page</td>
+<td>run <code>build-api.py</code> before <code>build-map-page.py</code></td>
+</tr>
+<tr>
+<td>Browser QA reports console errors, external requests or overflow</td>
+<td>an asset was linked instead of inlined, a runtime fetch was added, or a layout regressed</td>
+<td>inline the asset; keep outputs self-contained; only user-clicked citations leave the page</td>
+</tr>
+<tr>
+<td>A new retrieval changes anchors or counts</td>
+<td>the publisher changed values, or parsing regressed</td>
+<td>investigate the source and diff; change checks only when the contract intentionally changes — never to silence a failure</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="reading-order-and-related-documents">Reading order and related documents<a class="h-anchor" href="#reading-order-and-related-documents" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><a href="readme.html">README</a> — product, dataset at a glance, quickstart, repository layout.</li>
+<li>This page — the pipeline mental model and safe-change procedure.</li>
+<li><a href="contributing.html">CONTRIBUTING</a> — build commands and the non-negotiable data/page/API rules.</li>
+<li><a href="data-seed.html">data/seed/README</a> — the data dictionary and validation report.</li>
+<li><a href="data-model.html">data-model.md</a> — entities, provenance, publication states, licensing.</li>
+<li><a href="api-docs.html">api-docs.md</a> and <a href="../openapi.yaml">openapi.yaml</a> — the HTTP contract and its guide.</li>
+<li><a href="tests.html">tests/README</a> — what static validation and the browser QA suites prove.</li>
+<li><a href="component-map.html">component-map.md</a> — component map with edit/build/verify contracts per artefact.</li>
+<li>Root <code>AGENTS.md</code> — agent/contributor operating guide and task routing (nested maps in each area dir).</li>
+<li><a href="notice.html">NOTICE</a> — third-party licences, attribution and the DOE data caveats.</li>
+</ol>
+<p>Useful while debugging: <code>data/seed/validation.json</code> (checks, conflicts, hashes, anchors),
+<code>draft/api/v1/index.json</code> (API catalogue) and <code>preview/README.md</code> (review-pack hosting notes).</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="frontend.html"><span class="label">Previous</span><span class="pager-title">&larr; Frontend architecture</span></a><a class="pager-link pager-next" href="component-map.html"><span class="label">Next</span><span class="pager-title">Component map &amp; agent guide &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#what-backend-means-here">What "backend" means here</a><a class="toc-link" href="#source-of-truth-and-provenance">Source of truth and provenance</a><a class="toc-link l3" href="#snapshots-and-hashes">Snapshots and hashes</a><a class="toc-link l3" href="#provenance-chain">Provenance chain</a><a class="toc-link l3" href="#licence-status">Licence status</a><a class="toc-link" href="#data-contracts-and-publication-states">Data contracts and publication states</a><a class="toc-link l3" href="#cell-states-null-never-means-zero">Cell states: null never means zero</a><a class="toc-link l3" href="#conflicts-disclosed-not-smoothed">Conflicts: disclosed, not smoothed</a><a class="toc-link l3" href="#versioning-and-contract-stability">Versioning and contract stability</a><a class="toc-link l3" href="#contracts-enforced-by-the-build">Contracts enforced by the build</a><a class="toc-link" href="#the-pipeline-stage-by-stage">The pipeline, stage by stage</a><a class="toc-link l3" href="#build-order-graph">Build-order graph</a><a class="toc-link l3" href="#stage-reference">Stage reference</a><a class="toc-link l3" href="#ordering-cost-and-failure-behaviour">Ordering, cost and failure behaviour</a><a class="toc-link" href="#build-order-quickstart-and-ci">Build order, quickstart and CI</a><a class="toc-link" href="#hosting-and-deployment-model">Hosting and deployment model</a><a class="toc-link" href="#how-to-change-the-backend-safely">How to change the backend safely</a><a class="toc-link l3" href="#the-change-loop">The change loop</a><a class="toc-link l3" href="#where-a-change-lands">Where a change lands</a><a class="toc-link l3" href="#never-hand-edit-these">Never hand-edit these</a><a class="toc-link l3" href="#determinism-and-reproducing-a-fresh-ingest">Determinism and reproducing a fresh ingest</a><a class="toc-link" href="#troubleshooting">Troubleshooting</a><a class="toc-link" href="#reading-order-and-related-documents">Reading order and related documents</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

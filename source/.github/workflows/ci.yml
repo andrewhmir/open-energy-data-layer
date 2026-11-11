@@ -1,0 +1,135 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  validate:
+    name: Static validation and deterministic build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # optional-but-enforced here: full OpenAPI 3.1 validation
+          pip install "openapi-spec-validator>=0.7,<0.8"
+
+      - name: Deterministic service-area assembly
+        run: |
+          python3 tools/build-service-areas.py
+          if ! git diff --quiet -- data/seed/service_areas.csv data/seed/service_area_sources.csv; then
+            echo "::error::service-area dataset is out of date; rebuild with tools/build-service-areas.py"
+            git diff --stat -- data/seed/service_areas.csv data/seed/service_area_sources.csv
+            exit 1
+          fi
+
+      - name: Static validation (data, service areas, page, docs, OpenAPI, static API contracts)
+        run: python3 tools/validate.py
+
+      - name: Deterministic rebuild check
+        run: python3 tools/validate.py --check-page
+
+      - name: Deterministic static API build
+        run: |
+          python3 tools/build-api.py
+          if ! git diff --quiet -- draft/api; then
+            echo "::error::draft/api is out of date; rebuild with tools/build-api.py"
+            git diff --stat -- draft/api
+            exit 1
+          fi
+          if [ -n "$(git status --porcelain -- draft/api)" ]; then
+            echo "::error::tools/build-api.py produced untracked files under draft/api"
+            git status --porcelain -- draft/api
+            exit 1
+          fi
+
+      - name: Deterministic docs build
+        run: |
+          python3 tools/build-docs.py
+          if ! git diff --quiet -- draft/docs; then
+            echo "::error::draft/docs is out of date; rebuild with tools/build-docs.py"
+            git diff --stat -- draft/docs
+            exit 1
+          fi
+          if [ -n "$(git status --porcelain -- draft/docs)" ]; then
+            echo "::error::tools/build-docs.py produced untracked files under draft/docs"
+            git status --porcelain -- draft/docs
+            exit 1
+          fi
+
+  browser:
+    name: Browser QA (Chromium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    needs: validate
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Build the page from source
+        run: python3 tools/build-map-page.py
+
+      - name: Build the documentation site from source
+        run: python3 tools/build-docs.py
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install Node tooling
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser QA (desktop 1440x900 + mobile 390x844)
+        run: node tests/qa.mjs
+
+      - name: Docs-site QA (static documentation over HTTP)
+        run: node tests/qa-docs.mjs
+
+      - name: Upload QA screenshots and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-screenshots
+          path: |
+            /tmp/qa-final
+            /tmp/qa-docs
+          if-no-files-found: ignore
+          retention-days: 14

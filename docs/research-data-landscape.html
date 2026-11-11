@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Research: Data landscape — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Philippine Energy Data Landscape — Evidence Pack for &quot;One Open Energy Data Layer&quot;">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" class="current" aria-current="page" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-research">Research</a><span class="sep">/</span><span aria-current="page">Research: Data landscape</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Research <span class="sep">&middot;</span> documentation</p>
+  <h1 id="philippine-energy-data-landscape--evidence-pack-for-one-open-energy-data-layer">Philippine Energy Data Landscape — Evidence Pack for &quot;One Open Energy Data Layer&quot;</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>research/data-landscape.md</code> &middot; 367 lines &middot; 49 KB &middot; 6,866 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/research/data-landscape.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p><strong>Prepared for:</strong> BetterGov PH Fellowship, Energy challenge (DOE + Mura, Malinis, at Maaasahang Kuryente Coalition)
+<strong>Prepared by:</strong> data-researcher (research task-1)
+<strong>Research date / access date for every URL below:</strong> 2026-11-10 (Asia/Manila)
+<strong>Method:</strong> live HTTP fetches from this environment (curl and a fetch tool). No browser automation, no login, no interpretation of paywalled content.
+<strong>Verification labels used throughout:</strong> <code>[V]</code> = verified live (HTTP 200 + content inspected); <code>[P]</code> = partially verified (reachable but content behind JS/Cloudflare, or only a static asset reachable); <code>[L]</code> = likely / inferred from a verified artefact but not directly confirmed; <code>[U]</code> = unknown / could not be verified; <code>[X]</code> = verified as failing (4xx/blocked/dead).</p>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>Ground rule applied: where the live web disagrees with the fellowship challenge page or the Energy pitch deck, the live source wins and the discrepancy is flagged in §12. This file deliberately does <strong>not</strong> invent endpoint paths, dataset IDs, or figures.</p></div></div>
+<hr />
+<h2 class="has-anchor" id="0-tldr-for-the-proposal-read-this-if-you-read-nothing-else">0. TL;DR for the proposal (read this if you read nothing else)<a class="h-anchor" href="#0-tldr-for-the-proposal-read-this-if-you-read-nothing-else" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>The single biggest finding: the &quot;one price table&quot; already exists, machine-readable, in the open.</strong> DOE's <em>Electricity Rates &amp; Power Market Monitor</em> page embeds a public Google Sheet with <strong>monthly residential, commercial and industrial rates plus blended generation charge for 141 DU/EC rows, January 2018 → December 2026</strong>. A plain CSV export works without login. This is not an API and DOE does not advertise it, but a 3-month fellowship can stand on it on day 1.</li>
+<li><strong>The 142-utility claim checks out.</strong> The sheet has 141 rows per tab (21 PIOU + 120 EC) and 142 unique entity names across tabs (the difference is <code>DANECO</code> vs <code>DANECO/NORDECO</code>) — exactly the &quot;no common ID&quot; problem the deck describes. 21 rows are flagged <code>OFFGRID</code>.</li>
+<li><strong>Deck figures are reproducible from that sheet</strong>: Meralco June 2026 = 14.48, SOLECO (Southern Leyte) = 16.57 and <strong>+32.2% vs May</strong>, BISELCO (Busuanga, off-grid) = 24.92. The headline <strong>₱12.43 does not reproduce as a simple mean of the June 2026 column (simple mean = 12.29, median 12.10)</strong> — see §12.3.</li>
+<li><strong>The hard blockers are regulatory-agency WAFs, not the data's existence.</strong> ERC, NEA, PSA (incl. PSGC/OpenSTAT), FOI portal and NGCP HTML are all behind Cloudflare 403s for automated clients. NGCP's <strong>static PDFs are downloadable</strong> even though its site is blocked. These sources must be partnership/FOI routes, not scrapers.</li>
+<li><strong>DOE's portal is a 2026 Next.js rebuild</strong>: content is real but there is no API, no robots policy, and removed legacy paths return <strong>HTTP 200 with a &quot;Page Not Found&quot; shell</strong> — status codes cannot be trusted. <code>legacy.doe.gov.ph</code> is dead.</li>
+<li><strong>Presyo PH (ICSC) is the closest existing competitor</strong>: <code>presyo.icsc.ngo</code>, launched 2026-04-28, &gt;150 DUs/ECs, and it serves a public JSON API. The fellowship should integrate/attribute rather than rebuild blind.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="1-executive-summary--what-exists-vs-what-must-be-built">1. Executive summary — what exists vs. what must be built<a class="h-anchor" href="#1-executive-summary--what-exists-vs-what-must-be-built" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="11-what-already-exists-publicly-verified">1.1 What already exists publicly (verified)<a class="h-anchor" href="#11-what-already-exists-publicly-verified" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What exists</th>
+<th>Where</th>
+<th>Readiness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DU/EC master list (name, grid, region, island, type)</td>
+<td>Implicit in DOE's rate sheet (141 rows/tab, 142 unique)</td>
+<td>DOE embedded Google Sheet</td>
+<td>Machine-readable, no stable IDs, no franchise/PSGC fields</td>
+</tr>
+<tr>
+<td>Residential/commercial/industrial rates, monthly</td>
+<td>2018–2026 monthly, per DU/EC</td>
+<td>Same DOE Google Sheet</td>
+<td>Machine-readable, NDA gaps</td>
+</tr>
+<tr>
+<td>Blended generation charge per DU</td>
+<td>2018–2026 monthly</td>
+<td>Same Google Sheet (4th tab)</td>
+<td>Machine-readable</td>
+</tr>
+<tr>
+<td>Plant-level capacity (grid-connected)</td>
+<td>LoEPP PDFs as of Aug 2026 (Luzon/Visayas/Mindanao/summary)</td>
+<td>doe.gov.ph CloudFront PDFs</td>
+<td>Text PDFs, fixed layout, no API</td>
+</tr>
+<tr>
+<td>RE contracts / pipeline artefacts</td>
+<td>HSC applications, RE plants with COE-to-ERC for FIT eligibility, FIT Monitoring Board summary, COA hydro, geothermal applications, wind applications — as of 30 Jun 2026</td>
+<td>doe.gov.ph RE page → CloudFront PDFs</td>
+<td>PDFs only, no dashboard feed</td>
+</tr>
+<tr>
+<td>Microgrid / PVM / proponent databases</td>
+<td>3 interactive dashboards + data-collection programme</td>
+<td>doe.gov.ph/data/microgrid-mapping</td>
+<td>UI only, no download/API found</td>
+</tr>
+<tr>
+<td>Fuel prices</td>
+<td>Weekly &quot;Oil Monitor&quot; PDFs, LPG monitor, discount stations, retail outlets, fuel-subsidy station lists</td>
+<td>doe.gov.ph Data &amp; Price Watch</td>
+<td>PDFs + pages, mixed</td>
+</tr>
+<tr>
+<td>Meralco monthly rates</td>
+<td>2026-01 → 2026-10 panels + monthly PDFs + rates archive</td>
+<td>meralco.com.ph</td>
+<td>Web tables + PDFs</td>
+</tr>
+<tr>
+<td>EC billing rates</td>
+<td>Per-coop PDFs (sample: SURNECO June 2026, fully text-extractable)</td>
+<td>individual coop sites</td>
+<td>Highly variable</td>
+</tr>
+<tr>
+<td>WESM market data</td>
+<td>40+ dataset pages (prices, reserves, schedules), monthly &quot;WESM DU Rates&quot; reports</td>
+<td>iemop.ph</td>
+<td>JS apps, no documented API</td>
+</tr>
+<tr>
+<td>Transmission plans</td>
+<td>TDP 2025–2050 report, TDP 2020–2040 volumes (PDFs reachable directly)</td>
+<td>ngcp.ph <code>/Attachment-Uploads/</code></td>
+<td>PDFs</td>
+</tr>
+<tr>
+<td>Geography codes</td>
+<td>PSGC (region/province/city/municipality/barangay)</td>
+<td>psa.gov.ph</td>
+<td>Exists, bot-blocked</td>
+</tr>
+<tr>
+<td>Regional comparability layer</td>
+<td>ASEAN Energy Statistics Leaflet/Yearbook + AEDS</td>
+<td>aseanenergy.org</td>
+<td>PDF/DB, &quot;All rights reserved&quot;</td>
+</tr>
+<tr>
+<td>Consolidated consumer platform (peer)</td>
+<td>Presyo PH: &gt;150 DUs, national/local views, public JSON API</td>
+<td>presyo.icsc.ngo</td>
+<td>App + API, license unclear</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="12-what-is-missing--must-be-built-gap-analysis">1.2 What is missing / must be built (gap analysis)<a class="h-anchor" href="#12-what-is-missing--must-be-built-gap-analysis" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li><strong>A canonical entity registry.</strong> No holder publishes a stable utility ID. DOE uses names only (<code>DANECO</code> vs <code>DANECO/NORDECO</code> in the same workbook); ERC, NEA and DOE each keep separate lists (per deck) and none is public as data. <strong>Build:</strong> <code>utility_id</code> namespace + crosswalk (DOE name, ERC case name, NEA coop name, PSGC areas served, franchise type, grid, island, off-grid flag) — the API's spine.</li>
+<li><strong>One normalized retail price table with documented schema and provenance.</strong> DOE's sheet is wide-format (one column per month), NDA-coded, unversioned, license-unstated, and embedded in a page rather than published as a dataset. <strong>Build:</strong> tidy long-format table (<code>utility_id, month, customer_class, component, value, unit, source_doc, retrieved_at</code>) with lineage back to DOE sheet tabs and utility PDFs.</li>
+<li><strong>Bill-component granularity.</strong> DOE publishes only totals + blended generation charge; the utility PDFs carry ~20 line items (generation, transmission, system loss, distribution/supply/metering, subsidies, universal charges, VAT). <strong>Build:</strong> component schema, then parse where available (starts with Meralco + a few ECs), and request DOE/ERC disclosure.</li>
+<li><strong>Machine-readable DOE dashboard feeds.</strong> DOE's RE/plant/microgrid content is PDF/UI only; there is no public API in evidence. <strong>Build:</strong> XLSX/PDF→JSON services + a stable feed behind the existing dashboards, co-signed by DOE.</li>
+<li><strong>Grid reliability / supply-time series.</strong> No public, verified bulk source was found for daily supply-demand or reliability. <strong>Build/partner:</strong> request from NGCP/DOE; otherwise omit from v1 (do not fabricate).</li>
+<li><strong>Geography join.</strong> PSA PSGC exists but is bot-blocked; no public utility→PSGC crosswalk exists. <strong>Build:</strong> seeded crosswalk, crowd-verified, published with confidence fields.</li>
+<li><strong>Publishing discipline.</strong> No release calendar, no vintage IDs, no checksums, no deprecation policy on any source above. <strong>Build:</strong> provenance/versioning convention + &quot;retrieved_at/sha256&quot; on every ingestion, published on COMPASS.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="2-doe--data-assets-the-core-of-the-challenge">2. DOE — data assets (the core of the challenge)<a class="h-anchor" href="#2-doe--data-assets-the-core-of-the-challenge" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="21-portal-facts">2.1 Portal facts<a class="h-anchor" href="#21-portal-facts" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Main portal: <a href="https://doe.gov.ph/" target="_blank" rel="noopener">https://doe.gov.ph/<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> — rebuilt in 2026 as a Next.js app. Footer states: &quot;All content is in the public domain unless otherwise stated.&quot; No public API, no <code>/robots.txt</code> (path returns the app shell), no documented data license per dataset.</li>
+<li><strong>Access quirk (important for scrapers):</strong> removed or never-migrated paths return <strong>HTTP 200</strong> with a client-rendered &quot;Page Not Found&quot;. HTTP status is therefore useless for validation; check page title/body. <code>[V]</code> verified on <code>/data</code>, <code>/electric-power</code>, <code>/energy-statistics</code>, <code>/philippine-energy-plan</code>.</li>
+<li>Old portal <code>legacy.doe.gov.ph</code> (which hosted the historical &quot;List of Existing Power Plants&quot;, DU lists, etc.) is <strong>dead</strong> — DNS/connection failure <code>[X]</code>. Search engines still surface those dead URLs; do not reuse them.</li>
+<li><code>doe.gov.ph/sitemap.xml</code> does not exist as XML (returns the app) <code>[V]</code>. Use the <code>/sitemap</code> page or the footer nav (verified links: Data &amp; Price Watch, Programs &amp; Projects, Bureaus, Transparency).</li>
+</ul>
+<h3 class="has-anchor" id="22-electricity-rates--price-monitor--the-key-asset">2.2 Electricity rates / price monitor — the key asset<a class="h-anchor" href="#22-electricity-rates--price-monitor--the-key-asset" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Page: <a href="https://doe.gov.ph/data-and-prices/electricity" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/electricity<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> — title &quot;Electricity Rates &amp; Power Market Monitor | DOE&quot;; page metadata shows <strong>content updated 2026-07-27</strong>; description: &quot;Monthly DU electricity rates by customer class, including generation charges, with comparative domestic and international rates.&quot;</li>
+<li>Under the hood the page <strong>embeds Google Sheets/Google Slides</strong>, i.e. the real dataset is:
+<code>https://docs.google.com/spreadsheets/d/1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I/edit</code> <code>[V]</code>
+Four tabs (verified by exporting each <code>gid</code> as CSV, all HTTP 200):
+<ul>
+<li>Residential rates — gid <code>0</code></li>
+<li>Commercial rates — gid <code>441532959</code></li>
+<li>Industrial rates — gid <code>1244383053</code></li>
+<li><strong>Blended generation charge per DU</strong> — gid <code>714337242</code>
+CSV export pattern that works without login: <code>…/export?format=csv&amp;gid=&lt;gid&gt;</code> <code>[V]</code> (Content-Disposition filename e.g. <code>RatesperCostumerClassPerDUPerRegion-ResidentialRatesperDUPerRegion.csv</code>).</li>
+</ul>
+</li>
+<li><strong>Schema (verified from CSV):</strong> columns <code>DU Name | GRID (ONGRID/OFFGRID) | Region | Island | DU Type (PIOU/EC) | Jan-18 … Dec-26 | SOURCES</code>. 114 columns = 5 metadata + <strong>108 monthly columns (Jan-18 → Dec-26)</strong> + <code>SOURCES</code>.</li>
+<li><strong>Coverage (verified counts):</strong> 141 DU rows per tab (21 PIOU, 120 EC); region labels include <code>Region 1–13</code>, <code>NCR</code>, <code>BARMM</code>, <code>CAR</code>, <code>Region 4A/4B</code>; island field <code>Luzon/Visayas/Mindanao</code>; 21 rows flagged <code>OFFGRID</code>. Union across tabs = <strong>142 unique names</strong> (only inconsistency: <code>DANECO/NORDECO</code> vs <code>DANECO</code>).</li>
+<li><strong>Data quality:</strong> missing values coded <code>NDA</code> (No Data Available), not blank. June 2026 column: 127 numeric out of 141 rows. Metrics computed from the sheet: <strong>Meralco 14.48; SOLECO 16.57 (May-26 12.53, +32.2%); BISELCO 24.92; min 5.43; max 24.92; mean 12.29; median 12.10</strong> <code>[V]</code>.</li>
+<li><strong>Cadence:</strong> monthly in intent; the sheet covers through Dec 2026 with future months pre-labelled (i.e. a fixed annual template, values filled monthly). The page-level &quot;updated 2026-07-27&quot; is the only machine-visible date; the sheet itself exposes no version. Treat updates as ad hoc.</li>
+<li><strong>Risk:</strong> embedded Google Sheet is an undocumented dependency (could be swapped, made private, or replaced by a CMS). Snapshot every retrieval (CSV bytes + sha256 + date).</li>
+</ul>
+<h3 class="has-anchor" id="23-other-doe-assets-verified">2.3 Other DOE assets verified<a class="h-anchor" href="#23-other-doe-assets-verified" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>URL / location</th>
+<th>Format</th>
+<th>Cadence</th>
+<th>Machine-readable?</th>
+<th>Quirks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List of Existing Power Plants (Grid Connected)</td>
+<td><a href="https://doe.gov.ph/electric-power-industry-projects/list-of-existing-power-plants-grid-connected" target="_blank" rel="noopener">https://doe.gov.ph/electric-power-industry-projects/list-of-existing-power-plants-grid-connected<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code></td>
+<td>Page + 5 CloudFront PDFs (&quot;DOE-EPIMB LoEPP as of August 2026&quot; Luzon/Visayas/Mindanao/Summary per Region/Summary; tested one = 467 KB <code>application/pdf</code> <code>[V]</code>)</td>
+<td>Ad hoc, &quot;as of&quot; month in filename</td>
+<td>PDF only; layout tables</td>
+<td>PDFs hosted on <code>d24qbtp4vooyzi.cloudfront.net/api/media/file/…?prefix=dev%2Fmedia</code> (note the <strong>dev prefix</strong> in a production URL)</td>
+</tr>
+<tr>
+<td>Renewable Energy (contracts/pipeline lists)</td>
+<td><a href="https://doe.gov.ph/renewable-energy-projects" target="_blank" rel="noopener">https://doe.gov.ph/renewable-energy-projects<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code></td>
+<td>Page + CloudFront PDFs: HSC applications summary; RE plants with COE to ERC for FIT eligibility; FIT Monitoring Board summary; COA hydro; geothermal GSC applications; wind applications (as of 30 Jun 2026 / 31 May 2026) <code>[V]</code> (tested one = 429 KB PDF)</td>
+<td>&quot;as of&quot; dates, irregular</td>
+<td>PDF only</td>
+<td>Not the &quot;RE dashboard&quot; the deck implies — it is a document list, no filters/API</td>
+</tr>
+<tr>
+<td>Microgrid &amp; PVM Database Mapping</td>
+<td><a href="https://doe.gov.ph/data/microgrid-mapping" target="_blank" rel="noopener">https://doe.gov.ph/data/microgrid-mapping<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code>; sub-pages <code>/mgsp</code>, <code>/pvm</code>, <code>/proponent</code> <code>[V]</code> (titles verified: &quot;MGSP Dashboard&quot;, &quot;PVM Dashboard&quot;, &quot;Proponent Dashboard&quot;)</td>
+<td>Interactive dashboards (JS)</td>
+<td>Programme updates</td>
+<td>No download/API found; contact <code>mgsp@doe.gov.ph</code> (from page)</td>
+<td>Note: deck says &quot;microgrid map live on doe.gov.ph/data&quot; — <strong><code>/data</code> 404s</strong>; correct path is <code>/data/microgrid-mapping</code> (§12.1)</td>
+</tr>
+<tr>
+<td>Oil price monitoring</td>
+<td><a href="https://doe.gov.ph/data-and-prices/liquid-fuels" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/liquid-fuels<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code>, Oil Monitor sub-page <code>/data-and-prices/liquid-fuels/oil-monitor</code> <code>[V]</code></td>
+<td>Weekly PDFs (&quot;Oil Monitor 03 November.pdf&quot;, &quot;Oil Monitor As of 08 September 2026.pdf&quot; …), download via <code>/api/media/download?url=&lt;encoded CloudFront URL&gt;</code></td>
+<td>Weekly + as-of posts</td>
+<td>PDF only</td>
+<td>Filenames inconsistent (&quot;As of&quot;, dates, typos, <code>-1</code> suffixes); CloudFront <code>dev</code> prefix</td>
+</tr>
+<tr>
+<td>LPG / auto-LPG monitoring</td>
+<td><a href="https://doe.gov.ph/data-and-prices/lpg-monitor" target="_blank" rel="noopener">https://doe.gov.ph/data-and-prices/lpg-monitor<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code>; discount stations <code>/data-and-prices/discount-stations</code> <code>[V nav]</code>; retail outlets <code>/data-and-prices/retail-outlets</code> <code>[V nav]</code></td>
+<td>Page + docs</td>
+<td>Periodic</td>
+<td>Mixed</td>
+<td>Same CMS/CloudFront pattern</td>
+</tr>
+<tr>
+<td>Fuel subsidy participating stations</td>
+<td>e.g. <code>/fuel-subsidy-program-participating-stations-as-of-17-august-2026</code> <code>[V nav]</code> (also Jun 15, Jul 20 versions on ticker)</td>
+<td>Pages per snapshot</td>
+<td>Per snapshot</td>
+<td>Not verified as data</td>
+<td>Versioned only via URL slug</td>
+</tr>
+<tr>
+<td>Transparency page</td>
+<td><a href="https://doe.gov.ph/transparency" target="_blank" rel="noopener">https://doe.gov.ph/transparency<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code></td>
+<td>Page (agency mandate, financial, DBM-approved budgets)</td>
+<td>Annual-ish</td>
+<td>No</td>
+<td>No Philippine Energy Plan / energy statistics links found here (§12.2)</td>
+</tr>
+<tr>
+<td>Philippine Energy Plan, energy statistics, DU master list page</td>
+<td><code>/philippine-energy-plan</code>, <code>/energy-statistics</code>, <code>/electric-power/list-distribution-utilities</code> etc.</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>404 on the new portal</strong> <code>[V]</code>; legacy site dead <code>[X]</code>. Treat as &quot;not publicly available in data form right now&quot; and ask DOE via focal person / FOI</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="24-doe-data-access-summary">2.4 DOE data-access summary<a class="h-anchor" href="#24-doe-data-access-summary" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Strengths: rates + generation charge are genuinely open and machine-readable (best single find); plant and RE lists are downloadable PDFs; DOE has moved first on publishing.</li>
+<li>Gaps: no API, no dataset metadata/licence, no stable document URLs, no release calendar; old portal removed with no redirect discipline; &quot;dashboards&quot; are UI shells over unpublished data.</li>
+<li>Ask for DOE focal person on day 1: (a) official Excel/CSV exports of LoEPP and RE lists; (b) microgrid dataset export; (c) written confirmation of licence and update cadence; (d) the shape of the &quot;~45 internal systems&quot; consolidation and whether read-only APIs exist.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="3-erc-rate-monitoring-and-the-142-duecs--how-rates-actually-reach-the-public">3. ERC rate monitoring and the 142 DU/ECs — how rates actually reach the public<a class="h-anchor" href="#3-erc-rate-monitoring-and-the-142-duecs--how-rates-actually-reach-the-public" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="31-erc-website-access-verified-blocked">3.1 ERC website access (verified blocked)<a class="h-anchor" href="#31-erc-website-access-verified-blocked" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>All automated requests to ERC fail with a Cloudflare challenge (<code>HTTP 403</code>, body &quot;Just a moment...&quot;): root <code>https://www.erc.gov.ph/</code> <code>[X]</code>, <code>http://www.erc.gov.ph/</code> <code>[X]</code>, press pages <code>https://www.erc.gov.ph/Press-Singular/83107</code> and <code>/83102</code> <code>[X]</code>, document renderer <code>https://www.erc.gov.ph/Files/Render/issuance/45157</code> <code>[X]</code>, and legacy <code>/pdf/ub_BOHECO%202%20.pdf</code> <code>[X]</code> (all 403 on 2026-11-10). Search indexes show ERC issuance/render URLs but I could not retrieve a single ERC document. <strong>Conclusion: ERC content is readable by humans in a browser but effectively closed to automated collection; any ERC-dependent pipeline must go through ERC/FOI, not scraping.</strong></p>
+<h3 class="has-anchor" id="32-where-rate-numbers-are-actually-published-verified-samples">3.2 Where rate numbers are actually published (verified samples)<a class="h-anchor" href="#32-where-rate-numbers-are-actually-published-verified-samples" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Publisher</th>
+<th>Sample (verified)</th>
+<th>Format</th>
+<th>Extraction difficulty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meralco</td>
+<td><a href="https://www.meralco.com.ph/residential/rates-and-charges" target="_blank" rel="noopener">https://www.meralco.com.ph/residential/rates-and-charges<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> — server HTML with monthly panels <code>data-rate-month=&quot;2026-10&quot;</code> … <code>&quot;2026-01&quot;</code>, each with a month PDF and &quot;Typical Consumption Level&quot; link; archive at <a href="https://www.meralco.com.ph/governance/regulatory/rates-archive" target="_blank" rel="noopener">https://www.meralco.com.ph/governance/regulatory/rates-archive<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> (1.2 MB page)</td>
+<td>Web tables + monthly PDFs</td>
+<td>Medium — static HTML panels + PDFs; no JSON found; JS only toggles panels</td>
+</tr>
+<tr>
+<td>Electric cooperative (sample)</td>
+<td><a href="https://www.surneco.com.ph/pdf/billingrates_jun2026.pdf" target="_blank" rel="noopener">https://www.surneco.com.ph/pdf/billingrates_jun2026.pdf<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> — SURNECO &quot;BILLING RATES&quot;, June 2026, 3 pages, 241 KB, <strong>fully text-extractable</strong></td>
+<td>PDF (text)</td>
+<td>Easy–Medium per coop; layout varies by coop</td>
+</tr>
+<tr>
+<td>Consolidated (DOE)</td>
+<td>DOE Google Sheet, 142 entities, monthly</td>
+<td>CSV via Google export <code>[V]</code></td>
+<td>Easy — already tabular</td>
+</tr>
+<tr>
+<td>NEA-hosted EC filings</td>
+<td>EC Power Supply Procurement Plans and Annual Reports under <code>nea.gov.ph/ao39/…</code> and <code>nea.gov.ph/wp-content/uploads/…</code> — indexed publicly but <strong>403 to automated fetch</strong> <code>[X]</code></td>
+<td>PDFs</td>
+<td>Hard/blocked</td>
+</tr>
+<tr>
+<td>EC Facebook posts</td>
+<td>Widely used by coops (rate advisories). Not verified here: Facebook blocks logged-out automated access; no post was retrievable <code>[U]</code></td>
+<td>Social post images/text</td>
+<td>Hard — no API, unstable, image-only often; treat as last-resort evidence</td>
+</tr>
+<tr>
+<td>ERC per-case documents</td>
+<td><code>erc.gov.ph/Files/Render/issuance/{id}</code> pattern (indexed)</td>
+<td>PDF/HTML</td>
+<td>Blocked <code>[X]</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="33-typical-rate-table-structure-and-units-verified-from-surneco-june-2026-pdf">3.3 Typical rate-table structure and units (verified from SURNECO June 2026 PDF)<a class="h-anchor" href="#33-typical-rate-table-structure-and-units-verified-from-surneco-june-2026-pdf" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>SURNECO's table is a good representative of the EC format. Line items observed <code>[V]</code>:</p>
+<ul>
+<li><strong>GENERATION &amp; TRANSMISSION:</strong> Generation – System Charge (Php/kWh), OU Recovery / Generation MAGPP (Php/kWh), PARR (Php/kWh, can be negative), Transmission – System Charge (Php/kWh), Transmission – Demand Charge (Php/kW), System Loss Charge (Php/kWh).</li>
+<li><strong>DISTRIBUTION (coop):</strong> Distribution – System Charge (Php/kWh), Distribution – Demand Charge (Php/kW), Supply – System Charge (Php/kWh), Supply – Ret. Cust. Charge (Cust/mo), Metering – System Charge (Php/kWh), Metering – Ret. Cust. Charge (meter/mo), plus a fixed Php/kWh line (Reinvestment Fund for Sustainable CAPEX).</li>
+<li><strong>SUBSIDIES:</strong> Lifeline Subsidy Rate (Php/kWh), Senior Citizen Subsidy Rate (Php/kWh).</li>
+<li><strong>GOVERNMENT / UNIVERSAL CHARGES:</strong> ME NPC-SPUG, ME RED, Environmental Charges, NPC Stranded Contract Cost / Stranded Debts, FIT-ALL (Renewable), GEA-ALL (Renewable), REC Recovery — all Php/kWh.</li>
+<li><strong>VAT:</strong> broken out per component (Generation, System Loss, Distribution, Sale for Resale) with Php/kWh + fixed Php/month lines; totals in Php/kWh and Php/month.</li>
+<li>Customer classes differ by coop/site: Residential / Low Voltage / Higher Voltage (SURNECO), plus special sheets for &quot;SALE FOR RESALE&quot; in island systems (e.g. Nonoc Islands) with a different generation source (NPC-SPUG &amp; DIELCO).</li>
+</ul>
+<p>Implication: a national price table cannot assume a fixed column set. Design a <strong>component dictionary</strong> (code, label variants, unit type, customer-class scope, taxable flag) and parse into long format; keep the utility's own total as a cross-check.</p>
+<h3 class="has-anchor" id="34-the-142-utilities-number--corroboration-and-caveats">3.4 The &quot;142 utilities&quot; number — corroboration and caveats<a class="h-anchor" href="#34-the-142-utilities-number--corroboration-and-caveats" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>DOE sheet: 141 entity rows per tab (21 PIOU + 120 EC), 142 unique names across tabs (DANECO vs DANECO/NORDECO) <code>[V]</code>. This is strong corroboration of the challenge's &quot;142 utilities&quot;.</li>
+<li>Caveats to carry into the proposal: the sheet mixes grid-connected and off-grid ECs (21 <code>OFFGRID</code>), includes PIOUs that are subsidiaries within one corporate group, and has at least one known naming split. ERC's own count may differ (e.g., by counting subsidiaries/LGU-owned utilities); ERC count cannot be verified because ERC is blocked <code>[X]</code>. <strong>Do not claim &quot;exactly 142&quot; as an ERC fact; claim &quot;142 distinct DU/EC names in DOE's own public rate workbook.&quot;</strong></li>
+</ul>
+<h3 class="has-anchor" id="35-the-decks-stretch-erc-generation-charge-parse-is-partly-redundant">3.5 The deck's &quot;stretch&quot; ERC generation-charge parse is partly redundant<a class="h-anchor" href="#35-the-decks-stretch-erc-generation-charge-parse-is-partly-redundant" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Deck slide 40 proposes as a stretch &quot;parse ERC monthly generation-charge PDFs&quot;. DOE already publishes a <strong>Blended Generation Charge per DU per Region</strong> monthly tab (2018–2026) <code>[V]</code>. Recommendation: v1 should ingest DOE's blended generation charge first (cheap, complete), use EC PDFs to validate component detail, and treat ERC-only parsing as an optional ERC-partnership workstream (blocked for scraping anyway).</p>
+<hr />
+<h2 class="has-anchor" id="4-nea--electric-cooperatives">4. NEA — electric cooperatives<a class="h-anchor" href="#4-nea--electric-cooperatives" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>Site <code>https://www.nea.gov.ph/</code> <code>[X]</code> and <code>https://nea.gov.ph/</code> → <strong>403 Cloudflare</strong> for HTML; direct PDF fetches also 403: NEA 2024 Annual Report PDF (<code>/wp-content/uploads/2025/09/NEA-2024-Annual-Report_compressed-3.pdf</code>) <code>[X]</code>, NEA 2023 Annual Report (<code>/ao39/phocadownload/Annual_Reports/…</code>) <code>[X]</code>, 1st Quarter 2025 EC Compliance Report (<code>/ao39/phocadownload/ECs%20Classification/2025/…</code>) <code>[X]</code>.</li>
+<li>What exists (from search-index evidence, not retrievable here <code>[P]</code>): NEA Annual Reports with EC-level tables; EC classification/compliance reports with <strong>SAIFI/SAIDI/feeder-loss</strong> and status columns; EC Power Supply Procurement Plans (PSPP) per coop per year (<code>/ao39/…/CSP_PSPP/{year}/{COOP} PSPP {year}.pdf</code>); a region→province→city/municipality→barangay table linking ECs to areas (appears in NEA 2024 Annual Report, p.68 per index).</li>
+<li><strong>Assessment:</strong> NEA is the authoritative source for EC identity, franchise area and performance (reliability) data, but it is <strong>not openly accessible to machines</strong>. Options: (a) NEA letter/FOI; (b) ask DOE focal person to broker; (c) retire risk by seeding the EC list from DOE's sheet + coop websites, and sourcing reliability data from coalition/crowd later.</li>
+<li>Note for the master list: NEA's EC→municipality mapping is exactly the missing geography crosswalk; requesting that table by FOI is a high-value, low-effort ask.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="5-wesm--iemop--market-data">5. WESM / IEMOP — market data<a class="h-anchor" href="#5-wesm--iemop--market-data" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>Portal <code>https://www.iemop.ph/</code> <code>[V]</code>. Market data hub <code>https://www.iemop.ph/the-market/market-data/</code> <code>[V]</code> lists <strong>40+ per-dataset pages</strong>, e.g.:
+<ul>
+<li><code>https://www.iemop.ph/market-data/load-weighted-average-prices-final/</code> <code>[V]</code></li>
+<li><code>https://www.iemop.ph/market-data/prices-used-in-settlement/</code> <code>[V nav]</code></li>
+<li><code>https://www.iemop.ph/market-data/registered-capacity-generation/</code> <code>[V nav]</code></li>
+<li><code>https://www.iemop.ph/market-data/rtd-market-clearing-price/</code> <code>[V nav]</code></li>
+<li>plus DAP/HAP/RTD prices and schedules, reserve prices, congestion, outage schedules, MOT files, must-run lists, generator weighted average price, etc.</li>
+</ul>
+</li>
+<li>Monthly <strong>WESM DU Rates</strong> reports: page <code>https://www.iemop.ph/market-reports/2026-wesm-du-rates/</code> <code>[V]</code> (&quot;MONTHLY WESM DU RATES&quot;); &quot;WESM Rates&quot; section <code>https://www.iemop.ph/the-market-3/wesm-rates/</code> <code>[V]</code>.</li>
+<li><strong>Access reality:</strong> dataset pages are client-side JS apps; the underlying file endpoints were not discoverable from the HTML (no direct PDF/xlsx links in page source <code>[V]</code>). The site's &quot;Classic Site&quot; link points to a bare-IP legacy host <code>http://180.232.125.111/</code> that is <strong>dead</strong> <code>[X]</code>. WordPress REST exists but only <code>post</code>/<code>page</code> types — no media/file API <code>[V]</code>. No public documented API found <code>[U]</code>.</li>
+<li><code>robots.txt</code>: <code>User-agent: * ; Disallow: /wp-content/plugins/ ; Disallow: /wp-admin/</code> <code>[V]</code> — crawling otherwise permitted.</li>
+<li><strong>Recommendation:</strong> IEMOP data is <em>market</em> data (clearing prices, trading amounts), useful for a &quot;why did the generation charge move&quot; narrative but not a substitute for retail rates. Get bulk via IEMOP cooperation (they already publish monthly DU rates reports — ask for the data behind them and for API/bulk access); otherwise skip from v1 scope. Cost will rise if attempted by scraping.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="6-ngcp--transmission-and-grid-data">6. NGCP / transmission and grid data<a class="h-anchor" href="#6-ngcp--transmission-and-grid-data" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><code>https://www.ngcp.ph/</code> → <strong>403 Cloudflare</strong> <code>[X]</code> for HTML pages.</li>
+<li><strong>However, static PDFs under <code>/Attachment-Uploads/</code> are directly fetchable</strong> <code>[V]</code>: e.g. TDP 2025–2050 report (<code>https://www.ngcp.ph/Attachment-Uploads/TDP%202025-2050%20REPORT-2025-03-11-10-38-56.pdf</code>, 5.4 MB <code>application/pdf</code>) and TDP 2020–2040 consultation draft volume 1 (9.1 MB, also 200 via <code>ngcp.ph</code> and <code>www.ngcp.ph</code>) <code>[V]</code>.</li>
+<li>Verified content: Transmission Development Plan (TDP) documents with transmission projects and capacity tables; they are the closest thing to public &quot;priority projects&quot; data for the grid.</li>
+<li>Not verified: a public daily supply-demand/reliability dataset or API. The deck's claim that NGCP publishes &quot;daily supply &amp; demand&quot; could not be confirmed from this environment (<code>[U]</code>). Treat as partner ask: request machine-readable daily operations data, or cite NGCP advisories by URL once a public page is identified (HTML is bot-blocked).</li>
+<li>Scraping posture: site deliberately blocks bots (Cloudflare) but assets are open; use document URLs (stable-ish, dated filenames) and never hammer the HTML.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="7-psa-datagovph-foi-and-psgc-geography">7. PSA, data.gov.ph, FOI and PSGC geography<a class="h-anchor" href="#7-psa-datagovph-foi-and-psgc-geography" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="71-psa">7.1 PSA<a class="h-anchor" href="#71-psa" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><code>https://psa.gov.ph/</code> and <code>https://psa.gov.ph/classification/psgc</code> both return <strong>403 Cloudflare &quot;Just a moment…&quot;</strong> <code>[X]</code>. <code>https://openstat.psa.gov.ph/</code> also 403 <code>[X]</code> (OpenSTAT is the main PSA statistics warehouse and the source of many datasets that data.gov.ph points to).</li>
+<li><code>psa.gov.ph/robots.txt</code> is a <strong>Cloudflare content-signals</strong> block (not a classic robots file), including opt-out signals for AI/collection use <code>[V]</code>. Treat PSA content as restricted-by-policy and bot-blocked.</li>
+<li><strong>PSGC (PSGC = Philippine Standard Geographic Code; region/province/city/municipality/barangay codes and names):</strong> the canonical dataset exists and is the right join key for COMPASS/geography, but there is <strong>no verified public machine-readable download reachable from this environment</strong>. Options: FOI request to PSA, PSA data-sharing via fellowship partner, or a licensed copy from an existing partner (DBM/PSA). Community mirrors exist but are not authoritative — label any mirror as such and flag code vintage (PSGC is revised; codes for newly created cities/barangays change).</li>
+<li><strong>Join strategy for utilities:</strong> PSGC codes are not in any public utility list. Build the crosswalk from: NEA EC→municipality table (FOI), ERC franchise descriptions (FOI), coalition knowledge, and PIOU service areas from corporate sites. Publish <code>utility_id → PSGC[]</code> with <code>confidence</code> and <code>source</code>, and mark unverified cities as <code>pending</code>.</li>
+</ul>
+<h3 class="has-anchor" id="72-datagovph">7.2 data.gov.ph<a class="h-anchor" href="#72-datagovph" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><code>https://data.gov.ph/</code> <code>[V]</code> — Angular SPA (&quot;Open Data Philippines&quot;). It is now a <strong>catalogue/meta-portal</strong> linking to other systems found in its JS bundle: <code>openstat.psa.gov.ph</code>, <code>econdb.pids.gov.ph</code>, <code>fdpp.dilg.gov.ph</code>, <code>pheiti.dof.gov.ph/edge/</code>, <code>bsp.gov.ph/PXWeb2007/…</code>, <code>philgeps.gov.ph</code> open data, <code>foi.gov.ph</code> <code>[V from bundle strings]</code>.</li>
+<li>Backend API host exists: <code>https://api.data.gov.ph/</code> returns an Express landing page <code>[V]</code>; guessed endpoints (<code>/api/</code>, <code>/datasets</code>, <code>/health</code>) return Express 404 <code>[X]</code> — <strong>the catalogue API is undocumented</strong>. The Angular bundle embeds an API key and environment name (do not reproduce the value here; noted as a security/coordination point for DICT/DBM). No legacy CKAN API: <code>/api/3/action/package_search</code> returns the SPA HTML <code>[X]</code>.</li>
+<li>Energy datasets on data.gov.ph: <strong>could not enumerate</strong> without browser execution (<code>[U]</code>). Ask DICT/DBM COMPASS team for the catalogue API or an export; do not assume energy datasets exist there.</li>
+</ul>
+<h3 class="has-anchor" id="73-foi-efoi">7.3 FOI (eFOI)<a class="h-anchor" href="#73-foi-efoi" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><code>https://www.foi.gov.ph/</code> and <code>https://www.foi.gov.ph/agencies/doe/</code> → <strong>403 Cloudflare</strong> <code>[X]</code>. DOE's footer links to that DOE agency page, so the route is official; it just cannot be automated.</li>
+<li>Practical implication: FOI is a <strong>manual, time-boxed channel</strong> (request → agency response). For a 3-month fellowship, file FOI/partner requests in week 1 for: NEA EC list+performance, ERC per-DU approved rates, PSA PSGC file, DOE non-published statistics, NGCP operational data.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="8-asean-energy-statistics--ace--comparability-requirements">8. ASEAN Energy Statistics / ACE — comparability requirements<a class="h-anchor" href="#8-asean-energy-statistics--ace--comparability-requirements" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="81-what-ace-publishes-verified">8.1 What ACE publishes (verified)<a class="h-anchor" href="#81-what-ace-publishes-verified" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Portal <code>https://www.aseanenergy.org/</code> <code>[V]</code> (robots: allow all <code>[V]</code>).</li>
+<li><strong>ASEAN Energy Database System (AEDS)</strong> project page: <code>https://www.aseanenergy.org/projects/aeds</code> <code>[V]</code>. The leaflet footer points to <code>aseanenergy.org/aeds</code>, which <strong>404s</strong> <code>[X]</code> — no public AEDS web query UI was verified.</li>
+<li><strong>ASEAN Energy Statistics Leaflet (AESL) 2025</strong> publication page + PDF: <a href="https://www.aseanenergy.org/publications/asean-energy-statistics-leaflet-2025/" target="_blank" rel="noopener">https://www.aseanenergy.org/publications/asean-energy-statistics-leaflet-2025/<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code>; PDF <code>https://storage.googleapis.com/aceweb-bucket-261225/files/publication/1766846350_ASEAN-Energy-Statistics-Leaflet-AESL-2025_Report.pdf</code> <code>[V]</code> (55 MB, 36 pages, <strong>text-extractable</strong>). Footer on every page: &quot;The latest historical data is 2023, data updated as of July 2025 | aseanenergy.org/aeds. ACE. All rights reserved.&quot; <code>[V]</code></li>
+<li>AESL 2026 and ASEAN Energy Statistical Yearbook (AESY) 2026 launch/consultation article: <a href="https://aseanenergy.org/index.php/articles/3rd-consultation-workshop-of-the-asean-energy-database-system-aeds-and-the-launching-of-asean-energy-statistical-leaflet-aesl-2026-and-asean-energy-statistical-yearbook-aesy-2026" target="_blank" rel="noopener">https://aseanenergy.org/index.php/articles/3rd-consultation-workshop-of-the-asean-energy-database-system-aeds-and-the-launching-of-asean-energy-statistical-leaflet-aesl-2026-and-asean-energy-statistical-yearbook-aesy-2026<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> <code>[V]</code> (title verified; body truncated by fetch).</li>
+<li>Latest regional outlook: 9th ASEAN Energy Outlook, Oct 2026 <code>[V nav]</code>.</li>
+</ul>
+<h3 class="has-anchor" id="82-aesl-2025-structure-verified-by-text-extraction-from-the-pdf">8.2 AESL 2025 structure (verified by text extraction from the PDF)<a class="h-anchor" href="#82-aesl-2025-structure-verified-by-text-extraction-from-the-pdf" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Sections and indicators observed <code>[V]</code>:</p>
+<ol>
+<li><strong>Socio-Economic:</strong> population, GDP (2005 PPP), GDP per capita, energy intensity / electricity intensity ratios, electrification rate (% population), clean-cooking access.</li>
+<li><strong>Demand and Supply:</strong> <strong>TFEC (Total Final Energy Consumption)</strong> by fuel (fossil, bioenergy, electricity), by sector (industry, transport, residential, commercial), in <strong>Mtoe</strong>; TPES (Total Primary Energy Supply) by fuel, fossil share (~83.5%), renewables share.</li>
+<li><strong>Electricity:</strong> installed capacity by fuel (<strong>GW</strong>, coal 113.1 GW, gas 98.6 GW in 2023), capacity additions (GW), generation, electricity consumption, electricity demand per capita <strong>kWh/person</strong>.</li>
+<li><strong>Fossil Fuels:</strong> reserves/production/trade; <strong>Gender on Energy</strong>; <strong>Energy Investment</strong>. Time series 2005–2023, annual, AMS + ASEAN totals.</li>
+</ol>
+<h3 class="has-anchor" id="83-what-aligned-with-asean-energy-statistics-should-mean-for-the-fellowship">8.3 What &quot;aligned with ASEAN Energy Statistics&quot; should mean for the fellowship<a class="h-anchor" href="#83-what-aligned-with-asean-energy-statistics-should-mean-for-the-fellowship" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Do:</strong> publish national annual aggregates (TPES, TFEC, capacity, generation, consumption per capita, RE share) using <strong>AES indicator definitions, units (ktoe/Mtoe, MW/GW, GWh, kWh/person, %) and 2005→2023 back-series</strong> where available; include a machine-readable <strong>mapping table</strong> (PH source field → AES indicator code → unit conversion factor → vintage). This is cheap and defensible: DOE is the Philippine AES/AEDS focal-point contributor, so alignment is a schema exercise, not new data collection.</li>
+<li><strong>Don't:</strong> pretend retail DU tariffs are an AES indicator. AESL/AES cover <strong>national aggregate energy statistics</strong>, not utility retail prices. The 142-utility price table is a PH-specific layer; keep it in its own schema with its own units (PHP/kWh, PHP/kW, PHP/month) and map the national aggregates separately. State this explicitly in the proposal — it shows comparability discipline.</li>
+<li><strong>Licence watch:</strong> AESL PDF says &quot;ACE. All rights reserved.&quot; <code>[V]</code>. Aligning schemas is fine; <strong>redistributing AES tables requires permission</strong>. Data sourced from DOE/PSA can be republished under their terms; AES-derived series should be linked/attributed, not bulk-copied.</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="9-cross-cutting-licensing-scraping-extraction-risk-provenance">9. Cross-cutting: licensing, scraping, extraction risk, provenance<a class="h-anchor" href="#9-cross-cutting-licensing-scraping-extraction-risk-provenance" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="91-licence--terms-status-verified-statements-only">9.1 Licence / terms status (verified statements only)<a class="h-anchor" href="#91-licence--terms-status-verified-statements-only" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Statement found</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOE portal</td>
+<td>Footer: &quot;All content is in the public domain unless otherwise stated.&quot; <code>[V]</code></td>
+<td>Usable; but no dataset-level licence/citation requirement — ask DOE to confirm in writing</td>
+</tr>
+<tr>
+<td>ACE / AESL</td>
+<td>&quot;ACE. All rights reserved.&quot; on every PDF page <code>[V]</code></td>
+<td>Do not republish AES tables; align to schema only</td>
+</tr>
+<tr>
+<td>IEMOP</td>
+<td>Legal &amp; privacy notice page exists <code>[V nav]</code>; terms not inspected</td>
+<td>Ask before bulk reuse</td>
+</tr>
+<tr>
+<td>NGCP</td>
+<td>No terms page verified (HTML blocked) <code>[U]</code></td>
+<td>Ask; keep PDF citations</td>
+</tr>
+<tr>
+<td>Meralco</td>
+<td>No explicit reuse licence found on rates page <code>[V]</code></td>
+<td>Cite + link; prefer DOE consolidated figure for republication</td>
+</tr>
+<tr>
+<td>PSA</td>
+<td>Cloudflare content-signals / collection restrictions <code>[V]</code></td>
+<td>FOI/partner route only</td>
+</tr>
+<tr>
+<td>Presyo PH (ICSC)</td>
+<td>No licence found in app/JS <code>[U]</code></td>
+<td>Collaborate with ICSC; credit; do not clone silently</td>
+</tr>
+<tr>
+<td>data.gov.ph</td>
+<td>Terms not verified (SPA) <code>[U]</code></td>
+<td>Ask DICT</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="92-robotstxt--scraping-legality-as-verified-2026-11-10">9.2 robots.txt / scraping legality (as verified 2026-11-10)<a class="h-anchor" href="#92-robotstxt--scraping-legality-as-verified-2026-11-10" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><code>iemop.ph</code>: classic robots, only plugins/admin disallowed <code>[V]</code>.</li>
+<li><code>aseanenergy.org</code>: allow all <code>[V]</code>.</li>
+<li><code>psa.gov.ph</code>: Cloudflare content-signal policy block (not a normal robots file) <code>[V]</code>.</li>
+<li><code>doe.gov.ph</code>, <code>data.gov.ph</code>, <code>presyo.icsc.ngo</code>: <code>/robots.txt</code> returns the SPA shell (no robots policy exists) <code>[V]</code> — absence of a prohibition is <strong>not</strong> permission.</li>
+<li>Legal frame to state in the proposal: RA 10173 (Data Privacy Act — avoid personal data; utility rate tables are not personal data, but staff names/emails and consumer complaint posts can be), RA 8293 (IP Code; government works generally not protected, but agency terms/agency logos are), EPIRA/ERC confidentiality rules for market data, and website ToS. Practical policy: prefer official data/share agreements; use FOI for locked sources; scrape only public, non-personal, published-for-consumers content; identify the bot with a contact UA; cache politely; obey 429/403; publish retrieval metadata.</li>
+</ul>
+<h3 class="has-anchor" id="93-pdf-extraction-risks-observed">9.3 PDF extraction risks (observed)<a class="h-anchor" href="#93-pdf-extraction-risks-observed" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li><strong>Text vs scan split:</strong> SURNECO billing PDF is text <code>[V]</code>; AESL 2025 is 55 MB and image-heavy (rendered charts) <code>[V]</code>; DOE LoEPP/RE PDFs may be text-based but were not extraction-tested — assume a mixed corpus and build an OCR fallback (flag OCR'd rows with lower confidence).</li>
+<li><strong>Layout variance:</strong> each coop and each month can shift columns/wording (<code>NPC Stranded Debts</code> vs <code>NPC Stranded Contract Cost</code>); units mix PHP/kWh with PHP/kW and fixed PHP/month; some lines are negative (PARR).</li>
+<li><strong>Naming chaos:</strong> &quot;Oil Monitor 03 November.pdf&quot;, &quot;Oil Monitor As of 08 September 2026.pdf&quot;, &quot;…-1.pdf&quot;; LoEPP has <code>DOE-EPIMB LoEPP as of August 2026 …</code>; URLs contain spaces/percent-encoding, ampersands, uppercase. Build a link registry + date parser + human review queue; never hardcode a single filename.</li>
+<li><strong>Embedded &quot;dev&quot; media prefix</strong> (<code>?prefix=dev%2Fmedia</code>) in production CloudFront URLs is fragile; store both page URL and resolved asset URL.</li>
+</ul>
+<h3 class="has-anchor" id="94-provenance--versioning-requirements-must-have-for-compass-integration">9.4 Provenance / versioning requirements (must-have for COMPASS integration)<a class="h-anchor" href="#94-provenance--versioning-requirements-must-have-for-compass-integration" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>For every ingested row/asset store: <code>source_url</code>, <code>source_page</code>, <code>retrieved_at</code> (UTC + Asia/Manila), <code>http_status</code>, <code>content_type</code>, <code>sha256</code>, <code>parser_version</code>, <code>source_doc_date</code> (from filename if no date inside), <code>vintage</code> (sheet snapshot date), <code>confidence</code> (<code>verified</code>/<code>parsed</code>/<code>ocr</code>/<code>inferred</code>), <code>notes</code> (e.g. NDA replaced with null, rename applied). Publish the same metadata as an API response envelope and in a <code>datasets.json</code> manifest with a release calendar. This is what makes the output usable by DBM COMPASS rather than another dashboard.</p>
+<hr />
+<h2 class="has-anchor" id="10-source-by-source-feasibility-for-a-3-month-build">10. Source-by-source feasibility (for a 3-month build)<a class="h-anchor" href="#10-source-by-source-feasibility-for-a-3-month-build" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Rating = effort for a 3-month fellowship: <strong>E</strong> easy, <strong>M</strong> medium, <strong>H</strong> hard. Approach: <strong>B</strong> build/ingest, <strong>C</strong> collaborate/partner, <strong>F</strong> FOI/formal request, <strong>A</strong> avoid for v1.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>What you get</th>
+<th>Rating</th>
+<th>Approach</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DOE price sheet (Google Sheet, 4 tabs)</td>
+<td>142 DU/EC × 108 months × 4 measures</td>
+<td><strong>E</strong></td>
+<td>B</td>
+<td>CSV export; snapshot + normalize; the v1 core</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DOE LoEPP PDFs (Aug 2026)</td>
+<td>plant-level list by grid + region summaries</td>
+<td>M</td>
+<td>B + C</td>
+<td>table PDF extraction; ask DOE for Excel</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DOE RE lists PDFs (Jun 2026)</td>
+<td>HSC, FIT-eligible plants, FIT board summary, COA hydro, geothermal/wind applications</td>
+<td>M</td>
+<td>B + C</td>
+<td>same pipeline; no dashboard/API</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DOE microgrid/PVM/proponent dashboards</td>
+<td>MGSP/PVM/CSP records</td>
+<td>H</td>
+<td>C (request export)</td>
+<td>UI only; email contact on page</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DOE Oil Monitor PDFs</td>
+<td>weekly fuel prices</td>
+<td>M</td>
+<td>B</td>
+<td>filename/date chaos; link registry needed</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Meralco rates page + archive</td>
+<td>monthly residential rates, components, PDFs</td>
+<td>M</td>
+<td>B</td>
+<td>static HTML panels; good validation source</td>
+</tr>
+<tr>
+<td>7</td>
+<td>EC rate PDFs (SURNECO etc.)</td>
+<td>component-level EC rates</td>
+<td>M→H</td>
+<td>B + crowd</td>
+<td>per-utility adapters; start with ~10 largest/visible coops</td>
+</tr>
+<tr>
+<td>8</td>
+<td>EC Facebook advisories</td>
+<td>rates when no PDF/site</td>
+<td>H</td>
+<td>A/C</td>
+<td>login wall, image OCR, unstable; use only as last resort, with screenshot provenance</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ERC (rates/issuances)</td>
+<td>regulatory rate detail/generation charge</td>
+<td>H</td>
+<td>F/C</td>
+<td>site 403; do not plan scraping</td>
+</tr>
+<tr>
+<td>10</td>
+<td>NEA (EC list, SAIFI/SAIDI, PSPP)</td>
+<td>EC identity, reliability, procurement</td>
+<td>H</td>
+<td>F/C</td>
+<td>site 403; high-value FOI (EC→municipality table)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>IEMOP market data / monthly DU rates</td>
+<td>WESM prices, DU rate reports</td>
+<td>M-H</td>
+<td>C (bulk/API)</td>
+<td>JS apps, no public API; ask IEMOP</td>
+</tr>
+<tr>
+<td>12</td>
+<td>NGCP TDP PDFs</td>
+<td>transmission projects/plans</td>
+<td>M</td>
+<td>B (PDF) + C</td>
+<td>PDFs fetchable; HTML blocked</td>
+</tr>
+<tr>
+<td>13</td>
+<td>PSA PSGC</td>
+<td>geography codes</td>
+<td>H</td>
+<td>F/C</td>
+<td>403; request file; partner copy</td>
+</tr>
+<tr>
+<td>14</td>
+<td>data.gov.ph</td>
+<td>catalogue/cross-agency datasets</td>
+<td>U</td>
+<td>C</td>
+<td>API undocumented; ask DICT/COMPASS</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Presyo PH (ICSC)</td>
+<td>&gt;150 DUs consolidated + JSON API</td>
+<td>E-M</td>
+<td>C</td>
+<td>collaborate/attribute; do not duplicate blindly</td>
+</tr>
+<tr>
+<td>16</td>
+<td>AESL/AEDS</td>
+<td>regional comparability schema</td>
+<td>E</td>
+<td>B (schema only)</td>
+<td>licence: all rights reserved → mapping not copying</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 class="has-anchor" id="11-recommended-v1-ingest-plan-dec-2026--mar-2027">11. Recommended v1 ingest plan (Dec 2026 – Mar 2027)<a class="h-anchor" href="#11-recommended-v1-ingest-plan-dec-2026--mar-2027" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="sprint-0-weeks-12-lock-access--registry">Sprint 0 (weeks 1–2): lock access + registry<a class="h-anchor" href="#sprint-0-weeks-12-lock-access--registry" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li>Day 1 asks: DOE focal person (sheet confirmation + licence + export asks), coalition data analyst (validation), ICSC/Presyo PH (collaboration), DBM COMPASS (target schema/endpoint), PSA/DICT (PSGC + catalogue API), NEA/ERC FOI filings (EC list, reliability, approved rates).</li>
+<li>Freeze v0 <strong>entity registry</strong>: scrape names/GRID/Region/Island/Type from the DOE sheet, then apply curated aliases (start with <code>DANECO</code>/<code>DANECO/NORDECO</code>), assign <code>utility_id</code> (slug + code), record source and confidence; publish CSV + minimal API.</li>
+<li>Stand up ingestion scaffolding with provenance metadata and a <code>datasets.json</code> manifest (the deliverable that outlives the fellowship).</li>
+</ol>
+<h3 class="has-anchor" id="sprint-1-weeks-36-price-table-v1-the-demo">Sprint 1 (weeks 3–6): price table v1 (the demo)<a class="h-anchor" href="#sprint-1-weeks-36-price-table-v1-the-demo" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li>Ingest DOE sheet (4 tabs) → tidy long table; validate NDA→null; compute simple QC (min/max/mean per month; count reporting DUs).</li>
+<li>Add Meralco page parse (monthly panels + PDFs) as an independent cross-check; log mismatches vs DOE sheet.</li>
+<li>Parse 5–10 EC PDFs (start with coops with public PDFs; SURNECO is a verified example) into the component schema.</li>
+<li>Ship a <strong>price API v1</strong>: <code>/utilities</code>, <code>/utilities/{id}/rates?from=&amp;to=</code>, <code>/rates?month=&amp;class=</code>, plus CSV/JSON downloads; every response carries source + retrieved_at + confidence. (The &quot;one price table&quot; is the API, not a new dashboard.)</li>
+</ol>
+<h3 class="has-anchor" id="sprint-2-weeks-710-doe-dashboard-feeds">Sprint 2 (weeks 7–10): DOE dashboard feeds<a class="h-anchor" href="#sprint-2-weeks-710-doe-dashboard-feeds" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li>Convert LoEPP + RE lists (PDF→JSON/CSV) with plant-level fields (name, grid, region, type/fuel, capacity MW, status, commercial operation date where present in source) and human-verified QA sample.</li>
+<li>Request/land microgrid dataset export; if unavailable by week 8, publish a documented &quot;pending/partnership&quot; status rather than partial scrapes.</li>
+<li>Build a downloadable feed + simple API for these datasets and hand the ingestion scripts to DOE for operational ownership (this is the &quot;feeds and an API behind DOE's dashboards&quot; deliverable, scoped honestly).</li>
+</ol>
+<h3 class="has-anchor" id="sprint-3-weeks-1113-comparability-governance-handoff">Sprint 3 (weeks 11–13): comparability, governance, handoff<a class="h-anchor" href="#sprint-3-weeks-1113-comparability-governance-handoff" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li>Publish the AES alignment mapping (PH aggregate → AES indicator/unit/vintage) and a national-aggregates JSON built from DOE/PSA figures (with citations; no AES bulk copy).</li>
+<li>Publish data dictionary, provenance spec, release calendar, deprecation policy; run the coalition's &quot;every number checked&quot; QA loop; Demo Day package + COMPASS integration notes.</li>
+</ol>
+<h3 class="has-anchor" id="what-to-hand-off-to-doe-sustainability">What to hand off to DOE (sustainability)<a class="h-anchor" href="#what-to-hand-off-to-doe-sustainability" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>The registry + schema + parsers as maintained pipelines (not one-off notebooks); the release calendar/disclosure order (coalition's rule-reform ask) mapped to actual datasets; dataset-level licence and citation lines; ownership of the Google-Sheet dependency (ideally replaced by a documented DOE dataset endpoint or git-backed export).</li>
+</ul>
+<h3 class="has-anchor" id="what-to-crowd-source">What to crowd-source<a class="h-anchor" href="#what-to-crowd-source" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>EC rate PDFs/posts via coalition members and student volunteers (with a submission form + provenance fields); geography crosswalk verification (province/city served); alias/discrepancy reports; monthly &quot;reporting DUs&quot; count watch (who went NDA).</li>
+</ul>
+<hr />
+<h2 class="has-anchor" id="12-discrepancies-found-between-live-sources-and-the-challenge-page--deck">12. Discrepancies found between live sources and the challenge page / deck<a class="h-anchor" href="#12-discrepancies-found-between-live-sources-and-the-challenge-page--deck" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong><code>doe.gov.ph/data</code> does not exist</strong> — it returns a client-side &quot;Page Not Found&quot; (HTTP 200). The microgrid map is at <code>https://doe.gov.ph/data/microgrid-mapping</code> (with <code>/mgsp</code>, <code>/pvm</code>, <code>/proponent</code> sub-dashboards) <code>[V]</code>. Deck slide 39's &quot;microgrid map live on doe.gov.ph/data&quot; should be re-worded.</li>
+<li><strong>&quot;Public dashboards on RE pipeline, grid supply and reliability, priority projects&quot;</strong> — only partially verified. RE pipeline exists as <strong>PDF lists</strong> (<code>/renewable-energy-projects</code>); grid/plant data as <strong>PDF lists</strong> (<code>/electric-power-industry-projects/list-of-existing-power-plants-grid-connected</code>); microgrid as UI dashboards. No verified dashboard/feed was found for &quot;grid supply and reliability&quot; or &quot;priority projects&quot; on doe.gov.ph <code>[U]</code>. The proposal should ask DOE what those dashboards are (URL/owner/data) or scope them out.</li>
+<li><strong>₱12.43/kWh June 2026 national average</strong> — from DOE's own public June 2026 residential column, the simple mean of 127 reporting DUs is <strong>12.29</strong>, median <strong>12.10</strong> (min 5.43, max 24.92) <code>[V]</code>. Individual deck figures do reproduce exactly: Meralco <strong>14.48</strong>, SOLECO <strong>16.57</strong> (+32.2% vs May-26 12.53), BISELCO/Busuanga <strong>24.92</strong> <code>[V]</code>. So 12.43 is plausibly a weighted or differently-scoped average — <strong>needs DOE/coalition confirmation before being cited as reproducible</strong>; footnote the methodology if used.</li>
+<li><strong>Presyo PH URL</strong>: the live app is <code>https://presyo.icsc.ngo/</code> <code>[V]</code>; <code>presyo.ph</code> does not resolve <code>[X]</code>. Also, the &quot;&gt;150 DUs/ECs&quot; claim is from the launch article (2026-04-28) <code>[V]</code>, not from the app UI (which I could not fully exercise).</li>
+<li><strong>&quot;142 utilities publish rates as PDFs, web tables, and posts&quot;</strong> — the count is corroborated by DOE's workbook (142 unique names) <code>[V]</code>, but the <em>publication formats</em> are dominated in practice by (a) DOE's consolidated sheet, (b) PIOU websites (Meralco verified), (c) EC PDFs (sample verified) and (d) Facebook posts (unverified). The proposal should say &quot;DOE consolidates 142; formats vary&quot; rather than implying all 142 maintain web pages.</li>
+<li><strong>ERC monthly generation-charge PDFs</strong> (deck stretch goal) are largely redundant with DOE's public &quot;Blended Generation Charge per DU per Region&quot; tab (2018–2026) <code>[V]</code>; and ERC is bot-blocked <code>[X]</code>, so re-plan this as an ERC partnership item.</li>
+<li><strong>AEDS public access</strong>: the leaflet advertises <code>aseanenergy.org/aeds</code>, which 404s; no public AEDS query interface verified. Use AESL PDFs + AESY when available, plus DOE as the PH focal point.</li>
+<li><strong>Legacy DOE URLs</strong> still rank in search results (<code>legacy.doe.gov.ph/...</code>, old plant-list paths) but the host is dead <code>[X]</code> — any proposal citing them will look stale.</li>
+<li><strong>The workbook now extends to October 2026</strong> (re-fetched 2026-11-10 for the build): 107 header month columns (Jan-18 → Nov-26), 106 with published data. June 2026 remains the pitch's anchor month, but coverage moves: 127 residential DUs reported in June 2026 vs <strong>113 in October 2026</strong> (27 NDA, 1 invalid cell — the residential tab has the text <code>Jan-16</code> in one Oct-26 cell). Any dashboard must show the reporting count alongside the month.</li>
+<li><strong>The four tabs disagree in five places.</strong> ILECO II and ILECO III are <code>ONGRID</code> in the residential/generation tabs and <code>OFFGRID</code> in the commercial/industrial tabs (2–2 → published as <code>CONFLICT</code>, not guessed); CLPC is BARMM in three tabs and Region 12 in the industrial tab (majority BARMM); that industrial row also has the island field set to <code>BARMM</code>; and <code>DANECO/NORDECO</code> is labelled <code>DANECO</code> in the generation tab (hence 142 distinct names across the four tabs — the pitch's &quot;142 utilities&quot; checks out). These are logged in <code>data/seed/validation.json</code> and surfaced on the page.</li>
+</ol>
+<hr />
+<h2 class="has-anchor" id="13-verification-log-all-accessed-2026-11-10">13. Verification log (all accessed 2026-11-10)<a class="h-anchor" href="#13-verification-log-all-accessed-2026-11-10" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><strong>Verified live (HTTP 200, content inspected):</strong> <code>https://fellowship.bettergov.ph/</code>; <code>https://doe.gov.ph/</code>; <code>https://doe.gov.ph/data-and-prices/electricity</code>; Google Sheet <code>1oGc1iGpacELS6tkHjesvAeKZo8v2iv4UkYFY04e0p-I</code> + CSV exports gid 0/441532959/1244383053/714337242; <code>https://doe.gov.ph/electric-power-industry-projects/list-of-existing-power-plants-grid-connected</code> (+ 1 CloudFront LoEPP PDF); <code>https://doe.gov.ph/renewable-energy-projects</code> (+ 1 CloudFront RE PDF); <code>https://doe.gov.ph/data/microgrid-mapping</code>, <code>/mgsp</code>, <code>/pvm</code>, <code>/proponent</code>; <code>/data-and-prices/liquid-fuels</code>, <code>/liquid-fuels/oil-monitor</code>, <code>/data-and-prices/lpg-monitor</code>, <code>/data-and-prices/retail-outlets</code>, <code>/data-and-prices/discount-stations</code>; <code>https://doe.gov.ph/transparency</code>; <code>https://www.iemop.ph/</code>, <code>/the-market/market-data/</code>, <code>/market-data/load-weighted-average-prices-final/</code>, <code>/market-reports/2026-wesm-du-rates/</code>, <code>/the-market-3/wesm-rates/</code>, <code>/wp-json/wp/v2/types</code>; <code>https://www.meralco.com.ph/residential/rates-and-charges</code>, <code>https://www.meralco.com.ph/governance/regulatory/rates-archive</code>; <code>https://www.surneco.com.ph/pdf/billingrates_jun2026.pdf</code>; <code>https://presyo.icsc.ngo/</code> and <code>https://presyo.icsc.ngo/api/national_trend_normalized?normalization=percent</code>; <code>https://powerphilippines.com/icsc-launches-presyo-ph-web-app-to-help-consumers-understand-power-costs/</code>; NGCP TDP 2025–2050 PDF and TDP 2020–2040 PDF (<code>ngcp.ph/Attachment-Uploads/…</code>); <code>https://www.aseanenergy.org/</code>, <code>/projects/aeds</code>, <code>/knowledge-hub</code>, <code>/publications/asean-energy-statistics-leaflet-2025/</code>, AESL 2025 PDF, AESL/AESY 2026 article; <code>https://compass.dbm.gov.ph/</code>; <code>https://data.gov.ph/</code>; <code>https://api.data.gov.ph/</code>; robots.txt for <code>iemop.ph</code>, <code>aseanenergy.org</code>; source PDF text extraction for SURNECO and AESL; counts/metrics computed from the DOE CSV.</p>
+<p><strong>Blocked / failed (all HTTP 403 Cloudflare unless noted):</strong> <code>https://www.erc.gov.ph/</code>, <code>http://www.erc.gov.ph/</code>, <code>https://www.erc.gov.ph/Press-Singular/83107</code>, <code>/83102</code>, <code>/Files/Render/issuance/45157</code>, <code>http://www.erc.gov.ph/pdf/ub_BOHECO%202%20.pdf</code>; <code>https://www.nea.gov.ph/</code>, NEA 2024 Annual Report PDF, NEA 2023 Annual Report PDF, NEA Q1-2025 EC Compliance Report PDF; <code>https://www.ngcp.ph/</code> (HTML); <code>https://psa.gov.ph/</code>, <code>https://psa.gov.ph/classification/psgc</code>, <code>https://openstat.psa.gov.ph/</code>; <code>https://www.foi.gov.ph/</code>, <code>https://www.foi.gov.ph/agencies/doe/</code>; <code>legacy.doe.gov.ph</code> (dead); <code>http://180.232.125.111/</code> IEMOP classic host (dead); <code>https://doe.gov.ph/sitemap.xml</code> (not XML); <code>https://doe.gov.ph/data</code> and legacy DOE paths (client-side 404); <code>https://presyo.ph/</code> (does not resolve); <code>https://www.aseanenergy.org/aeds</code> (404); <code>https://data.gov.ph/api/3/action/package_search…</code> (SPA, not CKAN); <code>https://api.data.gov.ph/api|/datasets|/health</code> (Express 404).</p>
+<p><strong>Not verified / open (do not cite as fact):</strong> ERC rate-monitoring page existence and its publication format; NEA contents beyond indexed titles; NGCP daily supply/demand data; PSA OpenSTAT/PSGC download mechanics; data.gov.ph energy dataset inventory and its API schema; Presyo PH licence and full endpoint set; IEMOP downloadable file URLs/API; DOE's &quot;~45 internal systems&quot; and DOE–ERC data-sharing arrangement (deck claim only); whether DOE's Google Sheet has a named owner/refresh SLA.</p>
+<hr />
+<h2 class="has-anchor" id="13a-implementation-re-verification-2026-11-10-build">13a. Implementation re-verification (2026-11-10, build)<a class="h-anchor" href="#13a-implementation-re-verification-2026-11-10-build" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The draft page is now generated from the workbook rather than from sample data. What was asserted on every build (<code>tools/ingest-doe-rates.py</code>, all 17 checks passing):</p>
+<ul>
+<li>141 DU/EC rows in each of the four tabs, 107 month columns, first month Jan-2018, latest month with published data <strong>Oct-2026</strong>.</li>
+<li><strong>142 distinct DU/EC names</strong> across the four tabs (the pitch's 142).</li>
+<li>21 off-grid DUs (unanimous across tabs); 2 grid-status conflicts (ILECO II/III); 1 region conflict (CLPC); 1 island-label conflict; 1 name variant (<code>DANECO</code>).</li>
+<li>June 2026 anchors: Meralco <strong>14.48</strong>, SOLECO <strong>16.57</strong> (+32.2% vs May-26 12.53), BISELCO <strong>24.92</strong>; 127 reporting DUs; simple mean <strong>12.29</strong>; median <strong>12.10</strong>; max 24.92.</li>
+<li>Raw snapshots <code>data/raw/doe-rates/2026-11-10/{gid}.csv</code>; SHA-256 <code>17c746168e77…</code> (residential), <code>55c8ccc0f2b7…</code> (commercial), <code>96e8f42e28e9…</code> (industrial), <code>66002d90c2b3…</code> (generation); full hashes in <code>data/seed/validation.json</code>.</li>
+<li>Latest-month residential stats (Oct 2026): 113 reporting, 27 NDA, 1 invalid; median ₱12.72/kWh, mean ₱13.23, range ₱5.33–₱19.36.</li>
+</ul>
+<p>The page was rendered in headless Chromium at 1440 px and 390 px: 18 map regions, 141 table rows, expandable monthly charts, region filtering and API preview all exercised, 0 console errors, no external requests. June 2026 anchors still reproduce, so the earlier discrepancy analysis is unchanged; the workbook's newer months are additive evidence, not a contradiction.</p>
+<hr />
+<h2 class="has-anchor" id="14-questions-to-put-to-doe--partners-week-1">14. Questions to put to DOE / partners (week 1)<a class="h-anchor" href="#14-questions-to-put-to-doe--partners-week-1" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li>Is the public Google Sheet (<code>Electricity Rates &amp; Power Market Monitor</code>) the canonical rate dataset, who maintains it, on what schedule, and under what licence/citation? Will DOE publish it as a documented dataset/API?</li>
+<li>Which RE/grid/reliability/priority-project dashboards exist in production today (URLs, owners, data sources), and can fellows get read access/export? Are the LoEPP/RE PDFs generated from an internal table we can consume directly?</li>
+<li>What is the official/authoritative DU/EC registry (system of record), and does it carry an ID we should adopt (or must we mint one)? Can DOE share the ERC/NEA crosswalk?</li>
+<li>Can ERC provide per-DU approved rates/generation-charge files as data (not PDFs), or nominate a data focal person for the fellowship?</li>
+<li>Can NEA provide the EC list with franchise areas (PSGC), reliability metrics, and PSPPs as a bulk file?</li>
+<li>Will DBM COMPASS accept our entity/price schema, and what identifiers/geography codes must the API use (PSGC vintage)?</li>
+<li>For ASE alignment: which AES indicator set/vintage does DOE report to ACE, and is there a mapping table the fellowship can reuse?</li>
+</ol>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="research-api-landscape.html"><span class="label">Previous</span><span class="pager-title">&larr; Research: API landscape</span></a><a class="pager-link pager-next" href="research-service-areas.html"><span class="label">Next</span><span class="pager-title">Research: Service areas &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#0-tldr-for-the-proposal-read-this-if-you-read-nothing-else">0. TL;DR for the proposal (read this if you read nothing else)</a><a class="toc-link" href="#1-executive-summary--what-exists-vs-what-must-be-built">1. Executive summary — what exists vs. what must be built</a><a class="toc-link l3" href="#11-what-already-exists-publicly-verified">1.1 What already exists publicly (verified)</a><a class="toc-link l3" href="#12-what-is-missing--must-be-built-gap-analysis">1.2 What is missing / must be built (gap analysis)</a><a class="toc-link" href="#2-doe--data-assets-the-core-of-the-challenge">2. DOE — data assets (the core of the challenge)</a><a class="toc-link l3" href="#21-portal-facts">2.1 Portal facts</a><a class="toc-link l3" href="#22-electricity-rates--price-monitor--the-key-asset">2.2 Electricity rates / price monitor — the key asset</a><a class="toc-link l3" href="#23-other-doe-assets-verified">2.3 Other DOE assets verified</a><a class="toc-link l3" href="#24-doe-data-access-summary">2.4 DOE data-access summary</a><a class="toc-link" href="#3-erc-rate-monitoring-and-the-142-duecs--how-rates-actually-reach-the-public">3. ERC rate monitoring and the 142 DU/ECs — how rates actually reach the public</a><a class="toc-link l3" href="#31-erc-website-access-verified-blocked">3.1 ERC website access (verified blocked)</a><a class="toc-link l3" href="#32-where-rate-numbers-are-actually-published-verified-samples">3.2 Where rate numbers are actually published (verified samples)</a><a class="toc-link l3" href="#33-typical-rate-table-structure-and-units-verified-from-surneco-june-2026-pdf">3.3 Typical rate-table structure and units (verified from SURNECO June 2026 PDF)</a><a class="toc-link l3" href="#34-the-142-utilities-number--corroboration-and-caveats">3.4 The "142 utilities" number — corroboration and caveats</a><a class="toc-link l3" href="#35-the-decks-stretch-erc-generation-charge-parse-is-partly-redundant">3.5 The deck's "stretch" ERC generation-charge parse is partly redundant</a><a class="toc-link" href="#4-nea--electric-cooperatives">4. NEA — electric cooperatives</a><a class="toc-link" href="#5-wesm--iemop--market-data">5. WESM / IEMOP — market data</a><a class="toc-link" href="#6-ngcp--transmission-and-grid-data">6. NGCP / transmission and grid data</a><a class="toc-link" href="#7-psa-datagovph-foi-and-psgc-geography">7. PSA, data.gov.ph, FOI and PSGC geography</a><a class="toc-link l3" href="#71-psa">7.1 PSA</a><a class="toc-link l3" href="#72-datagovph">7.2 data.gov.ph</a><a class="toc-link l3" href="#73-foi-efoi">7.3 FOI (eFOI)</a><a class="toc-link" href="#8-asean-energy-statistics--ace--comparability-requirements">8. ASEAN Energy Statistics / ACE — comparability requirements</a><a class="toc-link l3" href="#81-what-ace-publishes-verified">8.1 What ACE publishes (verified)</a><a class="toc-link l3" href="#82-aesl-2025-structure-verified-by-text-extraction-from-the-pdf">8.2 AESL 2025 structure (verified by text extraction from the PDF)</a><a class="toc-link l3" href="#83-what-aligned-with-asean-energy-statistics-should-mean-for-the-fellowship">8.3 What "aligned with ASEAN Energy Statistics" should mean for the fellowship</a><a class="toc-link" href="#9-cross-cutting-licensing-scraping-extraction-risk-provenance">9. Cross-cutting: licensing, scraping, extraction risk, provenance</a><a class="toc-link l3" href="#91-licence--terms-status-verified-statements-only">9.1 Licence / terms status (verified statements only)</a><a class="toc-link l3" href="#92-robotstxt--scraping-legality-as-verified-2026-11-10">9.2 robots.txt / scraping legality (as verified 2026-11-10)</a><a class="toc-link l3" href="#93-pdf-extraction-risks-observed">9.3 PDF extraction risks (observed)</a><a class="toc-link l3" href="#94-provenance--versioning-requirements-must-have-for-compass-integration">9.4 Provenance / versioning requirements (must-have for COMPASS integration)</a><a class="toc-link" href="#10-source-by-source-feasibility-for-a-3-month-build">10. Source-by-source feasibility (for a 3-month build)</a><a class="toc-link" href="#11-recommended-v1-ingest-plan-dec-2026--mar-2027">11. Recommended v1 ingest plan (Dec 2026 – Mar 2027)</a><a class="toc-link l3" href="#sprint-0-weeks-12-lock-access--registry">Sprint 0 (weeks 1–2): lock access + registry</a><a class="toc-link l3" href="#sprint-1-weeks-36-price-table-v1-the-demo">Sprint 1 (weeks 3–6): price table v1 (the demo)</a><a class="toc-link l3" href="#sprint-2-weeks-710-doe-dashboard-feeds">Sprint 2 (weeks 7–10): DOE dashboard feeds</a><a class="toc-link l3" href="#sprint-3-weeks-1113-comparability-governance-handoff">Sprint 3 (weeks 11–13): comparability, governance, handoff</a><a class="toc-link l3" href="#what-to-hand-off-to-doe-sustainability">What to hand off to DOE (sustainability)</a><a class="toc-link l3" href="#what-to-crowd-source">What to crowd-source</a><a class="toc-link" href="#12-discrepancies-found-between-live-sources-and-the-challenge-page--deck">12. Discrepancies found between live sources and the challenge page / deck</a><a class="toc-link" href="#13-verification-log-all-accessed-2026-11-10">13. Verification log (all accessed 2026-11-10)</a><a class="toc-link" href="#13a-implementation-re-verification-2026-11-10-build">13a. Implementation re-verification (2026-11-10, build)</a><a class="toc-link" href="#14-questions-to-put-to-doe--partners-week-1">14. Questions to put to DOE / partners (week 1)</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

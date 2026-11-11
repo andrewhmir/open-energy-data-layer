@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 17
+  },
+  "data": {
+    "dataset": "SRC-DOE-RATES",
+    "retrieved_at": "2026-11-10T17:00:34+08:00",
+    "latest_month": "2026-10",
+    "prev_month": "2026-09",
+    "anchor_month": "2026-06",
+    "summary": {
+      "checks": 17,
+      "passed": 17,
+      "failed": 0
+    },
+    "checks": [
+      {
+        "check": "DU row count per tab",
+        "ok": true,
+        "got": 141,
+        "expected": 141
+      },
+      {
+        "check": "month columns (Jan-18 → Nov-26)",
+        "ok": true,
+        "got": 107,
+        "expected": 107
+      },
+      {
+        "check": "first month",
+        "ok": true,
+        "got": "2018-01",
+        "expected": "2018-01"
+      },
+      {
+        "check": "latest month with published data",
+        "ok": true,
+        "got": "2026-10",
+        "expected": "2026-10"
+      },
+      {
+        "check": "reference anchor month present",
+        "ok": true,
+        "got": "2026-06",
+        "expected": "2026-06"
+      },
+      {
+        "check": "distinct DU/EC names across tabs (reference count 142)",
+        "ok": true,
+        "got": 142,
+        "expected": 142
+      },
+      {
+        "check": "off-grid DUs (unanimous)",
+        "ok": true,
+        "got": 21,
+        "expected": 21
+      },
+      {
+        "check": "grid-status conflicts",
+        "ok": true,
+        "got": 2,
+        "expected": 2
+      },
+      {
+        "check": "region utility counts sum",
+        "ok": true,
+        "got": 141,
+        "expected": 141
+      },
+      {
+        "check": "Jun-2026 Meralco residential",
+        "ok": true,
+        "got": 14.48,
+        "expected": 14.48
+      },
+      {
+        "check": "Jun-2026 SOLECO residential",
+        "ok": true,
+        "got": 16.57,
+        "expected": 16.57
+      },
+      {
+        "check": "Jun-2026 BISELCO residential",
+        "ok": true,
+        "got": 24.92,
+        "expected": 24.92
+      },
+      {
+        "check": "Jun-2026 reporting DUs",
+        "ok": true,
+        "got": 127,
+        "expected": 127
+      },
+      {
+        "check": "Jun-2026 simple mean",
+        "ok": true,
+        "got": 12.29,
+        "expected": 12.29
+      },
+      {
+        "check": "Jun-2026 median",
+        "ok": true,
+        "got": 12.1,
+        "expected": 12.1
+      },
+      {
+        "check": "Jun-2026 max = BISELCO 24.92",
+        "ok": true,
+        "got": 24.92,
+        "expected": 24.92
+      },
+      {
+        "check": "SOLECO May→Jun 2026 change ~ +32.2%",
+        "ok": true,
+        "got": 32.2,
+        "expected": 32.2
+      }
+    ],
+    "coverage_checks": [
+      {
+        "check": "service area rows present",
+        "ok": true,
+        "detail": "1665 rows"
+      },
+      {
+        "check": "every utility has a coverage block",
+        "ok": true,
+        "detail": "141 of 141"
+      },
+      {
+        "check": "utilities with LGU-level coverage",
+        "ok": true,
+        "detail": "141 of 141"
+      },
+      {
+        "check": "MERALCO service-area LGUs (RA 12146)",
+        "ok": true,
+        "detail": "108"
+      },
+      {
+        "check": "MERALCO Pampanga barangays",
+        "ok": true,
+        "detail": "17"
+      },
+      {
+        "check": "coverage regions are valid PSGC regions",
+        "ok": true
+      },
+      {
+        "check": "each utility's DOE region is inside its service area, or the PSGC 3Q 2026 reassignment is documented",
+        "ok": true,
+        "detail": "3 documented reassignment(s)"
+      }
+    ],
+    "coverage_summary": {
+      "checks": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "coverage": {
+      "utilities_total": 141,
+      "utilities_with_lgu_coverage": 141,
+      "utilities_region_only": 0,
+      "lgu_rows": 1648,
+      "barangay_rows": 17,
+      "region_rows": 0,
+      "distinct_lgus": 1602,
+      "multi_region_utilities": [
+        "AURELCO",
+        "BASELCO",
+        "CAGELCO-II",
+        "FIBECO",
+        "LASURECO",
+        "MERALCO",
+        "PPALMA",
+        "QUEZELCO-I",
+        "SUKELCO",
+        "ZAMSURECO-I"
+      ],
+      "sources": [
+        "SRC-OSM-OPERATORS",
+        "SRC-WIKI-DUS",
+        "SRC-RA-12146",
+        "SRC-DOE-RATES"
+      ]
+    },
+    "notes": [
+      "These are the checks run at retrieval time against the source workbook (row counts, month coverage, known spot values, derived aggregates). Any failure would change health.json status to \"degraded\".",
+      "coverage_checks validate the service-area layer (rows present, every utility covered, PSGC validity, LGU spot counts, DOE region inside the service area); they are separate from the rate checks."
+    ]
+  },
+  "next_cursor": null
+}

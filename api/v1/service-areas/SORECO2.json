@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 7
+  },
+  "data": {
+    "utility": {
+      "code": "SORECO2",
+      "name": "SORECO2",
+      "type": "EC",
+      "grid": "ONGRID",
+      "psgc": "0500000000",
+      "region_short": "Region V",
+      "region_name": "Bicol Region",
+      "data_status": "published"
+    },
+    "service_area": {
+      "detail": "lgu",
+      "source_ids": [
+        "SRC-WIKI-DUS"
+      ],
+      "regions": [
+        "0500000000"
+      ],
+      "lgu_count": 7,
+      "province_count": 1,
+      "barangay_count": 0,
+      "provinces": [
+        {
+          "psgc": "0506200000",
+          "name": "Sorsogon",
+          "region_psgc": "0500000000",
+          "lgu_count": 7
+        }
+      ],
+      "lgus": [
+        "0506202000",
+        "0506206000",
+        "0506207000",
+        "0506208000",
+        "0506213000",
+        "0506214000",
+        "0506216000"
+      ],
+      "barangays": [],
+      "barangay_provinces": [],
+      "note": null
+    },
+    "rows": [
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506202000",
+        "lgu_name": "Barcelona",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506206000",
+        "lgu_name": "Castilla",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506207000",
+        "lgu_name": "Donsol",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506208000",
+        "lgu_name": "Gubat",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506213000",
+        "lgu_name": "Pilar",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506214000",
+        "lgu_name": "Prieto Diaz",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      },
+      {
+        "utility_code": "SORECO2",
+        "area_level": "lgu",
+        "source_id": "SRC-WIKI-DUS",
+        "region_psgc": "0500000000",
+        "region_short": "Region V",
+        "region_name": "Bicol Region",
+        "province_psgc": "0506200000",
+        "province_name": "Sorsogon",
+        "adm3_psgc": "0506216000",
+        "lgu_name": "Sorsogon",
+        "adm4_psgc": null,
+        "barangay_name": null,
+        "coverage_note": null
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "SRC-WIKI-DUS",
+        "short_title": "Wikipedia distribution-utility list",
+        "publisher": "Wikipedia contributors",
+        "dataset_title": "List of electric distribution utilities in the Philippines",
+        "page_url": "https://en.wikipedia.org/wiki/List_of_electric_distribution_utilities_in_the_Philippines",
+        "revision_id": "1374171231",
+        "retrieved_at": "2026-11-10T19:28:08+08:00",
+        "licence": {
+          "name": "CC BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "note": "Attribution required; share-alike applies to service-area coverage derived from this source."
+        },
+        "attribution": "© Wikipedia contributors, “List of electric distribution utilities in the Philippines”, revision 1374171231 (2026-09-10), CC BY-SA 4.0.",
+        "notes": "Supplementary: LGU service areas used only for utilities that the OSM page lists without a franchise-area table (Bicol, MIMAROPA, CEDC, BANELCO, PROSIELCO); also cross-checked against all OSM-mapped utilities. Page revision date 2026-09-10. Raw wikitext snapshot: research/coverage/snapshots/wikipedia-du-list-1374171231.wikitext",
+        "used_for": {
+          "rows": 197,
+          "utilities": 22,
+          "rows_by_area_level": {
+            "lgu": 197
+          }
+        }
+      }
+    ],
+    "notes": [
+      "rows are published verbatim from data/seed/service_areas.csv (sorted LGU, then barangay, then region fallback) with the region name joined from data/seed/regions.csv. A null field means that level does not apply (e.g. adm3_psgc on a region row).",
+      "A franchise/service area is not verified household-level billing territory; region-level rows are an explicit fallback. Coverage is derived data, not a DOE rate publication."
+    ]
+  },
+  "next_cursor": null
+}

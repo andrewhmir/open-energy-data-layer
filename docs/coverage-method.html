@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Service-area extraction — Open Energy Data Layer — documentation</title>
+<meta name="description" content="How the LGU-level franchise footprints behind the provider lens were extracted, matched to PSGC codes, cross-checked and licensed.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" class="current" aria-current="page" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-data">Data</a><span class="sep">/</span><span aria-current="page">Service-area extraction</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Data <span class="sep">&middot;</span> documentation</p>
+  <h1 id="lgu-level-service-areas-for-the-141-distribution-utilities">LGU-level service areas for the 141 distribution utilities</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>research/coverage/README.md</code> &middot; 555 lines &middot; 29 KB &middot; 5,093 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/research/coverage/README.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>Every distribution utility (DU) in <code>data/seed/utilities.csv</code> has a DOE-assigned
+region, but real franchise areas are far finer: co-ops cover part of a province,
+one province can hold several co-ops, and a few DUs span regions. This folder
+produces an auditable, reproducible LGU (municipality / city) coverage table for
+all 141 DUs so the page's provider filter can draw each provider's operating
+area, not just Meralco's.</p>
+<h2 class="has-anchor" id="at-a-glance">At a glance<a class="h-anchor" href="#at-a-glance" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Utilities covered</td>
+<td><strong>141 / 141</strong> (100%) have at least one LGU row; 0 need a region fallback</td>
+</tr>
+<tr>
+<td>Rows</td>
+<td><strong>1,630</strong> LGU rows (1,433 from the OSM page, 197 from the Wikipedia supplement)</td>
+</tr>
+<tr>
+<td>LGUs mapped</td>
+<td><strong>1,585</strong> distinct PSGC LGUs out of 1,642 (96.5%); 57 remain uncovered, listed below</td>
+</tr>
+<tr>
+<td>Primary source</td>
+<td>OpenStreetMap Wiki <em>Power networks/Philippines/Operators</em>, revision <strong>2836797</strong> (2025-04-14), CC BY-SA 2.0</td>
+</tr>
+<tr>
+<td>Supplementary source</td>
+<td>Wikipedia <em>List of electric distribution utilities in the Philippines</em>, revision <strong>1374171231</strong> (2026-09-10), CC BY-SA 4.0 — used only for the 22 DUs the OSM page lists without a franchise table</td>
+</tr>
+<tr>
+<td>Codes</td>
+<td>All emitted PSGC codes are canonical zero-padded 10-digit strings (e.g. Angat <code>0301401000</code>, Bulacan <code>0301400000</code>)</td>
+</tr>
+<tr>
+<td>Deterministic</td>
+<td><code>python3 research/coverage/extract.py</code>; pinned revisions + committed wikitext snapshots</td>
+</tr>
+</tbody>
+</table></div>
+<p>Status: ready for the Lead's merge. <code>MERALCO</code> rows are OSM-derived and flagged
+<code>law-override-pending (RA 12146)</code>; the Lead's merge replaces them with the
+law-level list (a colleague encodes RA 12146 Section 1 in
+<code>research/service-areas.json</code>: 108 LGUs + 17 Pampanga barangays).</p>
+<h2 class="has-anchor" id="files">Files<a class="h-anchor" href="#files" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>file</th>
+<th>what it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>research/coverage/extract.py</code></td>
+<td>the deterministic extraction/mapping tool (stdlib only)</td>
+</tr>
+<tr>
+<td><code>research/coverage/osm-operators.json</code></td>
+<td>raw extracted OSM table (132 table rows + 19 bullet-section operators, merged operators, match report, ambiguities, cross-checks)</td>
+</tr>
+<tr>
+<td><code>research/coverage/osm-service-areas.csv</code></td>
+<td>raw extraction in the service-area schema — the Lead's merge input</td>
+</tr>
+<tr>
+<td><code>data/seed/service_areas.csv</code></td>
+<td>byte-identical to <code>research/coverage/osm-service-areas.csv</code>; the Lead's merge rewrites this with the RA 12146 Meralco override</td>
+</tr>
+<tr>
+<td><code>data/seed/service_area_sources.csv</code></td>
+<td>source registry: revision ids, retrieved_at, licences, attribution strings</td>
+</tr>
+<tr>
+<td><code>research/coverage/snapshots/osm-wiki-2836797.wikitext</code></td>
+<td>pinned raw wikitext of the OSM page (sha256 in the <code>.provenance.json</code>)</td>
+</tr>
+<tr>
+<td><code>research/coverage/snapshots/wikipedia-du-list-1374171231.wikitext</code></td>
+<td>pinned raw wikitext of the Wikipedia list</td>
+</tr>
+</tbody>
+</table></div>
+<p>Output hashes (current build):</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">service_areas.csv        5c62adcf693fd0c4309796c81f10393629a7ee26025ceed572727082924f1081
+service_area_sources.csv 0418657eb7818bb1dcf5e5978148886f70772869e5324f0c76f8110e4b6bd7d0
+</code></pre></div>
+<h2 class="has-anchor" id="merge-contract-with-toolsbuild-service-areaspy">Merge contract with <code>tools/build-service-areas.py</code><a class="h-anchor" href="#merge-contract-with-toolsbuild-service-areaspy" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The raw file is the merge tool's first input. Checked against the tool and the
+pinned LGU geometry (<code>draft/assets/coverage-geo.json</code>): <strong>1,540 / 1,540 visible
+rows resolve to a geometry LGU (0 misses)</strong> for all utilities except MERALCO (the
+tool deliberately ignores our MERALCO rows and substitutes RA 12146). Two
+integration notes for the merge:</p>
+<ol>
+<li><strong>Cross-utility LGU overlaps are intentional.</strong> 42 LGUs are claimed by more
+than one utility here because the sources describe partial coverage (e.g.
+San Carlos City is CENPELCO's while barangays Cruz and Bolingit are DECORP's;
+Calanasan is KAELCO's while two barangays are CAGELCO II's; 18 FIBECO/MAGELCO/
+SUKELCO/PPALMA/CLPC/COLIGHT partial overlaps in Mindanao; CEDC's Clark
+Freeport portions inside PELCO II/TARELCO II/AEC areas; MORE-POWER's 2022
+expansion into ILECO areas). The merge should therefore de-duplicate on
+<code>(utility_code, adm3_psgc)</code>, not on <code>adm3_psgc</code> alone — the current
+<code>tools/build-service-areas.py</code> uses a global <code>seen</code> set and would report these
+42 legitimate overlaps as duplicates.</li>
+<li>The published file adds <code>area_level=barangay</code> rows (MERALCO Pampanga, from
+RA 12146) and may add <code>area_level=region</code> fallbacks; this raw extraction has 0
+of either.</li>
+</ol>
+<h2 class="has-anchor" id="output-schema">Output schema<a class="h-anchor" href="#output-schema" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><code>data/seed/service_areas.csv</code> — header matches the column contract of the Lead's
+merge tool (<code>tools/build-service-areas.py</code> <code>AREA_HEADER</code>) and <code>tools/validate.py</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">utility_code,source_id,area_level,region_psgc,province_psgc,province_name,adm3_psgc,lgu_name,adm4_psgc,barangay_name,coverage_note
+</code></pre></div>
+<p><code>adm4_psgc</code> and <code>barangay_name</code> are always empty in this raw extraction: it is
+LGU-level only. They exist for the published dataset, where the Lead's merge adds
+MERALCO's 17 RA 12146 Pampanga barangays as <code>area_level=barangay</code> rows.</p>
+<ul>
+<li><code>utility_code</code> — one of the 141 DOE workbook codes.</li>
+<li><code>source_id</code> — <code>SRC-OSM-OPERATORS</code> or <code>SRC-WIKI-DUS</code> for LGU rows; <code>SRC-DOE-RATES</code>
+for an <code>area_level=region</code> fallback (none are needed in the current build).</li>
+<li><code>area_level</code> — <code>lgu</code> (one row per covered LGU) or <code>region</code> (fallback only).</li>
+<li><code>region_psgc</code> — the <strong>service area's</strong> PSGC region (not the DU's DOE region), so
+joins to LGU geometry work; cross-region rows therefore differ from the DU's
+DOE region and say so in <code>coverage_note</code>.</li>
+<li><code>province_psgc</code> / <code>province_name</code> — the LGU's adm2 from the PSGC registry.
+For NCR and the independent City of Isabela the adm2 is a district / city
+(&quot;NCR, Second District&quot;, &quot;City of Isabela&quot;); the &quot;(Not a Province)&quot; marker is
+dropped from the name only.</li>
+<li><code>adm4_psgc</code> / <code>barangay_name</code> — empty here (LGU-level extraction only); the
+Lead's merge fills them for the RA 12146 barangay rows.</li>
+<li><code>coverage_note</code> — <code>&quot;&quot;</code> normally; otherwise <code>cross-region</code>,
+<code>partial barangay coverage (listed in source)</code>, a specific partial-coverage
+explanation, and/or <code>law-override-pending (RA 12146)</code>.</li>
+<li>Sorted by <code>utility_code</code>, then LGU PSGC; no duplicate <code>(utility_code, adm3_psgc)</code>.</li>
+</ul>
+<p><code>data/seed/service_area_sources.csv</code> (header exactly as specified) has four rows:
+<code>SRC-OSM-OPERATORS</code>, <code>SRC-WIKI-DUS</code>, <code>SRC-DOE-RATES</code> (region fallback) and
+<code>SRC-RA-12146</code> (placeholder for the Lead's Meralco override).</p>
+<h2 class="has-anchor" id="sources-revisions-and-licences">Sources, revisions and licences<a class="h-anchor" href="#sources-revisions-and-licences" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="src-osm-operators-primary">SRC-OSM-OPERATORS (primary)<a class="h-anchor" href="#src-osm-operators-primary" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>OpenStreetMap Wiki, <em>Power networks/Philippines/Operators</em>,
+<a href="https://wiki.openstreetmap.org/wiki/Power_networks/Philippines/Operators" target="_blank" rel="noopener">https://wiki.openstreetmap.org/wiki/Power_networks/Philippines/Operators<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></li>
+<li>Revision <strong>2836797</strong>, edited 2025-04-14 by Kjon; retrieved 2026-11-10.</li>
+<li>Licence: <strong>CC BY-SA 2.0</strong>. The page tabulates operator franchise areas as
+&quot;per Department of Energy&quot;, with a municipality-level table for most operators.</li>
+<li>Snapshots: <code>snapshots/osm-wiki-2836797.wikitext</code> (+ provenance json).</li>
+</ul>
+<p>Structure used: 15 region sections with wikitable rows
+(<code>Name (abbreviation) | Franchise areas | Notes</code>), plus bullet-only sections:
+Nationwide (NGCP), Metro Manila (Meralco), MIMAROPA and Bicol. Operators repeat
+across sections (Meralco 3×, CAGELCO II, AURELCO, BASELCO, FIBECO, LASURECO,
+SUKELCO, ZAMSURECO-I, COTELCO-PPALMA, QUEZELCO-I bullet) — rows are merged per
+operator and areas unioned.</p>
+<h3 class="has-anchor" id="src-wiki-dus-supplementary-22-utilities-only">SRC-WIKI-DUS (supplementary, 22 utilities only)<a class="h-anchor" href="#src-wiki-dus-supplementary-22-utilities-only" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Wikipedia, <em>List of electric distribution utilities in the Philippines</em>,
+<a href="https://en.wikipedia.org/wiki/List_of_electric_distribution_utilities_in_the_Philippines" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_electric_distribution_utilities_in_the_Philippines<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></li>
+<li>Revision <strong>1374171231</strong>, edited 2026-09-10 by FiveGeekabytes; retrieved 2026-11-10.</li>
+<li>Licence: <strong>CC BY-SA 4.0</strong>.</li>
+<li>Used <strong>only</strong> where the OSM page has no usable LGU list for a DU; the OSM page
+leaves the Bicol and MIMAROPA sections as bullet lists without franchise areas
+(and has no row for BANELCO / PROSIELCO / CEDC). 22 utilities are supplemented:
+ALECO, BANELCO, BISELCO, CANORECO, CASURECO1–4, CEDC, FICELCO, LUBELCO,
+MARELCO, MASELCO, OMECO, ORMECO, PALECO, PROSIELCO, ROMELCO, SORECO1, SORECO2,
+TIELCO, TISELCO.</li>
+<li>Every supplemented row is marked <code>source_id=SRC-WIKI-DUS</code> so it can be attributed
+and re-checked. It is also cross-checked against the OSM result for the 116
+utilities present in both sources (see &quot;Cross-check&quot; below).</li>
+</ul>
+<h3 class="has-anchor" id="src-doe-rates-region-fallback-only">SRC-DOE-RATES (region fallback only)<a class="h-anchor" href="#src-doe-rates-region-fallback-only" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The DOE workbook behind <code>data/seed/utilities.csv</code> gives each DU one region; it is
+the fallback source for <code>area_level=region</code> rows. None are needed: all 141 DUs
+have LGU-level coverage in this build. Licence: no explicit DOE dataset licence;
+see <code>data/seed/sources.csv</code> (&quot;public records; reuse terms to be confirmed&quot;).</p>
+<h3 class="has-anchor" id="src-ra-12146-placeholder-for-the-leads-merge">SRC-RA-12146 (placeholder for the Lead's merge)<a class="h-anchor" href="#src-ra-12146-placeholder-for-the-leads-merge" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>RA 12146 (Meralco franchise renewal), official text via the Supreme Court
+e-Library; the colleague's law encoding is <code>research/service-areas.json</code> (not
+edited here). MERALCO rows below are OSM-derived and flagged
+<code>law-override-pending (RA 12146)</code>; the merge should replace them.</p>
+<h2 class="has-anchor" id="method">Method<a class="h-anchor" href="#method" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>PSGC LGU registry.</strong> Built from the pinned PSGC 3Q 2026 TopoJSON archive
+(<code>philippines-json-maps</code> v1.1.1, the file cached by <code>tools/build-geo.py</code>):
+<code>topojson/provdists/hires/municities-provdist-&lt;adm2&gt;.topo.0.1.json</code> gives
+1,642 LGUs (149 cities + 1,493 municipalities) with <code>adm1_psgc</code>,
+<code>adm2_psgc</code>, <code>adm3_psgc</code>, <code>adm3_en</code>; province names come from
+<code>topojson/regions/hires/*.json</code>. Codes are zero-padded to 10 digits.</li>
+<li><strong>Extract the OSM table and bullets</strong> from the pinned wikitext
+(<code>osm-operators.json.raw_rows</code> keeps every row/section verbatim). Bullet
+sections contribute operators and franchise hints, e.g.
+<code>Quezon I Electric Cooperative (QUEZELCO-I) (Del Gallego, Camarines Sur)</code>.</li>
+<li><strong>Merge operators</strong> across region sections by display name (the abbreviation
+in parentheses is kept separately) and union their areas.</li>
+<li><strong>Parse franchise-area cells into LGU items</strong>:
+<ul>
+<li><code>A, B and C in &lt;Province&gt;</code> → each item resolved inside that province;</li>
+<li><code>A, B and C in &lt;LGU&gt;, &lt;Province&gt;</code> → barangay-level coverage: one
+<strong>partial</strong> row for the parent LGU with <code>coverage_note = &quot;partial barangay coverage (listed in source)&quot;</code> (e.g. DECORP: Cruz and Bolingit in San Carlos
+City; QUIRELCO: 18 barangays in San Agustin; Meralco: Candaba / Apalit);</li>
+<li><code>parts of &lt;LGU&gt;</code> / <code>portions of &lt;LGU&gt;</code> → partial LGU row;</li>
+<li>a bare province name (alone in its cell) → whole-province expansion
+(this is how &quot;Benguet&quot;, &quot;Bulacan&quot;, &quot;Cavite&quot;, &quot;Zamboanga del Sur&quot;, etc. work);</li>
+<li><code>province including LGU</code> → province expansion plus the extra LGU
+(e.g. &quot;Capiz including Roxas City&quot;);</li>
+<li>notes' whole-LGU exclusions are applied, e.g. LANECO excludes Iligan City,
+Pantao Ragat, Pantar (served by ILPI/LASURECO); LUELCO excludes Bauang,
+San Fernando, San Juan; ANTECO excludes Libertad, Pandan; LASURECO excludes
+Wao; DASURECO excludes Davao City; ZANECO/ZAMSURECO-I exclude the LGUs noted
+as served by ZAMSURECO-II; MAGELCO excludes Cotabato City; SUKELCO excludes
+Lutayan.</li>
+</ul>
+</li>
+<li><strong>Resolve LGU names to PSGC</strong>. Order of evidence: exact name / known alias →
+province context stated in the source text → the operator's DOE region (only
+when that narrows the field to one candidate). <strong>Ambiguous names are never
+guessed</strong>: the build reports 0 unresolved LGU names and 3 unmapped source
+items (below). Name handling covers <code>City of X</code> / <code>X City</code> forms, <code>Sto.</code> =
+<code>Santo</code> / <code>Sta.</code> = <code>Santa</code> expansion, accent folding (<code>Peñablanca</code>), hyphen
+folding (<code>Impasug-ong</code>, <code>Miag-ao</code>, <code>M'Lang</code>), and the PSGC 3Q 2026 names that
+differ from the source text (<code>Sawata</code> for San Isidro, Davao del Norte;
+<code>Pagagawan</code> for Datu Montawal; <code>Gen. S.K. Pendatun</code>; <code>Salvador Benedicto</code>;
+<code>Pigkawayan</code>; <code>Cabanglasan</code>; <code>Enrique B. Magalona</code>; <code>Dr. Jose P. Rizal</code> for
+Rizal, Palawan).</li>
+<li><strong>Cross-region check</strong>: every LGU's <code>adm1_psgc</code> is compared with the DU's DOE
+region. Mismatches are kept and flagged <code>cross-region</code> (not dropped) because
+several are genuine franchises: Meralco (NCR DU serving Regions III/IV-A),
+AURELCO (Region III DU serving Dinapigue, Isabela), QUEZELCO-I (Region IV-A DU
+serving Del Gallego, Camarines Sur), CAGELCO-II (Region II DU serving Apayao),
+FIBECO (Region X DU serving Wao, Lanao del Sur), LASURECO (BARMM DU serving
+Pantao Ragat/Pantar, Lanao del Norte), PPALMA (Region XII DU serving Maguindanao
+LGUs), SUKELCO (Region XII DU serving Maguindanao del Sur), ZAMSURECO-I
+(Region IX DU serving Don Victoriano, Misamis Occidental), BASELCO (BARMM DU
+serving Isabela City, Region IX), SULECO/SIASELCO (BARMM DUs serving Sulu,
+which PSGC 3Q 2026 moved to Region IX) and PROSIELCO (DOE Region VII DU serving
+Siquijor, which PSGC 3Q 2026 moved to NIR).</li>
+<li><strong>Meralco</strong>: OSM rows are kept but every row carries
+<code>law-override-pending (RA 12146)</code>; the Lead's merge replaces them with the
+RA 12146 list.</li>
+<li><strong>Validate</strong>: every one of the 141 codes is present; no duplicate
+<code>(utility_code, adm3_psgc)</code>; every <code>adm3_psgc</code> exists in the registry; every
+region code is one of the 18 PSGC regions; ≥90% of utilities have LGU rows.
+The script exits non-zero if any check fails.</li>
+</ol>
+<h2 class="has-anchor" id="ambiguities-and-unmapped-source-items">Ambiguities and unmapped source items<a class="h-anchor" href="#ambiguities-and-unmapped-source-items" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>Unresolved LGU names: <strong>none</strong> (0 in the current build).</li>
+<li>Unmapped franchise-area items (kept in the report, no LGU invented):
+<ul>
+<li><code>Clark Freeport Zone</code> (CEDC) — a special economic zone, not an LGU; CEDC's
+LGU rows come from the Wikipedia supplement (Clark portions in Angeles,
+Mabalacat, Porac, Bamban, Capas).</li>
+<li><code>First Philippine Industrial Park</code> (Meralco) — an industrial estate inside
+Sto. Tomas, Batangas, which is already covered by the Meralco row set.</li>
+<li><code>Tungo</code> (LEYECO-3) — a barangay listed alongside LGUs in the source; not an
+LGU, so it is not mapped.</li>
+</ul>
+</li>
+<li>Source operators that are not DUs in the 141-row workbook (extracted for audit,
+not used): NGCP (transmission), APEC (concessionaire inside the ALECO franchise;
+ALECO/APEC are one franchise on the sources, and the DOE workbook has only
+ALECO), SPUG (NAPOCOR missionary electrification), Subic Enerzone and LIMA
+Enerzone (freeports/industrial parks), and SIQUELCO (the OSM page's name for
+Siquijor's DU; the workbook code is PROSIELCO, which is used instead).</li>
+</ul>
+<h2 class="has-anchor" id="known-gaps">Known gaps<a class="h-anchor" href="#known-gaps" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>57 of the 1,642 LGUs are not claimed by any of the 141 DUs. Most are explained:</p>
+<ul>
+<li><strong>NCR 17 LGUs</strong> — the OSM page's Metro Manila section is a bare bullet with no
+LGU list, so no NCR LGU appears here. The Lead's MERALCO RA 12146 override adds
+all 17; that is why Meralco is marked &quot;law-override-pending&quot; rather than skipped.</li>
+<li><strong>11 Sulu LGUs</strong> — SULECO's row lists only 7 of Sulu's 18 LGUs and SIASELCO
+covers Siasi; the remaining LGUs are unlisted in the source (the Sulu franchise
+table is incomplete).</li>
+<li><strong>8 Special Geographic Area LGUs</strong> (BARMM, in Cotabato) — new 2024 municipalities
+not covered by any DU row in the sources.</li>
+<li><strong>Romblon 3</strong> (Banton, Concepcion, Corcuera) and <strong>Turtle Islands, Tawi-Tawi</strong> —
+small island/local systems that are not DUs in the 141-row DOE workbook.</li>
+<li><strong>Kalayaan, Palawan</strong> — the Spratly municipality has no distribution utility row.</li>
+<li><strong>OSM-page omissions</strong> in otherwise-covered provinces: Samar 3 (Basey, Paranas,
+Zumarraga — Wikipedia attributes them to SAMELCO-II), Basilan 2 (Maluso,
+Sumisip — Wikipedia attributes them to BASELCO), plus single LGUs in Zambales
+(San Marcelino), Batangas (Balete, Mataasnakahoy), Laguna (Alaminos, Rizal),
+Quezon (Dolores), Cebu (San Remigio), Leyte (Tunga), Misamis Oriental
+(Talisayan), Cagayan (Calayan) and Pangasinan (Sison). These are left as gaps
+rather than mixed in from the secondary source, because for those DUs the
+primary table exists and is authoritative for the franchise list.</li>
+<li><strong>PALECO</strong> list is 19 LGUs: Palawan's 24 minus the 4 Calamianes LGUs served by
+BISELCO and minus Kalayaan (no DU) — consistent with the source.</li>
+<li><strong>ALECO</strong> is 18 LGUs (all Albay): the Wikipedia source lists the combined
+ALECO/APEC franchise; APEC is not a separate DOE workbook row (see
+<code>coverage_note</code> on those rows).</li>
+</ul>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>province / district</th>
+<th>LGUs</th>
+<th>names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basilan</td>
+<td>2</td>
+<td>Maluso, Sumisip</td>
+</tr>
+<tr>
+<td>Batangas</td>
+<td>2</td>
+<td>Balete, Mataasnakahoy</td>
+</tr>
+<tr>
+<td>Cagayan</td>
+<td>1</td>
+<td>Calayan</td>
+</tr>
+<tr>
+<td>Cebu</td>
+<td>1</td>
+<td>San Remigio</td>
+</tr>
+<tr>
+<td>Laguna</td>
+<td>2</td>
+<td>Alaminos, Rizal</td>
+</tr>
+<tr>
+<td>Leyte</td>
+<td>1</td>
+<td>Tunga</td>
+</tr>
+<tr>
+<td>Misamis Oriental</td>
+<td>1</td>
+<td>Talisayan</td>
+</tr>
+<tr>
+<td>NCR, City of Manila, First District</td>
+<td>1</td>
+<td>City of Manila</td>
+</tr>
+<tr>
+<td>NCR, Fourth District</td>
+<td>7</td>
+<td>City of Las Piñas, City of Makati, City of Muntinlupa, City of Parañaque, Pasay City, City of Taguig, Pateros</td>
+</tr>
+<tr>
+<td>NCR, Second District</td>
+<td>5</td>
+<td>City of Mandaluyong, City of Marikina, City of Pasig, Quezon City, City of San Juan</td>
+</tr>
+<tr>
+<td>NCR, Third District</td>
+<td>4</td>
+<td>City of Caloocan, City of Malabon, City of Navotas, City of Valenzuela</td>
+</tr>
+<tr>
+<td>Palawan</td>
+<td>1</td>
+<td>Kalayaan</td>
+</tr>
+<tr>
+<td>Pangasinan</td>
+<td>1</td>
+<td>Sison</td>
+</tr>
+<tr>
+<td>Quezon</td>
+<td>1</td>
+<td>Dolores</td>
+</tr>
+<tr>
+<td>Romblon</td>
+<td>3</td>
+<td>Banton, Concepcion, Corcuera</td>
+</tr>
+<tr>
+<td>Samar</td>
+<td>3</td>
+<td>Basey, Paranas, Zumarraga</td>
+</tr>
+<tr>
+<td>Special Geographic Area</td>
+<td>8</td>
+<td>Kapalawan, Old Kaabakan, Kadayangan, Nabalawag, Pahamuddin, Malidegao, Ligawasan, Tugunan</td>
+</tr>
+<tr>
+<td>Sulu</td>
+<td>11</td>
+<td>Kalingalan Caluang, Hadji Panglima Tahil, Old Panamao, Pangutaran, Pata, Tapul, Tongkil, Panglima Estino, Lugus, Pandami, Omar</td>
+</tr>
+<tr>
+<td>Tawi-Tawi</td>
+<td>1</td>
+<td>Turtle Islands</td>
+</tr>
+<tr>
+<td>Zambales</td>
+<td>1</td>
+<td>San Marcelino</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="cross-region-flags-kept-not-dropped">Cross-region flags (kept, not dropped)<a class="h-anchor" href="#cross-region-flags-kept-not-dropped" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>126 LGU rows across 13 utilities are flagged <code>cross-region</code> (LGU's PSGC region
+differs from the DU's DOE region). All are genuine multi-region/service-vintage
+cases, not name-matching errors:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>utility</th>
+<th>rows</th>
+<th>LGUs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AURELCO</td>
+<td>1</td>
+<td>Dinapigue</td>
+</tr>
+<tr>
+<td>BASELCO</td>
+<td>1</td>
+<td>City of Isabela</td>
+</tr>
+<tr>
+<td>CAGELCO-II</td>
+<td>5</td>
+<td>Calanasan, Flora, Luna, Pudtol, Santa Marcela</td>
+</tr>
+<tr>
+<td>FIBECO</td>
+<td>1</td>
+<td>Wao</td>
+</tr>
+<tr>
+<td>LASURECO</td>
+<td>2</td>
+<td>Pantao Ragat, Pantar</td>
+</tr>
+<tr>
+<td>MERALCO</td>
+<td>90</td>
+<td>Alfonso, Amadeo, Angat, Angono, Apalit, Balagtas, Baras, Batangas City, Bay, Binangonan, Bocaue, Bulacan, Bustos, Cainta, Calauan, Calumpit, Candaba, Candelaria, Cardona, City of Antipolo, City of Bacoor, City of Baliwag, City of Biñan, City of Cabuyao, City of Calamba, City of Carmona, City of Cavite, City of Dasmariñas, City of General Trias, City of Imus, City of Lucena, City of Malolos, City of Meycauayan, City of San Jose Del Monte, City of San Pablo, City of San Pedro, City of Santa Rosa, City of Sto. Tomas, City of Tagaytay, City of Tayabas, City of Trece Martires, Doña Remedios Trinidad, Gen. Mariano Alvarez, General Emilio Aguinaldo, Guiguinto, Hagonoy, Indang, Jala-Jala, Kawit, Liliw, Los Baños, Lucban, Magallanes, Majayjay, Maragondon, Marilao, Mauban, Mendez, Morong, Nagcarlan, Naic, Norzagaray, Noveleta, Obando, Pagbilao, Pandi, Paombong, Pila, Pililla, Plaridel, Pulilan, Rodriguez, Rosario, Sampaloc, San Ildefonso, San Mateo, San Miguel, San Pascual, San Rafael, Santa Cruz, Santa Maria, Sariaya, Silang, Tanay, Tanza, Taytay, Teresa, Ternate, Tiaong, Victoria</td>
+</tr>
+<tr>
+<td>PPALMA</td>
+<td>4</td>
+<td>Buldon, Northern Kabuntalan, Pagagawan, Pagalungan</td>
+</tr>
+<tr>
+<td>PROSIELCO</td>
+<td>6</td>
+<td>Enrique Villanueva, Larena, Lazi, Maria, San Juan, Siquijor</td>
+</tr>
+<tr>
+<td>QUEZELCO-I</td>
+<td>1</td>
+<td>Del Gallego</td>
+</tr>
+<tr>
+<td>SIASELCO</td>
+<td>1</td>
+<td>Siasi</td>
+</tr>
+<tr>
+<td>SUKELCO</td>
+<td>6</td>
+<td>Buluan, Datu Paglas, Gen. S.K. Pendatun, Mangudadatu, Paglat, Pandag</td>
+</tr>
+<tr>
+<td>SULECO</td>
+<td>7</td>
+<td>Indanan, Jolo, Luuk, Maimbung, Parang, Patikul, Talipao</td>
+</tr>
+<tr>
+<td>ZAMSURECO-I</td>
+<td>1</td>
+<td>Don Victoriano</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="cross-check-against-the-wikipedia-list">Cross-check against the Wikipedia list<a class="h-anchor" href="#cross-check-against-the-wikipedia-list" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>For the 116 utilities present in both sources the LGU sets were compared:
+<strong>72 identical, 44 differing</strong> (details in <code>osm-operators.json.report. wiki_cross_check</code>). The differences are mostly errors/incompleteness in the
+secondary source and were not used to overwrite the primary data, e.g.:</p>
+<ul>
+<li>Wikipedia's DLPC row includes LGUs from Davao del Norte, Cotabato and Davao del
+Sur (the OSM table gives DLPC Davao City + 4 Davao del Norte LGUs);</li>
+<li>its MORESCO-I row includes Baungon/Cagayan de Oro/Iligan, which belong to other
+DUs; its LUELCO row lists the whole of La Union (24 entries) while the
+cooperative's area is La Union minus Bauang/San Fernando/San Juan;</li>
+<li>it adds a few real OSM omissions (SAMELCO-II's Basey/Paranas/Zumarraga,
+ZAMECO-II's San Marcelino) that are listed under &quot;Known gaps&quot; rather than mixed
+in;</li>
+<li>it disagrees on CEPALCO (Jasaan/Villanueva) and CENECO/NEPC, where the sources
+themselves conflict.</li>
+</ul>
+<p>The comparison table is kept in the JSON report; <code>SRC-WIKI-DUS</code> rows in the CSV
+are only the 22 utilities where the OSM page has no LGU data at all.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>utility</th>
+<th>OSM LGUs</th>
+<th>Wikipedia LGUs</th>
+<th>sample differences</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AEC</td>
+<td>1</td>
+<td>2</td>
+<td>Wiki only: Mabalacat City</td>
+</tr>
+<tr>
+<td>AKELCO</td>
+<td>19</td>
+<td>20</td>
+<td>Wiki only: Sapi-An</td>
+</tr>
+<tr>
+<td>ANTECO</td>
+<td>16</td>
+<td>15</td>
+<td>OSM only: San Jose</td>
+</tr>
+<tr>
+<td>AURELCO</td>
+<td>9</td>
+<td>10</td>
+<td>Wiki only: Alfonso Castaneda</td>
+</tr>
+<tr>
+<td>BASELCO</td>
+<td>11</td>
+<td>12</td>
+<td>OSM only: City of Isabela; Wiki only: Maluso, Sumisip</td>
+</tr>
+<tr>
+<td>BILECO</td>
+<td>8</td>
+<td>7</td>
+<td>OSM only: Maripipi</td>
+</tr>
+<tr>
+<td>CAGELCO-II</td>
+<td>21</td>
+<td>20</td>
+<td>OSM only: Calanasan</td>
+</tr>
+<tr>
+<td>CASELCO</td>
+<td>1</td>
+<td>2</td>
+<td>Wiki only: Turtle Islands</td>
+</tr>
+<tr>
+<td>CEBECO-II</td>
+<td>12</td>
+<td>13</td>
+<td>Wiki only: San Remigio</td>
+</tr>
+<tr>
+<td>CELCOR</td>
+<td>2</td>
+<td>1</td>
+<td>OSM only: Santa Rosa</td>
+</tr>
+<tr>
+<td>CEPALCO</td>
+<td>2</td>
+<td>4</td>
+<td>Wiki only: Jasaan, Villanueva</td>
+</tr>
+<tr>
+<td>DANECO-NORDECO</td>
+<td>18</td>
+<td>11</td>
+<td>OSM only: Asuncion, Kapalong, New Corella, Island Garden City of Samal</td>
+</tr>
+<tr>
+<td>DLPC</td>
+<td>5</td>
+<td>13</td>
+<td>Wiki only: Kitaotao, Asuncion, Kapalong, New Corella</td>
+</tr>
+<tr>
+<td>FIBECO</td>
+<td>13</td>
+<td>14</td>
+<td>Wiki only: Amai Manabilang</td>
+</tr>
+<tr>
+<td>FLECO</td>
+<td>13</td>
+<td>11</td>
+<td>OSM only: Luisiana, Magdalena</td>
+</tr>
+<tr>
+<td>IEEC</td>
+<td>1</td>
+<td>3</td>
+<td>Wiki only: City of Lipa, San Jose</td>
+</tr>
+<tr>
+<td>KAELCO</td>
+<td>11</td>
+<td>9</td>
+<td>OSM only: Calanasan, Kabugao</td>
+</tr>
+<tr>
+<td>LANECO</td>
+<td>20</td>
+<td>18</td>
+<td>OSM only: Nunungan, Tagoloan</td>
+</tr>
+<tr>
+<td>LASURECO</td>
+<td>41</td>
+<td>39</td>
+<td>OSM only: City of Marawi, Amai Manabilang, Tagoloan II; Wiki only: Baloi</td>
+</tr>
+<tr>
+<td>LEYECO-III</td>
+<td>8</td>
+<td>9</td>
+<td>Wiki only: Tunga</td>
+</tr>
+<tr>
+<td>LUELCO</td>
+<td>17</td>
+<td>24</td>
+<td>Wiki only: Bauang, City of San Fernando, San Juan, Pozorrubio</td>
+</tr>
+<tr>
+<td>MAGELCO</td>
+<td>36</td>
+<td>30</td>
+<td>OSM only: Buluan, Datu Paglas, Gen. S.K. Pendatun, Mangudadatu</td>
+</tr>
+<tr>
+<td>MERALCO</td>
+<td>90</td>
+<td>113</td>
+<td>OSM only: City of Baliwag, Bulacan, Doña Remedios Trinidad, Gen. Mariano Alvarez; Wiki only: San Simon, City of Calaca, Laurel, City of Tanauan</td>
+</tr>
+<tr>
+<td>MOPRECO</td>
+<td>10</td>
+<td>13</td>
+<td>Wiki only: Cervantes, Quirino, Tinglayan</td>
+</tr>
+<tr>
+<td>MORE-POWER</td>
+<td>17</td>
+<td>1</td>
+<td>OSM only: Alimodian, Anilao, Banate, Barotac Nuevo</td>
+</tr>
+<tr>
+<td>MORESCO-I</td>
+<td>10</td>
+<td>14</td>
+<td>Wiki only: Baungon, Talakag, City of Cagayan De Oro, City of Iligan</td>
+</tr>
+<tr>
+<td>MORESCO-II</td>
+<td>13</td>
+<td>13</td>
+<td>OSM only: Villanueva; Wiki only: Talisayan</td>
+</tr>
+<tr>
+<td>NORECO-I</td>
+<td>11</td>
+<td>10</td>
+<td>OSM only: Jimalalud</td>
+</tr>
+<tr>
+<td>NUVELCO</td>
+<td>15</td>
+<td>14</td>
+<td>OSM only: Alfonso Castaneda</td>
+</tr>
+<tr>
+<td>PELCO-I</td>
+<td>3</td>
+<td>6</td>
+<td>Wiki only: Arayat, Mexico, Santa Ana</td>
+</tr>
+<tr>
+<td>PELCO-II</td>
+<td>8</td>
+<td>9</td>
+<td>OSM only: Apalit; Wiki only: Floridablanca, Magalang</td>
+</tr>
+<tr>
+<td>PELCO-III</td>
+<td>5</td>
+<td>7</td>
+<td>Wiki only: Apalit, City of San Fernando</td>
+</tr>
+<tr>
+<td>PENELCO</td>
+<td>12</td>
+<td>14</td>
+<td>Wiki only: Floridablanca, Subic</td>
+</tr>
+<tr>
+<td>PPALMA</td>
+<td>10</td>
+<td>6</td>
+<td>OSM only: Buldon, Northern Kabuntalan, Pagagawan, Pagalungan</td>
+</tr>
+<tr>
+<td>PRESCO</td>
+<td>3</td>
+<td>4</td>
+<td>Wiki only: Magalang</td>
+</tr>
+<tr>
+<td>QUEZELCO-I</td>
+<td>24</td>
+<td>24</td>
+<td>OSM only: San Antonio; Wiki only: Santa Elena</td>
+</tr>
+<tr>
+<td>SAJELCO</td>
+<td>1</td>
+<td>4</td>
+<td>Wiki only: Carranglan, Llanera, Science City of Muñoz</td>
+</tr>
+<tr>
+<td>SAMELCO-II</td>
+<td>13</td>
+<td>16</td>
+<td>Wiki only: Basey, Paranas, Zumarraga</td>
+</tr>
+<tr>
+<td>SFELAPCO</td>
+<td>2</td>
+<td>3</td>
+<td>Wiki only: Bacolor</td>
+</tr>
+<tr>
+<td>SUKELCO</td>
+<td>17</td>
+<td>16</td>
+<td>OSM only: Sen. Ninoy Aquino</td>
+</tr>
+<tr>
+<td>TARELCO-I</td>
+<td>15</td>
+<td>17</td>
+<td>Wiki only: Guimba, City of Tarlac</td>
+</tr>
+<tr>
+<td>ZAMECO-II</td>
+<td>6</td>
+<td>7</td>
+<td>Wiki only: San Marcelino</td>
+</tr>
+<tr>
+<td>ZAMSURECO-II</td>
+<td>24</td>
+<td>23</td>
+<td>OSM only: City of Zamboanga</td>
+</tr>
+<tr>
+<td>ZANECO</td>
+<td>23</td>
+<td>20</td>
+<td>OSM only: Pres. Manuel A. Roxas, Sergio Osmeña Sr., Leon T. Postigo</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="meralco-cross-check-with-ra-12146">Meralco cross-check with RA 12146<a class="h-anchor" href="#meralco-cross-check-with-ra-12146" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Against the colleague's <code>research/service-areas.json</code> (108 LGUs from RA 12146
+Section 1): OSM-derived Meralco rows = 90 LGUs; 85 in common; 23 only in the law
+(NCR 17 + other LGUs); 5 only in OSM (Candaba/Apalit barangay-level rows and some
+Bulacan/Quezon LGUs). The law list replaces the OSM rows in the Lead's merge.</p>
+<h2 class="has-anchor" id="coverage-per-utility">Coverage per utility<a class="h-anchor" href="#coverage-per-utility" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>utility_code</th>
+<th>source rows</th>
+<th>LGUs</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ABRECO</td>
+<td>OSM</td>
+<td>27</td>
+<td></td>
+</tr>
+<tr>
+<td>AEC</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>AKELCO</td>
+<td>OSM</td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>ALECO</td>
+<td>WIKI</td>
+<td>18</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>ANECO</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>ANTECO</td>
+<td>OSM</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>ASELCO</td>
+<td>OSM</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>AURELCO</td>
+<td>OSM</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>BANELCO</td>
+<td>WIKI</td>
+<td>3</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>BASELCO</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>BATANELCO</td>
+<td>OSM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>BATELEC-I</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>BATELEC-II</td>
+<td>OSM</td>
+<td>16</td>
+<td></td>
+</tr>
+<tr>
+<td>BENECO</td>
+<td>OSM</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>BILECO</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>BISELCO</td>
+<td>WIKI</td>
+<td>4</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>BLCI</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>BOHECO-I</td>
+<td>OSM</td>
+<td>26</td>
+<td></td>
+</tr>
+<tr>
+<td>BOHECO-II</td>
+<td>OSM</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td>BUSECO</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>CAGELCO-I</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>CAGELCO-II</td>
+<td>OSM</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td>CAMELCO</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>CANORECO</td>
+<td>WIKI</td>
+<td>12</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CAPELCO</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>CASELCO</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>CASURECO1</td>
+<td>WIKI</td>
+<td>11</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CASURECO2</td>
+<td>WIKI</td>
+<td>10</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CASURECO3</td>
+<td>WIKI</td>
+<td>7</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CASURECO4</td>
+<td>WIKI</td>
+<td>9</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CEBECO-I</td>
+<td>OSM</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td>CEBECO-II</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>CEBECO-III</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>CEDC</td>
+<td>WIKI</td>
+<td>5</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>CELCO</td>
+<td>OSM</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>CELCOR</td>
+<td>OSM</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>CENECO-NEPC</td>
+<td>OSM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>CENPELCO</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>CEPALCO</td>
+<td>OSM</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>CLPC</td>
+<td>OSM</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>COTELCO</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>DANECO-NORDECO</td>
+<td>OSM</td>
+<td>18</td>
+<td></td>
+</tr>
+<tr>
+<td>DASURECO</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>DECORP</td>
+<td>OSM</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>DIELCO</td>
+<td>OSM</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>DLPC</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>DORECO</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>ESAMELCO</td>
+<td>OSM</td>
+<td>23</td>
+<td></td>
+</tr>
+<tr>
+<td>FBPC</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>FIBECO</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>FICELCO</td>
+<td>WIKI</td>
+<td>11</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>FLECO</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>GUIMELCO</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>IEEC</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>IFELCO</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>ILECO-I</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>ILECO-II</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>ILECO-III</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>ILPI</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>INEC</td>
+<td>OSM</td>
+<td>23</td>
+<td></td>
+</tr>
+<tr>
+<td>ISECO</td>
+<td>OSM</td>
+<td>34</td>
+<td></td>
+</tr>
+<tr>
+<td>ISELCO-I</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>ISELCO-II</td>
+<td>OSM</td>
+<td>21</td>
+<td></td>
+</tr>
+<tr>
+<td>KAELCO</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>LANECO</td>
+<td>OSM</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>LASURECO</td>
+<td>OSM</td>
+<td>41</td>
+<td></td>
+</tr>
+<tr>
+<td>LEYECO-1-DORELCO</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>LEYECO-II</td>
+<td>OSM</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>LEYECO-III</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>LEYECO-IV</td>
+<td>OSM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>LEYECO-V</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>LUBELCO</td>
+<td>WIKI</td>
+<td>2</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>LUECO</td>
+<td>OSM</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>LUELCO</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>MAGELCO</td>
+<td>OSM</td>
+<td>36</td>
+<td></td>
+</tr>
+<tr>
+<td>MARELCO</td>
+<td>WIKI</td>
+<td>6</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>MASELCO</td>
+<td>WIKI</td>
+<td>17</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>MECO</td>
+<td>OSM</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>MERALCO</td>
+<td>OSM</td>
+<td>90</td>
+<td>law-override-pending (RA 12146 merge)</td>
+</tr>
+<tr>
+<td>MOELCI-I</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>MOELCI-II</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>MOPRECO</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>MORE-POWER</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>MORESCO-I</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>MORESCO-II</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>NEECO-I</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>NEECO-II-AREA-I</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>NEECO-II-AREA-II</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>NOCECO</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>NONECO</td>
+<td>OSM</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>NORECO-I</td>
+<td>OSM</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>NORECO-II</td>
+<td>OSM</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>NORSAMELCO</td>
+<td>OSM</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>NUVELCO</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>OEDC</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>OMECO</td>
+<td>WIKI</td>
+<td>9</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>ORMECO</td>
+<td>WIKI</td>
+<td>15</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>PALECO</td>
+<td>WIKI</td>
+<td>19</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>PAMES</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>PANELCO-I</td>
+<td>OSM</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>PANELCO-III</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>PELCO-I</td>
+<td>OSM</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>PELCO-II</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>PELCO-III</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>PENELCO</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>PPALMA</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>PRESCO</td>
+<td>OSM</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>PROSIELCO</td>
+<td>WIKI</td>
+<td>6</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>QUEZELCO-I</td>
+<td>OSM</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>QUEZELCO-II</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>QUIRELCO</td>
+<td>OSM</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>ROMELCO</td>
+<td>WIKI</td>
+<td>4</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>SAJELCO</td>
+<td>OSM</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>SAMELCO-I</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>SAMELCO-II</td>
+<td>OSM</td>
+<td>13</td>
+<td></td>
+</tr>
+<tr>
+<td>SFELAPCO</td>
+<td>OSM</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>SIARELCO</td>
+<td>OSM</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>SIASELCO</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>SOCOTECO-I</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>SOCOTECO-II</td>
+<td>OSM</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>SOLECO</td>
+<td>OSM</td>
+<td>19</td>
+<td></td>
+</tr>
+<tr>
+<td>SORECO1</td>
+<td>WIKI</td>
+<td>8</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>SORECO2</td>
+<td>WIKI</td>
+<td>7</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>SUKELCO</td>
+<td>OSM</td>
+<td>17</td>
+<td></td>
+</tr>
+<tr>
+<td>SULECO</td>
+<td>OSM</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>SURNECO</td>
+<td>OSM</td>
+<td>12</td>
+<td></td>
+</tr>
+<tr>
+<td>SURSECO-I</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>SURSECO-II</td>
+<td>OSM</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr>
+<td>TARELCO-I</td>
+<td>OSM</td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td>TARELCO-II</td>
+<td>OSM</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>TAWELCO</td>
+<td>OSM</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>TEI</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>TIELCO</td>
+<td>WIKI</td>
+<td>10</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>TISELCO</td>
+<td>WIKI</td>
+<td>4</td>
+<td>supplemented from Wikipedia list</td>
+</tr>
+<tr>
+<td>VECO</td>
+<td>OSM</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>ZAMCELCO</td>
+<td>OSM</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>ZAMECO-I</td>
+<td>OSM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>ZAMECO-II</td>
+<td>OSM</td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>ZAMSURECO-I</td>
+<td>OSM</td>
+<td>25</td>
+<td></td>
+</tr>
+<tr>
+<td>ZAMSURECO-II</td>
+<td>OSM</td>
+<td>24</td>
+<td></td>
+</tr>
+<tr>
+<td>ZANECO</td>
+<td>OSM</td>
+<td>23</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="reproduction">Reproduction<a class="h-anchor" href="#reproduction" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text"># from the repository root; needs the pinned PSGC TopoJSON archive, which
+# tools/build-geo.py already caches (or pass --topojson PATH)
+python3 research/coverage/extract.py
+</code></pre></div>
+<p>The script uses the committed wikitext snapshots by default (no network) and
+verifies their pinned revision ids. <code>--refresh</code> refetches the two pinned
+revisions; <code>--topojson PATH</code> overrides the archive location. Outputs are written
+in one pass; <code>data/seed/service_areas.csv</code> is asserted byte-identical to
+<code>research/coverage/osm-service-areas.csv</code>. The CSVs are deterministic; the JSON
+report carries <code>generated_at</code>/<code>retrieved_at</code> timestamps.</p>
+<h2 class="has-anchor" id="licence-and-attribution">Licence and attribution<a class="h-anchor" href="#licence-and-attribution" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Rows carry <code>source_id</code> so the page/API can attribute each area. The combined
+service-area dataset is a derivative of CC BY-SA sources: redistributing it
+requires attribution and share-alike terms compatible with the source licences.</p>
+<p>Attribution lines to use (also recorded in <code>data/seed/service_area_sources.csv</code>
+and <code>osm-operators.json.report.licence_attribution</code>):</p>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>Service areas: © OpenStreetMap Wiki contributors, “Power networks/Philippines/
+Operators”, revision 2836797 (2025-04-14), CC BY-SA 2.0. Franchise areas are
+tabulated on that page as “per Department of Energy”.</p></div></div>
+<div class="callout callout-note"><span class="callout-label">NOTE</span><div class="callout-body"><p>Additional service areas: © Wikipedia contributors, “List of electric
+distribution utilities in the Philippines”, revision 1374171231 (2026-09-10),
+CC BY-SA 4.0.</p></div></div>
+<p><code>SRC-DOE-RATES</code> regions: Department of Energy (Philippines), Electricity Rates &amp;
+Power Market Monitor (public records; reuse terms to be confirmed).
+<code>SRC-RA-12146</code>: Republic Act No. 12146, official text via the Supreme Court
+e-Library (Philippine laws are not subject to copyright, IP Code Sec. 176).</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="data-seed.html"><span class="label">Previous</span><span class="pager-title">&larr; Seed data dictionary</span></a><a class="pager-link pager-next" href="assets.html"><span class="label">Next</span><span class="pager-title">Design assets &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#at-a-glance">At a glance</a><a class="toc-link" href="#files">Files</a><a class="toc-link" href="#merge-contract-with-toolsbuild-service-areaspy">Merge contract with tools/build-service-areas.py</a><a class="toc-link" href="#output-schema">Output schema</a><a class="toc-link" href="#sources-revisions-and-licences">Sources, revisions and licences</a><a class="toc-link l3" href="#src-osm-operators-primary">SRC-OSM-OPERATORS (primary)</a><a class="toc-link l3" href="#src-wiki-dus-supplementary-22-utilities-only">SRC-WIKI-DUS (supplementary, 22 utilities only)</a><a class="toc-link l3" href="#src-doe-rates-region-fallback-only">SRC-DOE-RATES (region fallback only)</a><a class="toc-link l3" href="#src-ra-12146-placeholder-for-the-leads-merge">SRC-RA-12146 (placeholder for the Lead's merge)</a><a class="toc-link" href="#method">Method</a><a class="toc-link" href="#ambiguities-and-unmapped-source-items">Ambiguities and unmapped source items</a><a class="toc-link" href="#known-gaps">Known gaps</a><a class="toc-link" href="#cross-region-flags-kept-not-dropped">Cross-region flags (kept, not dropped)</a><a class="toc-link" href="#cross-check-against-the-wikipedia-list">Cross-check against the Wikipedia list</a><a class="toc-link" href="#meralco-cross-check-with-ra-12146">Meralco cross-check with RA 12146</a><a class="toc-link" href="#coverage-per-utility">Coverage per utility</a><a class="toc-link" href="#reproduction">Reproduction</a><a class="toc-link" href="#licence-and-attribution">Licence and attribution</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

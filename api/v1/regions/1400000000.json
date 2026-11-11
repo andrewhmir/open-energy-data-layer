@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 5
+  },
+  "data": {
+    "region": {
+      "psgc": "1400000000",
+      "name": "Cordillera Administrative Region",
+      "short": "CAR",
+      "island": "Luzon",
+      "sheet_label": "CAR",
+      "utility_count": 5,
+      "reporting": 5,
+      "res_median": 12.46,
+      "res_mean": 12.07,
+      "res_min": 10.19,
+      "res_max": 13.46,
+      "com_median": 11.28,
+      "ind_median": 10.18,
+      "gen_median": 6.81
+    },
+    "latest_month": "2026-10",
+    "utilities": [
+      {
+        "code": "ABRECO",
+        "name": "ABRECO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 12.58,
+          "commercial": null,
+          "industrial": null,
+          "generation": 6.76
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": 0.1
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 11.65,
+          "commercial": 10.97,
+          "industrial": 9.21,
+          "generation": 6.86
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -1.3
+      },
+      {
+        "code": "IFELCO",
+        "name": "IFELCO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 10.19,
+          "commercial": null,
+          "industrial": null,
+          "generation": 4.57
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "published"
+        },
+        "res_delta_pct": -0.6
+      },
+      {
+        "code": "KAELCO",
+        "name": "KAELCO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 13.46,
+          "commercial": null,
+          "industrial": null,
+          "generation": null
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "nda",
+          "industrial": "nda",
+          "generation": "nda"
+        },
+        "res_delta_pct": 4.3
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "type": "EC",
+        "grid": "ONGRID",
+        "latest": {
+          "residential": 12.46,
+          "commercial": 11.58,
+          "industrial": 11.14,
+          "generation": 9.06
+        },
+        "latest_status": {
+          "residential": "published",
+          "commercial": "published",
+          "industrial": "published",
+          "generation": "published"
+        },
+        "res_delta_pct": -8.9
+      }
+    ],
+    "notes": [
+      "Region aggregates cover published cells only. Member utilities resolve to full monthly series at utilities/<CODE>.json."
+    ]
+  },
+  "next_cursor": null
+}

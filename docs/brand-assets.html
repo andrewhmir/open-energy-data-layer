@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Brand &amp; UI assets — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Official BetterGov.ph marks, the derived favicon, and the pinned Lucide icon sprite with per-icon provenance.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" class="current" aria-current="page" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-data">Data</a><span class="sep">/</span><span aria-current="page">Brand &amp; UI assets</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Data <span class="sep">&middot;</span> documentation</p>
+  <h1 id="draftassetsbrand--official-bettergov-marks-favicon-and-interface-icon-set">draft/assets/brand — official BetterGov marks, favicon and interface icon set</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>draft/assets/brand/README.md</code> &middot; 200 lines &middot; 12 KB &middot; 1,531 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/draft/assets/brand/README.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>Assets for the <strong>Philippine electricity rates</strong> page (a BetterGovPH open-data project).
+Everything here is self-containable: the page builder inlines these files and the
+built page makes <strong>no external requests</strong>.</p>
+<p>Directory map (bytes / sha256 recorded at generation time, 10 Nov 2026):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>file</th>
+<th style="text-align:right">bytes</th>
+<th>sha256</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emblem.svg</code></td>
+<td style="text-align:right">8,248</td>
+<td><code>573f22fb7987992e774f64e7ba2747c8bd8c489332caef6ac29809c3d8014383</code></td>
+<td>official BetterGov.ph emblem (primary), inline-ready</td>
+</tr>
+<tr>
+<td><code>emblem-outline.svg</code></td>
+<td style="text-align:right">8,628</td>
+<td><code>4acd437896f53a64fae4c29c32a7bbb471d00540afde3847e4fdbc531778b7ca</code></td>
+<td>official inversed/outline variant for navy or dark surfaces</td>
+</tr>
+<tr>
+<td><code>icons.svg</code></td>
+<td style="text-align:right">6,472</td>
+<td><code>fe13937d8258b52cf7badff4347a30059adad930b9d94f57bf3038a6cfaa3bda</code></td>
+<td>inline <code>&lt;symbol&gt;</code> sprite, <code>id=&quot;i-&lt;name&gt;&quot;</code></td>
+</tr>
+<tr>
+<td><code>icons.json</code></td>
+<td style="text-align:right">9,056</td>
+<td><code>8af86e1ef9788e7fc70cda44eba0a21d8e67c31ece6e0f17333b4fd705d27391</code></td>
+<td>icon manifest (name → viewBox + body markup) + provenance</td>
+</tr>
+<tr>
+<td><code>favicon-32.png</code></td>
+<td style="text-align:right">1,282</td>
+<td><code>edd54f0e5a7298bcd34938f5898480a8cff5ab960cf3f32af75db05747ed1429</code></td>
+<td>opaque 32×32 fallback</td>
+</tr>
+<tr>
+<td><code>favicon-192.png</code></td>
+<td style="text-align:right">10,044</td>
+<td><code>952b93bc321f39ffe846861b3b996e042c17964121cb86b6c2047fe69053c7e6</code></td>
+<td>opaque 192×192 (PWA)</td>
+</tr>
+<tr>
+<td><code>favicon-512.png</code></td>
+<td style="text-align:right">28,430</td>
+<td><code>2e176c37ac5aa21cc96ae7793076a8eb85e4ff2b75c1c958cf416dcbd8fb8525</code></td>
+<td>opaque 512×512 (PWA)</td>
+</tr>
+<tr>
+<td><code>apple-touch-icon.png</code></td>
+<td style="text-align:right">14,371</td>
+<td><code>e77263375ad95c4899f9f4f82321ad1c04901c2aaaa1b75c2f426f31be347760</code></td>
+<td>opaque 180×180, official emblem on white paper</td>
+</tr>
+<tr>
+<td><code>og-card.template.html</code></td>
+<td style="text-align:right">—</td>
+<td>—</td>
+<td>OG card layout (1200×630), rendered by <code>render-assets.mjs</code></td>
+</tr>
+<tr>
+<td><code>render-assets.mjs</code></td>
+<td style="text-align:right">—</td>
+<td>—</td>
+<td>deterministic regeneration of <code>og.png</code> + the PNG favicon set</td>
+</tr>
+</tbody>
+</table></div>
+<p>Related files outside this directory:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>file</th>
+<th style="text-align:right">bytes</th>
+<th>sha256</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>../favicon.svg</code></td>
+<td style="text-align:right">2,765</td>
+<td><code>9a5b1966d01df7ca95a77abe0db3528758208047b6653b63fa9f04883de21430</code></td>
+<td>production tab favicon (32×32 viewBox); replaced the previous generic 3-bar file in place</td>
+</tr>
+<tr>
+<td><code>../og.png</code></td>
+<td style="text-align:right">84,672</td>
+<td><code>8cb4d43753c910e9cb1094ec708f426e505e2a9daffa0f44d59615d7cf94839f</code></td>
+<td>1200×630 social card (RGB, opaque)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="sources-versions-and-licences">Sources, versions and licences<a class="h-anchor" href="#sources-versions-and-licences" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="official-bettergovph-brand-assets">Official BetterGov.ph brand assets<a class="h-anchor" href="#official-bettergovph-brand-assets" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>asset</th>
+<th>source URL</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emblem (primary)</td>
+<td><a href="https://assets.bettergov.ph/logos/svg/emblem-primary.svg" target="_blank" rel="noopener">https://assets.bettergov.ph/logos/svg/emblem-primary.svg<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (fetched 2026-11-10)</td>
+<td>1080×1080, navy <code>#0032a0</code> + white</td>
+</tr>
+<tr>
+<td>emblem (outline, inversed)</td>
+<td><a href="https://data.bettergov.ph/BetterGov_Emblem-Outline-Inversed.svg" target="_blank" rel="noopener">https://data.bettergov.ph/BetterGov_Emblem-Outline-Inversed.svg<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (fetched 2026-11-10)</td>
+<td>the exact file data.bettergov.ph serves as its favicon</td>
+</tr>
+<tr>
+<td>official apple-touch-icon (reference)</td>
+<td><a href="https://bettergov.ph/logos/png/apple-touch-icon.png" target="_blank" rel="noopener">https://bettergov.ph/logos/png/apple-touch-icon.png<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a> (fetched 2026-11-10)</td>
+<td>1024×1024 RGB; full emblem on white, emblem at ≈91.7 % of the square — our 180 px icon copies that composition</td>
+</tr>
+<tr>
+<td>horizontal wordmark</td>
+<td><code>draft/assets/bettergov-logo.png</code> (BetterGovPH <code>transparency-portal</code>, <code>public/brand/bettergov-horizontal-primary.png</code>)</td>
+<td>inlined into the OG card only</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Brand usage.</strong> The BetterGov emblem and wordmark are BetterGov.ph brand assets,
+not open-source artwork. This page uses them unmodified, for this BetterGovPH
+open-data project — the same brand-usage position already recorded in
+<code>draft/assets/README.md</code>. Before public deployment,
+confirm logo/brand usage with the brand owner. Rules followed here:</p>
+<ul>
+<li>path data and proportions are never redrawn — the files are the official
+drawings with editor cruft (<code>&lt;defs&gt;&lt;style&gt;</code>, classes, ids) stripped;</li>
+<li>no recolouring: the emblem uses only official navy <code>#0032a0</code> and white;</li>
+<li>the emblem is never stretched (always square), never outlined, never given a
+drop shadow; keep clear space around it (≥ ¼ of the disc diameter) and do not
+place it on busy imagery;</li>
+<li>the page presents itself as an open-data product, not as an official DOE or
+BetterGov publication (see the page footer/source notes).</li>
+</ul>
+<p>The single derived use is the <strong>favicon mark</strong>: <code>../favicon.svg</code> scales the
+emblem's own inner sun/Sarimanok mark from the official path data onto the
+official navy field. The emblem's circular &quot;BETTER GOV PILIPINAS&quot; ring text is
+unreadable below ~40 px, so the derived mark keeps the brand recognisable at
+16–32 px. Nothing is redrawn; the mark is only translated/scaled. If the brand
+owner prefers the strict official favicon, substitute
+<code>https://data.bettergov.ph/BetterGov_Emblem-Outline-Inversed.svg</code> (our
+<code>emblem-outline.svg</code> is that same file, optimised) — the full badge is legible
+from ~40 px up (see proof sheet <code>favicon-before-after.png</code>).</p>
+<h3 class="has-anchor" id="interface-icons--lucide-1710">Interface icons — Lucide 1.71.0<a class="h-anchor" href="#interface-icons--lucide-1710" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Package: <strong><code>lucide-static@1.71.0</code></strong> (pinned), fetched from
+&lt;https://unpkg.com/lucide-static@1.71.0/icons/<name>.svg&gt; on 2026-11-10.</li>
+<li><strong>Licence: ISC</strong> — Lucide's own LICENSE file, <code>Copyright (c) 2026 Lucide Icons and Contributors</code> (<code>https://unpkg.com/lucide-static@1.71.0/LICENSE</code>). This is
+not MIT-only: the brief said MIT, but the verified licence is ISC, plus <strong>MIT
+(Copyright (c) 2013-present Cole Bemis) for the icons derived from Feather</strong>.
+Feather-derived icons in this set: <code>alert-triangle</code>, <code>arrow-up</code>, <code>check</code>,
+<code>chevron-down</code>, <code>chevron-right</code>, <code>database</code>, <code>download</code>, <code>external-link</code>,
+<code>search</code>, <code>table-2</code>, <code>x</code>.</li>
+<li>Icon set (22, exact names used by the page): <code>map</code>, <code>table-2</code>, <code>code-2</code>,
+<code>book-open-text</code>, <code>database</code>, <code>download</code>, <code>filter</code>, <code>search</code>, <code>chevron-down</code>,
+<code>chevron-right</code>, <code>external-link</code>, <code>copy</code>, <code>check</code>, <code>alert-triangle</code>,
+<code>rotate-ccw</code>, <code>arrow-up</code>, <code>x</code>, <code>menu</code>, <code>layers</code>, <code>file-json</code>, <code>shield-check</code>,
+<code>sun</code>.</li>
+<li><code>code-2</code> and <code>alert-triangle</code> are the <em>legacy alias filenames</em> still shipped
+by lucide-static 1.71.0 (<code>code-2</code>'s body is identical to the canonical
+<code>code-xml</code>). The requested names are used as <code>id</code>s; <code>icons.json</code> →
+<code>sources.&lt;name&gt;</code> keeps the exact download URL and sha256 for every icon.</li>
+<li>No icon has been redrawn. Only the delivery attributes are normalised:
+24×24 viewBox, <code>fill=&quot;none&quot;</code>, <code>stroke=&quot;currentColor&quot;</code>, <code>stroke-width=&quot;1.75&quot;</code>,
+round line caps/joins (the page controls stroke through CSS; the sprite also
+repeats the attributes on each <code>&lt;symbol&gt;</code> so it renders correctly on its own).</li>
+</ul>
+<h3 class="has-anchor" id="fonts-og-card-only">Fonts (OG card only)<a class="h-anchor" href="#fonts-og-card-only" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>draft/assets/fonts/*.woff2</code> — Figtree, Inter, JetBrains Mono (latin variable
+subsets via Google Fonts), <strong>SIL Open Font License 1.1</strong>. They are embedded as
+data URIs in the OG card at render time; the final <code>og.png</code> contains no font
+files or network references.</p>
+<h2 class="has-anchor" id="regeneration">Regeneration<a class="h-anchor" href="#regeneration" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The SVGs (<code>emblem.svg</code>, <code>emblem-outline.svg</code>, <code>favicon.svg</code>, <code>icons.svg</code>,
+<code>icons.json</code>) are the sources. The rasters are generated from them:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># from the repo root
+node draft/assets/brand/render-assets.mjs
+</code></pre></div>
+<p>Overrides if playwright-core / Chromium live elsewhere:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash">PLAYWRIGHT_CORE=/path/to/node_modules/playwright-core \
+CHROME_PATH=/path/to/chrome \
+node draft/assets/brand/render-assets.mjs
+</code></pre></div>
+<p>The script (headless Chromium via playwright-core, no downloads, no network):</p>
+<ol>
+<li>builds the OG HTML from <code>og-card.template.html</code> by inlining
+<code>draft/assets/fonts/*.woff2</code> (data URIs), <code>draft/assets/bettergov-logo.png</code>
+and <code>emblem.svg</code>; asserts the page makes zero non-<code>data:</code>/<code>file:</code> requests;
+screenshots exactly 1200×630 → <code>draft/assets/og.png</code>;</li>
+<li>rasterises <code>draft/assets/favicon.svg</code> at 32/192/512 → <code>favicon-*.png</code>
+(opaque, white-matted, RGB);</li>
+<li>rasterises the official emblem on white at the official 91.7 % scale →
+<code>apple-touch-icon.png</code> (180×180, opaque).</li>
+</ol>
+<p>It prints bytes + sha256 for every output and fails if a PNG is not the expected
+size or not opaque RGB. Rendered bytes depend on the Chromium build (a different
+Chromium/font build may produce different PNG bytes/checksums); the SVG and JSON
+markup is deterministic in any environment.</p>
+<h2 class="has-anchor" id="how-the-page-builder-consumes-these">How the page builder consumes these<a class="h-anchor" href="#how-the-page-builder-consumes-these" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><code>tools/build-map-page.py</code> reads them at build time and inlines them:</p>
+<ul>
+<li><strong>Emblem</strong> — <code>load_emblem()</code> reads <code>emblem.svg</code> verbatim and prepends
+<code>class=&quot;emblem&quot;</code>; <code>emblem()</code> emits it at the masthead and footer. The file has
+no <code>&lt;style&gt;</code>/<code>&lt;defs&gt;</code>/classes, only plain <code>fill</code> attributes, so no CSS
+collision can repaint it. It has no <code>width</code>/<code>height</code>: size it in CSS
+(<code>.emblem</code>), keep it square. Sizing advice: masthead 40–46 px, footer 32–36 px;
+drop the old <code>.masthead-mark</code> blue tile behind it (the emblem is already a navy
+disc) — the decision sheet is <code>/tmp/brand-proof/masthead-options.png</code>; use
+<code>emblem-outline.svg</code> on navy/dark backgrounds.</li>
+<li><strong>Icons</strong> — <code>load_icons()</code> merges <code>icons.json.icons</code> into the builder's <code>ICONS</code>;
+<code>icon(name)</code> emits <code>&lt;svg class=&quot;i&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;{body}&lt;/svg&gt;</code>. Values are objects with <code>viewBox</code> and
+<code>body</code>, which the builder already unwraps. Alternatively inline <code>icons.svg</code>
+and reference <code>&lt;svg class=&quot;i&quot;&gt;&lt;use href=&quot;#i-&lt;name&gt;&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code>.
+Pick an icon by name only — never paste path data into templates.</li>
+<li><strong>Favicon</strong> — <code>draft/assets/favicon.svg</code> is base64-inlined as
+<code>&lt;link rel=&quot;icon&quot; type=&quot;image/svg+xml&quot;&gt;</code>; <code>apple-touch-icon.png</code> is inlined as
+<code>&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot;&gt;</code>. The PNG ladder
+(32/192/512) is available for deployments that prefer bitmaps or for a web
+app manifest.</li>
+<li><strong>OG card</strong> — <code>draft/assets/og.png</code> sits beside the built page as
+<code>assets/og.png</code>; the builder points <code>og:image</code> at it when
+<code>OPEN_ENERGY_SITE_URL</code> is set (1200×630, so it also declares
+<code>og:image:width/height</code>).</li>
+</ul>
+<h2 class="has-anchor" id="verification-performed-10-nov-2026">Verification performed (10 Nov 2026)<a class="h-anchor" href="#verification-performed-10-nov-2026" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><code>emblem.svg</code> is <strong>pixel-identical</strong> to a render of the official source: 0 of
+1,166,400 pixels differ at 1080×1080, and it round-trips through an XML parser
+(<code>emblem-outline.svg</code>, <code>icons.svg</code>, <code>favicon.svg</code> likewise XML-valid).</li>
+<li>All four SVGs contain no <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;defs&gt;</code>, <code>&lt;image&gt;</code>, classes or
+external URLs (only the <code>xmlns</code> namespace).</li>
+<li>The builder's own <code>load_emblem()</code> / <code>load_icons()</code> / <code>icon()</code> / <code>emblem()</code>
+were exercised against these files: 22 icons load and render, the emblem
+inlines and renders.</li>
+<li><code>icons.json</code> bodies are well-formed, contain no <code>fill</code>/<code>stroke</code>/<code>class</code>/<code>style</code>
+overrides, and every <code>viewBox</code> is <code>0 0 24 24</code>.</li>
+<li>All PNGs are opaque RGB at the exact expected dimensions; <code>og.png</code> is exactly
+1200×630 and its render made zero external requests.</li>
+<li>Proof sheets (generated during this task, not committed):
+<code>/tmp/brand-proof/</code> — <code>favicon-tab-proof.png</code> (16 px tab icon, light+dark,
+2× density), <code>favicon-legibility-16-32-48.png</code>, <code>favicon-before-after.png</code>,
+<code>icons-legibility-16-20-24.png</code>, <code>icons-on-dark-24.png</code>,
+<code>icons-sprite-use-proof.png</code> (sprite <code>&lt;use&gt;</code> integration),
+<code>emblem-official-vs-optimized.png</code>, <code>masthead-options.png</code>,
+<code>brand-assets-overview.png</code>, <code>og-card-1200x630.png</code>.</li>
+</ul>
+<h2 class="has-anchor" id="caveats">Caveats<a class="h-anchor" href="#caveats" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><strong>Brand permission</strong> for the emblem/wordmark is the one non-code dependency:
+this is a pre-release draft; clear public use with the brand owner before
+launch. Fonts and Lucide icons are properly licensed (OFL 1.1; ISC + MIT for
+Feather-derived icons) — keep the notices; <code>repo-docs</code> writes the consolidated
+NOTICE.</li>
+<li><strong>The favicon mark is derived</strong> (scaled official inner mark, explained above).
+If strict brand governance is required, swap <code>../favicon.svg</code> for the official
+inversed outline file (<code>emblem-outline.svg</code>) and re-run the regeneration
+script — the tab icon gets softer at 16 px, but it is the exact official mark.</li>
+<li><strong>OG card text is data-dependent.</strong> “141 distribution utilities … 2018–2026” is
+the current dataset headline; if the ingested data changes, update
+<code>og-card.template.html</code> and re-run <code>render-assets.mjs</code>, otherwise the card and
+the page will disagree. The card is a static render — it is not regenerated by
+<code>tools/build-map-page.py</code>.</li>
+<li><strong>No font is shipped for the page’s own runtime by this directory</strong>; the OG
+card embeds the existing latin subsets only, so non-latin text would fall back
+if someone edits the card with non-latin glyphs.</li>
+</ul>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="assets.html"><span class="label">Previous</span><span class="pager-title">&larr; Design assets</span></a><a class="pager-link pager-next" href="api-docs.html"><span class="label">Next</span><span class="pager-title">API guide &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#sources-versions-and-licences">Sources, versions and licences</a><a class="toc-link l3" href="#official-bettergovph-brand-assets">Official BetterGov.ph brand assets</a><a class="toc-link l3" href="#interface-icons--lucide-1710">Interface icons — Lucide 1.71.0</a><a class="toc-link l3" href="#fonts-og-card-only">Fonts (OG card only)</a><a class="toc-link" href="#regeneration">Regeneration</a><a class="toc-link" href="#how-the-page-builder-consumes-these">How the page builder consumes these</a><a class="toc-link" href="#verification-performed-10-nov-2026">Verification performed (10 Nov 2026)</a><a class="toc-link" href="#caveats">Caveats</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

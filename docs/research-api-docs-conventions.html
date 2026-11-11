@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Research: API docs conventions — Open Energy Data Layer — documentation</title>
+<meta name="description" content="BetterGov API conventions — findings and how this project adopts them">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" class="current" aria-current="page" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-research">Research</a><span class="sep">/</span><span aria-current="page">Research: API docs conventions</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Research <span class="sep">&middot;</span> documentation</p>
+  <h1 id="bettergov-api-conventions--findings-and-how-this-project-adopts-them">BetterGov API conventions — findings and how this project adopts them</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>research/api-docs-conventions.md</code> &middot; 70 lines &middot; 9 KB &middot; 1,217 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/research/api-docs-conventions.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p><strong>Date:</strong> 2026-11-10 · <strong>Method:</strong> read the live documentation and responses of the two BetterGov
+APIs (<code>curl</code> on 2026-11-10) plus the saved artefacts in <code>/tmp</code> (<code>budgetdocs.txt</code>,
+<code>budget_openapi.json</code>, <code>bg_openapi.json</code>, <code>bg_all.json</code>, <code>bg_mcp.txt</code>). Everything below was
+observed directly; no convention is assumed from memory.</p>
+<h2 class="has-anchor" id="sources">Sources<a class="h-anchor" href="#sources" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>URL</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Budget Data API docs</td>
+<td><a href="https://budget.bettergov.ph/api" target="_blank" rel="noopener">https://budget.bettergov.ph/api<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>Base URL, access rules, datasets &amp; units, envelope, pagination, errors, data files, OpenAPI/MCP, What's new changelog, disclaimers, sources &amp; attribution</td>
+</tr>
+<tr>
+<td>Budget API endpoint index</td>
+<td><a href="https://budget.bettergov.ph/api/v1" target="_blank" rel="noopener">https://budget.bettergov.ph/api/v1<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>Machine-readable catalog: <code>name</code>, <code>version</code>, <code>description</code>, <code>documentation</code>, <code>openapi</code>, <code>mcp</code>, <code>source_data</code>, and an <code>endpoints</code> map grouped by dataset</td>
+</tr>
+<tr>
+<td>Budget API OpenAPI</td>
+<td><a href="https://budget.bettergov.ph/api/v1/openapi.json" target="_blank" rel="noopener">https://budget.bettergov.ph/api/v1/openapi.json<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>OpenAPI <strong>3.1.0</strong>, <code>info.summary</code> + long markdown description, <code>contact</code> BetterGov.PH, <code>license</code> CC BY 4.0, absolute <code>servers</code>, per-dataset <code>tags</code>, error/disclaimer schemas</td>
+</tr>
+<tr>
+<td>Budget API response</td>
+<td><a href="https://budget.bettergov.ph/api/v1/gaa" target="_blank" rel="noopener">https://budget.bettergov.ph/api/v1/gaa<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>Live envelope <code>{meta, data[, next_cursor]}</code>; response headers <code>access-control-allow-origin: *</code>, <code>cache-control: public, max-age=300, s-maxage=3600</code></td>
+</tr>
+<tr>
+<td>Open Data Portal API</td>
+<td><a href="https://data.bettergov.ph" target="_blank" rel="noopener">https://data.bettergov.ph<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>Catalog API: <code>/api/v1/ping</code>, <code>/api/v1/datasets</code>, <code>/api/v1/stats</code>; dataset records with <code>attribution[]</code> (<code>authors</code>, <code>source_url</code>, <code>attribution_text</code>, <code>license</code>, <code>license_url</code>), dataset-level <code>license</code>/<code>license_url</code> (null when not confirmed), publisher/category, <code>pagination</code> envelope, rate-limit headers, 429</td>
+</tr>
+<tr>
+<td>Budget API terms / disclaimer</td>
+<td><a href="https://budget.bettergov.ph/terms-of-service" target="_blank" rel="noopener">https://budget.bettergov.ph/terms-of-service<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>, <a href="https://budget.bettergov.ph/disclaimer" target="_blank" rel="noopener">https://budget.bettergov.ph/disclaimer<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td>Terms exist for the site, API and MCP server; API docs changelog says keep the disclaimers each result carries and credit the publisher</td>
+</tr>
+<tr>
+<td>Open Data Portal ping</td>
+<td><a href="https://data.bettergov.ph/api/v1/ping" target="_blank" rel="noopener">https://data.bettergov.ph/api/v1/ping<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a></td>
+<td><code>{&quot;success&quot;:true,&quot;data&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:…}}</code>; <code>x-ratelimit-limit</code>/<code>remaining</code>/<code>reset</code> headers</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two different envelopes exist in the BetterGov estate: the <strong>Budget API</strong> uses
+<code>{meta, data, next_cursor}</code> (with errors <code>{error, message}</code> and a <code>disclaimers</code> array), while the
+<strong>Open Data Portal</strong> uses <code>{success, data, pagination, error}</code>. This project follows the Budget API
+because its envelope, error slugs and disclaimers are the documented pattern for a data layer;
+the portal's <em>attribution record shape</em> is reused for source/licence fields.</p>
+<h2 class="has-anchor" id="section-by-section-mapping">Section-by-section mapping<a class="h-anchor" href="#section-by-section-mapping" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>BetterGov convention (observed)</th>
+<th>How this project adopts it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Envelope</strong> <code>{meta, data, next_cursor}</code> on every response</td>
+<td>Every file under <code>draft/api/v1/</code> returns <code>{meta, data, next_cursor}</code>. <code>index.json</code> (catalog) and <code>openapi.json</code> (contract) are documents, not envelopes, and are documented as such.</td>
+</tr>
+<tr>
+<td><strong>Meta restates context</strong> (<code>dataset</code>, <code>currency</code>, <code>scale</code>, filters, counts)</td>
+<td><code>meta</code> states <code>api_version</code>, <code>dataset</code>, <code>dataset_version</code>, <code>latest_month</code>, <code>generated_at</code>, <code>currency</code>, <code>unit</code>, compact <code>source</code>, <code>attribution</code>, <code>licence</code>, <code>disclaimers[]</code>, <code>count</code>.</td>
+</tr>
+<tr>
+<td><strong>Datasets &amp; units section</strong>, units restated in every <code>meta</code></td>
+<td>Docs table of datasets; every amount is <code>PHP per kWh</code> with <code>currency: &quot;PHP&quot;</code> / <code>unit: &quot;PHP per kWh&quot;</code> in every response.</td>
+</tr>
+<tr>
+<td><strong>Source data links + &quot;Sources &amp; attribution&quot;</strong> (derive from DBM publications; verify against official documents; attribution appreciated)</td>
+<td>Every response links source id/URL/publisher; <code>sources.json</code> + <code>sources/SRC-DOE-RATES.json</code> carry the DOE page URL, workbook URL and sheet id, retrieval timestamp, extraction method, per-tab SHA-256. Docs have a &quot;Sources &amp; attribution&quot; section asking readers to verify against DOE and credit DOE + BetterGov.PH.</td>
+</tr>
+<tr>
+<td><strong>Explicit licence record</strong> (<code>info.license</code>, dataset <code>license</code>/<code>license_url</code>; the portal can publish <code>null</code>)</td>
+<td>Licence is a first-class object <code>{name, note, url}</code> in <code>meta</code> and every source record. Because the DOE workbook states no reuse licence, <code>name = &quot;Not stated by publisher&quot;</code> and <code>url = null</code> — mirroring the portal's ability to publish an unconfirmed <code>null</code> licence, <strong>without</strong> claiming CC BY for the data.</td>
+</tr>
+<tr>
+<td><strong>Disclaimers array</strong> <code>{id, title, body, url}</code> on every affected response; <code>meta.notice</code>; keep them when republishing</td>
+<td>Every response carries <code>meta.disclaimers</code> with four entries: <code>disclaimer-unofficial</code>, <code>disclaimer-licence</code>, <code>disclaimer-nda</code>, <code>disclaimer-rates</code> (<code>id</code>, <code>title</code>, <code>text</code>, <code>url</code>). Docs repeat them verbatim and the catalog (<code>index.json</code>) publishes them for the page builder.</td>
+</tr>
+<tr>
+<td><strong>Pagination</strong> via opaque keyset cursor; <code>next_cursor: null</code> when exhausted</td>
+<td>Static snapshot has no query layer: <code>next_cursor</code> is always <code>null</code>, documented as reserved for a future dynamic deployment. No fake pagination was invented.</td>
+</tr>
+<tr>
+<td><strong>Error format</strong> <code>{error, message}</code> with slugs (<code>bad_request</code>, <code>bad_cursor</code>, <code>not_found</code>, <code>method_not_allowed</code>, <code>not_loaded</code>, <code>query_failed</code>)</td>
+<td>Static files return the host 404, so no JSON error body is emitted. <code>components.schemas.ErrorResponse</code> and the docs reserve the BetterGov slug format for a future dynamic layer; the OpenAPI 404 response says so plainly.</td>
+</tr>
+<tr>
+<td><strong>Access block</strong>: no auth, CORS <code>*</code>, <code>Cache-Control: public, max-age=300, s-maxage=3600</code>, descriptive <code>User-Agent</code> fair use</td>
+<td>OpenAPI description and docs &quot;Base URL &amp; access&quot; state exactly this: GET-only static files, no auth/key/body, recommended <code>Access-Control-Allow-Origin: *</code> and <code>Cache-Control: public, max-age=300, s-maxage=3600</code> at the deployment host, fair-use User-Agent.</td>
+</tr>
+<tr>
+<td><strong>Machine access</strong>: OpenAPI at <code>/api/v1/openapi.json</code>, endpoint index at <code>/api/v1</code></td>
+<td><code>openapi.json</code> is emitted beside the data; <code>index.json</code> is the catalog (endpoints, files, sizes, SHA-256, data files, disclaimers, attribution, citation). <code>openapi.yaml</code> is the human-editable source mirrored to <code>openapi.json</code> by the builder.</td>
+</tr>
+<tr>
+<td><strong>OpenAPI quality</strong>: 3.1.0, <code>info.summary</code> + markdown description, <code>contact</code>, per-dataset <code>tags</code>, one <code>operationId</code> per op, examples</td>
+<td>OpenAPI 3.1.0 with summary + long description covering source/units/access/caching/versioning/licence/disclaimers; seven tags; camelCase <code>operationId</code> per operation; real examples; <code>x-static-file</code>, <code>x-source</code>, <code>x-data-files</code>, <code>x-changelog</code>, <code>x-static-api</code> extensions. Validated with <code>openapi-spec-validator</code>.</td>
+</tr>
+<tr>
+<td><strong>Versioning + &quot;What's new&quot; changelog</strong> (<code>built_at</code>, dataset version in meta)</td>
+<td><code>api_version</code> = contract version (<code>1.0</code>); <code>dataset_version</code> = retrieval date (<code>2026-11-10</code>, from the seed payload); <code>x-changelog</code> in the spec; docs &quot;Versioning&quot; section. Files are immutable within a dataset_version.</td>
+</tr>
+<tr>
+<td><strong>Health / discovery</strong> (<code>/ping</code> portal; endpoint index; meta)</td>
+<td><code>health.json</code> (build identity + 17-check result, explicitly not an uptime signal) and <code>meta.json</code> (full metadata + checksums) exist as first-class files.</td>
+</tr>
+<tr>
+<td><strong>Data files listed separately from endpoints</strong> (manifest.json with rows/size/SHA-256 + notice)</td>
+<td><code>index.json.data_files</code> and <code>meta.json</code> list the four seed CSVs with rows, bytes and SHA-256 (paths relative to <code>draft/</code>); the docs have a &quot;Data files&quot; section. Raw snapshots are also listed in the source record, and the builder verifies their hashes.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="deliberate-deviations-and-why">Deliberate deviations (and why)<a class="h-anchor" href="#deliberate-deviations-and-why" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>Static files, not a hosted API.</strong> The canonical origin is not live, so the OpenAPI <code>servers</code>
+URL is relative (<code>api/v1</code>, <strong>no leading slash</strong>, so it resolves against the location the spec
+is served from — <code>draft/openapi.yaml</code> -&gt; <code>draft/api/v1/</code>) and the docs say the files are
+served at <code>draft/api/v1/</code> in this repository. No domain is invented; the catalog path
+convention is the served file style (<code>/v1/meta.json</code>).</li>
+<li><strong>No MCP server.</strong> The Budget API exposes one; this deliverable does not, so no MCP tools are
+declared rather than inventing them.</li>
+<li><strong>Licence.</strong> BetterGov's own budget data is CC BY 4.0. That claim is <strong>not</strong> transferable to the
+DOE workbook, which states no reuse licence, so this project publishes &quot;Not stated by publisher&quot;
+and documents that CC BY (or any open licence) is not claimed for the data.</li>
+<li><strong>Disclaimers field name.</strong> Adopted <code>text</code> (per the project task contract) where the Budget API
+uses <code>body</code>; the shape (id/title/text/url) is otherwise identical.</li>
+<li><strong>Examples are real.</strong> The old draft spec used illustrative numbers; the production spec and docs
+carry values copied from the generated files (e.g. MERALCO 15.06 ₱/kWh residential, ABRECO 12.58,
+113 residential reporters in 2026-10), so a reader can verify them in <code>draft/api/v1/</code>.</li>
+</ol>
+<h2 class="has-anchor" id="open-questions--risks-captured-for-the-team">Open questions / risks captured for the team<a class="h-anchor" href="#open-questions--risks-captured-for-the-team" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>Licence wording must stay &quot;not stated / to be confirmed with DOE&quot;; no CC BY claim until DOE
+confirms in writing.</li>
+<li>Relative URLs mean the page must link relatively (<code>api/v1/...</code>) until the deployment origin is
+fixed; OpenAPI clients should resolve <code>servers[0].url</code> against the deployment origin.</li>
+<li>A dynamic deployment (if funded) should keep the same <code>meta</code>/envelope, add the BetterGov error
+slugs and cursors, and serve <code>index.json</code>/<code>openapi.json</code> unchanged.</li>
+</ul>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="tests.html"><span class="label">Previous</span><span class="pager-title">&larr; Testing &amp; validation</span></a><a class="pager-link pager-next" href="research-api-landscape.html"><span class="label">Next</span><span class="pager-title">Research: API landscape &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#sources">Sources</a><a class="toc-link" href="#section-by-section-mapping">Section-by-section mapping</a><a class="toc-link" href="#deliberate-deviations-and-why">Deliberate deviations (and why)</a><a class="toc-link" href="#open-questions--risks-captured-for-the-team">Open questions / risks captured for the team</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

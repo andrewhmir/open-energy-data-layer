@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Design assets — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Fonts, emblem, icons, favicon, social card and region geometry: sources, licences and regeneration commands.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" class="current" aria-current="page" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-data">Data</a><span class="sep">/</span><span aria-current="page">Design assets</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Data <span class="sep">&middot;</span> documentation</p>
+  <h1 id="draftassets--design-assets-for-the-data-page-and-companion-site">draft/assets — design assets for the data page and companion site</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>draft/assets/README.md</code> &middot; 52 lines &middot; 5 KB &middot; 727 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/draft/assets/README.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>Small, licensed assets used by <code>tools/build-map-page.py</code> to build
+<code>draft/map-table-prototype.html</code> as a single self-contained file (fonts, emblem,
+favicon, interface icons, geometry and the data are inlined at build time), and by
+<code>tools/build-preview.py</code> for the companion site. Brand provenance, licences and
+regeneration commands for the mark/icon set live in <code>brand/README.md</code>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>asset</th>
+<th>source</th>
+<th>licence / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>brand/emblem.svg</code>, <code>brand/emblem-outline.svg</code></td>
+<td>Official BetterGov.ph emblem (<code>assets.bettergov.ph/logos/svg/emblem-primary.svg</code>) and the inversed/outline variant (<code>data.bettergov.ph/BetterGov_Emblem-Outline-Inversed.svg</code>)</td>
+<td>BetterGov.ph brand assets, unmodified except for stripping editor/class cruft; inlined into the page masthead and footer. Brand-owner clearance is required before public launch outside a BetterGov.ph project.</td>
+</tr>
+<tr>
+<td><code>favicon.svg</code></td>
+<td>Derived from the official emblem's inner sun/Sarimanok mark on the official navy <code>#0032a0</code> tile</td>
+<td>Documented derived use: the full emblem's ring text is unreadable below ~40px, so the tab icon uses the emblem's own interior mark, scaled only (no redraw). <code>brand/favicon-32/192/512.png</code> are the raster versions.</td>
+</tr>
+<tr>
+<td><code>brand/apple-touch-icon.png</code></td>
+<td>Official bettergov.ph apple-touch composition (full emblem on white, 91.7% of the square)</td>
+<td>BetterGov.ph brand asset, unmodified proportions.</td>
+</tr>
+<tr>
+<td><code>brand/icons.svg</code>, <code>brand/icons.json</code></td>
+<td>lucide-static 1.71.0 (pinned) interface icons</td>
+<td>ISC licence (Lucide Icons and Contributors); the Feather-derived subset (<code>alert-triangle</code>, <code>arrow-up</code>, <code>check</code>, <code>chevron-down</code>, <code>chevron-right</code>, <code>database</code>, <code>download</code>, <code>external-link</code>, <code>search</code>, <code>table-2</code>, <code>x</code>) is MIT (Cole Bemis). See <code>brand/README.md</code> for the per-icon provenance manifest.</td>
+</tr>
+<tr>
+<td><code>og.png</code></td>
+<td>Rendered from <code>brand/og-card.template.html</code> by <code>brand/render-assets.mjs</code></td>
+<td>Contains the BetterGov emblem/wordmark and the page headline; regenerate if the headline numbers change.</td>
+</tr>
+<tr>
+<td><code>bettergov-logo.png</code></td>
+<td>BetterGovPH <code>transparency-portal</code> repo (<code>public/brand/bettergov-horizontal-primary.png</code>)</td>
+<td>BetterGov.ph brand asset; used for the companion site's wordmark.</td>
+</tr>
+<tr>
+<td><code>fonts/figtree-normal-latin.woff2</code></td>
+<td>Google Fonts, Figtree (variable, latin subset)</td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+<tr>
+<td><code>fonts/inter-normal-latin.woff2</code></td>
+<td>Google Fonts, Inter (variable, latin subset)</td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+<tr>
+<td><code>fonts/jetbrains-mono-normal-latin.woff2</code></td>
+<td>Google Fonts, JetBrains Mono (variable, latin subset)</td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+<tr>
+<td><code>geo.json</code></td>
+<td>Region geometry from the <code>faeldon/philippines-json-maps</code> release v1.1.1 (PSGC 3Q 2026, 18 regions incl. NIR and BARMM), TopoJSON <code>regions/hires</code> (10% of the source vertices), projected and simplified offline by <code>tools/build-geo.py</code>; <code>geo-sources.json</code> records the pinned URL and SHA-256s, parameters and per-region counts</td>
+<td>repository code/maps MIT; boundary data CC BY 3.0 IGO (CC BY-IGO), © NAMRIA and PSA via OCHA's Philippines COD-AB</td>
+</tr>
+<tr>
+<td><code>coverage-geo.json</code></td>
+<td>LGU coverage geometry for the provider lens: 1,642 municipality/city polygons from the same pinned release's province/district TopoJSON (<code>topojson/provdists/hires</code>), projected with the same frame as <code>geo.json</code>, simplified and stored as compact relative integer path data; provenance and per-file SHA-256s are in <code>geo-sources.json</code></td>
+<td>repository code/maps MIT; boundary data CC BY 3.0 IGO, © NAMRIA and PSA via OCHA's Philippines COD-AB</td>
+</tr>
+</tbody>
+</table></div>
+<p>Design tokens (colour, type roles, spacing) follow the BetterGovPH
+<code>transparency-portal</code> theme (MIT), which mirrors budget.bettergov.ph:
+Figtree speaks, Inter works, JetBrains Mono labels, BetterGov blue <code>#0b4fd9</code>,
+white paper, ink rules.</p>
+<p>The fonts are the <em>latin</em> variable subsets only (three files, ~108 KB total) so the
+page can be fully self-contained without shipping multi-script font families.</p>
+<p><code>geo.json</code> and <code>coverage-geo.json</code> are generated, not hand-edited:
+<code>python3 tools/build-geo.py</code> downloads and
+verifies the pinned high-resolution release archive (a release tag, not the mutable
+<code>latest/</code> branch), extracts the 18 region files, projects them (Mercator, width 1000)
+and simplifies them at the TopoJSON-arc level for the map's render size
+(Douglas-Peucker 0.6 viewBox units; islets below ~4 km² dropped). The frame and the
+level of detail stay stable between runs; the Cordillera region, which read as a
+box, went from 36 to 324 points. <code>geo-sources.json</code> carries the exact source URL,
+licence, per-file SHA-256s, fetch timestamp, simplification parameters and per-region
+point counts. The boundaries remain CC BY-IGO: credit NAMRIA and the Philippine
+Statistics Authority through OCHA's Philippines COD-AB wherever the map is
+republished.</p>
+<p><code>coverage-geo.json</code> is the overlay layer for the provider filter: one simplified polygon per
+municipality/city, used only when the map is filtered by distribution utility. It is
+deliberately lighter than the region layer (Douglas-Peucker 1.4 viewBox units, integer
+relative path commands, tiny islets dropped unless they are an LGU's only land) because it is
+drawn as a filled overlay; the page inlines all 1,642 polygons. <code>geo-sources.json</code> records
+the per-file SHA-256s of the 88 province/district source files, the layer's simplification
+parameters and its own output hash. The service-area <em>data</em> that selects these polygons is
+published separately in <code>data/seed/service_areas.csv</code> (sources and licences in
+<code>data/seed/service_area_sources.csv</code>; methodology in <code>research/coverage/README.md</code>).</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="coverage-method.html"><span class="label">Previous</span><span class="pager-title">&larr; Service-area extraction</span></a><a class="pager-link pager-next" href="brand-assets.html"><span class="label">Next</span><span class="pager-title">Brand &amp; UI assets &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><p class="toc-empty">This document has no sub-sections.</p></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

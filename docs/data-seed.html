@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Seed data dictionary — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Column-by-column documentation for the published dataset and its 17-check validation report.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" class="current" aria-current="page" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-data">Data</a><span class="sep">/</span><span aria-current="page">Seed data dictionary</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Data <span class="sep">&middot;</span> documentation</p>
+  <h1 id="dataseed--real-doe-workbook-data-ingested-and-validated">data/seed — real DOE workbook data, ingested and validated</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>data/seed/README.md</code> &middot; 154 lines &middot; 9 KB &middot; 1,320 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../data/seed/README.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>This folder is generated by <code>tools/ingest-doe-rates.py</code> from snapshotted publisher
+bytes. It is <strong>not</strong> hand-written sample data: rates come from the Department of
+Energy's <em>Electricity Rates &amp; Power Market Monitor</em> public workbook, retrieved
+<strong>2026-11-10</strong> (4 tabs, 141 DU/EC rows, 107 month columns, 60,348 cells).</p>
+<p>Two further seed files publish the provider service-area (coverage) layer:
+<code>service_areas.csv</code> and <code>service_area_sources.csv</code>. They are assembled by
+<code>tools/build-service-areas.py</code> from the MERALCO franchise law (RA 12146), the
+OpenStreetMap Wiki operator table and the DOE workbook's region column (fallback),
+then consumed by the same ingest. See &quot;Coverage files&quot; below.</p>
+<p>The only illustrative file left here is <code>plants.csv</code> (sample plant records for the
+next pipeline stage). It is not used by the current page and carries
+<code>data_status=illustrative</code> on every row.</p>
+<h2 class="has-anchor" id="files">Files<a class="h-anchor" href="#files" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="utilitiescsv-141-rows"><code>utilities.csv</code> (141 rows)<a class="h-anchor" href="#utilitiescsv-141-rows" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>column</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>utility_code</code></td>
+<td>stable slug of the DOE utility name (<code>MERALCO</code>, <code>SOLECO</code>, <code>ILECO-II</code>…)</td>
+</tr>
+<tr>
+<td><code>utility_name</code></td>
+<td>name as published in the residential tab</td>
+</tr>
+<tr>
+<td><code>name_variants</code></td>
+<td>other tab spellings, e.g. <code>generation:DANECO</code> for <code>DANECO/NORDECO</code></td>
+</tr>
+<tr>
+<td><code>du_type</code></td>
+<td><code>PIOU</code> (private investor-owned) or <code>EC</code> (electric cooperative)</td>
+</tr>
+<tr>
+<td><code>grid_connection</code></td>
+<td><code>ONGRID</code>, <code>OFFGRID</code>, or <code>CONFLICT</code> when tabs disagree 2–2</td>
+</tr>
+<tr>
+<td><code>region_psgc</code> … <code>island_group</code></td>
+<td>PSA PSGC 10-digit region code, short/full name, island group</td>
+</tr>
+<tr>
+<td><code>latest_month</code></td>
+<td>latest month with published data (<code>2026-10</code>)</td>
+</tr>
+<tr>
+<td><code>res_latest</code>, <code>com_latest</code>, <code>ind_latest</code>, <code>gen_latest</code></td>
+<td>latest published value per customer class (blank = NDA)</td>
+</tr>
+<tr>
+<td><code>res_delta_mom_pct</code></td>
+<td>residential change vs previous month, where both exist</td>
+</tr>
+<tr>
+<td><code>data_status</code></td>
+<td><code>published</code> / <code>partial</code> / <code>nda</code> for the latest month</td>
+</tr>
+<tr>
+<td><code>source_id</code>, <code>extraction_method</code>, <code>confidence</code></td>
+<td>provenance (<code>csv_export</code>, <code>verified</code>)</td>
+</tr>
+<tr>
+<td><code>retrieved_at</code>, <code>source_row</code></td>
+<td>retrieval timestamp and the workbook row the record came from</td>
+</tr>
+<tr>
+<td><code>coverage_source_ids</code></td>
+<td><code>;</code>-joined source ids backing the published service area (<code>service_area_sources.csv</code>)</td>
+</tr>
+<tr>
+<td><code>coverage_detail</code></td>
+<td>strongest published coverage level: <code>lgu</code>, <code>barangay</code> or <code>region</code> (fallback)</td>
+</tr>
+<tr>
+<td><code>coverage_lgu_count</code></td>
+<td>number of LGU-level published coverage rows for the utility</td>
+</tr>
+<tr>
+<td><code>coverage_regions</code></td>
+<td><code>;</code>-joined PSGC regions the published coverage rows touch (may exceed the one DOE region)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="regionscsv-18-rows"><code>regions.csv</code> (18 rows)<a class="h-anchor" href="#regionscsv-18-rows" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>One row per PSGC region, with the <strong>unweighted median and mean of the latest
+published residential rate across reporting DUs</strong> (Oct 2026), reporting counts,
+min/max, and the same for commercial/industrial/generation medians. These are the
+numbers behind the map.</p>
+<h3 class="has-anchor" id="rates_monthlycsv-60348-rows-64-mb"><code>rates_monthly.csv</code> (60,348 rows, ~6.4 MB)<a class="h-anchor" href="#rates_monthlycsv-60348-rows-64-mb" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Tidy long format: <code>utility_code, utility_name, customer_class, month, rate_php_kwh, data_status, source_id, extraction_method, confidence, retrieved_at</code> — 141 utilities
+× 107 header months × 4 customer classes. <code>data_status</code> preserves the difference
+between a published value, <code>NDA</code> (publisher says no data), and <code>missing</code> (blank cell).
+No value is imputed.</p>
+<h3 class="has-anchor" id="sourcescsv-4-rows"><code>sources.csv</code> (4 rows)<a class="h-anchor" href="#sourcescsv-4-rows" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>One row per workbook tab: page URL, Google Sheet id, <code>tab_gid</code>, class, months
+covered, cell count, retrieval timestamp, extraction method, <strong>full SHA-256 of the
+raw snapshot</strong>, licence note (no explicit DOE licence found — reuse terms to confirm),
+and the raw snapshot path.</p>
+<h3 class="has-anchor" id="service_areascsv-one-row-per-covered-area"><code>service_areas.csv</code> (one row per covered area)<a class="h-anchor" href="#service_areascsv-one-row-per-covered-area" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Tidy coverage rows assembled by <code>tools/build-service-areas.py</code> from published sources:
+<code>utility_code,source_id,area_level,region_psgc,province_psgc,province_name,adm3_psgc,lgu_name,adm4_psgc,barangay_name,coverage_note</code>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>column</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>utility_code</code></td>
+<td>joins <code>utilities.csv</code> (stable utility slug)</td>
+</tr>
+<tr>
+<td><code>source_id</code></td>
+<td>joins <code>service_area_sources.csv</code>; the source backing this row</td>
+</tr>
+<tr>
+<td><code>area_level</code></td>
+<td><code>lgu</code> (covered city/municipality), <code>barangay</code> (covered barangay) or <code>region</code> (single fallback row)</td>
+</tr>
+<tr>
+<td><code>region_psgc</code>, <code>province_psgc</code>, <code>province_name</code></td>
+<td>PSGC region + province (or NCR district) hierarchy; province fields blank on region rows</td>
+</tr>
+<tr>
+<td><code>adm3_psgc</code>, <code>lgu_name</code></td>
+<td>canonical 10-digit city/municipality PSGC + name; blank on region rows</td>
+</tr>
+<tr>
+<td><code>adm4_psgc</code>, <code>barangay_name</code></td>
+<td>barangay PSGC + name on <code>barangay</code> rows only; blank otherwise</td>
+</tr>
+<tr>
+<td><code>coverage_note</code></td>
+<td>the source's own qualification (partial province, barangay-only, region fallback, law override)</td>
+</tr>
+</tbody>
+</table></div>
+<p>In the current snapshot: <strong>1,665 rows = 1,648 LGU rows + 17 Pampanga barangay
+rows, zero region fallback rows</strong> (all 141 utilities have LGU-level coverage).
+A utility with no LGU-level source would get exactly one <code>region</code> fallback row equal
+to its DOE region — an honest &quot;not sourced at LGU level&quot;, never a guessed LGU; that
+path exists but is not exercised by the current data. LGU-level rows are the
+legislative/operator franchise area, not verified household billing territory.
+Three utilities (PROSIELCO, SIASELCO, SULECO) publish coverage in a different region
+than their DOE workbook row because PSGC 3Q 2026 reassigned Sulu to Region IX and
+Siquijor to NIR; <code>coverage_note</code> documents it and it is not an error.</p>
+<h3 class="has-anchor" id="service_area_sourcescsv-one-row-per-coverage-source"><code>service_area_sources.csv</code> (one row per coverage source)<a class="h-anchor" href="#service_area_sourcescsv-one-row-per-coverage-source" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>source_id,publisher,dataset_title,page_url,revision_id,retrieved_at,license,attribution,notes</code>.
+Current sources:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>source_id</th>
+<th>source</th>
+<th>licence / terms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SRC-RA-12146</code></td>
+<td>RA 12146 Section 1 — MERALCO franchise (Supreme Court e-Library text)</td>
+<td>Public document (Philippine law); works of the Government are not subject to copyright (IP Code, Sec. 176)</td>
+</tr>
+<tr>
+<td><code>SRC-OSM-OPERATORS</code></td>
+<td>OpenStreetMap Wiki &quot;Power networks/Philippines/Operators&quot; (LGU franchise areas)</td>
+<td><strong>CC BY-SA 2.0</strong> — attribution required; share-alike applies to coverage derived from it</td>
+</tr>
+<tr>
+<td><code>SRC-WIKI-DUS</code></td>
+<td>Wikipedia &quot;List of electric distribution utilities in the Philippines&quot; (supplementary)</td>
+<td><strong>CC BY-SA 4.0</strong> — attribution + share-alike</td>
+</tr>
+<tr>
+<td><code>SRC-DOE-RATES</code></td>
+<td>DOE workbook region column (fallback only)</td>
+<td>No explicit licence; reuse terms to be confirmed with DOE</td>
+</tr>
+</tbody>
+</table></div>
+<p>The coverage files are <strong>not</strong> DOE rate data, and because the layer merges OSM Wiki
+(CC BY-SA 2.0) and Wikipedia (CC BY-SA 4.0) rows with the public-law MERALCO area,
+<strong>the combined coverage layer is a CC BY-SA derivative</strong>: attribution is required
+and share-alike applies to redistributions of the coverage data (the DOE rate data
+is unaffected). Keep each source's attribution and licence with any republication of
+the coverage rows.</p>
+<h3 class="has-anchor" id="validationjson"><code>validation.json</code><a class="h-anchor" href="#validationjson" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The ingest report: 17 automated <strong>rate</strong> checks (all passing), the source-conflict
+log, per-tab hashes/cell counts, latest/anchor-month statistics, and a separate
+<code>coverage_checks</code> / <code>coverage</code> block (7 coverage checks: rows present, every utility
+covered, LGU spot counts, valid PSGC, DOE region inside the service area). A failure
+stops publication.</p>
+<h3 class="has-anchor" id="page-datajson-225-kb"><code>page-data.json</code> (~225 KB)<a class="h-anchor" href="#page-datajson-225-kb" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Compact payload derived from the CSVs and embedded into the self-contained page;
+includes every utility's monthly residential series for the chart, plus each
+utility's <code>coverage</code> block and the top-level <code>coverage</code> stats/sources/checks/files
+(pinned rows/bytes/SHA-256 for the two coverage seed files).</p>
+<h3 class="has-anchor" id="plantscsv-illustrative--not-displayed"><code>plants.csv</code> (illustrative — not displayed)<a class="h-anchor" href="#plantscsv-illustrative--not-displayed" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Old sample records kept for the asset-layer stage. Every row is marked
+<code>data_status=illustrative</code>; the current map does <strong>not</strong> show plants.</p>
+<h2 class="has-anchor" id="provenance-in-one-paragraph">Provenance, in one paragraph<a class="h-anchor" href="#provenance-in-one-paragraph" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The workbook was retrieved through Google's unauthenticated CSV export, the exact
+bytes a browser would download. Each tab is snapshotted under
+<code>data/raw/doe-rates/2026-11-10/</code> and hashed. Parsing keeps <code>published</code>, <code>NDA</code>,
+<code>missing</code> and <code>invalid</code> as distinct states. The four tabs disagree in five places
+(ILECO II/III grid status 2–2, CLPC region, an island label, and a <code>DANECO</code> /
+<code>DANECO/NORDECO</code> name variant); each is logged in <code>validation.json</code>, resolved by
+majority where possible, and published as <code>CONFLICT</code> where not. The June-2026
+reference figures are asserted by the pipeline and reproduce
+exactly (Meralco ₱14.48, SOLECO ₱16.57 at +32.2% m/m, BISELCO ₱24.92; 127 reporting
+DUs, simple mean ₱12.29, median ₱12.10).</p>
+<p>No explicit dataset licence was found on the DOE page. The figures are public
+records; reuse terms should be confirmed with DOE (week-1 partnership ask).</p>
+<p>Coverage provenance, in one paragraph: the service area layer is derived data, not
+a DOE rate publication. MERALCO rows come from RA 12146 Section 1 (public law; the
+franchise wins over OSM rows); the remaining LGU-level rows come from the
+OpenStreetMap Wiki operator table, which compiles franchise areas &quot;per Department of
+Energy&quot; and is licensed CC BY-SA 2.0 (attribution required, share-alike applies to
+derived coverage data); Wikipedia's DU list (CC BY-SA 4.0) supplies supplementary
+LGU areas where the OSM table has none. Utilities with no LGU-level source get a
+single <code>region</code> fallback row from the DOE workbook region column, under the same
+unconfirmed DOE terms as the rates. A franchise area is not verified billing
+territory; region rows are a fallback, not LGU confirmation. The raw law text and
+wiki revisions used are snapshotted under <code>research/source-snapshots/</code> and
+<code>research/coverage/snapshots/</code>.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="data-model.html"><span class="label">Previous</span><span class="pager-title">&larr; Data model</span></a><a class="pager-link pager-next" href="coverage-method.html"><span class="label">Next</span><span class="pager-title">Service-area extraction &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#files">Files</a><a class="toc-link l3" href="#utilitiescsv-141-rows">utilities.csv (141 rows)</a><a class="toc-link l3" href="#regionscsv-18-rows">regions.csv (18 rows)</a><a class="toc-link l3" href="#rates_monthlycsv-60348-rows-64-mb">rates_monthly.csv (60,348 rows, ~6.4 MB)</a><a class="toc-link l3" href="#sourcescsv-4-rows">sources.csv (4 rows)</a><a class="toc-link l3" href="#service_areascsv-one-row-per-covered-area">service_areas.csv (one row per covered area)</a><a class="toc-link l3" href="#service_area_sourcescsv-one-row-per-coverage-source">service_area_sources.csv (one row per coverage source)</a><a class="toc-link l3" href="#validationjson">validation.json</a><a class="toc-link l3" href="#page-datajson-225-kb">page-data.json (~225 KB)</a><a class="toc-link l3" href="#plantscsv-illustrative--not-displayed">plants.csv (illustrative — not displayed)</a><a class="toc-link" href="#provenance-in-one-paragraph">Provenance, in one paragraph</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

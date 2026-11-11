@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Notices &amp; attribution — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Third-party components, brand usage, fonts, icons, geometry and the licence status of the DOE workbook data.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" class="current" aria-current="page" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-legal">Legal</a><span class="sep">/</span><span aria-current="page">Notices &amp; attribution</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Legal <span class="sep">&middot;</span> documentation</p>
+  <h1 id="third-party-notices-attribution-and-data-provenance">Third-party notices, attribution and data provenance</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>NOTICE.md</code> &middot; 166 lines &middot; 11 KB &middot; 1,636 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/NOTICE.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>This repository reuses third-party assets and builds on public data. This file
+records what those are, their terms, and what this project does <strong>not</strong> claim.
+The MIT licence in <a href="license.html">LICENSE</a> covers this project's own code, generated
+page and design layer; it does not override or relicense anything below.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Where it lives</th>
+<th>Terms</th>
+<th>Attribution / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BetterGovPH design language</td>
+<td>page + review hub</td>
+<td>MIT (© 2026 BetterGov.ph)</td>
+<td>Design tokens, type roles, masthead/subnav/rule-table/footer patterns adapted from BetterGovPH's <code>transparency-portal</code> (MIT); the page is our implementation, not a BetterGov.ph code import.</td>
+</tr>
+<tr>
+<td>Fonts — Figtree, Inter, JetBrains Mono</td>
+<td><code>draft/assets/fonts/*.woff2</code></td>
+<td>SIL Open Font License 1.1</td>
+<td>Latin variable subsets, unmodified. © 2022 The Figtree Project Authors, © 2020 The Inter Project Authors, © 2020 The JetBrains Mono Project Authors.</td>
+</tr>
+<tr>
+<td>Icons — Lucide</td>
+<td><code>draft/assets/brand/</code> icon sprite</td>
+<td>ISC License; Feather-derived icons MIT</td>
+<td>© Lucide Icons and Contributors (ISC). Icons derived from Feather: © 2013-present Cole Bemis (MIT). Exact pinned versions and vendored notices: <code>draft/assets/brand/README.md</code>.</td>
+</tr>
+<tr>
+<td>Philippine region geometry</td>
+<td><code>draft/assets/geo.json</code></td>
+<td>MIT (repository scripts/maps, © James Faeldon); boundaries <strong>CC BY 3.0 IGO</strong></td>
+<td>Derived from <code>faeldon/philippines-json-maps</code> v1.1.1; boundary attribution: © NAMRIA and the Philippine Statistics Authority, via OCHA's Philippines COD-AB (CC BY 3.0 IGO). Full provenance in <code>draft/assets/geo-sources.json</code>.</td>
+</tr>
+<tr>
+<td>BetterGovPH brand assets</td>
+<td><code>draft/assets/bettergov-logo.png</code>, <code>draft/assets/favicon.svg</code>, <code>draft/assets/brand/</code></td>
+<td>BetterGovPH brand property — <strong>not</strong> MIT</td>
+<td>Used with attribution for this BetterGovPH open-data project. See the brand note below.</td>
+</tr>
+<tr>
+<td>DOE workbook data</td>
+<td><code>data/raw/</code>, <code>data/seed/</code></td>
+<td><strong>No licence confirmed</strong> — none asserted here</td>
+<td>Published public records from the Department of Energy. See the data note below.</td>
+</tr>
+<tr>
+<td>Python build dependencies</td>
+<td><code>requirements.txt</code></td>
+<td>PyYAML: MIT; markdown-it-py: MIT</td>
+<td>Build tooling only; not served.</td>
+</tr>
+<tr>
+<td>Browser QA dependency</td>
+<td><code>package.json</code>, <code>tests/</code></td>
+<td>Playwright: Apache-2.0</td>
+<td>Test/CI tooling only; not served or shipped in the page.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="bettergovph-design-language">BetterGovPH design language<a class="h-anchor" href="#bettergovph-design-language" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The visual language of the generated page — typography roles (Figtree for
+display, Inter for text, JetBrains Mono for metadata), BetterGov blue, white
+paper, rule-based tables, masthead/subnav/footer structure — is adapted from
+BetterGovPH's <code>transparency-portal</code> repository, which is MIT-licensed
+(© 2026 BetterGov.ph) and mirrors <code>budget.bettergov.ph</code>. That MIT licence
+permits reuse and adaptation; the adaptation in this repository is itself
+released under the MIT licence in <a href="license.html">LICENSE</a>.</p>
+<h2 class="has-anchor" id="brand-assets-bettergovph">Brand assets (BetterGovPH)<a class="h-anchor" href="#brand-assets-bettergovph" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The BetterGov logo, emblem and favicon are the brand property of BetterGovPH
+and are <strong>not</strong> covered by this project's MIT licence. They are used here,
+unmodified and with attribution, to identify this work as part of the
+BetterGovPH open-data design family. Nothing in this repository implies that
+this project is an official BetterGov.ph product or that BetterGovPH endorses
+it. Before any independent deployment, the deploying party should obtain the
+brand owner's approval for the mark's use, or replace it with their own mark.
+If the brand owner asks for a change, the assets will be updated or removed.</p>
+<h2 class="has-anchor" id="fonts">Fonts<a class="h-anchor" href="#fonts" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Three <code>woff2</code> files under <code>draft/assets/fonts/</code> are the <em>latin variable</em>
+subsets of Figtree, Inter and JetBrains Mono, taken from Google Fonts and
+inlined into the page as data URIs at build time (they are unmodified font
+software). Each is licensed under the <strong>SIL Open Font License, Version 1.1</strong>
+(OFL 1.1), which permits embedding and redistribution in this form; the
+fonts are not sold separately, no Reserved Font Name is used, and the
+required copyright notices are the ones listed in the table above. The OFL
+text for each family is available from the Google Fonts repository
+(<code>google/fonts</code>, <code>ofl/&lt;family&gt;/OFL.txt</code>) and from the font projects themselves.</p>
+<h2 class="has-anchor" id="icons">Icons<a class="h-anchor" href="#icons" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Interface icons come from the open-source <strong>Lucide</strong> icon set. The Lucide
+project's licence is the <strong>ISC License</strong> (© Lucide Icons and Contributors);
+Lucide also states that a listed subset of its icons derives from the Feather
+project and remains under the <strong>MIT License</strong> (© 2013-present Cole Bemis). Both
+are permissive and compatible with this repository's MIT licence. The icon
+sprite is vendored (not loaded from a CDN), so the page makes no external
+requests; the pinned version and the vendored notice live in
+<code>draft/assets/brand/</code>.</p>
+<h2 class="has-anchor" id="philippine-region-geometry">Philippine region geometry<a class="h-anchor" href="#philippine-region-geometry" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p><code>draft/assets/geo.json</code> is a simplified, projected Philippine region boundary file (18
+PSGC 3Q 2026 regions, including NIR and BARMM) built by <code>tools/build-geo.py</code> from
+<code>faeldon/philippines-json-maps</code> release <strong>v1.1.1</strong> (TopoJSON, level <code>regions</code>, resolution
+<code>hires</code>).</p>
+<ul>
+<li>That repository's <strong>scripts and map files are MIT-licensed</strong> (© James Faeldon).</li>
+<li>The <strong>boundaries are licensed CC BY 3.0 IGO</strong>: they are derived from NAMRIA and the
+Philippine Statistics Authority data, via OCHA's Philippines Common Operational Dataset
+for Administrative Boundaries (COD-AB). Required attribution:
+<em>&quot;Province boundaries: © NAMRIA and the Philippine Statistics Authority, via OCHA's
+Philippines COD-AB, licensed CC BY 3.0 IGO.&quot;</em></li>
+<li>This repository inlines a simplified derivative of that data for a schema-level
+choropleth (18 PSGC regions) and for the provider service-area overlay (1,642 city /
+municipality polygons in <code>draft/assets/coverage-geo.json</code>, built from the same release's
+province/district TopoJSON files); it is not an authoritative boundary dataset. Full
+provenance — source release, archive and per-file SHA-256 hashes, the pinned checksums
+file, projection, simplification parameters and evaluated alternatives — is recorded in
+<code>draft/assets/geo-sources.json</code>. Reusers of the geometry should preserve the CC BY 3.0
+IGO attribution above.</li>
+</ul>
+<h2 class="has-anchor" id="department-of-energy-doe-workbook-data">Department of Energy (DOE) workbook data<a class="h-anchor" href="#department-of-energy-doe-workbook-data" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The rates, utility list and aggregates in <code>data/seed/</code> are derived from the
+DOE <strong>&quot;Electricity Rates &amp; Power Market Monitor&quot;</strong> workbook — a public Google
+Sheet embedded on <code>doe.gov.ph/data-and-prices/electricity</code> — retrieved through
+its public CSV export on <strong>2026-11-10</strong> (dataset version <code>2026-11-10</code>).</p>
+<ul>
+<li><strong>No dataset-specific licence has been confirmed with DOE.</strong> The DOE website
+footer states that its content is in the public domain &quot;unless otherwise
+stated&quot;, but this project does not treat that general statement as a
+confirmed licence for the workbook, and <strong>this repository does not assert a
+licence over the workbook or over the figures extracted from it.</strong></li>
+<li>What this repository publishes is a derived factual extract (utility
+registry, monthly rate observations, region aggregates) together with
+provenance: the DOE page and sheet URLs, the retrieval timestamp, the row
+and tab each value came from, and a SHA-256 hash of the raw tab bytes. The
+raw byte snapshots in <code>data/raw/doe-rates/</code> exist so that a published number
+can be reproduced from exactly the publisher bytes we saw; they are not a
+republication of the workbook as a dataset.</li>
+<li><strong>No endorsement by DOE is implied.</strong> DOE is the publisher of the source
+workbook; it has not reviewed, approved or licensed this extract.</li>
+<li>Reusers should cite the DOE workbook and this retrieval date, and should
+satisfy themselves about DOE's terms. Confirming the workbook's ownership,
+refresh cadence and licence/citation terms with DOE is a <strong>week-1
+partnership ask</strong> recorded in <code>research/data-landscape.md</code>.</li>
+<li>If DOE asks for changes to how the source data is
+presented or redistributed, the project will comply and update this notice.</li>
+</ul>
+<p>Generated files — <code>data/seed/*.csv</code>, <code>data/seed/page-data.json</code>,
+<code>data/seed/validation.json</code> (built by <code>tools/ingest-doe-rates.py</code>), the service-area
+dataset (<code>tools/build-service-areas.py</code>), the static JSON API under <code>draft/api/v1/</code> (built
+by <code>tools/build-api.py</code>), the docs site under <code>draft/docs/</code> (built by
+<code>tools/build-docs.py</code>) and the page <code>draft/map-table-prototype.html</code> (built by
+<code>tools/build-map-page.py</code>) — are produced by this project's build tooling. The MIT licence applies to the generator code and to the
+project's own markup/design; it does not relicense the underlying DOE figures, whose terms
+remain as described above.</p>
+<h2 class="has-anchor" id="service-area-coverage-data-dataseedservice_areascsv">Service-area coverage data (<code>data/seed/service_areas.csv</code>)<a class="h-anchor" href="#service-area-coverage-data-dataseedservice_areascsv" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>The provider filter draws each distribution utility's service area. That layer is derived
+data, <strong>not</strong> part of the DOE rate workbook, and it carries its own licences:</p>
+<ul>
+<li><strong>Meralco</strong> — Republic Act No. 12146 (approved 11 April 2025), Section 1, which renews the
+Meralco distribution franchise and enumerates its territory. The text was retrieved from
+the Supreme Court E-Library (<a href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850" target="_blank" rel="noopener">https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/98850<span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>,
+2026-11-10). Philippine laws are public documents; the official text is not subject to
+copyright. The franchise area is encoded LGU-by-LGU against PSGC 3Q 2026; the law wins
+over the secondary sources below.</li>
+<li><strong>Other distribution utilities</strong> — LGU-level franchise areas from the OpenStreetMap Wiki
+page <em>&quot;Power networks/Philippines/Operators&quot;</em>, revision 2836797 (2025-04-14), which
+tabulates franchise areas &quot;per Department of Energy&quot;. That page is licensed
+<strong>CC BY-SA 2.0</strong>; required attribution:
+<em>&quot;Service areas: © OpenStreetMap Wiki contributors, 'Power networks/Philippines/Operators',
+revision 2836797 (2025-04-14), CC BY-SA 2.0.&quot;</em></li>
+<li><strong>Supplementary LGU areas</strong> for 22 utilities the OSM page lists without a franchise-area
+table come from Wikipedia, <em>&quot;List of electric distribution utilities in the Philippines&quot;</em>,
+revision 1374171231 (2026-09-10), licensed <strong>CC BY-SA 4.0</strong>; required attribution:
+<em>&quot;Additional service areas: © Wikipedia contributors, 'List of electric distribution
+utilities in the Philippines', revision 1374171231 (2026-09-10), CC BY-SA 4.0.&quot;</em></li>
+<li><strong>Fallback</strong> — where no LGU-level area is sourced, the DOE workbook's region assignment
+is published as a labelled region-level area. The 2026 edition of the dataset needed zero
+fallbacks; the mechanism and its label remain in the contract.</li>
+<li>The <strong>combined coverage dataset</strong> (<code>data/seed/service_areas.csv</code>,
+<code>data/seed/service_area_sources.csv</code> and the derived LGU overlay) is a <strong>CC BY-SA
+derivative</strong> of the sources above: attribution to the OpenStreetMap Wiki and Wikipedia
+contributors (and share-alike for the derived coverage database) is required. The
+project's MIT licence applies to the assembler code and to the page's own markup, not to
+this derived dataset. Per-row source ids and revision/retrieval metadata are published in
+<code>service_area_sources.csv</code>; the extraction method, pinned wikitext snapshots and known
+gaps are documented in <code>research/coverage/README.md</code>.</li>
+<li>The coverage data is <strong>not an official DOE publication</strong> and implies no endorsement. It
+records partial-coverage notes where an LGU is split between utilities, and documents
+PSGC 3Q 2026 region reassignments instead of forcing legacy DOE region labels.</li>
+</ul>
+<h2 class="has-anchor" id="names-and-trademarks">Names and trademarks<a class="h-anchor" href="#names-and-trademarks" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>&quot;Department of Energy&quot;, &quot;DOE&quot;, &quot;BetterGov.ph&quot;, &quot;BetterGovPH&quot;, utility and
+electric-cooperative names, and any other third-party names are used
+nominatively to identify the sources and the entities being described.
+Trademarks and brand rights remain with their respective owners. This project
+is not affiliated with, or endorsed by, any of the named utilities or
+agencies.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="research-service-areas.html"><span class="label">Previous</span><span class="pager-title">&larr; Research: Service areas</span></a><a class="pager-link pager-next" href="license.html"><span class="label">Next</span><span class="pager-title">Licence (MIT) &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#bettergovph-design-language">BetterGovPH design language</a><a class="toc-link" href="#brand-assets-bettergovph">Brand assets (BetterGovPH)</a><a class="toc-link" href="#fonts">Fonts</a><a class="toc-link" href="#icons">Icons</a><a class="toc-link" href="#philippine-region-geometry">Philippine region geometry</a><a class="toc-link" href="#department-of-energy-doe-workbook-data">Department of Energy (DOE) workbook data</a><a class="toc-link" href="#service-area-coverage-data-dataseedservice_areascsv">Service-area coverage data (data/seed/service_areas.csv)</a><a class="toc-link" href="#names-and-trademarks">Names and trademarks</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

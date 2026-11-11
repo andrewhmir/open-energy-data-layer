@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Contributing — Open Energy Data Layer — documentation</title>
+<meta name="description" content="Development setup, build commands, the data and page rules, and the pull-request checklist.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" class="current" aria-current="page" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-project">Project</a><span class="sep">/</span><span aria-current="page">Contributing</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Project <span class="sep">&middot;</span> documentation</p>
+  <h1 id="contributing">Contributing</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>CONTRIBUTING.md</code> &middot; 241 lines &middot; 15 KB &middot; 2,157 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/CONTRIBUTING.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>Thanks for helping build an open, verifiable energy data layer for the
+Philippines. This repository is a <strong>data pipeline plus a static publication
+surface</strong>: correctness and provenance matter more than volume, and a number that
+cannot be traced to a publisher source should not be published at all.</p>
+<p>Contributions are welcome in these areas:</p>
+<ul>
+<li><strong>Data quality</strong> — new sources, parsing fixes, cross-checks against publisher
+documents, conflict resolution, verification of NDA/missing states.</li>
+<li><strong>Pipeline</strong> — extractors, validators, deterministic builds, API generation.</li>
+<li><strong>Page and design</strong> — accessibility, responsiveness, clarity, and anything that
+makes the numbers harder to misread.</li>
+<li><strong>API and data model</strong> — the OpenAPI 3.1 contract, envelopes, metadata,
+examples, and downstream interoperability (DBM COMPASS, data.gov.ph, DCAT).</li>
+<li><strong>Documentation and evidence</strong> — correcting this file or any doc, with sources.</li>
+</ul>
+<p>By contributing you agree that your contributions are licensed under the
+repository's MIT licence (<a href="license.html">LICENSE</a>) for code, page and design, and
+that data contributions remain subject to the source-data terms described in
+<a href="notice.html">NOTICE.md</a>.</p>
+<h2 class="has-anchor" id="development-setup">Development setup<a class="h-anchor" href="#development-setup" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Requirements:</p>
+<ul>
+<li><strong>Python 3.12</strong> (the version the pipeline is tested on) with <code>pip</code>.</li>
+<li><strong>Git</strong>.</li>
+<li>Optional, for the browser QA suite: <strong>Node.js 20+</strong> with Playwright/Chromium.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># from the repository root
+python3 --version                 # expect 3.12.x
+python3 -m pip install -r requirements.txt
+
+# optional: browser QA tooling (pinned Playwright + Chromium)
+npm ci
+npx playwright install chromium
+</code></pre></div>
+<p>The ingest pipeline, page builder and geometry builder use only the Python standard
+library; <code>PyYAML</code> is needed by the API builder and the offline validator, and
+<code>markdown-it-py</code> by the review-hub builder (both installed above).</p>
+<h2 class="has-anchor" id="build-from-source">Build from source<a class="h-anchor" href="#build-from-source" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<p>Run the steps in order. The first ingest of a given day needs network access;
+after that the snapshot is reused from <code>data/raw/doe-rates/&lt;retrieval-date&gt;/</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># 1. (Optional) Rebuild the geometries from the pinned boundary release
+python3 tools/build-geo.py               # -&gt; draft/assets/geo.json + coverage-geo.json
+
+# 2. Assemble the service-area dataset (Meralco RA 12146 + OSM/Wikipedia extraction
+#    under research/coverage/, with labelled DOE-region fallbacks)
+python3 tools/build-service-areas.py     # -&gt; data/seed/service_areas.csv + source registry
+
+# 3. Ingest the DOE workbook: fetch -&gt; snapshot -&gt; SHA-256 -&gt; parse -&gt; validate -&gt; publish
+python3 tools/ingest-doe-rates.py
+#    re-fetch the four tabs even if today's snapshot exists:
+python3 tools/ingest-doe-rates.py --refresh
+
+# 4. Build the read-only static JSON API mirror
+python3 tools/build-api.py               # -&gt; draft/api/v1/
+
+# 5. Build the documentation site
+python3 tools/build-docs.py              # -&gt; draft/docs/
+
+# 6. Build the self-contained page (uses the ingested payload and, when present,
+#    the API mirror and coverage geometry)
+python3 tools/build-map-page.py          # -&gt; draft/map-table-prototype.html
+
+# 7. Build the local review hub (gitignored output)
+python3 tools/build-preview.py           # -&gt; preview/
+
+# 8. Validate the repository offline (data contracts, service areas, page, docs,
+#    OpenAPI, static API, packaging)
+python3 tools/validate.py                # add --check-page for the deterministic rebuild check
+
+# 9. Browser QA of the built page and the docs site
+#    (Node.js 20+; npm ci + npx playwright install chromium first)
+npm ci
+node tests/qa.mjs
+node tests/qa-docs.mjs
+
+# 10. Open the page (it is a single self-contained file; file:// works)
+xdg-open draft/map-table-prototype.html   # macOS: open ...; Windows: start ...
+</code></pre></div>
+<p>Expected results from a clean run (dataset version <code>2026-11-10</code>):</p>
+<ul>
+<li>ingest: <strong>141 DUs per tab, 107 month columns, 60,348 cells</strong>, <code>ALL CHECKS PASSED</code>
+(17/17 rate checks + 7/7 service-area checks);</li>
+<li>service areas: 141/141 utilities with LGU-level coverage (1,648 LGU rows + 17 barangay
+rows), 4 registered sources, zero undocumented region mismatches;</li>
+<li>page: 18 map regions, 1,642 inlined LGU polygons, 141 table rows, all data assets inlined;</li>
+<li>docs: 20 generated pages under <code>draft/docs/</code> with a deterministic tree;</li>
+<li>static API: one JSON file per utility (141), per region (18) and per service area (141),
+plus the dataset, rates, sources, changes and validation payloads, each with the
+documented envelope;</li>
+<li>preview: <code>preview/index.html</code> plus rendered docs and the contract;</li>
+<li>validation: <code>python3 tools/validate.py</code> exits 0;</li>
+<li>QA: <code>node tests/qa.mjs</code> exits 0 with no console errors or external requests.</li>
+</ul>
+<p>Rebuilds are <strong>deterministic</strong>: with the same raw snapshots, <code>data/seed/*.csv</code>
+and the page are reproduced byte-for-byte apart from the retrieval timestamp
+stamped by the ingest. A rebuild that changes other bytes is a signal to
+investigate — a genuine data change, not noise.</p>
+<h2 class="has-anchor" id="repository-map">Repository map<a class="h-anchor" href="#repository-map" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/ingest-doe-rates.py</code></td>
+<td><strong>The data pipeline.</strong> Fetches the four public workbook tabs, snapshots and hashes the raw bytes, parses them into one canonical utility row per workbook row, resolves cross-tab disagreements, attaches the service-area coverage, validates, and writes <code>data/raw/</code>, <code>data/seed/</code> and the page payload.</td>
+</tr>
+<tr>
+<td><code>tools/build-service-areas.py</code></td>
+<td><strong>Service-area assembler.</strong> Merges the LGU-level franchise extraction with the RA 12146 Meralco override and region fallbacks; validates PSGC joins; writes <code>data/seed/service_areas.csv</code> and <code>data/seed/service_area_sources.csv</code>.</td>
+</tr>
+<tr>
+<td><code>tools/build-docs.py</code></td>
+<td><strong>Docs builder.</strong> Renders every markdown source into the styled docs site under <code>draft/docs/</code> (deterministic; do not hand-edit the output).</td>
+</tr>
+<tr>
+<td><code>draft/frontend.md</code>, <code>draft/backend.md</code>, <code>draft/component-map.md</code></td>
+<td><strong>Architecture docs.</strong> How the frontend surfaces are built and tested, the backend/pipeline design and failure modes, and the component map &amp; agent guide (rendered at <code>frontend.html</code>, <code>backend.html</code>, <code>component-map.html</code>).</td>
+</tr>
+<tr>
+<td><code>AGENTS.md</code> (+ <code>tools/</code>, <code>data/</code>, <code>draft/</code>, <code>tests/</code>)</td>
+<td><strong>Agent maps</strong> for coding assistants: root orientation/component map plus per-area source-of-truth files, commands, generated artefacts, contracts and pitfalls. Read the nearest map before changing a component.</td>
+</tr>
+<tr>
+<td><code>data/raw/doe-rates/&lt;date&gt;/&lt;gid&gt;.csv</code></td>
+<td>Immutable raw byte snapshots, one per customer-class tab. <strong>Never edit these.</strong></td>
+</tr>
+<tr>
+<td><code>research/coverage/</code></td>
+<td>Service-area evidence: deterministic extraction script, pinned wikitext snapshots, raw operator table, methodology and known-gap report. New franchise evidence goes here, not into the generated CSV.</td>
+</tr>
+<tr>
+<td><code>data/seed/</code></td>
+<td>Published outputs: <code>utilities.csv</code>, <code>rates_monthly.csv</code>, <code>regions.csv</code>, <code>sources.csv</code>, <code>service_areas.csv</code>, <code>service_area_sources.csv</code>, <code>validation.json</code>, <code>page-data.json</code>, and a README data dictionary. Generated — do not hand-edit.</td>
+</tr>
+<tr>
+<td><code>tools/build-map-page.py</code></td>
+<td>Builds <code>draft/map-table-prototype.html</code> from <code>data/seed/page-data.json</code> + <code>draft/assets/</code>. Fonts, logo, favicon, map geometry and data are inlined; the page makes no external requests.</td>
+</tr>
+<tr>
+<td><code>tools/build-api.py</code></td>
+<td>Builds the read-only static JSON API under <code>draft/api/v1/</code> from the published data. Generated — do not hand-edit.</td>
+</tr>
+<tr>
+<td><code>tools/build-geo.py</code></td>
+<td>Regenerates the region geometry (<code>draft/assets/geo.json</code>), the LGU coverage geometry (<code>draft/assets/coverage-geo.json</code>) and their provenance (<code>draft/assets/geo-sources.json</code>) from the pinned, SHA-256-verified boundary source. Deterministic; do not hand-edit the output.</td>
+</tr>
+<tr>
+<td><code>tools/build-preview.py</code></td>
+<td>Builds the local review hub at <code>preview/</code> from the markdown docs, the contract, the page and the data files. Output is gitignored.</td>
+</tr>
+<tr>
+<td><code>tools/validate.py</code></td>
+<td>Offline repository validation: data contracts, page contract, OpenAPI document, static API and packaging. Exits non-zero on failure; <code>--check-page</code> proves the committed page rebuilds deterministically.</td>
+</tr>
+<tr>
+<td><code>tests/qa.mjs</code></td>
+<td>Playwright browser QA for the built page: desktop and mobile viewports, console/network assertions, provider coverage lens, map/table/filter/API-explorer/CSV/nav behaviour. Screenshots go to <code>/tmp</code>, never the repo.</td>
+</tr>
+<tr>
+<td><code>tests/qa-docs.mjs</code></td>
+<td>Playwright docs-site QA: every page loads, no third-party requests, sidebar/TOC, internal link + fragment crawl, desktop/mobile overflow, mobile drawer.</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>Node tooling for the QA suite (pinned Playwright; <code>qa</code>, <code>validate</code>, <code>build:page</code>, <code>build:api</code> scripts).</td>
+</tr>
+<tr>
+<td><code>.github/workflows/ci.yml</code></td>
+<td>CI on push/PR to <code>main</code>: static validation + deterministic rebuild check, then browser QA; uploads QA artifacts.</td>
+</tr>
+<tr>
+<td><code>draft/openapi.yaml</code></td>
+<td>The OpenAPI 3.1 contract for the public API.</td>
+</tr>
+<tr>
+<td><code>draft/api-docs.md</code></td>
+<td>The human-readable API guide (access, units, conventions, endpoint reference, attribution, versioning).</td>
+</tr>
+<tr>
+<td><code>draft/api/v1/</code></td>
+<td>Generated static JSON API (dataset metadata, utilities, regions, rates, sources, changes, validation, OpenAPI JSON mirror).</td>
+</tr>
+<tr>
+<td><code>draft/assets/</code></td>
+<td>Design assets: fonts (OFL 1.1), BetterGov brand assets, favicon, region geometry. <code>draft/assets/README.md</code> records sources and licences.</td>
+</tr>
+<tr>
+<td><code>plan/</code></td>
+<td>Internal working notes and plans (not part of the published product).</td>
+</tr>
+<tr>
+<td><code>research/</code>, <code>draft/data-model.md</code></td>
+<td>Source ledger/evidence and the canonical data model.</td>
+</tr>
+<tr>
+<td><code>data/seed/plants.csv</code></td>
+<td><strong>Illustrative</strong> sample plants for a future asset layer; not displayed on the page, marked <code>data_status=illustrative</code>. The current pipeline does not generate it.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="data-rules-non-negotiable">Data rules (non-negotiable)<a class="h-anchor" href="#data-rules-non-negotiable" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><strong>Never hand-edit generated files.</strong> <code>draft/map-table-prototype.html</code>,
+<code>draft/api/v1/</code>, <code>data/seed/*.csv</code>, <code>data/seed/page-data.json</code> and
+<code>data/seed/validation.json</code> are build outputs. Fix the generator and rebuild.</li>
+<li><strong>Never impute.</strong> Preserve the publisher's states exactly: <code>published</code>,
+<code>nda</code> (publisher says no data), <code>missing</code> (blank cell) and <code>invalid</code>
+(unparseable cell, e.g. the <code>Jan-16</code> text in an Oct-2026 cell). Aggregates
+use published values only; report the reporting count next to every
+aggregate. Do not fill, interpolate, average over, or silently drop cells.</li>
+<li><strong>Provenance is mandatory.</strong> Every published row keeps <code>source_id</code>,
+<code>extraction_method</code>, <code>confidence</code>, <code>retrieved_at</code> and <code>source_row</code>. A new
+source needs a <code>sources.csv</code> entry with the page/sheet URL, retrieval
+timestamp, SHA-256 of the raw bytes, and a licence note that says what is
+known and what is not.</li>
+<li><strong>Snapshot before parsing, hash before publishing.</strong> Raw publisher bytes are
+the source of truth. A retrieval that changes them creates a new dated
+snapshot directory; do not edit an old snapshot in place.</li>
+<li><strong>Do not guess conflicts.</strong> When tabs disagree, resolve by majority and keep
+the losing claims; publish <code>CONFLICT</code> where there is no majority. Add the
+conflict to the validation report so it stays visible.</li>
+<li><strong>Anchor checks are contracts, not conveniences.</strong> The pipeline asserts the
+June-2026 reference figures. If an anchor fails, stop and investigate;
+never change the expected value to make the build pass.</li>
+<li><strong>Do not assert licences you cannot verify.</strong> The DOE workbook has no
+confirmed dataset licence; see <a href="notice.html">NOTICE.md</a>. New sources with
+unclear terms must be labelled as such, not assumed open.</li>
+<li><strong>No personal data, no secrets, no blocked-source scraping.</strong> Do not commit
+API keys, tokens, <code>.env</code> files, private contact details, or data obtained by
+circumventing an access control. Blocked sources are partnership/FOI items,
+not scraping targets.</li>
+</ol>
+<h2 class="has-anchor" id="page-rules">Page rules<a class="h-anchor" href="#page-rules" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>The page must stay <strong>self-contained and offline-first</strong>: fonts, brand assets,
+map geometry and data are inlined at build time. Do not add CDN scripts,
+remote stylesheets, web fonts, trackers or analytics, or any runtime
+<code>fetch</code>/XHR. The only allowed outbound requests are the user's clicks on
+citation links (<code>target=&quot;_blank&quot; rel=&quot;noopener&quot;</code>).</li>
+<li>Keep it <strong>accessible</strong>: semantic headings, labels for controls, visible focus,
+keyboard-operable filters, colour contrast that does not rely on colour alone,
+and a responsive layout at mobile width.</li>
+<li><strong>Provenance in the UI</strong>: a published rate must be traceable to its month,
+state (published/NDA/invalid) and source row. If you add a number, give it a
+receipt.</li>
+<li>Design tokens and components follow the BetterGovPH open-data language; adapt
+them rather than inventing a parallel style. Brand assets remain BetterGovPH
+property (see <a href="notice.html">NOTICE.md</a>).</li>
+</ul>
+<h2 class="has-anchor" id="api-and-schema-rules">API and schema rules<a class="h-anchor" href="#api-and-schema-rules" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li>The contract is <code>draft/openapi.yaml</code> (OpenAPI 3.1). Keep it valid and keep
+examples consistent with real generated values — no invented endpoints. Update
+<code>draft/api-docs.md</code> in the same change and regenerate the static API.</li>
+<li>The static JSON API under <code>draft/api/v1/</code> is generated by <code>tools/build-api.py</code> from the
+same published data; change the builder, not the JSON files. Keep it and the contract in
+sync (<code>draft/api/v1/openapi.json</code> mirrors the YAML document).</li>
+<li>Responses use the documented <code>{meta, data, next_cursor}</code> envelope; every
+response carries dataset version, source and attribution metadata.</li>
+<li>The canonical geography is PSA PSGC (10-digit); the canonical entity ID is
+<code>utility_code</code>. Do not introduce a second ID scheme.</li>
+<li>Schema changes must update <code>draft/data-model.md</code>, the OpenAPI document and the page's API
+preview together.</li>
+</ul>
+<h2 class="has-anchor" id="before-you-open-a-pull-request">Before you open a pull request<a class="h-anchor" href="#before-you-open-a-pull-request" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><code>python3 tools/ingest-doe-rates.py</code> — confirm <code>validation.json</code> reports
+<code>&quot;passed&quot;: true</code> (17/17) and review the diff in <code>data/seed/</code>.</li>
+<li><code>python3 tools/build-map-page.py</code> — rebuild and inspect the page.</li>
+<li><code>python3 tools/build-api.py</code> — rebuild the static JSON API and confirm only intended
+payload changes appear.</li>
+<li><code>python3 tools/build-preview.py</code> — rebuild the local review hub.</li>
+<li><code>python3 tools/validate.py</code> — the offline repository validation must pass (use
+<code>--check-page</code> when you change the page builder).</li>
+<li><code>npm ci &amp;&amp; node tests/qa.mjs</code> — the browser QA suite must pass (CI runs the same checks
+on every PR). Paste the result in the PR.</li>
+<li>Confirm the page makes <strong>no external requests</strong> and has no console errors
+(browser devtools), and that it renders on desktop and mobile widths.</li>
+<li>Update the docs/files your change affects: <code>README.md</code>, <code>data/seed/README.md</code>,
+<code>draft/api-docs.md</code> (API changes), <code>NOTICE.md</code> (third-party assets/data),
+<code>draft/assets/README.md</code> (asset provenance), the API docs/spec for contract changes,
+and <code>draft/frontend.md</code> / <code>draft/backend.md</code> / <code>draft/component-map.md</code> when the
+architecture, build commands or component map change. If you add or rename a
+builder, path or command, update the matching <code>AGENTS.md</code> map too.</li>
+<li>Ensure <code>git status --short</code> lists only your intended files. <code>preview/</code>,
+<code>node_modules/</code>, screenshots and the unrelated root <code>index.html</code> /
+<code>screenshots/</code> are not part of this project — leave them out.</li>
+</ol>
+<p>Use clear, imperative commit messages; explain <em>what changed and why</em> in the PR
+body, and call out any data change with its source receipt. Small, focused PRs
+are easier to review and to trace. CI runs <code>tools/validate.py</code> (including the
+deterministic-rebuild check) and <code>tests/qa.mjs</code> on every push and pull request to
+<code>main</code>, so a green local run is a good predictor of a green PR.</p>
+<h2 class="has-anchor" id="reporting-data-problems-and-security-issues">Reporting data problems and security issues<a class="h-anchor" href="#reporting-data-problems-and-security-issues" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ul>
+<li><strong>Data errors</strong> (a rate that does not match the source workbook): normal
+issue with utility, month, class, value and the source row if known.</li>
+<li><strong>Security issues</strong>: follow <a href="security.html">SECURITY.md</a>; do not open a public
+issue.</li>
+<li><strong>Licence/attribution concerns</strong>: raise them with the maintainers — NOTICE
+corrections are always in scope.</li>
+</ul>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="api-docs.html"><span class="label">Previous</span><span class="pager-title">&larr; API guide</span></a><a class="pager-link pager-next" href="changelog.html"><span class="label">Next</span><span class="pager-title">Changelog &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#development-setup">Development setup</a><a class="toc-link" href="#build-from-source">Build from source</a><a class="toc-link" href="#repository-map">Repository map</a><a class="toc-link" href="#data-rules-non-negotiable">Data rules (non-negotiable)</a><a class="toc-link" href="#page-rules">Page rules</a><a class="toc-link" href="#api-and-schema-rules">API and schema rules</a><a class="toc-link" href="#before-you-open-a-pull-request">Before you open a pull request</a><a class="toc-link" href="#reporting-data-problems-and-security-issues">Reporting data problems and security issues</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

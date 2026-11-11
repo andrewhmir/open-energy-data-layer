@@ -1,0 +1,393 @@
+{
+ "dataset": "SRC-DOE-RATES",
+ "retrieved_at": "2026-11-10T17:00:34+08:00",
+ "latest_month": "2026-10",
+ "prev_month": "2026-09",
+ "anchor_month": "2026-06",
+ "checks": [
+  {
+   "check": "DU row count per tab",
+   "ok": true,
+   "got": 141,
+   "expected": 141
+  },
+  {
+   "check": "month columns (Jan-18 → Nov-26)",
+   "ok": true,
+   "got": 107,
+   "expected": 107
+  },
+  {
+   "check": "first month",
+   "ok": true,
+   "got": "2018-01",
+   "expected": "2018-01"
+  },
+  {
+   "check": "latest month with published data",
+   "ok": true,
+   "got": "2026-10",
+   "expected": "2026-10"
+  },
+  {
+   "check": "reference anchor month present",
+   "ok": true,
+   "got": "2026-06",
+   "expected": "2026-06"
+  },
+  {
+   "check": "distinct DU/EC names across tabs (reference count 142)",
+   "ok": true,
+   "got": 142,
+   "expected": 142
+  },
+  {
+   "check": "off-grid DUs (unanimous)",
+   "ok": true,
+   "got": 21,
+   "expected": 21
+  },
+  {
+   "check": "grid-status conflicts",
+   "ok": true,
+   "got": 2,
+   "expected": 2
+  },
+  {
+   "check": "region utility counts sum",
+   "ok": true,
+   "got": 141,
+   "expected": 141
+  },
+  {
+   "check": "Jun-2026 Meralco residential",
+   "ok": true,
+   "got": 14.48,
+   "expected": 14.48
+  },
+  {
+   "check": "Jun-2026 SOLECO residential",
+   "ok": true,
+   "got": 16.57,
+   "expected": 16.57
+  },
+  {
+   "check": "Jun-2026 BISELCO residential",
+   "ok": true,
+   "got": 24.92,
+   "expected": 24.92
+  },
+  {
+   "check": "Jun-2026 reporting DUs",
+   "ok": true,
+   "got": 127,
+   "expected": 127
+  },
+  {
+   "check": "Jun-2026 simple mean",
+   "ok": true,
+   "got": 12.29,
+   "expected": 12.29
+  },
+  {
+   "check": "Jun-2026 median",
+   "ok": true,
+   "got": 12.1,
+   "expected": 12.1
+  },
+  {
+   "check": "Jun-2026 max = BISELCO 24.92",
+   "ok": true,
+   "got": 24.92,
+   "expected": 24.92
+  },
+  {
+   "check": "SOLECO May→Jun 2026 change ~ +32.2%",
+   "ok": true,
+   "got": 32.2,
+   "expected": 32.2
+  }
+ ],
+ "passed": true,
+ "coverage_checks": [
+  {
+   "check": "service area rows present",
+   "ok": true,
+   "detail": "1665 rows"
+  },
+  {
+   "check": "every utility has a coverage block",
+   "ok": true,
+   "detail": "141 of 141"
+  },
+  {
+   "check": "utilities with LGU-level coverage",
+   "ok": true,
+   "detail": "141 of 141"
+  },
+  {
+   "check": "MERALCO service-area LGUs (RA 12146)",
+   "ok": true,
+   "detail": "108"
+  },
+  {
+   "check": "MERALCO Pampanga barangays",
+   "ok": true,
+   "detail": "17"
+  },
+  {
+   "check": "coverage regions are valid PSGC regions",
+   "ok": true
+  },
+  {
+   "check": "each utility's DOE region is inside its service area, or the PSGC 3Q 2026 reassignment is documented",
+   "ok": true,
+   "detail": "3 documented reassignment(s)"
+  }
+ ],
+ "coverage": {
+  "utilities_total": 141,
+  "utilities_with_lgu_coverage": 141,
+  "utilities_region_only": 0,
+  "lgu_rows": 1648,
+  "barangay_rows": 17,
+  "region_rows": 0,
+  "distinct_lgus": 1602,
+  "multi_region_utilities": [
+   "AURELCO",
+   "BASELCO",
+   "CAGELCO-II",
+   "FIBECO",
+   "LASURECO",
+   "MERALCO",
+   "PPALMA",
+   "QUEZELCO-I",
+   "SUKELCO",
+   "ZAMSURECO-I"
+  ],
+  "sources": [
+   "SRC-OSM-OPERATORS",
+   "SRC-WIKI-DUS",
+   "SRC-RA-12146",
+   "SRC-DOE-RATES"
+  ]
+ },
+ "conflicts": [
+  {
+   "type": "region_conflict",
+   "source_row": 33,
+   "canonical": "BARMM",
+   "claims": {
+    "BARMM": [
+     "residential",
+     "commercial",
+     "generation"
+    ],
+    "Region 12": [
+     "industrial"
+    ]
+   },
+   "note": "resolved by majority"
+  },
+  {
+   "type": "island_conflict",
+   "source_row": 33,
+   "canonical": "Mindanao",
+   "claims": {
+    "residential": "Mindanao",
+    "commercial": "Mindanao",
+    "industrial": "BARMM",
+    "generation": "Mindanao"
+   },
+   "note": "island label contradicts the region's island group; region mapping used"
+  },
+  {
+   "type": "grid_conflict",
+   "source_row": 122,
+   "canonical": "CONFLICT",
+   "claims": {
+    "ONGRID": [
+     "residential",
+     "generation"
+    ],
+    "OFFGRID": [
+     "commercial",
+     "industrial"
+    ]
+   },
+   "note": "2–2 split between ONGRID and OFFGRID — published as CONFLICT, not guessed"
+  },
+  {
+   "type": "grid_conflict",
+   "source_row": 123,
+   "canonical": "CONFLICT",
+   "claims": {
+    "ONGRID": [
+     "residential",
+     "generation"
+    ],
+    "OFFGRID": [
+     "commercial",
+     "industrial"
+    ]
+   },
+   "note": "2–2 split between ONGRID and OFFGRID — published as CONFLICT, not guessed"
+  },
+  {
+   "type": "name_variant",
+   "source_row": 166,
+   "canonical": "DANECO/NORDECO",
+   "variants": {
+    "generation": "DANECO"
+   },
+   "note": "same workbook row is labelled differently in another tab"
+  }
+ ],
+ "tabs": [
+  {
+   "gid": 0,
+   "class": "residential",
+   "sha256": "17c746168e77f045891d5d3c7ade147b172396de952ae88952ca04b30bb35718",
+   "bytes": 106827,
+   "rows": 141,
+   "months": 107,
+   "unparseable_cells": [
+    {
+     "source_row": 112,
+     "month": "2026-10",
+     "raw": "Jan-16"
+    }
+   ]
+  },
+  {
+   "gid": 441532959,
+   "class": "commercial",
+   "sha256": "55c8ccc0f2b7a3269e586f5711e9f664d74221cc32593fce34307c56478f639c",
+   "bytes": 102822,
+   "rows": 141,
+   "months": 107,
+   "unparseable_cells": []
+  },
+  {
+   "gid": 1244383053,
+   "class": "industrial",
+   "sha256": "96e8f42e28e9b55bf05f4e49817580901c96c969fd6b60873fd2655593de5462",
+   "bytes": 99862,
+   "rows": 141,
+   "months": 107,
+   "unparseable_cells": []
+  },
+  {
+   "gid": 714337242,
+   "class": "generation",
+   "sha256": "66002d90c2b3fd8d5cfd6b96a306863ad8512a609ef6056084331524514efe8b",
+   "bytes": 97863,
+   "rows": 141,
+   "months": 107,
+   "unparseable_cells": []
+  }
+ ],
+ "statistics": {
+  "latest": {
+   "residential": {
+    "month": "2026-10",
+    "reporting": 113,
+    "nda": 27,
+    "missing": 0,
+    "invalid": 1,
+    "total": 141,
+    "mean": 13.23,
+    "median": 12.72,
+    "min": 5.33,
+    "max": 19.36
+   },
+   "commercial": {
+    "month": "2026-10",
+    "reporting": 87,
+    "nda": 54,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 12.35,
+    "median": 12.1,
+    "min": 4.51,
+    "max": 16.18
+   },
+   "industrial": {
+    "month": "2026-10",
+    "reporting": 84,
+    "nda": 57,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 10.49,
+    "median": 10.55,
+    "min": 4.42,
+    "max": 14.01
+   },
+   "generation": {
+    "month": "2026-10",
+    "reporting": 96,
+    "nda": 45,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 7.47,
+    "median": 7.29,
+    "min": 2.67,
+    "max": 10.86
+   }
+  },
+  "anchor": {
+   "residential": {
+    "month": "2026-06",
+    "reporting": 127,
+    "nda": 14,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 12.29,
+    "median": 12.1,
+    "min": 5.43,
+    "max": 24.92
+   },
+   "commercial": {
+    "month": "2026-06",
+    "reporting": 105,
+    "nda": 36,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 11.26,
+    "median": 11.34,
+    "min": 4.61,
+    "max": 16.74
+   },
+   "industrial": {
+    "month": "2026-06",
+    "reporting": 94,
+    "nda": 47,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 9.59,
+    "median": 9.48,
+    "min": 4.53,
+    "max": 13.13
+   },
+   "generation": {
+    "month": "2026-06",
+    "reporting": 117,
+    "nda": 24,
+    "missing": 0,
+    "invalid": 0,
+    "total": 141,
+    "mean": 7.01,
+    "median": 6.84,
+    "min": 2.94,
+    "max": 16.83
+   }
+  }
+ },
+ "raw_snapshots": "data/raw/doe-rates/2026-11-10/"
+}

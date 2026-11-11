@@ -1,0 +1,427 @@
+{
+  "name": "Open Energy Data Layer — Philippine Electricity Rates Data API",
+  "description": "Machine-readable catalog of the static energy-data API: endpoints, files and checksums, source data files and disclaimers. Consumed by the page builder and by anyone who wants to discover the API without parsing the OpenAPI document.",
+  "api_version": "1.0",
+  "dataset_version": "2026-11-10",
+  "generated_at": "2026-11-10T17:00:34+08:00",
+  "base_url_hint": "api/v1/",
+  "openapi": {
+    "yaml": "openapi.yaml",
+    "json": "api/v1/openapi.json"
+  },
+  "docs": {
+    "api": "api-docs.md",
+    "data_model": "data-model.md"
+  },
+  "source": {
+    "id": "SRC-DOE-RATES",
+    "publisher": "Department of Energy (DOE)",
+    "title": "Electricity Rates & Power Market Monitor",
+    "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+    "retrieved_at": "2026-11-10T17:00:34+08:00",
+    "extraction_method": "csv_export"
+  },
+  "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+  "citation": "Open Energy Data Layer (2026). Open Energy Data Layer: Philippine electricity rates [Data set, v1.0]. Source: Department of Energy (DOE), Electricity Rates & Power Market Monitor, retrieved 2026-11-10. Service-area coverage: OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher. No upstream licence is asserted for the DOE rate data; normalise and verify against the DOE workbook before citing.",
+  "data_files": [
+    {
+      "name": "utilities.csv",
+      "path": "../data/seed/utilities.csv",
+      "rows": 141,
+      "bytes": 30091,
+      "sha256": "3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912"
+    },
+    {
+      "name": "regions.csv",
+      "path": "../data/seed/regions.csv",
+      "rows": 18,
+      "bytes": 2738,
+      "sha256": "ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d"
+    },
+    {
+      "name": "rates_monthly.csv",
+      "path": "../data/seed/rates_monthly.csv",
+      "rows": 60348,
+      "bytes": 6550268,
+      "sha256": "07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373"
+    },
+    {
+      "name": "sources.csv",
+      "path": "../data/seed/sources.csv",
+      "rows": 4,
+      "bytes": 2780,
+      "sha256": "36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a"
+    },
+    {
+      "name": "service_areas.csv",
+      "path": "../data/seed/service_areas.csv",
+      "rows": 1665,
+      "bytes": 152768,
+      "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+    },
+    {
+      "name": "service_area_sources.csv",
+      "path": "../data/seed/service_area_sources.csv",
+      "rows": 4,
+      "bytes": 2584,
+      "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
+    }
+  ],
+  "disclaimers": [
+    {
+      "id": "disclaimer-unofficial",
+      "title": "Unofficial compilation.",
+      "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+      "url": "#disclaimers"
+    },
+    {
+      "id": "disclaimer-licence",
+      "title": "Upstream reuse terms unconfirmed.",
+      "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": "#disclaimers"
+    },
+    {
+      "id": "disclaimer-nda",
+      "title": "NDA, missing and invalid are preserved, never imputed.",
+      "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+      "url": "#disclaimers"
+    },
+    {
+      "id": "disclaimer-rates",
+      "title": "Rates are monthly averages as published.",
+      "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+      "url": "#disclaimers"
+    },
+    {
+      "id": "disclaimer-coverage",
+      "title": "Coverage is derived data, not a DOE rate publication.",
+      "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+      "url": "#disclaimers"
+    }
+  ],
+  "counts": {
+    "endpoints": 19,
+    "data_files": 6,
+    "utilities": 141,
+    "regions": 18
+  },
+  "service_area": {
+    "coverage": {
+      "utilities_total": 141,
+      "utilities_with_lgu_coverage": 141,
+      "utilities_region_only": 0,
+      "lgu_rows": 1648,
+      "barangay_rows": 17,
+      "region_rows": 0,
+      "distinct_lgus": 1602,
+      "multi_region_utilities": [
+        "AURELCO",
+        "BASELCO",
+        "CAGELCO-II",
+        "FIBECO",
+        "LASURECO",
+        "MERALCO",
+        "PPALMA",
+        "QUEZELCO-I",
+        "SUKELCO",
+        "ZAMSURECO-I"
+      ],
+      "sources": [
+        "SRC-OSM-OPERATORS",
+        "SRC-WIKI-DUS",
+        "SRC-RA-12146",
+        "SRC-DOE-RATES"
+      ]
+    },
+    "detail_counts": {
+      "total": 141,
+      "lgu": 141,
+      "barangay": 0,
+      "region": 0
+    },
+    "rows_by_area_level": {
+      "lgu": 1648,
+      "barangay": 17,
+      "region": 0
+    },
+    "sources": [
+      {
+        "source_id": "SRC-OSM-OPERATORS",
+        "publisher": "OpenStreetMap Wiki contributors",
+        "short_title": "OpenStreetMap Wiki operator table",
+        "licence": {
+          "name": "CC BY-SA 2.0",
+          "url": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "note": "Attribution required; share-alike applies to service-area coverage derived from this source."
+        }
+      },
+      {
+        "source_id": "SRC-WIKI-DUS",
+        "publisher": "Wikipedia contributors",
+        "short_title": "Wikipedia distribution-utility list",
+        "licence": {
+          "name": "CC BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "note": "Attribution required; share-alike applies to service-area coverage derived from this source."
+        }
+      },
+      {
+        "source_id": "SRC-RA-12146",
+        "publisher": "Congress of the Philippines / Supreme Court e-Library",
+        "short_title": "Republic Act No. 12146 (Meralco franchise)",
+        "licence": {
+          "name": "Public document (Philippine law)",
+          "url": null,
+          "note": "Works of the Government are not subject to copyright (IP Code, Sec. 176); cite the law."
+        }
+      },
+      {
+        "source_id": "SRC-DOE-RATES",
+        "publisher": "Department of Energy (DOE)",
+        "short_title": "DOE workbook region column",
+        "licence": {
+          "name": "Not stated by publisher",
+          "url": null,
+          "note": "The DOE workbook states no explicit reuse licence; terms are to be confirmed with DOE. Used only as a region-level fallback for coverage."
+        }
+      }
+    ],
+    "checks": {
+      "checks": 7,
+      "passed": 7,
+      "failed": 0
+    },
+    "files": {
+      "service_areas.csv": {
+        "rows": 1665,
+        "bytes": 152768,
+        "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+      },
+      "service_area_sources.csv": {
+        "rows": 4,
+        "bytes": 2584,
+        "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
+      }
+    },
+    "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+  },
+  "endpoints": [
+    {
+      "tag": "meta",
+      "method": "GET",
+      "path": "/v1/health.json",
+      "file": "api/v1/health.json",
+      "summary": "Snapshot health: build identity and data-quality check results",
+      "description": "Build identity plus the result of the 17 recorded data-quality checks. \"ok\" means the snapshot is internally consistent, not that a live service is up.",
+      "count": 1,
+      "size_bytes": 6101,
+      "sha256": "0cdfdf33d6717e8ea83eb9d02e1e916eed6906bd117904f0b88a9c5bb6da7c84"
+    },
+    {
+      "tag": "meta",
+      "method": "GET",
+      "path": "/v1/meta.json",
+      "file": "api/v1/meta.json",
+      "summary": "Dataset metadata: source, licence, coverage, status vocabulary, checksums",
+      "description": "One document with the full dataset metadata: coverage, units, identifier schemes, the status vocabulary, the source record, licence status, disclaimers, SHA-256 checksums of the four seed CSVs and links to every machine-readable artefact.",
+      "count": 1,
+      "size_bytes": 25636,
+      "sha256": "792ba3e02d19230083c7cb4981f5fd408a05c0a4bbca0c5b55b9d419bada20a4"
+    },
+    {
+      "tag": "meta",
+      "method": "GET",
+      "path": "/v1/months.json",
+      "file": "api/v1/months.json",
+      "summary": "Month coverage 2018-01 to 2026-11 with per-class state counts",
+      "description": "The 107 source month columns, the latest published month (2026-10), and for every customer class the count of published / NDA / missing / invalid cells in each month.",
+      "count": 107,
+      "size_bytes": 31020,
+      "sha256": "1b2b96142457efe59835cdb61e8111e3141beadf3f25bd3b655349d946cfb925"
+    },
+    {
+      "tag": "quality",
+      "method": "GET",
+      "path": "/v1/conflicts.json",
+      "file": "api/v1/conflicts.json",
+      "summary": "Source disagreements, with the resolution rule and unresolved splits",
+      "description": "Rows where the workbook's four tabs disagree: region, island-group and grid-connection conflicts, plus name variants. Resolved by majority; a 2-2 grid split is published as CONFLICT rather than guessed.",
+      "count": 5,
+      "size_bytes": 6701,
+      "sha256": "b3a470a8d74bd8b2780501d4209f8d5abae1f46c115d5940267339436fc41566"
+    },
+    {
+      "tag": "quality",
+      "method": "GET",
+      "path": "/v1/validation.json",
+      "file": "api/v1/validation.json",
+      "summary": "The 17 data-quality checks run against the retrieved workbook",
+      "description": "Row counts, month coverage, spot values, derived aggregates and checksum checks, as run at retrieval time. Published verbatim; any failure would set health status to degraded.",
+      "count": 17,
+      "size_bytes": 9184,
+      "sha256": "94fb5a538c50dfeb51a6ec2f35cb6e465754ff0fedf6e4817c89a9b0e9d19a13"
+    },
+    {
+      "tag": "rates",
+      "method": "GET",
+      "path": "/v1/rates/latest.json",
+      "file": "api/v1/rates/latest.json",
+      "summary": "Index of the latest published month per customer class",
+      "description": "Points at the four per-class files for 2026-10 with their stats, sizes and checksums. Start here for a single class; use utilities/<CODE>.json for one utility's history.",
+      "count": 4,
+      "size_bytes": 7080,
+      "sha256": "a0f3a3a1e984908d4d6d2a9ef708d0ce9d52c18167ba1cc62540b57bfa7629e7"
+    },
+    {
+      "tag": "rates",
+      "method": "GET",
+      "path": "/v1/rates/latest/commercial.json",
+      "file": "api/v1/rates/latest/commercial.json",
+      "summary": "Latest published commercial rate per utility (2026-10)",
+      "description": "The 2026-10 commercial cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
+      "count": 141,
+      "size_bytes": 43223,
+      "sha256": "8efa094281963ba8ab7144494b6e06132bfd52da6a8000d3b8f03cad9644437e"
+    },
+    {
+      "tag": "rates",
+      "method": "GET",
+      "path": "/v1/rates/latest/generation.json",
+      "file": "api/v1/rates/latest/generation.json",
+      "summary": "Latest published generation rate per utility (2026-10)",
+      "description": "The 2026-10 generation cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
+      "count": 141,
+      "size_bytes": 43138,
+      "sha256": "38347abcb7cad7c0f82ccffd4c9f40deb7e2e0b046c905052b6d0a842f6cdd3b"
+    },
+    {
+      "tag": "rates",
+      "method": "GET",
+      "path": "/v1/rates/latest/industrial.json",
+      "file": "api/v1/rates/latest/industrial.json",
+      "summary": "Latest published industrial rate per utility (2026-10)",
+      "description": "The 2026-10 industrial cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
+      "count": 141,
+      "size_bytes": 43164,
+      "sha256": "65f3557e4eaa8bd8bc05d480db9de6e139e65d15c9bc25f775f1b6e5b5dadaa1"
+    },
+    {
+      "tag": "rates",
+      "method": "GET",
+      "path": "/v1/rates/latest/residential.json",
+      "file": "api/v1/rates/latest/residential.json",
+      "summary": "Latest published residential rate per utility (2026-10)",
+      "description": "The 2026-10 residential cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
+      "count": 141,
+      "size_bytes": 43440,
+      "sha256": "590d92705cfe809058ff036ea6bf859e61acc5838764ff8c39ed1695741229fa"
+    },
+    {
+      "tag": "utilities",
+      "method": "GET",
+      "path": "/v1/utilities.json",
+      "file": "api/v1/utilities.json",
+      "summary": "Utility / electric-cooperative registry (141 entities)",
+      "description": "Identity, type, grid connection, PSGC region, data status and latest/previous month values for all 141 utilities. Codes discovered here resolve to utilities/<CODE>.json.",
+      "count": 141,
+      "size_bytes": 175415,
+      "sha256": "3e7cca8840f7455f2570a9fd3607a83e026e98550984cc448ac8716204ae226c"
+    },
+    {
+      "tag": "utilities",
+      "method": "GET",
+      "path": "/v1/utilities/MERALCO.json",
+      "file": "api/v1/utilities/MERALCO.json",
+      "summary": "One utility with its full monthly series per customer class",
+      "description": "Registry record plus all four customer-class series, grouped by explicit source state (published / nda / missing / invalid) for 2018-01 to 2026-11.",
+      "count": 141,
+      "size_bytes": 26487,
+      "sha256": "37abeb5c5f7f0c018c52cc30b7da6611cca833b13f14fc69a7074449add73005",
+      "file_pattern": "api/v1/utilities/{code}.json",
+      "file_count": 141
+    },
+    {
+      "tag": "service-areas",
+      "method": "GET",
+      "path": "/v1/service-areas.json",
+      "file": "api/v1/service-areas.json",
+      "summary": "Provider service-area coverage registry with source provenance",
+      "description": "One item per utility with a compact coverage summary, plus the coverage-source registry (franchise law, DOE fallback, OSM Wiki / Wikipedia tables) and the aggregate counts. This is derived data, not a DOE rate publication.",
+      "count": 141,
+      "size_bytes": 74884,
+      "sha256": "d51aad21dacf52738641b448323b3f1eee5039380b55e4f45339e8e28a600512"
+    },
+    {
+      "tag": "service-areas",
+      "method": "GET",
+      "path": "/v1/service-areas/MERALCO.json",
+      "file": "api/v1/service-areas/MERALCO.json",
+      "summary": "One utility's full service-area coverage rows",
+      "description": "The published coverage rows for one utility (LGU / barangay / region-fallback rows) with the PSGC hierarchy, a per-row source_id and the source records. One file per utility (api/v1/service-areas/<CODE>.json).",
+      "count": 141,
+      "size_bytes": 72982,
+      "sha256": "0d7e1ff383c30882273d8edcd07421fa87710613236a362f65f910a0ce3bd864",
+      "file_pattern": "api/v1/service-areas/{code}.json",
+      "file_count": 141
+    },
+    {
+      "tag": "regions",
+      "method": "GET",
+      "path": "/v1/regions.json",
+      "file": "api/v1/regions.json",
+      "summary": "18 PSGC regions with latest-month aggregates",
+      "description": "Latest-month medians, means and ranges per customer class, reporting counts, island group and the DOE workbook's region label for all 18 regions.",
+      "count": 18,
+      "size_bytes": 12651,
+      "sha256": "5d6ee73284de424a2e34cc6f3c6a2516a8a19aeb89515680139f159707d24ccf"
+    },
+    {
+      "tag": "regions",
+      "method": "GET",
+      "path": "/v1/regions/1300000000.json",
+      "file": "api/v1/regions/1300000000.json",
+      "summary": "One region plus its member utilities",
+      "description": "One region's aggregates plus every member utility with its latest-month values and states.",
+      "count": 18,
+      "size_bytes": 5709,
+      "sha256": "437733cb15baecbf30ae54c1927ec73a47718a31f29eeba35830b8e0a6df49c6",
+      "file_pattern": "api/v1/regions/{psgc}.json",
+      "file_count": 18
+    },
+    {
+      "tag": "changes",
+      "method": "GET",
+      "path": "/v1/changes/latest.json",
+      "file": "api/v1/changes/latest.json",
+      "summary": "What moved between 2026-09 and 2026-10",
+      "description": "Month-over-month movements for utility/class pairs published in both months (largest absolute change first), plus cells whose explicit state changed between the two months.",
+      "count": 374,
+      "size_bytes": 113722,
+      "sha256": "1c8e9e241140c9ec2476925d6b891713c812e30efe2b76b44e4ee2d7d2fd28ae"
+    },
+    {
+      "tag": "sources",
+      "method": "GET",
+      "path": "/v1/sources.json",
+      "file": "api/v1/sources.json",
+      "summary": "Source registry: the DOE workbook and its checksums",
+      "description": "The single upstream source record: canonical DOE URL, workbook URL and sheet id, retrieval timestamp and extraction method, per-tab SHA-256 and byte counts, archived raw snapshots, licence status and provenance notes.",
+      "count": 1,
+      "size_bytes": 14005,
+      "sha256": "d3376d73281d90284e4703de278d65c3e9e76fa78e965d7949c1ed2c63b77fc8"
+    },
+    {
+      "tag": "sources",
+      "method": "GET",
+      "path": "/v1/sources/SRC-DOE-RATES.json",
+      "file": "api/v1/sources/SRC-DOE-RATES.json",
+      "summary": "One source record",
+      "description": "The full source record for one source_id (currently SRC-DOE-RATES). Unknown ids are not served by this static snapshot. One file per source (api/v1/sources/<source_id>.json).",
+      "count": 1,
+      "size_bytes": 8037,
+      "sha256": "ffba9cebf2a65780aee382f91df05bd676f67d79bb9d3bdb73a68d5baa36ec35",
+      "file_pattern": "api/v1/sources/{source_id}.json",
+      "file_count": 1
+    }
+  ]
+}

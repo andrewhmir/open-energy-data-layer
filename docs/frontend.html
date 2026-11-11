@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b4fd9">
+<title>Frontend architecture — Open Energy Data Layer — documentation</title>
+<meta name="description" content="The three browser-facing surfaces and how they are built: build-time data injection, design tokens, runtime JS modules, state and deep links, docs-site search…">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="page masthead-top-inner">
+      <span class="muted">Documentation &middot; dataset 2026-11-10</span>
+      <span class="masthead-links">
+        <a href="../index.html">Data page</a>
+        <a href="../api/v1/index.json">API index</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </span>
+    </div>
+  </div>
+  <div class="page masthead-main">
+    <a class="masthead-title" href="index.html">
+      <img class="masthead-mark" src="assets/emblem.svg" width="44" height="44"
+           alt="" aria-hidden="true">
+      <span>
+        <span class="masthead-kicker">BetterGov.ph &middot; open energy data &middot; docs</span>
+        <span class="masthead-name">Philippine electricity rates</span>
+      </span>
+    </a>
+    <div class="masthead-with">
+      <span class="label">Documentation</span>
+      <a href="index.html">All docs &amp; guides</a>
+    </div>
+  </div>
+</header>
+<nav class="subnav" aria-label="Site sections">
+  <div class="page subnav-inner">
+    <button class="docs-menu-btn" type="button" id="docs-menu-btn"
+            aria-expanded="false" aria-controls="docs-sidebar">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg><span>Docs menu</span>
+    </button>
+    <a href="index.html">Docs home</a>
+    <a href="readme.html">README</a>
+    <a href="api-docs.html">API guide</a>
+    <a href="../index.html">Data page</a>
+    <a href="../api/v1/index.json">JSON API</a>
+    <span class="subnav-right">
+      <span class="subnav-meta">Dataset 2026-11-10</span>
+      <button class="search-open" type="button" id="docs-search-open"
+              aria-haspopup="dialog" aria-controls="docs-search-dialog"
+              aria-keyshortcuts="Control+K Meta+K">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><span class="search-open-label">Search docs</span>
+        <kbd class="search-open-kbd">Ctrl K</kbd>
+      </button>
+    </span>
+  </div>
+</nav>
+<div class="docs-shell page">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+  <aside class="docs-sidebar" id="docs-sidebar" aria-label="Documentation navigation">
+    <div class="sidebar-inner">
+      <div class="sidebar-search">
+        <label class="label" for="doc-search">Filter docs</label>
+        <div class="search-field">
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+          <input id="doc-search" type="search" placeholder="Filter documentation&hellip;"
+                 autocomplete="off" spellcheck="false">
+          <button type="button" class="search-clear" id="doc-search-clear" aria-label="Clear filter"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        </div>
+        <p class="search-hint" id="doc-search-hint" aria-live="polite"></p>
+      </div>
+      <nav id="doc-nav" class="doc-nav" aria-label="Documentation"><a class="nav-home" href="index.html"><span class="nav-home-title">Documentation home</span><span class="nav-home-sub">20 pages</span></a><div class="nav-group" data-group="overview"><p class="nav-group-title" id="group-nav-overview">Overview</p><ul role="list"><li><a href="readme.html" data-title="Project README"><span class="nav-doc-title">Project README</span><span class="nav-doc-meta">426 lines</span></a></li></ul></div><div class="nav-group" data-group="architecture"><p class="nav-group-title" id="group-nav-architecture">Architecture</p><ul role="list"><li><a href="frontend.html" class="current" aria-current="page" data-title="Frontend architecture"><span class="nav-doc-title">Frontend architecture</span><span class="nav-doc-meta">331 lines</span></a></li><li><a href="backend.html" data-title="Backend &amp; pipeline architecture"><span class="nav-doc-title">Backend &amp; pipeline architecture</span><span class="nav-doc-meta">350 lines</span></a></li><li><a href="component-map.html" data-title="Component map &amp; agent guide"><span class="nav-doc-title">Component map &amp; agent guide</span><span class="nav-doc-meta">134 lines</span></a></li></ul></div><div class="nav-group" data-group="data"><p class="nav-group-title" id="group-nav-data">Data</p><ul role="list"><li><a href="data-model.html" data-title="Data model"><span class="nav-doc-title">Data model</span><span class="nav-doc-meta">488 lines</span></a></li><li><a href="data-seed.html" data-title="Seed data dictionary"><span class="nav-doc-title">Seed data dictionary</span><span class="nav-doc-meta">154 lines</span></a></li><li><a href="coverage-method.html" data-title="Service-area extraction"><span class="nav-doc-title">Service-area extraction</span><span class="nav-doc-meta">555 lines</span></a></li><li><a href="assets.html" data-title="Design assets"><span class="nav-doc-title">Design assets</span><span class="nav-doc-meta">52 lines</span></a></li><li><a href="brand-assets.html" data-title="Brand &amp; UI assets"><span class="nav-doc-title">Brand &amp; UI assets</span><span class="nav-doc-meta">200 lines</span></a></li></ul></div><div class="nav-group" data-group="api"><p class="nav-group-title" id="group-nav-api">API</p><ul role="list"><li><a href="api-docs.html" data-title="API guide"><span class="nav-doc-title">API guide</span><span class="nav-doc-meta">673 lines</span></a></li></ul></div><div class="nav-group" data-group="project"><p class="nav-group-title" id="group-nav-project">Project</p><ul role="list"><li><a href="contributing.html" data-title="Contributing"><span class="nav-doc-title">Contributing</span><span class="nav-doc-meta">241 lines</span></a></li><li><a href="changelog.html" data-title="Changelog"><span class="nav-doc-title">Changelog</span><span class="nav-doc-meta">240 lines</span></a></li><li><a href="tests.html" data-title="Testing &amp; validation"><span class="nav-doc-title">Testing &amp; validation</span><span class="nav-doc-meta">301 lines</span></a></li></ul></div><div class="nav-group" data-group="research"><p class="nav-group-title" id="group-nav-research">Research</p><ul role="list"><li><a href="research-api-docs-conventions.html" data-title="Research: API docs conventions"><span class="nav-doc-title">Research: API docs conventions</span><span class="nav-doc-meta">70 lines</span></a></li><li><a href="research-api-landscape.html" data-title="Research: API landscape"><span class="nav-doc-title">Research: API landscape</span><span class="nav-doc-meta">219 lines</span></a></li><li><a href="research-data-landscape.html" data-title="Research: Data landscape"><span class="nav-doc-title">Research: Data landscape</span><span class="nav-doc-meta">367 lines</span></a></li><li><a href="research-service-areas.html" data-title="Research: Service areas"><span class="nav-doc-title">Research: Service areas</span><span class="nav-doc-meta">398 lines</span></a></li></ul></div><div class="nav-group" data-group="legal"><p class="nav-group-title" id="group-nav-legal">Legal</p><ul role="list"><li><a href="notice.html" data-title="Notices &amp; attribution"><span class="nav-doc-title">Notices &amp; attribution</span><span class="nav-doc-meta">166 lines</span></a></li><li><a href="license.html" data-title="Licence (MIT)"><span class="nav-doc-title">Licence (MIT)</span><span class="nav-doc-meta">plain text</span></a></li><li><a href="security.html" data-title="Security policy"><span class="nav-doc-title">Security policy</span><span class="nav-doc-meta">61 lines</span></a></li></ul></div></nav>
+      <div class="sidebar-foot">
+        <p class="label">Dataset</p>
+        <p class="sidebar-dataset">2026-11-10 &middot;
+          141 utilities &middot; 18 regions</p>
+        <a href="../index.html">Open the data page <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6" /></svg></a>
+      </div>
+    </div>
+  </aside>
+  <main class="docs-main" id="main">
+    
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span class="sep">/</span><a href="index.html#group-architecture">Architecture</a><span class="sep">/</span><span aria-current="page">Frontend architecture</span></nav>
+<header class="doc-head">
+  <p class="eyebrow">Architecture <span class="sep">&middot;</span> documentation</p>
+  <h1 id="frontend-architecture">Frontend architecture</h1>
+  <div class="doc-meta-row">
+    <p class="doc-meta"><code>draft/frontend.md</code> &middot; 331 lines &middot; 37 KB &middot; 4,979 words</p>
+    <div class="doc-actions">
+      <a class="button button-quiet" href="../source/draft/frontend.md" download>Download raw</a>
+      <a class="button button-quiet" href="index.html">All docs</a>
+    </div>
+  </div>
+</header>
+<article class="prose">
+
+<p>The Open Energy Data Layer has three browser-facing surfaces, all <strong>generated by Python builders</strong> in <code>tools/</code>: the single-file product page, the generated documentation site, and the local review pack that serves both in a separate review context. There is no application server and no client-side framework — every page is static HTML, CSS and vanilla JavaScript rendered from data, markdown and design assets at build time.</p>
+<p>This page is the map for changing that layer safely: where each piece is built, how data and assets are injected, how the product page's runtime state works, which ids and behaviours the QA suites pin, and which rules are non-negotiable. Read it with the repository's agent entry points — <code>AGENTS.md</code> at the repo root and <a href="component-map.html"><code>draft/component-map.md</code></a> — and the builder-by-builder map in <code>tools/AGENTS.md</code>.</p>
+<h2 class="has-anchor" id="1-frontend-surfaces-and-where-they-are-built">1. Frontend surfaces and where they are built<a class="h-anchor" href="#1-frontend-surfaces-and-where-they-are-built" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Source of truth (edit here)</th>
+<th>Generated output</th>
+<th>Served at</th>
+<th>Committed?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product page</td>
+<td><a href="../source/tools/build-map-page.py"><code>tools/build-map-page.py</code></a>, <code>data/seed/page-data.json</code>, <code>draft/assets/**</code></td>
+<td><a href="../index.html"><code>draft/map-table-prototype.html</code></a> — one self-contained file, roughly 1 MB</td>
+<td>review pack <code>/prototype.html</code> (a clean, chrome-free copy); also openable locally over <code>file://</code></td>
+<td><strong>tracked</strong>; generated — never edit</td>
+</tr>
+<tr>
+<td>Docs site</td>
+<td><a href="../source/tools/build-docs.py"><code>tools/build-docs.py</code></a> plus the registered markdown sources</td>
+<td><code>draft/docs/</code> (one HTML page per registered document + landing page) and <code>docs-manifest.json</code></td>
+<td>review pack <code>/docs/</code>; also works from <code>file://</code></td>
+<td><strong>tracked</strong>; CI fails on any diff</td>
+</tr>
+<tr>
+<td>Review pack</td>
+<td><a href="../source/tools/build-preview.py"><code>tools/build-preview.py</code></a> plus the two surfaces above and the data/contract files</td>
+<td><code>preview/</code> — submission hub, submission pages, neutral platform review copies, <code>files/</code> tree and zip</td>
+<td><code>https://devvm1.tailf19a1a.ts.net/</code> on the tailnet (HTTPS; also port 8099), not the public internet</td>
+<td><strong>gitignored</strong> — never commit</td>
+</tr>
+<tr>
+<td>Static JSON API (supporting data, not a UI)</td>
+<td><code>tools/build-api.py</code> + <a href="../openapi.yaml"><code>draft/openapi.yaml</code></a></td>
+<td><code>draft/api/v1/**</code></td>
+<td>linked from the page and the docs; served under pack <code>/files/draft/api/v1/</code></td>
+<td><strong>tracked</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Three consequences shape every frontend change:</p>
+<ul>
+<li><strong>Tracked output means reproducibility is a contract.</strong> CI rebuilds <code>draft/api/</code> and <code>draft/docs/</code> and fails on any diff; <code>python3 tools/validate.py --check-page</code> copies the tree without <code>.git</code>, <code>node_modules</code> and <code>preview/</code>, rebuilds the page twice and compares it byte-for-byte with the committed file.</li>
+<li><strong><code>preview/</code> is disposable.</strong> It is rebuilt from tracked artefacts and is rebuilt last in the chain. Never treat a page under <code>preview/</code> as source.</li>
+<li><strong>Other workspace files are not part of the product.</strong> The repository-root <code>index.html</code> and <code>screenshots/</code> are unrelated files in this workspace; do not link them into a surface (see the &quot;unrelated files&quot; note in <a href="contributing.html"><code>CONTRIBUTING.md</code></a>).</li>
+</ul>
+<h2 class="has-anchor" id="2-product-page-anatomy">2. Product-page anatomy<a class="h-anchor" href="#2-product-page-anatomy" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="21-build-time-data-injection">2.1 Build-time data injection<a class="h-anchor" href="#21-build-time-data-injection" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The page has no runtime data fetches: <code>tools/build-map-page.py</code> reads the seed payload, the geometry, the design assets and (optionally) the generated static API, then writes one HTML file with <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> inlined.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">data/seed/page-data.json ──────────────┐
+draft/assets/geo.json ─────────────────┤
+draft/assets/coverage-geo.json ────────┤   tools/build-map-page.py            draft/map-table-prototype.html
+draft/assets/fonts/manifest.json ──────┼─► TOKENS + shell + JS ─────────────►   (~1 MB: fonts, emblem, favicon,
+draft/assets/brand/ (emblem, icons) ────┤   (one deterministic pass)              icons, map + LGU geometry,
+draft/api/v1/*.json (optional) ────────┘                                         data all inlined)
+</code></pre></div>
+<p>The <code>JS</code> template is a plain string with five placeholders; <code>main()</code> replaces each with compact JSON (<code>json.dumps(..., separators=(&quot;,&quot;, &quot;:&quot;))</code>), escaping <code>&lt;/</code> so no payload can close the <code>&lt;script&gt;</code> element.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Source</th>
+<th>Injection</th>
+<th>Consumed as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__PAYLOAD__</code></td>
+<td><code>data/seed/page-data.json</code></td>
+<td><code>main()</code></td>
+<td><code>var DATA</code> — utilities with monthly series, regions, stats, source tabs, validation and conflicts</td>
+</tr>
+<tr>
+<td><code>__API_TABS__</code></td>
+<td><code>draft/api/v1/*.json</code> via <code>load_api_explorer()</code></td>
+<td><code>main()</code></td>
+<td><code>var API_TABS</code> — six <strong>real</strong> response files (health, latest residential rates, utilities, one region, changes, one source), each trimmed to five rows by <code>trim_example()</code> with a &quot;showing N of M&quot; note</td>
+</tr>
+<tr>
+<td><code>__LGU_GEO__</code></td>
+<td><code>draft/assets/coverage-geo.json</code> via <code>coverage_blocks()</code></td>
+<td><code>main()</code></td>
+<td><code>var LGU</code> — compacted LGU geometry: paths, names, province index, region labels, bounds</td>
+</tr>
+<tr>
+<td><code>__COVERAGE__</code></td>
+<td><code>page-data.json</code> coverage records via <code>coverage_blocks()</code></td>
+<td><code>main()</code></td>
+<td><code>var COV</code> — per utility: detail level (<code>region</code> / <code>lgu</code> / <code>barangay</code>), regions, LGU indexes, barangay counts, source ids, notes</td>
+</tr>
+<tr>
+<td><code>__COVERAGE_SOURCES__</code></td>
+<td><code>page-data.json</code> coverage sources via <code>coverage_blocks()</code></td>
+<td><code>main()</code></td>
+<td><code>var COV_SRC</code> — the coverage-source registry (publisher, title, URL, licence, attribution) behind the credit lines</td>
+</tr>
+</tbody>
+</table></div>
+<p>Assets are inlined rather than injected as placeholders: <code>font_faces()</code> base64-embeds the three font subsets, <code>load_emblem()</code>/<code>emblem()</code> inline (or fall back to) the BetterGov mark, <code>icon()</code> inlines SVG from <code>draft/assets/brand/icons.json</code> (with an <code>ICON_FALLBACK</code> set), <code>main()</code> data-URI-encodes the favicon and optional apple-touch icon, and <code>map_svg()</code> inlines the region choropleth. The head also carries a <code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot;&gt;</code> that blocks every external load:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">text</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-text">default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:;
+script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'
+</code></pre></div>
+<p>A schema.org <code>Dataset</code> JSON-LD block is always emitted; canonical and Open Graph URLs are added only when the optional <code>OPEN_ENERGY_SITE_URL</code> environment variable is set at build time, so leave it unset for an offline/deterministic build.</p>
+<p>The static API tree is genuinely optional: <code>load_api_explorer()</code> skips missing files, so an empty <code>__API_TABS__</code> renders an empty explorer rather than failing the build. Everything else in <code>load()</code> (page payload, region geometry, coverage geometry, fonts manifest) is required.</p>
+<h3 class="has-anchor" id="22-design-tokens-css-and-the-shell-sections">2.2 Design tokens, CSS and the shell sections<a class="h-anchor" href="#22-design-tokens-css-and-the-shell-sections" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The CSS starts at the <code>TOKENS</code> constant (search for <code>Design tokens: budget.bettergov.ph</code>). It implements the BetterGovPH open-data design language shared with the docs site: white paper, ink and rule neutrals, BetterGov blue, Figtree / Inter / JetBrains Mono, tabular numbers.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">css</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-css">:root{
+  --paper:#ffffff; --paper-2:#f4f7fc; --ink:#11151c; --ink-2:#2b3340; --ink-3:#5b6373;
+  --accent:#0b4fd9; --accent-deep:#0a44bd; --accent-soft:#e8efff;
+  --positive:#3a6b3a; --negative:#b8341f;
+  --font-hero:&quot;Figtree&quot;,…; --font-body:&quot;Inter&quot;,…; --font-mono:&quot;JetBrains Mono&quot;,…;
+  --page:1280px; --gutter:32px;
+}
+</code></pre></div>
+<p>Component styles follow as commented blocks inside <code>TOKENS</code>: masthead, sticky section nav, hero actions, custom dropdowns, switch, search box, map (zoom controls, legend, national-view aside), table, API documentation, method cards, downloads, footer, back-to-top, copy-link action, compare tray/dialog/toast, and responsive/print/reduced-motion rules.</p>
+<p>The page body is assembled in <code>main()</code> in a fixed order from one Python function per section:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Builder function</th>
+<th>Renders (DOM)</th>
+<th>Key ids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>masthead()</code></td>
+<td>skip link, masthead, sticky <code>nav#site-nav</code></td>
+<td><code>#nav-toggle</code>, <code>#nav-links</code>, <code>#nav-share</code>, <code>#nav-progress-bar</code></td>
+</tr>
+<tr>
+<td><code>hero()</code></td>
+<td><code>main#main</code>, <code>#overview</code> pack head, hero actions, source status, KPI definition list</td>
+<td><code>#main</code>, <code>#overview</code></td>
+</tr>
+<tr>
+<td><code>map_section()</code></td>
+<td><code>#map</code>: toolbar, map card, national overview <code>aside#aside</code></td>
+<td><code>#color-by</code>, <code>#provider-jump</code>, <code>#region-jump</code>, <code>#zoom-reset</code>, <code>#map-reset</code>, <code>#provider-hint</code>, <code>#legend</code>, <code>#map-frame</code>, <code>#ph-map</code>, <code>#map-zoom-in</code>, <code>#map-zoom-out</code>, <code>#map-tip</code>, <code>#aside</code>, <code>#aside-quick</code></td>
+</tr>
+<tr>
+<td><code>table_section()</code></td>
+<td><code>#table</code>: toolbar, sortable table, NDA legend, compare tray, comparison dialog, toast</td>
+<td><code>#table</code>, <code>#table-summary</code>, <code>#searchbox</code>, <code>#q</code>, <code>#q-clear</code>, <code>#region-filter</code>, <code>#provider-filter</code>, <code>#type-filter</code>, <code>#grid-filter</code>, <code>#include-nda</code>, <code>#export</code>, <code>#clear-filters</code>, <code>#tbody</code>, <code>#table-note</code>, <code>#compare-tray</code>, <code>#compare-chips</code>, <code>#compare-open</code>, <code>#compare-clear</code>, <code>#compare-dialog</code>, <code>#compare-title</code>, <code>#compare-body</code>, <code>#toast</code></td>
+</tr>
+<tr>
+<td><code>api_section()</code></td>
+<td><code>#api</code>: section index, conventions, endpoint reference, JSON explorer</td>
+<td><code>#api</code>, <code>#api-getting-started</code>, <code>#api-datasets</code>, <code>#api-endpoints</code>, <code>#api-conventions</code>, <code>#api-explorer</code>, <code>#api-sources</code>, <code>#api-disclaimers</code>, <code>#api-data-files</code>, <code>#api-path</code>, <code>#api-output</code>, <code>#api-file</code>, <code>#api-file-path</code>, <code>#api-note</code>, <code>#api-copy</code></td>
+</tr>
+<tr>
+<td><code>method_section()</code></td>
+<td><code>#method</code>: source, validation receipts, conflicts, reporting chart</td>
+<td><code>#method</code>, <code>#reporting-chart</code></td>
+</tr>
+<tr>
+<td><code>downloads_section()</code></td>
+<td><code>#downloads</code>: tidy CSVs, API/contracts, page and licence downloads</td>
+<td><code>#downloads</code></td>
+</tr>
+<tr>
+<td><code>footer()</code></td>
+<td>footer columns and back-to-top button</td>
+<td><code>#to-top</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Every content section is a top-level <code>&lt;section&gt;</code> on the page; <code>#ph-map</code> is generated by <code>map_svg()</code> from <code>draft/assets/geo.json</code> with one <code>path.region[data-psgc]</code> per region (18 today).</p>
+<h3 class="has-anchor" id="23-runtime-javascript-module-map">2.3 Runtime JavaScript module map<a class="h-anchor" href="#23-runtime-javascript-module-map" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The runtime is a single vanilla IIFE (<code>JS = r&quot;&quot;&quot;</code>; search for <code>Runtime JS (vanilla, progressive enhancement)</code>). Modules are delimited by comment markers, so the fastest way to find one is to grep for its marker — line numbers shift as the builder evolves, marker text does not:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash">grep -n '/\* ---------- ' tools/build-map-page.py
+</code></pre></div>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Module marker (inside <code>JS</code>)</th>
+<th>Responsibility</th>
+<th>Owns (key ids/selectors)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shared UI helpers: toast, compare buttons, tray</code></td>
+<td>toast queue; compare button state; selection helpers; copy-link with clipboard + <code>execCommand</code> fallback; comparison dialog open/close and focus return</td>
+<td><code>#toast</code>, <code>[data-compare]</code>, <code>[data-compare-remove]</code>, <code>#compare-tray</code>, <code>#compare-dialog</code>, <code>#compare-close</code>, <code>[data-compare-copy]</code></td>
+</tr>
+<tr>
+<td><code>provider coverage data helpers</code></td>
+<td>lookup tables for the compacted coverage payload (provinces, regions, per-utility coverage), provider ordering, stable display labels</td>
+<td>reads <code>LGU</code>, <code>COV</code>, <code>COV_SRC</code>, <code>DATA</code>; no DOM of its own</td>
+</tr>
+<tr>
+<td><code>map</code></td>
+<td>region choropleth render, colour scale (<code>scaleFor</code>), legend, region labels, click/tooltip, roving-tabindex keyboard navigation</td>
+<td><code>#ph-map path.region</code>, <code>#region-shapes</code>, <code>#region-labels</code>, <code>#coverage-layer</code>, <code>#legend</code>, <code>#map-tip</code></td>
+</tr>
+<tr>
+<td><code>provider coverage lens</code></td>
+<td>provider search/selection, LGU-level service-area drawing, coverage legend, provider hint, clearing</td>
+<td><code>#coverage-layer</code>, <code>#provider-hint</code>, <code>#hint-clear</code>, <code>#legend</code>, aside via <code>regionAside()</code></td>
+</tr>
+<tr>
+<td><code>map viewBox zoom</code></td>
+<td><code>viewBox</code>-based zoom/pan, zoom buttons, &quot;whole country&quot;/&quot;service area&quot; reset label, reduced-motion-aware animation</td>
+<td><code>#map-frame</code>, <code>#map-zoom-in</code>, <code>#map-zoom-out</code>, <code>#map-reset</code>, <code>#zoom-reset</code>, <code>#zoom-reset-label</code></td>
+</tr>
+<tr>
+<td><code>aside</code></td>
+<td>national overview (<code>asideQuick</code>), region ranking, biggest movers, single/multi-series SVG charts (<code>chart</code>, <code>multiChart</code>)</td>
+<td><code>#aside</code>, <code>#aside-quick</code>, <code>#aside-provider-clear</code></td>
+</tr>
+<tr>
+<td><code>table</code></td>
+<td>filtering (<code>filtered</code>), sorting with NDA-last semantics, row rendering, expandable detail row with history chart, empty state, <code>clearAllFilters</code>, table summary</td>
+<td><code>#tbody</code>, <code>#table-summary</code>, <code>#table-note</code>, <code>#empty-clear</code>, thead <code>button[data-sort]</code> / <code>th[aria-sort]</code></td>
+</tr>
+<tr>
+<td><code>selection</code></td>
+<td>the URL/deep-link model (<code>syncUrl</code>, <code>applyUrlState</code>), region/provider selection, row focus (<code>focusUtility</code>)</td>
+<td><code>location.search</code>, <code>[data-provider]</code>, <code>[data-region]</code></td>
+</tr>
+<tr>
+<td><code>static JSON API explorer</code></td>
+<td>tab state, JSON rendering, path/file link, note, copy-JSON</td>
+<td><code>#api-path</code>, <code>#api-file</code>, <code>#api-file-path</code>, <code>#api-output</code>, <code>#api-note</code>, <code>#api-copy</code>, <code>.api-list button[data-key]</code></td>
+</tr>
+<tr>
+<td><code>reporting chart</code></td>
+<td>inline SVG line chart of reporting utilities per month in the method section</td>
+<td><code>#reporting-chart</code></td>
+</tr>
+<tr>
+<td><code>CSV</code></td>
+<td>builds and downloads a CSV of the currently filtered utility rows</td>
+<td><code>#export</code></td>
+</tr>
+<tr>
+<td><code>custom dropdowns (accessible listbox)</code></td>
+<td>ARIA listbox pattern: open/close, search filter, keyboard navigation, hidden-input value, dynamic provider lists, click-outside close</td>
+<td><code>[data-dd]</code>, <code>.dd-btn</code>, <code>.dd-value</code>, <code>.dd-pop</code>, <code>.dd-menu</code>, <code>[role=&quot;listbox&quot;]</code>, <code>[role=&quot;option&quot;]</code>, <code>input[type=&quot;hidden&quot;]</code></td>
+</tr>
+<tr>
+<td><code>sticky navigation, scrollspy, progress, back-to-top</code></td>
+<td>scrollspy with <code>aria-current</code>, progress bar, mobile section menu, back-to-top visibility</td>
+<td><code>#site-nav</code>, <code>#nav-links</code>, <code>#nav-toggle</code>, <code>#nav-progress-bar</code>, <code>#to-top</code></td>
+</tr>
+<tr>
+<td><code>search, switch, filter reset</code></td>
+<td>table search input, NDA switch, reset/clear affordances</td>
+<td><code>#q</code>, <code>#q-clear</code>, <code>#searchbox</code>, <code>#include-nda</code>, <code>#clear-filters</code></td>
+</tr>
+<tr>
+<td><code>wiring</code></td>
+<td><code>init()</code>: derives spreadsheet row links, fills provider dropdowns, renders every module, binds all controls, then applies the URL state</td>
+<td><code>DOMContentLoaded</code>, <code>#color-by</code>, <code>#provider-jump</code>, <code>#provider-filter</code>, <code>#region-filter</code>, <code>#region-jump</code>, <code>#type-filter</code>, <code>#grid-filter</code>, <code>#map-reset</code>, <code>#zoom-reset</code>, <code>#export</code>, <code>.api-list button</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="has-anchor" id="3-interaction-and-state-model">3. Interaction and state model<a class="h-anchor" href="#3-interaction-and-state-model" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="31-the-single-state-object">3.1 The single <code>state</code> object<a class="h-anchor" href="#31-the-single-state-object" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>All interactive state lives in one plain object; render functions read it and mutations go through helpers that re-render and call <code>syncUrl()</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">javascript</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-javascript">var state = {
+  colorBy: 'residential',   // 'residential' | 'commercial' | 'industrial' | 'generation'
+  region: 'all',            // PSGC region code, or 'all'
+  utility: null,            // utility code whose table row is expanded
+  provider: null,           // utility code for the map's service-area lens
+  q: '',                    // free-text search
+  type: 'all',              // 'PIOU' | 'EC'
+  grid: 'all',              // 'ONGRID' | 'OFFGRID' | 'CONFLICT'
+  includeNda: true,         // show utilities whose latest residential rate is NDA
+  sortKey: 'residential',
+  sortDir: 'desc',
+  compare: []               // up to COMPARE_MAX (3) utility codes
+};
+</code></pre></div>
+<p>Other module-level constants worth knowing: <code>COMPARE_MAX = 3</code>, <code>COMPARE_COLORS</code> (three fixed series colours), <code>SORT_KEYS</code> (name, region, type, residential, res_delta_pct, commercial, industrial, generation, status), <code>CLASSES</code> (the four customer classes) and the lookup maps <code>UTIL</code>, <code>REGION</code>, <code>DDS</code>.</p>
+<h3 class="has-anchor" id="32-url-and-deep-link-sync">3.2 URL and deep-link sync<a class="h-anchor" href="#32-url-and-deep-link-sync" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>syncUrl()</code> writes the current view into <code>location.search</code> with <code>history.replaceState()</code> — no history entries are created, and default values are omitted so a plain page URL stays clean. <code>applyUrlState()</code> runs near the end of <code>init()</code>, validates every parameter, and renders the matching view; unknown or malformed values are ignored.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Written when</th>
+<th>Read as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>provider</code></td>
+<td>a map provider lens is active</td>
+<td>utility code; selects the provider <strong>and</strong> filters the table, if the code exists in both utilities and coverage</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>a region filter is active</td>
+<td>PSGC code; selects the region and syncs both region dropdowns</td>
+</tr>
+<tr>
+<td><code>compare</code></td>
+<td>two or more providers are selected</td>
+<td>comma-separated utility codes, capped at 3; opens the comparison dialog on load</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>the search box is non-empty</td>
+<td>free-text query, restored into <code>#q</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>not <code>all</code></td>
+<td><code>PIOU</code> or <code>EC</code></td>
+</tr>
+<tr>
+<td><code>grid</code></td>
+<td>not <code>all</code></td>
+<td><code>ONGRID</code>, <code>OFFGRID</code> or <code>CONFLICT</code></td>
+</tr>
+<tr>
+<td><code>nda</code></td>
+<td>NDA rows are hidden</td>
+<td><code>0</code> (the switch is on by default)</td>
+</tr>
+<tr>
+<td><code>colour</code></td>
+<td>not the default colouring</td>
+<td>customer class for the map colour scale</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td>not the default <code>residential:desc</code></td>
+<td><code>sortKey:sortDir</code></td>
+</tr>
+<tr>
+<td><code>utility</code></td>
+<td>a table row is expanded</td>
+<td>utility code; expands the row and opens its region (lowest precedence, after <code>provider</code> and <code>region</code>)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two controls share the same URL: the sticky-nav <strong>Copy link</strong> button (<code>#nav-share</code>) and <strong>Copy link to this comparison</strong> in the comparison dialog. Both call <code>syncUrl()</code> first, then the Clipboard API with a hidden-textarea fallback, and confirm with a toast.</p>
+<h3 class="has-anchor" id="33-filtering-sorting-and-comparison">3.3 Filtering, sorting and comparison<a class="h-anchor" href="#33-filtering-sorting-and-comparison" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ul>
+<li>Filters are intersected: provider lens, NDA switch, region, type, grid and free text (utility name/code, region names, island, type, grid, data status). The table summary reports <code>Showing N of 141 utilities · K with a published &lt;month&gt; residential rate</code>; <code>#clear-filters</code> and the empty state's <code>#empty-clear</code> reset everything, including the provider lens.</li>
+<li>Sorting compares the selected column, sorts null (NDA/missing) values last regardless of direction, breaks ties by name, and mirrors state into <code>aria-sort</code> on the column header plus an arrow glyph.</li>
+<li>Comparison: adding a fourth provider silently drops the oldest and toasts about it; the tray appears when at least one is selected; the dialog opens only with two or more. It is a native <code>&lt;dialog&gt;</code> with <code>showModal()</code>, returns focus to the opener, plots the full residential history plus a latest-rate matrix, and links each row to its DOE source row and its static-API utility file. On mobile the wide matrix is replaced by stacked <code>.compare-cards</code> (CSS at <code>max-width:700px</code>).</li>
+<li>The API explorer is not a live call either: it prints the <code>__API_TABS__</code> payloads that were inlined at build time, with a link to the complete JSON file.</li>
+</ul>
+<h3 class="has-anchor" id="34-accessibility-behaviours-that-are-part-of-the-interaction-model">3.4 Accessibility behaviours that are part of the interaction model<a class="h-anchor" href="#34-accessibility-behaviours-that-are-part-of-the-interaction-model" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The map uses a roving-tabindex pattern — one focused region at a time, arrow keys move focus to the nearest region in that direction, Enter/Space selects, Escape clears — and a visible &quot;skip the map&quot; link jumps to the table. Custom dropdowns behave as ARIA listboxes (<code>aria-expanded</code>, <code>aria-controls</code>, <code>aria-activedescendant</code>, role <code>option</code>/<code>listbox</code>, Home/End/arrow/Enter/Escape/Tab support, type-to-filter). The NDA control is a <code>role=&quot;switch&quot;</code> with <code>aria-checked</code>. Live regions (<code>#aside</code>, <code>#table-summary</code>, <code>#compare-tray</code>, <code>#toast</code>) announce changes. Motion respects <code>prefers-reduced-motion</code>; the whole page is designed to stay usable at 390 px.</p>
+<h2 class="has-anchor" id="4-docs-site-frontend">4. Docs-site frontend<a class="h-anchor" href="#4-docs-site-frontend" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="41-registry-and-generated-shell">4.1 Registry and generated shell<a class="h-anchor" href="#41-registry-and-generated-shell" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>tools/build-docs.py</code> is the front end of the documentation site. The page list is explicit: the <code>GROUP_DEFS</code> list defines sidebar groups (label + blurb) and <code>KNOWN_DOCS</code> lists each page (<code>id</code>, source <code>path</code>, group, label, summary); additional <code>research/*.md</code> files are auto-discovered into the research group, with submission material explicitly excluded (<code>SUBMISSION_RESEARCH</code>). Output is one <code>&lt;id&gt;.html</code> per document plus <code>index.html</code>, shared <code>assets/</code> and a machine-readable <code>docs-manifest.json</code> (page count, groups, sources, search-index stats).</p>
+<p>Every page is rendered by <code>page_html()</code> with the same shell:</p>
+<ul>
+<li>skip link, masthead (product/docs links, dataset version) and sticky subnav containing the mobile <code>#docs-menu-btn</code> drawer toggle and the <code>#docs-search-open</code> full-text trigger (<code>Ctrl</code>/<code>Cmd</code>+<code>K</code>, <code>/</code>);</li>
+<li>a three-column <code>docs-shell</code> grid: sidebar <code>#docs-sidebar</code> (filter <code>#doc-search</code> / <code>#doc-search-clear</code> / <code>#doc-search-hint</code>, the <code>#doc-nav</code> group list, dataset footer), <code>main#main</code>, and the per-page TOC (<code>aside.docs-toc</code> / <code>.toc-nav</code>, generated from the h2/h3 headings);</li>
+<li>breadcrumbs, page meta (source path, lines, size, words), <strong>Download raw</strong>, prev/next pager, footer, search dialog, and <code>assets/docs.js</code> with <code>defer</code>.</li>
+</ul>
+<p>Markdown is rendered with markdown-it (CommonMark + tables), then transformed by <code>transform_body()</code> and <code>heading_anchors()</code>: fenced code gets a <code>.code-block</code> header and <code>[data-copy]</code> button, tables are wrapped in <code>.table-scroll</code>, blockquotes become callouts, headings get stable <code>github_slug</code> anchors. Links are rewritten by <code>resolve_link()</code>: registered documents become their <code>.html</code> page, the product page becomes <code>../map-table-prototype.html</code>, repo files become <code>../../&lt;path&gt;</code> raw-file links, and directories resolve to their registered README page. An unresolved internal link is appended to <code>UNRESOLVED</code> and <strong>fails the build</strong> (<code>main()</code> exits 1) — link only to files that exist.</p>
+<h3 class="has-anchor" id="42-search-with-no-server">4.2 Search with no server<a class="h-anchor" href="#42-search-with-no-server" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>There is no search endpoint. <code>build_search_index()</code> walks the collected pages in registry order and emits a deterministic object with page labels, groups and one entry per h2/h3 section, each with the fragment id, heading and a capped snippet; plain-text documents get a single overview entry. The serialized index is substituted into <code>docs_js()</code> for the <code>__DOCS_SEARCH_INDEX__</code> placeholder, i.e. it lives inside <code>draft/docs/assets/docs.js</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">javascript</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-javascript">{ &quot;version&quot;: 1, &quot;pages&quot;: [
+  { &quot;h&quot;: &quot;frontend.html&quot;, &quot;d&quot;: &quot;Frontend architecture&quot;, &quot;g&quot;: &quot;Architecture&quot;,
+    &quot;s&quot;: [[&quot;&quot;, &quot;Overview&quot;, &quot;…snippet…&quot;], [&quot;section-slug&quot;, &quot;Section label&quot;, &quot;…snippet…&quot;]] }
+] }
+</code></pre></div>
+<p>The overlay (<code>#docs-search-dialog</code>, <code>#docs-search-input</code>, <code>#docs-search-results</code>, <code>#docs-search-status</code>) ranks title/label hits above heading hits above body hits, caps results per page, highlights matched terms, supports arrow keys/Enter/Escape and restores focus on close. The sidebar also has its own local filter over <code>#doc-nav</code>. Because the index is inlined, search works from <code>file://</code> with zero network requests — asserted by the docs QA suite.</p>
+<h3 class="has-anchor" id="43-navigation-and-mobile-behaviour">4.3 Navigation and mobile behaviour<a class="h-anchor" href="#43-navigation-and-mobile-behaviour" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>assets/docs.js</code> also implements the mobile sidebar drawer (<code>body.sidebar-open</code>, <code>#sidebar-backdrop</code>, <code>aria-expanded</code> on <code>#docs-menu-btn</code>, Escape closes and returns focus), the code-copy buttons (<code>[data-copy]</code>), back-to-top, and TOC scrollspy via <code>IntersectionObserver</code>. <code>assets/docs.css</code> uses the shared BetterGov tokens and collapses the shell at <code>1200px</code> (TOC hidden), <code>900px</code> (single column, fixed off-canvas sidebar) and <code>560px</code> (compact chrome), with print and reduced-motion rules. QA runs at 1280×900 and 390×844.</p>
+<h2 class="has-anchor" id="5-review-pack-frontend-and-the-separation-contract">5. Review-pack frontend and the separation contract<a class="h-anchor" href="#5-review-pack-frontend-and-the-separation-contract" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="51-two-spaces-one-generator">5.1 Two spaces, one generator<a class="h-anchor" href="#51-two-spaces-one-generator" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p><code>tools/build-preview.py</code> assembles a local review pack from the tracked artefacts. Its defining rule is that <strong>each page belongs to exactly one of two spaces</strong>, and the chrome says which:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Space</th>
+<th>Pages</th>
+<th>Chrome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B — fellowship submission</strong> (review material)</td>
+<td>pack home <code>/</code> (submission &amp; review hub), <code>/proposal.html</code>, <code>/answers.html</code>, <code>/research-pitch-deck-notes.html</code> (challenge brief)</td>
+<td>submission context bar &quot;Fellowship submission · review material&quot;; nav/footer group submission and platform links separately</td>
+</tr>
+<tr>
+<td><strong>A — data platform</strong> (standalone product)</td>
+<td><code>/prototype.html</code>, <code>/api.html</code>, <code>/data-model.html</code>, <code>/readme.html</code>, <code>/research-*.html</code>, <code>/docs/</code></td>
+<td>neutral context bar &quot;Review copy · Open Energy Data Layer data platform&quot; with a plain back-link; <strong>no</strong> submission links or copy</td>
+</tr>
+</tbody>
+</table></div>
+<p>How the generator produces that split:</p>
+<ul>
+<li><code>page(title, body, context=&quot;platform&quot;|&quot;submission&quot;, active)</code> renders the shell from <code>NAV_PLATFORM</code> or <code>NAV_SUBMISSION</code> and the matching context bar, masthead and footer. A page's space is an explicit argument in <code>main()</code>, not a runtime toggle.</li>
+<li><code>build_prototype()</code> copies <code>draft/map-table-prototype.html</code> and rewrites repository-relative links to the pack's <code>files/</code> tree. It adds <strong>no</strong> review chrome: <code>/prototype.html</code> is the production page and nothing else — byte-identical apart from those link rewrites.</li>
+<li><code>copy_docs()</code> copies <code>draft/docs/</code>, rewrites <code>../map-table-prototype.html</code> to the pack copy and <code>../../&lt;repo file&gt;</code> links to <code>../files/&lt;repo file&gt;</code>, then injects the neutral review bar into each page and appends its CSS.</li>
+<li><code>build_api()</code> renders the OpenAPI contract as a standalone reference page; <code>copy_files()</code> builds <code>files/</code> (data, contracts, docs sources, tools and tests) plus the package zip; <code>write_assets()</code> writes the pack CSS and copies fonts/logo/favicon.</li>
+</ul>
+<p>The pack is served over Tailscale from a static file server (<code>https://devvm1.tailf19a1a.ts.net/</code>, direct port 8099). It is <strong>gitignored and local</strong>: rebuild it after the page and docs, never commit it, and never treat it as a deployment of the data platform itself.</p>
+<h3 class="has-anchor" id="52-the-separation-invariant">5.2 The separation invariant<a class="h-anchor" href="#52-the-separation-invariant" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="callout callout-warning"><span class="callout-label">WARNING</span><div class="callout-body"><p><strong>Warning:</strong> the data platform must contain <strong>no</strong> fellowship-submission material. Submission sources live only in <code>plan/fellowship-proposal.md</code>, <code>plan/application-answers.md</code> and <code>research/pitch-deck-notes.md</code>, and render only on the review pack's submission pages. This is a hard invariant, not a style preference.</p></div></div>
+<p>Enforcement is layered, and a UI change must keep all of it green:</p>
+<ul>
+<li><strong>Product page</strong> — <code>tests/qa.mjs</code> and <code>tools/validate.py</code> assert no submission strip, no fellowship link or marker, no fellowship/submission copy in visible text, and no <code>fellowship.bettergov.ph</code> URL in the page source.</li>
+<li><strong>Docs site</strong> — <code>tools/build-docs.py</code> excludes the submission research document from auto-discovery; <code>tests/qa-docs.mjs</code> has a <code>[separation]</code> group asserting no submission documents in <code>docs-manifest.json</code> or on disk, no fellowship links or copy in the shell (masthead/subnav/sidebar/footer), and no links to submission documents from any page; <code>tools/validate.py</code> repeats the manifest/absence checks.</li>
+<li><strong>Review pack</strong> — the two contexts are separate code paths, and the pack's own README records grep-based self-checks (<code>fellowship</code> count must be 0 in <code>prototype.html</code>, review bars present on platform pages, submission bar on the hub).</li>
+</ul>
+<p>If you add a page, a nav link or a footer column, decide its space explicitly. Never link a submission page from the data platform (page, docs, README, research, API) and never add submission names, deadlines or proposal language to the platform chrome.</p>
+<h2 class="has-anchor" id="6-ui-invariants-and-pinned-qa-contracts">6. UI invariants and pinned QA contracts<a class="h-anchor" href="#6-ui-invariants-and-pinned-qa-contracts" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="61-non-negotiable-invariants">6.1 Non-negotiable invariants<a class="h-anchor" href="#61-non-negotiable-invariants" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li><strong>No external runtime requests.</strong> All fonts, marks, icons, geometry and data are inlined; the product page declares a <code>default-src 'none'</code> CSP; the docs site links only same-origin assets. The only outbound traffic is a user click on a citation anchor (<code>target=&quot;_blank&quot; rel=&quot;noopener&quot;</code>). Both QA suites assert zero external/third-party requests.</li>
+<li><strong>Deterministic, byte-identical builds.</strong> No wall-clock times, randomness, set iteration or environment-dependent text in generated output. CI fails on any diff under <code>draft/api/</code> or <code>draft/docs/</code>; <code>validate.py --check-page</code> proves the page rebuilds identically. The ingest timestamp comes from the snapshot, not the build run.</li>
+<li><strong>Never hand-edit generated artefacts.</strong> <code>draft/map-table-prototype.html</code>, <code>draft/docs/**</code>, <code>draft/api/v1/**</code>, <code>draft/assets/{geo,coverage-geo}.json</code>, <code>data/seed/**</code> (except the data dictionary and illustrative <code>plants.csv</code>) and <code>preview/**</code> are outputs. Change the builder and rebuild.</li>
+<li><strong>Accessibility is part of the contract, not a nice-to-have.</strong> One <code>h1</code> per page, landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>), a skip link to <code>#main</code>, labelled controls, visible focus, full keyboard operation (roving-tabindex map, ARIA listboxes/comboboxes, switch, native dialog focus return), live regions for async changes, and no horizontal overflow at desktop <strong>or</strong> 390 px.</li>
+<li><strong>Provenance stays visible.</strong> NDA/invalid states render as badges, never as numbers; every plotted rate has a month and a source row or API file behind it; coverage claims carry their source label (law / OSM / DOE fallback).</li>
+<li><strong>Separation is absolute.</strong> See §5.2.</li>
+</ol>
+<h3 class="has-anchor" id="62-pinned-qa-contracts">6.2 Pinned QA contracts<a class="h-anchor" href="#62-pinned-qa-contracts" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The suites and the static validator exercise specific ids, selectors, counts and behaviours (the anchors below are the ones they reference directly). Changing one means changing the builder, <code>tools/validate.py</code> and the relevant QA suite <strong>together</strong> in the same change.</p>
+<p>Product page (<code>tests/qa.mjs</code>, <code>tools/validate.py</code>):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Pinned examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shell</td>
+<td><code>#main</code>, one <code>h1</code>, skip link, <code>#site-nav</code>, <code>#nav-links</code>, <code>#nav-toggle</code>, <code>#nav-share</code>, <code>#nav-progress-bar</code>, <code>#to-top</code></td>
+</tr>
+<tr>
+<td>Map</td>
+<td><code>#ph-map</code> with 18 <code>path.region[data-psgc]</code>, <code>#coverage-layer</code>, <code>#legend</code>, <code>#map-frame</code>, <code>#map-tip</code>, <code>#map-zoom-in</code>, <code>#map-zoom-out</code>, <code>#map-reset</code>, <code>#zoom-reset</code>, roving <code>tabindex</code></td>
+</tr>
+<tr>
+<td>Table</td>
+<td><code>#table</code>, <code>#tbody tr.utility[data-code]</code> (141), expandable <code>tr.row-detail</code> with a <code>.chart</code> SVG, <code>#table-summary</code>, <code>#table-note</code>, thead <code>button[data-sort]</code> and <code>th[aria-sort]</code></td>
+</tr>
+<tr>
+<td>Filters and dropdowns</td>
+<td><code>#q</code>, <code>#searchbox</code>, <code>#region-filter</code>, <code>#provider-filter</code>, <code>#type-filter</code>, <code>#grid-filter</code>, <code>#color-by</code>, <code>#include-nda</code>, <code>#clear-filters</code>, <code>#provider-jump</code>, <code>#region-jump</code>; <code>[data-dd]</code>, <code>.dd-btn</code>, <code>.dd-value</code>, <code>[role=&quot;listbox&quot;]</code>, <code>[role=&quot;option&quot;]</code> and their hidden <code>input[type=&quot;hidden&quot;]</code> value bridge</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td><code>#compare-tray</code>, <code>.compare-chip</code>, <code>#compare-open</code>, <code>#compare-clear</code>, <code>#compare-dialog</code>, <code>#compare-close</code>, <code>.compare-chart path.line</code>, <code>.compare-table</code>, <code>.compare-cards</code>, <code>[data-compare]</code>, <code>#toast</code></td>
+</tr>
+<tr>
+<td>API explorer</td>
+<td><code>#api</code>, <code>#api-path</code>, <code>#api-output</code>, <code>#api-file</code>, <code>#api-file-path</code>, <code>#api-copy</code>, <code>.api-list button[data-key]</code></td>
+</tr>
+<tr>
+<td>Method and reset</td>
+<td><code>#method</code>, <code>#hint-clear</code>, <code>#empty-clear</code>, <code>#aside-provider-clear</code></td>
+</tr>
+<tr>
+<td>Separation</td>
+<td>zero fellowship/submission markers, links or visible copy; no <code>.build-strip</code> element or CSS</td>
+</tr>
+</tbody>
+</table></div>
+<p>Docs site (<code>tests/qa-docs.mjs</code>, <code>tools/validate.py</code>):</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Pinned examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shell</td>
+<td><code>a.skip-link[href=&quot;#main&quot;]</code>, <code>main#main</code> and <code>header</code>/<code>nav</code>/<code>main</code>/<code>footer</code>, exactly one <code>h1</code> per page, unique <code>id</code>s, <code>#docs-sidebar</code>, <code>#doc-nav a[aria-current=&quot;page&quot;]</code>, <code>.toc-nav a[href^=&quot;#&quot;]</code>, <code>.crumbs</code>, <code>.pager</code></td>
+</tr>
+<tr>
+<td>Content transforms</td>
+<td><code>.prose h2</code>/<code>h3</code>, <code>.code-block</code>, <code>[data-copy]</code>, <code>.table-scroll</code>, <code>.callout</code>, raw <code>.md</code> download links</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>#docs-search-open</code>, <code>#docs-search-dialog</code>, <code>#docs-search-input</code>, <code>#docs-search-results</code>, <code>#docs-search-status</code>, <code>#docs-search-close</code>, <code>[data-search-href]</code>; sidebar <code>#doc-search</code>, <code>#doc-search-hint</code></td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td><code>#docs-menu-btn</code> + <code>aria-expanded</code>, <code>body.sidebar-open</code>, no overflow at 390×844</td>
+</tr>
+<tr>
+<td>Links and separation</td>
+<td>every internal link and fragment resolves; zero third-party requests; no submission documents registered/published/linked and no fellowship chrome</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pinned counts are contracts too: 141 utilities, 18 PSGC regions, 1,648 LGU rows (+17 barangay rows), 108 Meralco LGUs, 17 ingest checks, four customer classes. They are asserted in <code>tools/validate.py</code> and the QA suites, and rendered into the builders' visible copy; keep them consistent when data changes.</p>
+<h2 class="has-anchor" id="7-how-to-change-the-ui-safely">7. How to change the UI safely<a class="h-anchor" href="#7-how-to-change-the-ui-safely" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<h3 class="has-anchor" id="71-match-the-change-to-the-builder">7.1 Match the change to the builder<a class="h-anchor" href="#71-match-the-change-to-the-builder" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>I want to change…</th>
+<th>Edit</th>
+<th>Rebuild</th>
+<th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product page layout, copy, styles, interactions</td>
+<td><a href="../source/tools/build-map-page.py"><code>tools/build-map-page.py</code></a> (<code>TOKENS</code>, shell functions, module markers)</td>
+<td><code>python3 tools/build-map-page.py</code></td>
+<td><code>node tests/qa.mjs</code>; <code>python3 tools/validate.py --check-page</code></td>
+</tr>
+<tr>
+<td>Page data payload / live numbers</td>
+<td>run the ingest pipeline (never edit the page)</td>
+<td><code>python3 tools/ingest-doe-rates.py</code> then the page</td>
+<td>ingest checks, <code>validate.py</code>, QA</td>
+</tr>
+<tr>
+<td>Docs page content or a new document</td>
+<td>the markdown source, plus its registry entry in <code>tools/build-docs.py</code></td>
+<td><code>python3 tools/build-docs.py</code></td>
+<td><code>node tests/qa-docs.mjs</code>; <code>python3 tools/validate.py</code></td>
+</tr>
+<tr>
+<td>Docs shell, search, code copy, mobile drawer</td>
+<td><code>tools/build-docs.py</code> (<code>page_html</code>, <code>docs_js</code>, <code>docs_css</code>, <code>build_search_index</code>)</td>
+<td><code>python3 tools/build-docs.py</code></td>
+<td><code>node tests/qa-docs.mjs</code></td>
+</tr>
+<tr>
+<td>Review-pack chrome or the two-space split</td>
+<td><a href="../source/tools/build-preview.py"><code>tools/build-preview.py</code></a> (<code>page</code>, <code>copy_docs</code>, <code>build_prototype</code>)</td>
+<td><code>python3 tools/build-docs.py</code>, <code>python3 tools/build-map-page.py</code>, then <code>python3 tools/build-preview.py</code></td>
+<td>pack self-checks in <code>preview/README.md</code>; QA with <code>--base</code> / <code>--docs preview/docs</code></td>
+</tr>
+<tr>
+<td>Design assets (fonts, emblem, favicon, icons, geometry)</td>
+<td><code>draft/assets/**</code> and the builders that inline them</td>
+<td>the consuming builder</td>
+<td><code>validate.py</code> (asset/font/geometry groups), both QA suites</td>
+</tr>
+</tbody>
+</table></div>
+<h3 class="has-anchor" id="72-rebuild-order-and-qa-commands">7.2 Rebuild order and QA commands<a class="h-anchor" href="#72-rebuild-order-and-qa-commands" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>Consumers read earlier builders' output, so order matters wherever a surface is downstream. The full chain, from the repository root:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash">python3 tools/build-geo.py              # optional: regenerate geometry from the pinned release
+python3 tools/build-service-areas.py    # optional: service-area dataset
+python3 tools/ingest-doe-rates.py       # data pipeline → data/raw, data/seed, page payload
+python3 tools/build-api.py              # static JSON API → draft/api/v1
+python3 tools/build-docs.py             # docs site → draft/docs
+python3 tools/build-map-page.py         # product page → draft/map-table-prototype.html
+python3 tools/build-preview.py          # local review pack → preview/ (gitignored)
+python3 tools/validate.py               # static contracts; add --check-page after page changes
+node tests/qa.mjs                       # product page: desktop 1440×900 + mobile 390×844
+node tests/qa-docs.mjs                  # docs site over local HTTP: 1280×900 + 390×844
+</code></pre></div>
+<p>For a docs-only change the short loop is <code>python3 tools/build-docs.py</code> → <code>node tests/qa-docs.mjs</code> → <code>python3 tools/validate.py</code>. For a page change, also run <code>python3 tools/validate.py --check-page</code> to prove the committed page matches a fresh build. CI runs the same checks (<code>.github/workflows/ci.yml</code>): static validation, deterministic page rebuild, deterministic API/docs rebuild (git-diff), then both browser suites.</p>
+<h3 class="has-anchor" id="73-common-pitfalls">7.3 Common pitfalls<a class="h-anchor" href="#73-common-pitfalls" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<ol>
+<li><strong>Hand-editing generated output.</strong> Edits to <code>draft/docs/**</code>, <code>draft/map-table-prototype.html</code>, <code>draft/api/v1/**</code> or <code>preview/**</code> are overwritten on the next build; CI diffs <code>draft/docs/</code> and <code>draft/api/</code> and fails. Always edit the builder/source.</li>
+<li><strong>Adding an external asset or runtime fetch.</strong> A CDN stylesheet, web font, analytics tag or a <code>fetch</code>/XHR request breaks the self-containment invariant and both QA suites. Inline it through the builder instead (fonts and icons already have helpers).</li>
+<li><strong>Breaking determinism.</strong> Wall-clock text (<code>datetime.now()</code> without a snapshot value), randomness, unsorted <code>set</code>/<code>dict</code> iteration or environment-dependent strings make the rebuild check fail. Prefer explicit sorted iteration and snapshot-derived timestamps.</li>
+<li><strong>Renaming or removing a pinned id/selector.</strong> The QA suites and <code>validate.py</code> reference ids directly; a rename that is not mirrored in the tests (and in this page) is a failing build. Update builder + validator + QA + docs together.</li>
+<li><strong>Hard-coding counts that drift.</strong> 141/18/1,648/108 and the validation-check counts appear in prose and assertions; derive them from the payload where possible and update all consumers when the data changes.</li>
+<li><strong>Linking to files that are not published.</strong> <code>build-docs.py</code> fails on an unresolved internal link, and the review pack only copies known files into <code>files/</code> — a new root-level file linked from a docs page must also be added to <code>copy_files()</code> in <code>tools/build-preview.py</code> or the preview link check will 404.</li>
+<li><strong>Adding submission material to the platform.</strong> A fellowship link, deadline or proposal sentence in the page, docs, README or research breaks the separation invariant (§5.2) and fails both QA suites and the validator.</li>
+<li><strong>Skipping the mobile check.</strong> 390 px is a tested viewport: the sticky nav becomes a menu, the table pins its first column, the comparison matrix becomes cards, and the docs sidebar becomes a drawer. Verify no horizontal overflow after interaction, not just on load.</li>
+<li><strong>Printing the giant generated files.</strong> <code>draft/map-table-prototype.html</code> is ~1 MB with inlined data, fonts and geometry; never <code>cat</code> it or paste large ranges. Inspect it with <code>grep -n</code>, <code>sed -n 'A,Bp'</code> or a targeted <code>read</code> on the builder source instead.</li>
+</ol>
+<h3 class="has-anchor" id="74-adding-a-docs-page">7.4 Adding a docs page<a class="h-anchor" href="#74-adding-a-docs-page" aria-label="Link to this section" tabindex="-1">#</a></h3>
+<p>The docs site has no auto-discovery for top-level markdown (only <code>research/*.md</code>). To publish a new page: add the markdown source under <code>draft/</code>, add a <code>KNOWN_DOCS</code> dict to <code>tools/build-docs.py</code> (unique <code>id</code> → <code>&lt;id&gt;.html</code>, source <code>path</code>, <code>group</code>, <code>label</code>, <code>summary</code>), and, for a new navigation group, add a <code>GROUP_DEFS</code> entry (id, label, blurb) in the position you want it to appear. Rebuild <code>draft/docs/</code>; the manifest page count, sidebar, search index and prev/next pager all update automatically. Then run <code>node tests/qa-docs.mjs</code> and <code>python3 tools/validate.py</code>. This page is registered under a separate <strong>architecture</strong> group alongside the component map.</p>
+<h2 class="has-anchor" id="8-reading-order-for-a-new-contributor-or-agent">8. Reading order for a new contributor or agent<a class="h-anchor" href="#8-reading-order-for-a-new-contributor-or-agent" aria-label="Link to this section" tabindex="-1">#</a></h2>
+<ol>
+<li><a href="readme.html"><code>README.md</code></a> — what the product is, the dataset at a glance, repository layout.</li>
+<li><a href="contributing.html"><code>CONTRIBUTING.md</code></a> — setup, build commands, and the data/page/API rules (the page rules are the frontend contract in prose).</li>
+<li><a href="tests.html"><code>tests/README.md</code></a> — what validation and browser QA prove, and what CI enforces.</li>
+<li><code>AGENTS.md</code> (repository root) — component map, task routing, cross-cutting invariants and the finish checklist.</li>
+<li><a href="component-map.html"><code>draft/component-map.md</code></a> — the human component/contract map (renders at <code>/docs/component-map.html</code>), plus the per-area agent maps <code>tools/AGENTS.md</code>, <code>data/AGENTS.md</code>, <code>draft/AGENTS.md</code> and <code>tests/AGENTS.md</code>.</li>
+<li><strong>This page</strong> — the frontend-specific map: surfaces, injection, runtime state, docs/review-pack frontends and the UI rules.</li>
+<li>The builder source: read the <code>tools/build-map-page.py</code> docstring, then the shell functions and module markers in §2; for the docs site read <code>tools/build-docs.py</code> (<code>page_html</code>, <code>docs_js</code>, <code>build_search_index</code>); for the pack read the <code>tools/build-preview.py</code> module docstring, which states the two-space split.</li>
+<li><a href="data-model.html"><code>draft/data-model.md</code></a>, <a href="api-docs.html"><code>draft/api-docs.md</code></a> and <a href="../openapi.yaml"><code>draft/openapi.yaml</code></a> — the data/API contracts a UI change must keep honest. The pipeline counterpart to this page is <code>draft/backend.md</code>.</li>
+</ol>
+<p>The fastest safe workflow for any UI task: identify the surface and builder in §1, find the owning function/module in §2–§5, make the change in the builder only, rebuild in the order of §7.2, then run the pinned QA suites and the deterministic rebuild check before reporting back.</p>
+
+</article>
+<nav class="pager" aria-label="Documentation pages"><a class="pager-link pager-prev" href="readme.html"><span class="label">Previous</span><span class="pager-title">&larr; Project README</span></a><a class="pager-link pager-next" href="backend.html"><span class="label">Next</span><span class="pager-title">Backend &amp; pipeline architecture &rarr;</span></a></nav>
+  </main>
+  <aside class="docs-toc" aria-label="On this page"><div class="toc-card"><p class="label">On this page</p><nav class="toc-nav"><a class="toc-link" href="#1-frontend-surfaces-and-where-they-are-built">1. Frontend surfaces and where they are built</a><a class="toc-link" href="#2-product-page-anatomy">2. Product-page anatomy</a><a class="toc-link l3" href="#21-build-time-data-injection">2.1 Build-time data injection</a><a class="toc-link l3" href="#22-design-tokens-css-and-the-shell-sections">2.2 Design tokens, CSS and the shell sections</a><a class="toc-link l3" href="#23-runtime-javascript-module-map">2.3 Runtime JavaScript module map</a><a class="toc-link" href="#3-interaction-and-state-model">3. Interaction and state model</a><a class="toc-link l3" href="#31-the-single-state-object">3.1 The single state object</a><a class="toc-link l3" href="#32-url-and-deep-link-sync">3.2 URL and deep-link sync</a><a class="toc-link l3" href="#33-filtering-sorting-and-comparison">3.3 Filtering, sorting and comparison</a><a class="toc-link l3" href="#34-accessibility-behaviours-that-are-part-of-the-interaction-model">3.4 Accessibility behaviours that are part of the interaction model</a><a class="toc-link" href="#4-docs-site-frontend">4. Docs-site frontend</a><a class="toc-link l3" href="#41-registry-and-generated-shell">4.1 Registry and generated shell</a><a class="toc-link l3" href="#42-search-with-no-server">4.2 Search with no server</a><a class="toc-link l3" href="#43-navigation-and-mobile-behaviour">4.3 Navigation and mobile behaviour</a><a class="toc-link" href="#5-review-pack-frontend-and-the-separation-contract">5. Review-pack frontend and the separation contract</a><a class="toc-link l3" href="#51-two-spaces-one-generator">5.1 Two spaces, one generator</a><a class="toc-link l3" href="#52-the-separation-invariant">5.2 The separation invariant</a><a class="toc-link" href="#6-ui-invariants-and-pinned-qa-contracts">6. UI invariants and pinned QA contracts</a><a class="toc-link l3" href="#61-non-negotiable-invariants">6.1 Non-negotiable invariants</a><a class="toc-link l3" href="#62-pinned-qa-contracts">6.2 Pinned QA contracts</a><a class="toc-link" href="#7-how-to-change-the-ui-safely">7. How to change the UI safely</a><a class="toc-link l3" href="#71-match-the-change-to-the-builder">7.1 Match the change to the builder</a><a class="toc-link l3" href="#72-rebuild-order-and-qa-commands">7.2 Rebuild order and QA commands</a><a class="toc-link l3" href="#73-common-pitfalls">7.3 Common pitfalls</a><a class="toc-link l3" href="#74-adding-a-docs-page">7.4 Adding a docs page</a><a class="toc-link" href="#8-reading-order-for-a-new-contributor-or-agent">8. Reading order for a new contributor or agent</a></nav></div></aside>
+</div>
+
+<footer class="footer">
+  <div class="page footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <p class="footer-kicker">Open energy data layer</p>
+        <p>Research-grounded documentation for Philippine electricity-rate data:
+        a national map, a comparable price table and a public JSON API over the
+        Department of Energy's public workbook.</p>
+        <p class="footer-cite">Source: Department of Energy &mdash; Electricity Rates &amp;
+        Power Market Monitor &middot; dataset 2026-11-10 &middot;
+        17/17 validation checks passing.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Documentation</h2>
+        <a href="readme.html">Project README</a>
+        <a href="data-model.html">Data model</a>
+        <a href="api-docs.html">API guide</a>
+        <a href="tests.html">Testing &amp; validation</a>
+        <a href="contributing.html">Contributing</a>
+      </div>
+      <div class="footer-col">
+        <h2>The product</h2>
+        <a href="../index.html">Data page (map, table, API)</a>
+        <a href="api-docs.html">API reference</a>
+        <a href="../openapi.yaml">OpenAPI 3.1 contract</a>
+        <a href="../api/v1/index.json">JSON API index</a>
+        <a href="data-seed.html">Seed data dictionary</a>
+      </div>
+      <div class="footer-col">
+        <h2>Project &amp; legal</h2>
+        <a href="notice.html">Notices &amp; attribution</a>
+        <a href="license.html">Licence (MIT)</a>
+        <a href="security.html">Security policy</a>
+        <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph
+          <span class="ext-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg></span></a>
+      </div>
+    </div>
+    <p class="footer-note">An independent open-source project: not an official DOE or
+    BetterGov.ph publication, and not financial advice. Rates are the values published in
+    the DOE workbook, with no imputation; the workbook's reuse terms are not yet confirmed.</p>
+    <div class="footer-legal">
+      <span>&copy; 2026 Open Energy Data Layer contributors</span>
+      <span>Design: BetterGov.ph open-data language (MIT)</span>
+      <span>Figtree / Inter / JetBrains Mono &middot; OFL 1.1</span>
+    </div>
+  </div>
+</footer>
+<button id="to-top" type="button" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg></button>
+
+<dialog class="search-dialog" id="docs-search-dialog" aria-modal="true"
+        aria-labelledby="docs-search-title">
+  <div class="search-dialog-panel">
+    <div class="search-dialog-head">
+      <h2 class="search-dialog-title" id="docs-search-title">Search the documentation</h2>
+      <button class="search-dialog-close" id="docs-search-close" type="button"
+              aria-label="Close search" data-search-close>
+        <kbd>Esc</kbd><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </div>
+    <div class="search-dialog-field">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg>
+      <input class="search-dialog-input" id="docs-search-input" type="search"
+             placeholder="Search titles, headings and section text&hellip;"
+             autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false"
+             aria-controls="docs-search-results" aria-autocomplete="list"
+             aria-describedby="docs-search-status">
+    </div>
+    <p class="search-dialog-status" id="docs-search-status" role="status" aria-live="polite"></p>
+    <div class="search-dialog-results" id="docs-search-results" role="listbox"
+         aria-label="Documentation search results"></div>
+    <div class="search-dialog-foot" aria-hidden="true">
+      <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span>
+      <span><kbd>&crarr;</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</dialog>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

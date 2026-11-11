@@ -1,0 +1,4318 @@
+{
+  "meta": {
+    "api_version": "1.0",
+    "dataset": "doe-electricity-rates",
+    "dataset_version": "2026-11-10",
+    "latest_month": "2026-10",
+    "generated_at": "2026-11-10T17:00:34+08:00",
+    "currency": "PHP",
+    "unit": "PHP per kWh",
+    "source": {
+      "id": "SRC-DOE-RATES",
+      "publisher": "Department of Energy (DOE)",
+      "title": "Electricity Rates & Power Market Monitor",
+      "canonical_url": "https://doe.gov.ph/data-and-prices/electricity",
+      "retrieved_at": "2026-11-10T17:00:34+08:00",
+      "extraction_method": "csv_export"
+    },
+    "attribution": "Source: Department of Energy (DOE) — Electricity Rates & Power Market Monitor, retrieved 2026-11-10T17:00:34+08:00. When republishing, credit DOE as the source and the Open Energy Data Layer for the compilation. Service-area coverage (derived data, not a DOE rate publication): OpenStreetMap Wiki operator table — CC BY-SA 2.0; Wikipedia distribution-utility list — CC BY-SA 4.0; Republic Act No. 12146 (Meralco franchise) — Public document (Philippine law); DOE workbook region column — Not stated by publisher.",
+    "licence": {
+      "name": "Not stated by publisher",
+      "note": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+      "url": null
+    },
+    "disclaimers": [
+      {
+        "id": "disclaimer-unofficial",
+        "title": "Unofficial compilation.",
+        "text": "This is an independent compilation of a public DOE workbook, not an official DOE publication. Verify every figure against the source before citing or acting on it.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-licence",
+        "title": "Upstream reuse terms unconfirmed.",
+        "text": "The DOE workbook publishes no explicit reuse licence; terms are to be confirmed with DOE. No licence is asserted over the upstream data by this API.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-nda",
+        "title": "NDA, missing and invalid are preserved, never imputed.",
+        "text": "NDA is the source's \"No Data Available\"; missing is a month not yet published; invalid is a cell that failed validation. null never means zero and is never an estimate.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-rates",
+        "title": "Rates are monthly averages as published.",
+        "text": "Actual bills vary by consumption, charges, subsidies and timing. Figures are informational only and not financial advice.",
+        "url": "#disclaimers"
+      },
+      {
+        "id": "disclaimer-coverage",
+        "title": "Coverage is derived data, not a DOE rate publication.",
+        "text": "Service-area coverage is derived from franchise law (RA 12146 for MERALCO), the DOE workbook region column as a fallback, and, where present, the OpenStreetMap Wiki operator table (CC BY-SA 2.0) and the Wikipedia distribution-utility list (CC BY-SA 4.0). Because the layer combines CC BY-SA rows, the combined coverage layer is a CC BY-SA derivative: attribution is required and share-alike applies to redistributed coverage data. A franchise area is not verified household-level billing territory; region-level rows are a fallback, not LGU-level confirmation. Keep each source's attribution and licence.",
+        "url": "#disclaimers"
+      }
+    ],
+    "service_area": {
+      "detail_counts": {
+        "total": 141,
+        "lgu": 141,
+        "barangay": 0,
+        "region": 0
+      },
+      "sources": [
+        {
+          "source_id": "SRC-OSM-OPERATORS",
+          "licence": {
+            "name": "CC BY-SA 2.0",
+            "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+          }
+        },
+        {
+          "source_id": "SRC-WIKI-DUS",
+          "licence": {
+            "name": "CC BY-SA 4.0",
+            "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+          }
+        },
+        {
+          "source_id": "SRC-RA-12146",
+          "licence": {
+            "name": "Public document (Philippine law)",
+            "url": null
+          }
+        },
+        {
+          "source_id": "SRC-DOE-RATES",
+          "licence": {
+            "name": "Not stated by publisher",
+            "url": null
+          }
+        }
+      ],
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    },
+    "count": 374
+  },
+  "data": {
+    "from_month": "2026-09",
+    "to_month": "2026-10",
+    "unit": "PHP per kWh",
+    "counts": {
+      "movements": 374,
+      "availability_changes": 66
+    },
+    "movements": [
+      {
+        "code": "LEYECO-II",
+        "name": "LEYECO II",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 14.05,
+        "to_value": 10.44,
+        "delta_php_kwh": -3.61,
+        "delta_pct": -25.7
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 12.83,
+        "to_value": 15.32,
+        "delta_php_kwh": 2.49,
+        "delta_pct": 19.4
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "region_short": "Region XII",
+        "customer_class": "residential",
+        "from_value": 9.4,
+        "to_value": 11.85,
+        "delta_php_kwh": 2.45,
+        "delta_pct": 26.1
+      },
+      {
+        "code": "NUVELCO",
+        "name": "NUVELCO",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 9.95,
+        "to_value": 12.17,
+        "delta_php_kwh": 2.22,
+        "delta_pct": 22.3
+      },
+      {
+        "code": "ZAMSURECO-II",
+        "name": "ZAMSURECO II",
+        "region_short": "Region IX",
+        "customer_class": "residential",
+        "from_value": 14.82,
+        "to_value": 16.8,
+        "delta_php_kwh": 1.98,
+        "delta_pct": 13.4
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "region_short": "Region XIII",
+        "customer_class": "residential",
+        "from_value": 12.05,
+        "to_value": 13.98,
+        "delta_php_kwh": 1.93,
+        "delta_pct": 16.0
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "region_short": "NIR",
+        "customer_class": "residential",
+        "from_value": 15.04,
+        "to_value": 16.88,
+        "delta_php_kwh": 1.84,
+        "delta_pct": 12.2
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 10.45,
+        "to_value": 12.22,
+        "delta_php_kwh": 1.77,
+        "delta_pct": 16.9
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 14.86,
+        "to_value": 16.37,
+        "delta_php_kwh": 1.51,
+        "delta_pct": 10.2
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 15.52,
+        "to_value": 17.01,
+        "delta_php_kwh": 1.49,
+        "delta_pct": 9.6
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 11.43,
+        "to_value": 9.96,
+        "delta_php_kwh": -1.47,
+        "delta_pct": -12.9
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 14.77,
+        "to_value": 16.23,
+        "delta_php_kwh": 1.46,
+        "delta_pct": 9.9
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 15.85,
+        "to_value": 14.42,
+        "delta_php_kwh": -1.43,
+        "delta_pct": -9.0
+      },
+      {
+        "code": "AURELCO",
+        "name": "AURELCO",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 14.09,
+        "to_value": 15.51,
+        "delta_php_kwh": 1.42,
+        "delta_pct": 10.1
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "region_short": "Region XII",
+        "customer_class": "residential",
+        "from_value": 11.58,
+        "to_value": 12.96,
+        "delta_php_kwh": 1.38,
+        "delta_pct": 11.9
+      },
+      {
+        "code": "CEPALCO",
+        "name": "CEPALCO",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 13.6,
+        "to_value": 14.85,
+        "delta_php_kwh": 1.25,
+        "delta_pct": 9.2
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "region_short": "CAR",
+        "customer_class": "residential",
+        "from_value": 13.67,
+        "to_value": 12.46,
+        "delta_php_kwh": -1.21,
+        "delta_pct": -8.9
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 15.78,
+        "to_value": 16.89,
+        "delta_php_kwh": 1.11,
+        "delta_pct": 7.0
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 15.87,
+        "to_value": 16.98,
+        "delta_php_kwh": 1.11,
+        "delta_pct": 7.0
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 14.94,
+        "to_value": 16.03,
+        "delta_php_kwh": 1.09,
+        "delta_pct": 7.3
+      },
+      {
+        "code": "BISELCO",
+        "name": "BISELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 13.02,
+        "to_value": 12.03,
+        "delta_php_kwh": -0.99,
+        "delta_pct": -7.6
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 12.55,
+        "to_value": 11.61,
+        "delta_php_kwh": -0.94,
+        "delta_pct": -7.5
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 12.98,
+        "to_value": 13.91,
+        "delta_php_kwh": 0.93,
+        "delta_pct": 7.2
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 10.31,
+        "to_value": 11.17,
+        "delta_php_kwh": 0.86,
+        "delta_pct": 8.3
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "region_short": "Region XI",
+        "customer_class": "residential",
+        "from_value": 12.0,
+        "to_value": 12.86,
+        "delta_php_kwh": 0.86,
+        "delta_pct": 7.2
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 13.23,
+        "to_value": 12.37,
+        "delta_php_kwh": -0.86,
+        "delta_pct": -6.5
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "region_short": "Region IX",
+        "customer_class": "residential",
+        "from_value": 13.47,
+        "to_value": 12.65,
+        "delta_php_kwh": -0.82,
+        "delta_pct": -6.1
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 12.12,
+        "to_value": 12.91,
+        "delta_php_kwh": 0.79,
+        "delta_pct": 6.5
+      },
+      {
+        "code": "BLCI",
+        "name": "BLCI",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 13.32,
+        "to_value": 14.1,
+        "delta_php_kwh": 0.78,
+        "delta_pct": 5.9
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 11.12,
+        "to_value": 11.9,
+        "delta_php_kwh": 0.78,
+        "delta_pct": 7.0
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 12.73,
+        "to_value": 13.49,
+        "delta_php_kwh": 0.76,
+        "delta_pct": 6.0
+      },
+      {
+        "code": "FICELCO",
+        "name": "FICELCO",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 18.14,
+        "to_value": 18.89,
+        "delta_php_kwh": 0.75,
+        "delta_pct": 4.1
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "region_short": "Region XIII",
+        "customer_class": "residential",
+        "from_value": 12.04,
+        "to_value": 12.7,
+        "delta_php_kwh": 0.66,
+        "delta_pct": 5.5
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 12.07,
+        "to_value": 12.72,
+        "delta_php_kwh": 0.65,
+        "delta_pct": 5.4
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "region_short": "Region IX",
+        "customer_class": "residential",
+        "from_value": 14.18,
+        "to_value": 14.83,
+        "delta_php_kwh": 0.65,
+        "delta_pct": 4.6
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 9.89,
+        "to_value": 10.53,
+        "delta_php_kwh": 0.64,
+        "delta_pct": 6.5
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 11.65,
+        "to_value": 12.27,
+        "delta_php_kwh": 0.62,
+        "delta_pct": 5.3
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 15.24,
+        "to_value": 15.85,
+        "delta_php_kwh": 0.61,
+        "delta_pct": 4.0
+      },
+      {
+        "code": "QUIRELCO",
+        "name": "QUIRELCO",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 12.26,
+        "to_value": 12.87,
+        "delta_php_kwh": 0.61,
+        "delta_pct": 5.0
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 12.97,
+        "to_value": 12.37,
+        "delta_php_kwh": -0.6,
+        "delta_pct": -4.6
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 11.3,
+        "to_value": 10.73,
+        "delta_php_kwh": -0.57,
+        "delta_pct": -5.0
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 12.81,
+        "to_value": 12.25,
+        "delta_php_kwh": -0.56,
+        "delta_pct": -4.4
+      },
+      {
+        "code": "KAELCO",
+        "name": "KAELCO",
+        "region_short": "CAR",
+        "customer_class": "residential",
+        "from_value": 12.9,
+        "to_value": 13.46,
+        "delta_php_kwh": 0.56,
+        "delta_pct": 4.3
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "region_short": "Region XIII",
+        "customer_class": "residential",
+        "from_value": 11.66,
+        "to_value": 11.11,
+        "delta_php_kwh": -0.55,
+        "delta_pct": -4.7
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 11.79,
+        "to_value": 12.33,
+        "delta_php_kwh": 0.54,
+        "delta_pct": 4.6
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 11.89,
+        "to_value": 12.39,
+        "delta_php_kwh": 0.5,
+        "delta_pct": 4.2
+      },
+      {
+        "code": "AEC",
+        "name": "AEC",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 11.84,
+        "to_value": 12.31,
+        "delta_php_kwh": 0.47,
+        "delta_pct": 4.0
+      },
+      {
+        "code": "BATANELCO",
+        "name": "BATANELCO",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 12.72,
+        "to_value": 13.18,
+        "delta_php_kwh": 0.46,
+        "delta_pct": 3.6
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 13.46,
+        "to_value": 13.92,
+        "delta_php_kwh": 0.46,
+        "delta_pct": 3.4
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 11.81,
+        "to_value": 12.25,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 3.7
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 11.94,
+        "to_value": 12.38,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 3.7
+      },
+      {
+        "code": "BILECO",
+        "name": "BILECO",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 18.93,
+        "to_value": 19.36,
+        "delta_php_kwh": 0.43,
+        "delta_pct": 2.3
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 14.89,
+        "to_value": 15.3,
+        "delta_php_kwh": 0.41,
+        "delta_pct": 2.8
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 10.78,
+        "to_value": 11.18,
+        "delta_php_kwh": 0.4,
+        "delta_pct": 3.7
+      },
+      {
+        "code": "IEEC",
+        "name": "IEEC",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 12.82,
+        "to_value": 12.42,
+        "delta_php_kwh": -0.4,
+        "delta_pct": -3.1
+      },
+      {
+        "code": "DECORP",
+        "name": "DECORP",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 10.96,
+        "to_value": 11.35,
+        "delta_php_kwh": 0.39,
+        "delta_pct": 3.6
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 15.47,
+        "to_value": 15.85,
+        "delta_php_kwh": 0.38,
+        "delta_pct": 2.5
+      },
+      {
+        "code": "MORESCO-II",
+        "name": "MORESCO II",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 12.35,
+        "to_value": 12.72,
+        "delta_php_kwh": 0.37,
+        "delta_pct": 3.0
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 12.66,
+        "to_value": 13.03,
+        "delta_php_kwh": 0.37,
+        "delta_pct": 2.9
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 11.24,
+        "to_value": 11.61,
+        "delta_php_kwh": 0.37,
+        "delta_pct": 3.3
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 16.23,
+        "to_value": 16.59,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 2.2
+      },
+      {
+        "code": "MOELCI-I",
+        "name": "MOELCI I",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 14.71,
+        "to_value": 14.35,
+        "delta_php_kwh": -0.36,
+        "delta_pct": -2.4
+      },
+      {
+        "code": "QUEZELCO-II",
+        "name": "QUEZELCO II",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 12.86,
+        "to_value": 13.22,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 2.8
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 12.25,
+        "to_value": 12.6,
+        "delta_php_kwh": 0.35,
+        "delta_pct": 2.9
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "region_short": "Region II",
+        "customer_class": "residential",
+        "from_value": 11.55,
+        "to_value": 11.88,
+        "delta_php_kwh": 0.33,
+        "delta_pct": 2.9
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 11.76,
+        "to_value": 12.09,
+        "delta_php_kwh": 0.33,
+        "delta_pct": 2.8
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 13.74,
+        "to_value": 14.06,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.3
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "region_short": "NCR",
+        "customer_class": "residential",
+        "from_value": 14.74,
+        "to_value": 15.06,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.2
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 14.42,
+        "to_value": 14.74,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.2
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 11.21,
+        "to_value": 10.91,
+        "delta_php_kwh": -0.3,
+        "delta_pct": -2.7
+      },
+      {
+        "code": "CAMELCO",
+        "name": "CAMELCO",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 16.05,
+        "to_value": 15.79,
+        "delta_php_kwh": -0.26,
+        "delta_pct": -1.6
+      },
+      {
+        "code": "MECO",
+        "name": "MECO",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 15.98,
+        "to_value": 15.72,
+        "delta_php_kwh": -0.26,
+        "delta_pct": -1.6
+      },
+      {
+        "code": "SFELAPCO",
+        "name": "SFELAPCO",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 13.12,
+        "to_value": 13.36,
+        "delta_php_kwh": 0.24,
+        "delta_pct": 1.8
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 16.33,
+        "to_value": 16.55,
+        "delta_php_kwh": 0.22,
+        "delta_pct": 1.3
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 12.02,
+        "to_value": 12.24,
+        "delta_php_kwh": 0.22,
+        "delta_pct": 1.8
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 11.34,
+        "to_value": 11.55,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 1.9
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 16.6,
+        "to_value": 16.81,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 1.3
+      },
+      {
+        "code": "SURSECO-II",
+        "name": "SURSECO II",
+        "region_short": "Region XIII",
+        "customer_class": "residential",
+        "from_value": 12.83,
+        "to_value": 13.03,
+        "delta_php_kwh": 0.2,
+        "delta_pct": 1.6
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 13.61,
+        "to_value": 13.42,
+        "delta_php_kwh": -0.19,
+        "delta_pct": -1.4
+      },
+      {
+        "code": "OEDC",
+        "name": "OEDC",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 13.18,
+        "to_value": 13.01,
+        "delta_php_kwh": -0.17,
+        "delta_pct": -1.3
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "region_short": "CAR",
+        "customer_class": "residential",
+        "from_value": 11.8,
+        "to_value": 11.65,
+        "delta_php_kwh": -0.15,
+        "delta_pct": -1.3
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "region_short": "Region XII",
+        "customer_class": "residential",
+        "from_value": 12.5,
+        "to_value": 12.64,
+        "delta_php_kwh": 0.14,
+        "delta_pct": 1.1
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 12.35,
+        "to_value": 12.22,
+        "delta_php_kwh": -0.13,
+        "delta_pct": -1.1
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 10.92,
+        "to_value": 11.03,
+        "delta_php_kwh": 0.11,
+        "delta_pct": 1.0
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 11.73,
+        "to_value": 11.83,
+        "delta_php_kwh": 0.1,
+        "delta_pct": 0.9
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "region_short": "Region XI",
+        "customer_class": "residential",
+        "from_value": 13.24,
+        "to_value": 13.33,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "ILPI",
+        "name": "ILPI",
+        "region_short": "Region X",
+        "customer_class": "residential",
+        "from_value": 14.1,
+        "to_value": 14.19,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "region_short": "Region VIII",
+        "customer_class": "residential",
+        "from_value": 16.38,
+        "to_value": 16.29,
+        "delta_php_kwh": -0.09,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 14.33,
+        "to_value": 14.42,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "region_short": "NIR",
+        "customer_class": "residential",
+        "from_value": 14.35,
+        "to_value": 14.44,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 10.88,
+        "to_value": 10.96,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "ZAMECO-II",
+        "name": "ZAMECO II",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 12.48,
+        "to_value": 12.56,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 13.07,
+        "to_value": 13.0,
+        "delta_php_kwh": -0.07,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "region_short": "BARMM",
+        "customer_class": "residential",
+        "from_value": 5.26,
+        "to_value": 5.33,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 1.3
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 10.76,
+        "to_value": 10.83,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "region_short": "BARMM",
+        "customer_class": "residential",
+        "from_value": 12.18,
+        "to_value": 12.12,
+        "delta_php_kwh": -0.06,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "IFELCO",
+        "name": "IFELCO",
+        "region_short": "CAR",
+        "customer_class": "residential",
+        "from_value": 10.25,
+        "to_value": 10.19,
+        "delta_php_kwh": -0.06,
+        "delta_pct": -0.6
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "region_short": "Region I",
+        "customer_class": "residential",
+        "from_value": 11.14,
+        "to_value": 11.2,
+        "delta_php_kwh": 0.06,
+        "delta_pct": 0.5
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 12.28,
+        "to_value": 12.34,
+        "delta_php_kwh": 0.06,
+        "delta_pct": 0.5
+      },
+      {
+        "code": "MASELCO",
+        "name": "MASELCO",
+        "region_short": "Region V",
+        "customer_class": "residential",
+        "from_value": 10.67,
+        "to_value": 10.62,
+        "delta_php_kwh": -0.05,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "region_short": "Region VI",
+        "customer_class": "residential",
+        "from_value": 15.11,
+        "to_value": 15.07,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "ORMECO",
+        "name": "ORMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 15.35,
+        "to_value": 15.31,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "PALECO",
+        "name": "PALECO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 12.86,
+        "to_value": 12.82,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "region_short": "Region III",
+        "customer_class": "residential",
+        "from_value": 12.48,
+        "to_value": 12.44,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 12.55,
+        "to_value": 12.52,
+        "delta_php_kwh": -0.03,
+        "delta_pct": -0.2
+      },
+      {
+        "code": "CENECO-NEPC",
+        "name": "CENECO/NEPC",
+        "region_short": "NIR",
+        "customer_class": "residential",
+        "from_value": 14.25,
+        "to_value": 14.27,
+        "delta_php_kwh": 0.02,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "ROMELCO",
+        "name": "ROMELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 11.88,
+        "to_value": 11.9,
+        "delta_php_kwh": 0.02,
+        "delta_pct": 0.2
+      },
+      {
+        "code": "ABRECO",
+        "name": "ABRECO",
+        "region_short": "CAR",
+        "customer_class": "residential",
+        "from_value": 12.57,
+        "to_value": 12.58,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 11.12,
+        "to_value": 11.13,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "region_short": "Region XII",
+        "customer_class": "residential",
+        "from_value": 13.7,
+        "to_value": 13.69,
+        "delta_php_kwh": -0.01,
+        "delta_pct": -0.1
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "region_short": "Region VII",
+        "customer_class": "residential",
+        "from_value": 12.87,
+        "to_value": 12.88,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "TIELCO",
+        "name": "TIELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "residential",
+        "from_value": 11.95,
+        "to_value": 11.94,
+        "delta_php_kwh": -0.01,
+        "delta_pct": -0.1
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "region_short": "Region IV-A",
+        "customer_class": "residential",
+        "from_value": 9.68,
+        "to_value": 9.68,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "region_short": "Region X",
+        "customer_class": "commercial",
+        "from_value": 12.89,
+        "to_value": 15.64,
+        "delta_php_kwh": 2.75,
+        "delta_pct": 21.3
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "region_short": "Region XII",
+        "customer_class": "commercial",
+        "from_value": 8.4,
+        "to_value": 10.85,
+        "delta_php_kwh": 2.45,
+        "delta_pct": 29.2
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 8.15,
+        "to_value": 10.54,
+        "delta_php_kwh": 2.39,
+        "delta_pct": 29.3
+      },
+      {
+        "code": "NUVELCO",
+        "name": "NUVELCO",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 9.0,
+        "to_value": 11.22,
+        "delta_php_kwh": 2.22,
+        "delta_pct": 24.7
+      },
+      {
+        "code": "ZAMSURECO-II",
+        "name": "ZAMSURECO II",
+        "region_short": "Region IX",
+        "customer_class": "commercial",
+        "from_value": 13.91,
+        "to_value": 15.87,
+        "delta_php_kwh": 1.96,
+        "delta_pct": 14.1
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "region_short": "Region XIII",
+        "customer_class": "commercial",
+        "from_value": 11.78,
+        "to_value": 13.7,
+        "delta_php_kwh": 1.92,
+        "delta_pct": 16.3
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "region_short": "NIR",
+        "customer_class": "commercial",
+        "from_value": 13.71,
+        "to_value": 15.55,
+        "delta_php_kwh": 1.84,
+        "delta_pct": 13.4
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 13.59,
+        "to_value": 15.08,
+        "delta_php_kwh": 1.49,
+        "delta_pct": 11.0
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "region_short": "Region XII",
+        "customer_class": "commercial",
+        "from_value": 10.51,
+        "to_value": 11.84,
+        "delta_php_kwh": 1.33,
+        "delta_pct": 12.7
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "region_short": "CAR",
+        "customer_class": "commercial",
+        "from_value": 12.9,
+        "to_value": 11.58,
+        "delta_php_kwh": -1.32,
+        "delta_pct": -10.2
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 13.47,
+        "to_value": 14.79,
+        "delta_php_kwh": 1.32,
+        "delta_pct": 9.8
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 10.11,
+        "to_value": 8.96,
+        "delta_php_kwh": -1.15,
+        "delta_pct": -11.4
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 14.63,
+        "to_value": 15.75,
+        "delta_php_kwh": 1.12,
+        "delta_pct": 7.7
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 11.7,
+        "to_value": 12.81,
+        "delta_php_kwh": 1.11,
+        "delta_pct": 9.5
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "region_short": "Region VI",
+        "customer_class": "commercial",
+        "from_value": 13.88,
+        "to_value": 14.97,
+        "delta_php_kwh": 1.09,
+        "delta_pct": 7.9
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "region_short": "Region VI",
+        "customer_class": "commercial",
+        "from_value": 14.13,
+        "to_value": 15.1,
+        "delta_php_kwh": 0.97,
+        "delta_pct": 6.9
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "region_short": "Region XI",
+        "customer_class": "commercial",
+        "from_value": 11.75,
+        "to_value": 12.68,
+        "delta_php_kwh": 0.93,
+        "delta_pct": 7.9
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 15.48,
+        "to_value": 14.55,
+        "delta_php_kwh": -0.93,
+        "delta_pct": -6.0
+      },
+      {
+        "code": "BATANELCO",
+        "name": "BATANELCO",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 11.22,
+        "to_value": 12.12,
+        "delta_php_kwh": 0.9,
+        "delta_pct": 8.0
+      },
+      {
+        "code": "SURSECO-II",
+        "name": "SURSECO II",
+        "region_short": "Region XIII",
+        "customer_class": "commercial",
+        "from_value": 11.77,
+        "to_value": 10.9,
+        "delta_php_kwh": -0.87,
+        "delta_pct": -7.4
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 9.44,
+        "to_value": 10.3,
+        "delta_php_kwh": 0.86,
+        "delta_pct": 9.1
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "region_short": "Region IX",
+        "customer_class": "commercial",
+        "from_value": 12.8,
+        "to_value": 11.99,
+        "delta_php_kwh": -0.81,
+        "delta_pct": -6.3
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.46,
+        "to_value": 12.25,
+        "delta_php_kwh": 0.79,
+        "delta_pct": 6.9
+      },
+      {
+        "code": "BLCI",
+        "name": "BLCI",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 12.76,
+        "to_value": 13.54,
+        "delta_php_kwh": 0.78,
+        "delta_pct": 6.1
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "region_short": "Region XIII",
+        "customer_class": "commercial",
+        "from_value": 9.87,
+        "to_value": 9.1,
+        "delta_php_kwh": -0.77,
+        "delta_pct": -7.8
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 10.17,
+        "to_value": 10.94,
+        "delta_php_kwh": 0.77,
+        "delta_pct": 7.6
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 11.85,
+        "to_value": 12.61,
+        "delta_php_kwh": 0.76,
+        "delta_pct": 6.4
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 12.45,
+        "to_value": 11.7,
+        "delta_php_kwh": -0.75,
+        "delta_pct": -6.0
+      },
+      {
+        "code": "FICELCO",
+        "name": "FICELCO",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 15.44,
+        "to_value": 16.18,
+        "delta_php_kwh": 0.74,
+        "delta_pct": 4.8
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 11.04,
+        "to_value": 11.75,
+        "delta_php_kwh": 0.71,
+        "delta_pct": 6.4
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "region_short": "Region IV-A",
+        "customer_class": "commercial",
+        "from_value": 9.16,
+        "to_value": 9.84,
+        "delta_php_kwh": 0.68,
+        "delta_pct": 7.4
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 12.04,
+        "to_value": 12.7,
+        "delta_php_kwh": 0.66,
+        "delta_pct": 5.5
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "region_short": "Region XIII",
+        "customer_class": "commercial",
+        "from_value": 10.75,
+        "to_value": 11.4,
+        "delta_php_kwh": 0.65,
+        "delta_pct": 6.0
+      },
+      {
+        "code": "QUIRELCO",
+        "name": "QUIRELCO",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 10.75,
+        "to_value": 11.36,
+        "delta_php_kwh": 0.61,
+        "delta_pct": 5.7
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "region_short": "Region IX",
+        "customer_class": "commercial",
+        "from_value": 13.21,
+        "to_value": 13.82,
+        "delta_php_kwh": 0.61,
+        "delta_pct": 4.6
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "region_short": "Region II",
+        "customer_class": "commercial",
+        "from_value": 12.1,
+        "to_value": 11.5,
+        "delta_php_kwh": -0.6,
+        "delta_pct": -5.0
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.41,
+        "to_value": 12.0,
+        "delta_php_kwh": 0.59,
+        "delta_pct": 5.2
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 11.74,
+        "to_value": 11.18,
+        "delta_php_kwh": -0.56,
+        "delta_pct": -4.8
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 14.42,
+        "to_value": 14.97,
+        "delta_php_kwh": 0.55,
+        "delta_pct": 3.8
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 11.14,
+        "to_value": 11.66,
+        "delta_php_kwh": 0.52,
+        "delta_pct": 4.7
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "region_short": "NCR",
+        "customer_class": "commercial",
+        "from_value": 13.35,
+        "to_value": 12.88,
+        "delta_php_kwh": -0.47,
+        "delta_pct": -3.5
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 10.96,
+        "to_value": 11.4,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 4.0
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.63,
+        "to_value": 12.07,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 3.8
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "region_short": "BARMM",
+        "customer_class": "commercial",
+        "from_value": 12.51,
+        "to_value": 12.93,
+        "delta_php_kwh": 0.42,
+        "delta_pct": 3.4
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 14.43,
+        "to_value": 14.01,
+        "delta_php_kwh": -0.42,
+        "delta_pct": -2.9
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 9.43,
+        "to_value": 9.84,
+        "delta_php_kwh": 0.41,
+        "delta_pct": 4.3
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "region_short": "Region X",
+        "customer_class": "commercial",
+        "from_value": 12.21,
+        "to_value": 12.61,
+        "delta_php_kwh": 0.4,
+        "delta_pct": 3.3
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 10.26,
+        "to_value": 10.63,
+        "delta_php_kwh": 0.37,
+        "delta_pct": 3.6
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 10.96,
+        "to_value": 11.32,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 3.3
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "region_short": "Region X",
+        "customer_class": "commercial",
+        "from_value": 10.66,
+        "to_value": 11.02,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 3.4
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "region_short": "Region XII",
+        "customer_class": "commercial",
+        "from_value": 12.44,
+        "to_value": 12.79,
+        "delta_php_kwh": 0.35,
+        "delta_pct": 2.8
+      },
+      {
+        "code": "MOELCI-I",
+        "name": "MOELCI I",
+        "region_short": "Region X",
+        "customer_class": "commercial",
+        "from_value": 13.15,
+        "to_value": 12.81,
+        "delta_php_kwh": -0.34,
+        "delta_pct": -2.6
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 12.79,
+        "to_value": 13.11,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.5
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "region_short": "Region VI",
+        "customer_class": "commercial",
+        "from_value": 13.55,
+        "to_value": 13.87,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.4
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 10.25,
+        "to_value": 9.95,
+        "delta_php_kwh": -0.3,
+        "delta_pct": -2.9
+      },
+      {
+        "code": "CAMELCO",
+        "name": "CAMELCO",
+        "region_short": "Region X",
+        "customer_class": "commercial",
+        "from_value": 14.76,
+        "to_value": 14.52,
+        "delta_php_kwh": -0.24,
+        "delta_pct": -1.6
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.86,
+        "to_value": 12.1,
+        "delta_php_kwh": 0.24,
+        "delta_pct": 2.0
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 11.36,
+        "to_value": 11.13,
+        "delta_php_kwh": -0.23,
+        "delta_pct": -2.0
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "region_short": "Region IV-A",
+        "customer_class": "commercial",
+        "from_value": 11.07,
+        "to_value": 11.29,
+        "delta_php_kwh": 0.22,
+        "delta_pct": 2.0
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "region_short": "Region IV-A",
+        "customer_class": "commercial",
+        "from_value": 10.46,
+        "to_value": 10.67,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 2.0
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "region_short": "Region VI",
+        "customer_class": "commercial",
+        "from_value": 14.99,
+        "to_value": 15.2,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 1.4
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 15.29,
+        "to_value": 15.5,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 1.4
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 12.66,
+        "to_value": 12.46,
+        "delta_php_kwh": -0.2,
+        "delta_pct": -1.6
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "region_short": "CAR",
+        "customer_class": "commercial",
+        "from_value": 11.16,
+        "to_value": 10.97,
+        "delta_php_kwh": -0.19,
+        "delta_pct": -1.7
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 14.64,
+        "to_value": 14.82,
+        "delta_php_kwh": 0.18,
+        "delta_pct": 1.2
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 9.88,
+        "to_value": 10.05,
+        "delta_php_kwh": 0.17,
+        "delta_pct": 1.7
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "region_short": "Region XI",
+        "customer_class": "commercial",
+        "from_value": 13.45,
+        "to_value": 13.61,
+        "delta_php_kwh": 0.16,
+        "delta_pct": 1.2
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 10.75,
+        "to_value": 10.85,
+        "delta_php_kwh": 0.1,
+        "delta_pct": 0.9
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 13.21,
+        "to_value": 13.31,
+        "delta_php_kwh": 0.1,
+        "delta_pct": 0.8
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "region_short": "NIR",
+        "customer_class": "commercial",
+        "from_value": 13.5,
+        "to_value": 13.59,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 10.03,
+        "to_value": 10.11,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.8
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "commercial",
+        "from_value": 9.7,
+        "to_value": 9.78,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.8
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 10.03,
+        "to_value": 10.11,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.8
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 13.6,
+        "to_value": 13.68,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "region_short": "BARMM",
+        "customer_class": "commercial",
+        "from_value": 4.44,
+        "to_value": 4.51,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 1.6
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 9.91,
+        "to_value": 9.98,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "MASELCO",
+        "name": "MASELCO",
+        "region_short": "Region V",
+        "customer_class": "commercial",
+        "from_value": 10.76,
+        "to_value": 10.71,
+        "delta_php_kwh": -0.05,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.33,
+        "to_value": 11.38,
+        "delta_php_kwh": 0.05,
+        "delta_pct": 0.4
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "region_short": "Region III",
+        "customer_class": "commercial",
+        "from_value": 11.63,
+        "to_value": 11.58,
+        "delta_php_kwh": -0.05,
+        "delta_pct": -0.4
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "region_short": "Region VI",
+        "customer_class": "commercial",
+        "from_value": 14.17,
+        "to_value": 14.13,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "region_short": "Region VIII",
+        "customer_class": "commercial",
+        "from_value": 15.68,
+        "to_value": 15.72,
+        "delta_php_kwh": 0.04,
+        "delta_pct": 0.3
+      },
+      {
+        "code": "PALECO",
+        "name": "PALECO",
+        "region_short": "Region IV-B",
+        "customer_class": "commercial",
+        "from_value": 12.79,
+        "to_value": 12.75,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "region_short": "Region I",
+        "customer_class": "commercial",
+        "from_value": 14.07,
+        "to_value": 14.11,
+        "delta_php_kwh": 0.04,
+        "delta_pct": 0.3
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "commercial",
+        "from_value": 11.32,
+        "to_value": 11.29,
+        "delta_php_kwh": -0.03,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "region_short": "Region VII",
+        "customer_class": "commercial",
+        "from_value": 12.08,
+        "to_value": 12.09,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "region_short": "Region II",
+        "customer_class": "industrial",
+        "from_value": 8.19,
+        "to_value": 11.48,
+        "delta_php_kwh": 3.29,
+        "delta_pct": 40.2
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "region_short": "Region X",
+        "customer_class": "industrial",
+        "from_value": 10.42,
+        "to_value": 12.81,
+        "delta_php_kwh": 2.39,
+        "delta_pct": 22.9
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "region_short": "Region XII",
+        "customer_class": "industrial",
+        "from_value": 6.89,
+        "to_value": 9.18,
+        "delta_php_kwh": 2.29,
+        "delta_pct": 33.2
+      },
+      {
+        "code": "NUVELCO",
+        "name": "NUVELCO",
+        "region_short": "Region II",
+        "customer_class": "industrial",
+        "from_value": 8.49,
+        "to_value": 10.71,
+        "delta_php_kwh": 2.22,
+        "delta_pct": 26.1
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 11.22,
+        "to_value": 9.15,
+        "delta_php_kwh": -2.07,
+        "delta_pct": -18.4
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "region_short": "CAR",
+        "customer_class": "industrial",
+        "from_value": 11.16,
+        "to_value": 9.21,
+        "delta_php_kwh": -1.95,
+        "delta_pct": -17.5
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "region_short": "Region IV-A",
+        "customer_class": "industrial",
+        "from_value": 11.07,
+        "to_value": 9.3,
+        "delta_php_kwh": -1.77,
+        "delta_pct": -16.0
+      },
+      {
+        "code": "ZAMSURECO-II",
+        "name": "ZAMSURECO II",
+        "region_short": "Region IX",
+        "customer_class": "industrial",
+        "from_value": 12.25,
+        "to_value": 14.01,
+        "delta_php_kwh": 1.76,
+        "delta_pct": 14.4
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "region_short": "Region XIII",
+        "customer_class": "industrial",
+        "from_value": 9.48,
+        "to_value": 11.22,
+        "delta_php_kwh": 1.74,
+        "delta_pct": 18.4
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "region_short": "NIR",
+        "customer_class": "industrial",
+        "from_value": 11.19,
+        "to_value": 12.86,
+        "delta_php_kwh": 1.67,
+        "delta_pct": 14.9
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 7.65,
+        "to_value": 9.07,
+        "delta_php_kwh": 1.42,
+        "delta_pct": 18.6
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 12.19,
+        "to_value": 10.84,
+        "delta_php_kwh": -1.35,
+        "delta_pct": -11.1
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 10.93,
+        "to_value": 12.22,
+        "delta_php_kwh": 1.29,
+        "delta_pct": 11.8
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "region_short": "CAR",
+        "customer_class": "industrial",
+        "from_value": 12.35,
+        "to_value": 11.14,
+        "delta_php_kwh": -1.21,
+        "delta_pct": -9.8
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "region_short": "Region XII",
+        "customer_class": "industrial",
+        "from_value": 8.64,
+        "to_value": 9.8,
+        "delta_php_kwh": 1.16,
+        "delta_pct": 13.4
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 12.32,
+        "to_value": 13.31,
+        "delta_php_kwh": 0.99,
+        "delta_pct": 8.0
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "region_short": "Region IX",
+        "customer_class": "industrial",
+        "from_value": 11.38,
+        "to_value": 10.39,
+        "delta_php_kwh": -0.99,
+        "delta_pct": -8.7
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 9.0,
+        "to_value": 9.97,
+        "delta_php_kwh": 0.97,
+        "delta_pct": 10.8
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 8.33,
+        "to_value": 9.26,
+        "delta_php_kwh": 0.93,
+        "delta_pct": 11.2
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 11.75,
+        "to_value": 12.68,
+        "delta_php_kwh": 0.93,
+        "delta_pct": 7.9
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "region_short": "Region XIII",
+        "customer_class": "industrial",
+        "from_value": 8.92,
+        "to_value": 8.08,
+        "delta_php_kwh": -0.84,
+        "delta_pct": -9.4
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 12.0,
+        "to_value": 12.84,
+        "delta_php_kwh": 0.84,
+        "delta_pct": 7.0
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "region_short": "Region XI",
+        "customer_class": "industrial",
+        "from_value": 10.22,
+        "to_value": 11.03,
+        "delta_php_kwh": 0.81,
+        "delta_pct": 7.9
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 9.69,
+        "to_value": 8.89,
+        "delta_php_kwh": -0.8,
+        "delta_pct": -8.3
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 9.61,
+        "to_value": 10.38,
+        "delta_php_kwh": 0.77,
+        "delta_pct": 8.0
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 11.41,
+        "to_value": 12.17,
+        "delta_php_kwh": 0.76,
+        "delta_pct": 6.7
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "region_short": "Region II",
+        "customer_class": "industrial",
+        "from_value": 9.02,
+        "to_value": 9.77,
+        "delta_php_kwh": 0.75,
+        "delta_pct": 8.3
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "region_short": "Region IV-A",
+        "customer_class": "industrial",
+        "from_value": 7.99,
+        "to_value": 8.73,
+        "delta_php_kwh": 0.74,
+        "delta_pct": 9.3
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 8.0,
+        "to_value": 8.7,
+        "delta_php_kwh": 0.7,
+        "delta_pct": 8.8
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 9.19,
+        "to_value": 9.88,
+        "delta_php_kwh": 0.69,
+        "delta_pct": 7.5
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "region_short": "Region XIII",
+        "customer_class": "industrial",
+        "from_value": 10.86,
+        "to_value": 11.54,
+        "delta_php_kwh": 0.68,
+        "delta_pct": 6.3
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 6.8,
+        "to_value": 7.48,
+        "delta_php_kwh": 0.68,
+        "delta_pct": 10.0
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "region_short": "Region X",
+        "customer_class": "industrial",
+        "from_value": 9.1,
+        "to_value": 8.48,
+        "delta_php_kwh": -0.62,
+        "delta_pct": -6.8
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 8.83,
+        "to_value": 9.45,
+        "delta_php_kwh": 0.62,
+        "delta_pct": 7.0
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "region_short": "NCR",
+        "customer_class": "industrial",
+        "from_value": 10.73,
+        "to_value": 11.33,
+        "delta_php_kwh": 0.6,
+        "delta_pct": 5.6
+      },
+      {
+        "code": "MOELCI-I",
+        "name": "MOELCI I",
+        "region_short": "Region X",
+        "customer_class": "industrial",
+        "from_value": 11.15,
+        "to_value": 10.57,
+        "delta_php_kwh": -0.58,
+        "delta_pct": -5.2
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 10.87,
+        "to_value": 10.32,
+        "delta_php_kwh": -0.55,
+        "delta_pct": -5.1
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 7.35,
+        "to_value": 7.9,
+        "delta_php_kwh": 0.55,
+        "delta_pct": 7.5
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 12.71,
+        "to_value": 12.16,
+        "delta_php_kwh": -0.55,
+        "delta_pct": -4.3
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 13.27,
+        "to_value": 13.82,
+        "delta_php_kwh": 0.55,
+        "delta_pct": 4.1
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "region_short": "Region II",
+        "customer_class": "industrial",
+        "from_value": 10.46,
+        "to_value": 9.97,
+        "delta_php_kwh": -0.49,
+        "delta_pct": -4.7
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 10.38,
+        "to_value": 9.91,
+        "delta_php_kwh": -0.47,
+        "delta_pct": -4.5
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 8.81,
+        "to_value": 9.26,
+        "delta_php_kwh": 0.45,
+        "delta_pct": 5.1
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 10.52,
+        "to_value": 10.96,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 4.2
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "region_short": "Region II",
+        "customer_class": "industrial",
+        "from_value": 8.15,
+        "to_value": 8.58,
+        "delta_php_kwh": 0.43,
+        "delta_pct": 5.3
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "region_short": "Region IX",
+        "customer_class": "industrial",
+        "from_value": 11.32,
+        "to_value": 11.72,
+        "delta_php_kwh": 0.4,
+        "delta_pct": 3.5
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 7.74,
+        "to_value": 8.11,
+        "delta_php_kwh": 0.37,
+        "delta_pct": 4.8
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "region_short": "Region IV-A",
+        "customer_class": "industrial",
+        "from_value": 9.1,
+        "to_value": 9.44,
+        "delta_php_kwh": 0.34,
+        "delta_pct": 3.7
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 13.64,
+        "to_value": 13.96,
+        "delta_php_kwh": 0.32,
+        "delta_pct": 2.3
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "region_short": "BARMM",
+        "customer_class": "industrial",
+        "from_value": 11.85,
+        "to_value": 12.15,
+        "delta_php_kwh": 0.3,
+        "delta_pct": 2.5
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "region_short": "Region XII",
+        "customer_class": "industrial",
+        "from_value": 10.75,
+        "to_value": 10.46,
+        "delta_php_kwh": -0.29,
+        "delta_pct": -2.7
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 7.7,
+        "to_value": 7.97,
+        "delta_php_kwh": 0.27,
+        "delta_pct": 3.5
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 9.02,
+        "to_value": 9.28,
+        "delta_php_kwh": 0.26,
+        "delta_pct": 2.9
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 11.73,
+        "to_value": 11.99,
+        "delta_php_kwh": 0.26,
+        "delta_pct": 2.2
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 7.52,
+        "to_value": 7.78,
+        "delta_php_kwh": 0.26,
+        "delta_pct": 3.5
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "region_short": "Region XI",
+        "customer_class": "industrial",
+        "from_value": 11.43,
+        "to_value": 11.67,
+        "delta_php_kwh": 0.24,
+        "delta_pct": 2.1
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "region_short": "Region X",
+        "customer_class": "industrial",
+        "from_value": 10.33,
+        "to_value": 10.55,
+        "delta_php_kwh": 0.22,
+        "delta_pct": 2.1
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 8.1,
+        "to_value": 8.32,
+        "delta_php_kwh": 0.22,
+        "delta_pct": 2.7
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 12.29,
+        "to_value": 12.5,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 1.7
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 9.41,
+        "to_value": 9.62,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 2.2
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 11.29,
+        "to_value": 11.49,
+        "delta_php_kwh": 0.2,
+        "delta_pct": 1.8
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 8.39,
+        "to_value": 8.2,
+        "delta_php_kwh": -0.19,
+        "delta_pct": -2.3
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 11.12,
+        "to_value": 11.31,
+        "delta_php_kwh": 0.19,
+        "delta_pct": 1.7
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "region_short": "Region I",
+        "customer_class": "industrial",
+        "from_value": 11.91,
+        "to_value": 11.73,
+        "delta_php_kwh": -0.18,
+        "delta_pct": -1.5
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 11.96,
+        "to_value": 11.79,
+        "delta_php_kwh": -0.17,
+        "delta_pct": -1.4
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 11.87,
+        "to_value": 12.04,
+        "delta_php_kwh": 0.17,
+        "delta_pct": 1.4
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 10.71,
+        "to_value": 10.56,
+        "delta_php_kwh": -0.15,
+        "delta_pct": -1.4
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 10.33,
+        "to_value": 10.46,
+        "delta_php_kwh": 0.13,
+        "delta_pct": 1.3
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "region_short": "Region XII",
+        "customer_class": "industrial",
+        "from_value": 10.83,
+        "to_value": 10.72,
+        "delta_php_kwh": -0.11,
+        "delta_pct": -1.0
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "region_short": "Region X",
+        "customer_class": "industrial",
+        "from_value": 8.21,
+        "to_value": 8.31,
+        "delta_php_kwh": 0.1,
+        "delta_pct": 1.2
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 12.97,
+        "to_value": 12.88,
+        "delta_php_kwh": -0.09,
+        "delta_pct": -0.7
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "region_short": "NIR",
+        "customer_class": "industrial",
+        "from_value": 10.97,
+        "to_value": 10.89,
+        "delta_php_kwh": -0.08,
+        "delta_pct": -0.7
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "industrial",
+        "from_value": 9.53,
+        "to_value": 9.6,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "region_short": "Region III",
+        "customer_class": "industrial",
+        "from_value": 9.69,
+        "to_value": 9.76,
+        "delta_php_kwh": 0.07,
+        "delta_pct": 0.7
+      },
+      {
+        "code": "MASELCO",
+        "name": "MASELCO",
+        "region_short": "Region V",
+        "customer_class": "industrial",
+        "from_value": 10.77,
+        "to_value": 10.72,
+        "delta_php_kwh": -0.05,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "region_short": "BARMM",
+        "customer_class": "industrial",
+        "from_value": 4.38,
+        "to_value": 4.42,
+        "delta_php_kwh": 0.04,
+        "delta_pct": 0.9
+      },
+      {
+        "code": "PALECO",
+        "name": "PALECO",
+        "region_short": "Region IV-B",
+        "customer_class": "industrial",
+        "from_value": 12.76,
+        "to_value": 12.72,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "industrial",
+        "from_value": 11.66,
+        "to_value": 11.63,
+        "delta_php_kwh": -0.03,
+        "delta_pct": -0.3
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "region_short": "Region VIII",
+        "customer_class": "industrial",
+        "from_value": 12.4,
+        "to_value": 12.42,
+        "delta_php_kwh": 0.02,
+        "delta_pct": 0.2
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 11.41,
+        "to_value": 11.42,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.1
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "region_short": "Region VI",
+        "customer_class": "industrial",
+        "from_value": 12.22,
+        "to_value": 12.21,
+        "delta_php_kwh": -0.01,
+        "delta_pct": -0.1
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "region_short": "Region IV-A",
+        "customer_class": "industrial",
+        "from_value": 8.09,
+        "to_value": 8.09,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "region_short": "Region VII",
+        "customer_class": "industrial",
+        "from_value": 11.98,
+        "to_value": 11.98,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "CASURECO3",
+        "name": "CASURECO3",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 11.56,
+        "to_value": 5.2,
+        "delta_php_kwh": -6.36,
+        "delta_pct": -55.0
+      },
+      {
+        "code": "ISECO",
+        "name": "ISECO",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 10.21,
+        "to_value": 7.98,
+        "delta_php_kwh": -2.23,
+        "delta_pct": -21.8
+      },
+      {
+        "code": "SUKELCO",
+        "name": "SUKELCO",
+        "region_short": "Region XII",
+        "customer_class": "generation",
+        "from_value": 4.52,
+        "to_value": 6.41,
+        "delta_php_kwh": 1.89,
+        "delta_pct": 41.8
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 5.82,
+        "to_value": 7.7,
+        "delta_php_kwh": 1.88,
+        "delta_pct": 32.3
+      },
+      {
+        "code": "SURNECO",
+        "name": "SURNECO",
+        "region_short": "Region XIII",
+        "customer_class": "generation",
+        "from_value": 6.71,
+        "to_value": 8.06,
+        "delta_php_kwh": 1.35,
+        "delta_pct": 20.1
+      },
+      {
+        "code": "MOPRECO",
+        "name": "MOPRECO",
+        "region_short": "CAR",
+        "customer_class": "generation",
+        "from_value": 10.21,
+        "to_value": 9.06,
+        "delta_php_kwh": -1.15,
+        "delta_pct": -11.3
+      },
+      {
+        "code": "NORECO-I",
+        "name": "NORECO I",
+        "region_short": "NIR",
+        "customer_class": "generation",
+        "from_value": 8.16,
+        "to_value": 9.27,
+        "delta_php_kwh": 1.11,
+        "delta_pct": 13.6
+      },
+      {
+        "code": "SAMELCO-II",
+        "name": "SAMELCO II",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 7.92,
+        "to_value": 9.0,
+        "delta_php_kwh": 1.08,
+        "delta_pct": 13.6
+      },
+      {
+        "code": "SURSECO-II",
+        "name": "SURSECO II",
+        "region_short": "Region XIII",
+        "customer_class": "generation",
+        "from_value": 7.61,
+        "to_value": 6.56,
+        "delta_php_kwh": -1.05,
+        "delta_pct": -13.8
+      },
+      {
+        "code": "NORSAMELCO",
+        "name": "NORSAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 8.53,
+        "to_value": 9.55,
+        "delta_php_kwh": 1.02,
+        "delta_pct": 12.0
+      },
+      {
+        "code": "PPALMA",
+        "name": "PPALMA",
+        "region_short": "Region XII",
+        "customer_class": "generation",
+        "from_value": 6.04,
+        "to_value": 6.96,
+        "delta_php_kwh": 0.92,
+        "delta_pct": 15.2
+      },
+      {
+        "code": "ILECO-I",
+        "name": "ILECO I",
+        "region_short": "Region VI",
+        "customer_class": "generation",
+        "from_value": 9.12,
+        "to_value": 9.99,
+        "delta_php_kwh": 0.87,
+        "delta_pct": 9.5
+      },
+      {
+        "code": "BILECO",
+        "name": "BILECO",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 9.5,
+        "to_value": 10.33,
+        "delta_php_kwh": 0.83,
+        "delta_pct": 8.7
+      },
+      {
+        "code": "ZAMCELCO",
+        "name": "ZAMCELCO",
+        "region_short": "Region IX",
+        "customer_class": "generation",
+        "from_value": 8.47,
+        "to_value": 7.66,
+        "delta_php_kwh": -0.81,
+        "delta_pct": -9.6
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 7.8,
+        "to_value": 8.6,
+        "delta_php_kwh": 0.8,
+        "delta_pct": 10.3
+      },
+      {
+        "code": "ISELCO-II",
+        "name": "ISELCO II",
+        "region_short": "Region II",
+        "customer_class": "generation",
+        "from_value": 5.41,
+        "to_value": 6.17,
+        "delta_php_kwh": 0.76,
+        "delta_pct": 14.0
+      },
+      {
+        "code": "ANECO",
+        "name": "ANECO",
+        "region_short": "Region XIII",
+        "customer_class": "generation",
+        "from_value": 6.64,
+        "to_value": 5.9,
+        "delta_php_kwh": -0.74,
+        "delta_pct": -11.1
+      },
+      {
+        "code": "LUELCO",
+        "name": "LUELCO",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 10.12,
+        "to_value": 10.86,
+        "delta_php_kwh": 0.74,
+        "delta_pct": 7.3
+      },
+      {
+        "code": "PELCO-III",
+        "name": "PELCO III",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 7.04,
+        "to_value": 7.72,
+        "delta_php_kwh": 0.68,
+        "delta_pct": 9.7
+      },
+      {
+        "code": "NEECO-I",
+        "name": "NEECO I",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.42,
+        "to_value": 7.08,
+        "delta_php_kwh": 0.66,
+        "delta_pct": 10.3
+      },
+      {
+        "code": "CAGELCO-I",
+        "name": "CAGELCO I",
+        "region_short": "Region II",
+        "customer_class": "generation",
+        "from_value": 6.38,
+        "to_value": 7.03,
+        "delta_php_kwh": 0.65,
+        "delta_pct": 10.2
+      },
+      {
+        "code": "BATELEC-II",
+        "name": "BATELEC II",
+        "region_short": "Region IV-A",
+        "customer_class": "generation",
+        "from_value": 5.45,
+        "to_value": 6.09,
+        "delta_php_kwh": 0.64,
+        "delta_pct": 11.7
+      },
+      {
+        "code": "TEI",
+        "name": "TEI",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.13,
+        "to_value": 6.75,
+        "delta_php_kwh": 0.62,
+        "delta_pct": 10.1
+      },
+      {
+        "code": "CENPELCO",
+        "name": "CENPELCO",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 6.92,
+        "to_value": 7.49,
+        "delta_php_kwh": 0.57,
+        "delta_pct": 8.2
+      },
+      {
+        "code": "MECO",
+        "name": "MECO",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 9.76,
+        "to_value": 9.21,
+        "delta_php_kwh": -0.55,
+        "delta_pct": -5.6
+      },
+      {
+        "code": "PRESCO",
+        "name": "PRESCO",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.46,
+        "to_value": 6.99,
+        "delta_php_kwh": 0.53,
+        "delta_pct": 8.2
+      },
+      {
+        "code": "DECORP",
+        "name": "DECORP",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 5.42,
+        "to_value": 5.94,
+        "delta_php_kwh": 0.52,
+        "delta_pct": 9.6
+      },
+      {
+        "code": "AEC",
+        "name": "AEC",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.74,
+        "to_value": 7.25,
+        "delta_php_kwh": 0.51,
+        "delta_pct": 7.6
+      },
+      {
+        "code": "BLCI",
+        "name": "BLCI",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 7.36,
+        "to_value": 7.86,
+        "delta_php_kwh": 0.5,
+        "delta_pct": 6.8
+      },
+      {
+        "code": "CENECO-NEPC",
+        "name": "CENECO/NEPC",
+        "region_short": "NIR",
+        "customer_class": "generation",
+        "from_value": 8.42,
+        "to_value": 7.92,
+        "delta_php_kwh": -0.5,
+        "delta_pct": -5.9
+      },
+      {
+        "code": "MERALCO",
+        "name": "MERALCO",
+        "region_short": "NCR",
+        "customer_class": "generation",
+        "from_value": 9.7,
+        "to_value": 10.2,
+        "delta_php_kwh": 0.5,
+        "delta_pct": 5.2
+      },
+      {
+        "code": "ISELCO-I",
+        "name": "ISELCO I",
+        "region_short": "Region II",
+        "customer_class": "generation",
+        "from_value": 7.94,
+        "to_value": 7.47,
+        "delta_php_kwh": -0.47,
+        "delta_pct": -5.9
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 8.62,
+        "to_value": 9.08,
+        "delta_php_kwh": 0.46,
+        "delta_pct": 5.3
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 8.3,
+        "to_value": 7.84,
+        "delta_php_kwh": -0.46,
+        "delta_pct": -5.5
+      },
+      {
+        "code": "AURELCO",
+        "name": "AURELCO",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.61,
+        "to_value": 7.06,
+        "delta_php_kwh": 0.45,
+        "delta_pct": 6.8
+      },
+      {
+        "code": "BOHECO-II",
+        "name": "BOHECO II",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 6.82,
+        "to_value": 7.27,
+        "delta_php_kwh": 0.45,
+        "delta_pct": 6.6
+      },
+      {
+        "code": "SURSECO-I",
+        "name": "SURSECO I",
+        "region_short": "Region XIII",
+        "customer_class": "generation",
+        "from_value": 5.7,
+        "to_value": 6.15,
+        "delta_php_kwh": 0.45,
+        "delta_pct": 7.9
+      },
+      {
+        "code": "PANELCO-III",
+        "name": "PANELCO III",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 7.23,
+        "to_value": 7.67,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 6.1
+      },
+      {
+        "code": "PENELCO",
+        "name": "PENELCO",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.4,
+        "to_value": 6.84,
+        "delta_php_kwh": 0.44,
+        "delta_pct": 6.9
+      },
+      {
+        "code": "CASURECO2",
+        "name": "CASURECO2",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 5.69,
+        "to_value": 6.12,
+        "delta_php_kwh": 0.43,
+        "delta_pct": 7.6
+      },
+      {
+        "code": "LEYECO-V",
+        "name": "LEYECO V",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 9.49,
+        "to_value": 9.06,
+        "delta_php_kwh": -0.43,
+        "delta_pct": -4.5
+      },
+      {
+        "code": "TARELCO-I",
+        "name": "TARELCO I",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 7.5,
+        "to_value": 7.93,
+        "delta_php_kwh": 0.43,
+        "delta_pct": 5.7
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "region_short": "Region VI",
+        "customer_class": "generation",
+        "from_value": 9.04,
+        "to_value": 8.62,
+        "delta_php_kwh": -0.42,
+        "delta_pct": -4.6
+      },
+      {
+        "code": "MOELCI-II",
+        "name": "MOELCI II",
+        "region_short": "Region X",
+        "customer_class": "generation",
+        "from_value": 7.57,
+        "to_value": 7.16,
+        "delta_php_kwh": -0.41,
+        "delta_pct": -5.4
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "region_short": "NIR",
+        "customer_class": "generation",
+        "from_value": 9.9,
+        "to_value": 10.31,
+        "delta_php_kwh": 0.41,
+        "delta_pct": 4.1
+      },
+      {
+        "code": "CASURECO4",
+        "name": "CASURECO4",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 6.03,
+        "to_value": 6.43,
+        "delta_php_kwh": 0.4,
+        "delta_pct": 6.6
+      },
+      {
+        "code": "SFELAPCO",
+        "name": "SFELAPCO",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.66,
+        "to_value": 7.05,
+        "delta_php_kwh": 0.39,
+        "delta_pct": 5.9
+      },
+      {
+        "code": "ALECO",
+        "name": "ALECO",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 6.25,
+        "to_value": 6.61,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 5.8
+      },
+      {
+        "code": "NEECO-II-AREA-II",
+        "name": "NEECO II  AREA II",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.92,
+        "to_value": 7.28,
+        "delta_php_kwh": 0.36,
+        "delta_pct": 5.2
+      },
+      {
+        "code": "QUEZELCO-II",
+        "name": "QUEZELCO II",
+        "region_short": "Region IV-A",
+        "customer_class": "generation",
+        "from_value": 5.94,
+        "to_value": 6.28,
+        "delta_php_kwh": 0.34,
+        "delta_pct": 5.7
+      },
+      {
+        "code": "ZANECO",
+        "name": "ZANECO",
+        "region_short": "Region IX",
+        "customer_class": "generation",
+        "from_value": 8.07,
+        "to_value": 8.41,
+        "delta_php_kwh": 0.34,
+        "delta_pct": 4.2
+      },
+      {
+        "code": "CAGELCO-II",
+        "name": "CAGELCO II",
+        "region_short": "Region II",
+        "customer_class": "generation",
+        "from_value": 5.74,
+        "to_value": 6.05,
+        "delta_php_kwh": 0.31,
+        "delta_pct": 5.4
+      },
+      {
+        "code": "BATELEC-I",
+        "name": "BATELEC I",
+        "region_short": "Region IV-A",
+        "customer_class": "generation",
+        "from_value": 6.71,
+        "to_value": 7.0,
+        "delta_php_kwh": 0.29,
+        "delta_pct": 4.3
+      },
+      {
+        "code": "VECO",
+        "name": "VECO",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 8.04,
+        "to_value": 8.33,
+        "delta_php_kwh": 0.29,
+        "delta_pct": 3.6
+      },
+      {
+        "code": "NORECO-II",
+        "name": "NORECO II",
+        "region_short": "NIR",
+        "customer_class": "generation",
+        "from_value": 8.12,
+        "to_value": 7.85,
+        "delta_php_kwh": -0.27,
+        "delta_pct": -3.3
+      },
+      {
+        "code": "QUEZELCO-I",
+        "name": "QUEZELCO I",
+        "region_short": "Region IV-A",
+        "customer_class": "generation",
+        "from_value": 5.94,
+        "to_value": 6.21,
+        "delta_php_kwh": 0.27,
+        "delta_pct": 4.5
+      },
+      {
+        "code": "BENECO",
+        "name": "BENECO",
+        "region_short": "CAR",
+        "customer_class": "generation",
+        "from_value": 6.61,
+        "to_value": 6.86,
+        "delta_php_kwh": 0.25,
+        "delta_pct": 3.8
+      },
+      {
+        "code": "BISELCO",
+        "name": "BISELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "generation",
+        "from_value": 7.4,
+        "to_value": 7.16,
+        "delta_php_kwh": -0.24,
+        "delta_pct": -3.2
+      },
+      {
+        "code": "GUIMELCO",
+        "name": "GUIMELCO",
+        "region_short": "Region VI",
+        "customer_class": "generation",
+        "from_value": 9.14,
+        "to_value": 8.92,
+        "delta_php_kwh": -0.22,
+        "delta_pct": -2.4
+      },
+      {
+        "code": "CASURECO1",
+        "name": "CASURECO1",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 6.51,
+        "to_value": 6.3,
+        "delta_php_kwh": -0.21,
+        "delta_pct": -3.2
+      },
+      {
+        "code": "DLPC",
+        "name": "DLPC",
+        "region_short": "Region XI",
+        "customer_class": "generation",
+        "from_value": 7.03,
+        "to_value": 7.24,
+        "delta_php_kwh": 0.21,
+        "delta_pct": 3.0
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "region_short": "Region XII",
+        "customer_class": "generation",
+        "from_value": 7.16,
+        "to_value": 6.96,
+        "delta_php_kwh": -0.2,
+        "delta_pct": -2.8
+      },
+      {
+        "code": "PELCO-I",
+        "name": "PELCO I",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.14,
+        "to_value": 6.34,
+        "delta_php_kwh": 0.2,
+        "delta_pct": 3.3
+      },
+      {
+        "code": "NEECO-II-AREA-I",
+        "name": "NEECO II  AREA I",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 6.03,
+        "to_value": 6.22,
+        "delta_php_kwh": 0.19,
+        "delta_pct": 3.2
+      },
+      {
+        "code": "CEBECO-III",
+        "name": "CEBECO III",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 9.86,
+        "to_value": 10.04,
+        "delta_php_kwh": 0.18,
+        "delta_pct": 1.8
+      },
+      {
+        "code": "MORESCO-II",
+        "name": "MORESCO II",
+        "region_short": "Region X",
+        "customer_class": "generation",
+        "from_value": 6.47,
+        "to_value": 6.65,
+        "delta_php_kwh": 0.18,
+        "delta_pct": 2.8
+      },
+      {
+        "code": "SORECO2",
+        "name": "SORECO2",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 7.02,
+        "to_value": 6.84,
+        "delta_php_kwh": -0.18,
+        "delta_pct": -2.6
+      },
+      {
+        "code": "ABRECO",
+        "name": "ABRECO",
+        "region_short": "CAR",
+        "customer_class": "generation",
+        "from_value": 6.59,
+        "to_value": 6.76,
+        "delta_php_kwh": 0.17,
+        "delta_pct": 2.6
+      },
+      {
+        "code": "IEEC",
+        "name": "IEEC",
+        "region_short": "Region IV-A",
+        "customer_class": "generation",
+        "from_value": 5.75,
+        "to_value": 5.59,
+        "delta_php_kwh": -0.16,
+        "delta_pct": -2.8
+      },
+      {
+        "code": "INEC",
+        "name": "INEC",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 6.3,
+        "to_value": 6.45,
+        "delta_php_kwh": 0.15,
+        "delta_pct": 2.4
+      },
+      {
+        "code": "LEYECO-IV",
+        "name": "LEYECO IV",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 9.56,
+        "to_value": 9.41,
+        "delta_php_kwh": -0.15,
+        "delta_pct": -1.6
+      },
+      {
+        "code": "FIBECO",
+        "name": "FIBECO",
+        "region_short": "Region X",
+        "customer_class": "generation",
+        "from_value": 7.16,
+        "to_value": 7.3,
+        "delta_php_kwh": 0.14,
+        "delta_pct": 2.0
+      },
+      {
+        "code": "CELCOR",
+        "name": "CELCOR",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 7.37,
+        "to_value": 7.5,
+        "delta_php_kwh": 0.13,
+        "delta_pct": 1.8
+      },
+      {
+        "code": "SOCOTECO-II",
+        "name": "SOCOTECO II",
+        "region_short": "Region XII",
+        "customer_class": "generation",
+        "from_value": 7.71,
+        "to_value": 7.84,
+        "delta_php_kwh": 0.13,
+        "delta_pct": 1.7
+      },
+      {
+        "code": "CANORECO",
+        "name": "CANORECO",
+        "region_short": "Region V",
+        "customer_class": "generation",
+        "from_value": 5.55,
+        "to_value": 5.44,
+        "delta_php_kwh": -0.11,
+        "delta_pct": -2.0
+      },
+      {
+        "code": "ILPI",
+        "name": "ILPI",
+        "region_short": "Region X",
+        "customer_class": "generation",
+        "from_value": 8.44,
+        "to_value": 8.54,
+        "delta_php_kwh": 0.1,
+        "delta_pct": 1.2
+      },
+      {
+        "code": "LEYECO-1-DORELCO",
+        "name": "LEYECO 1/DORELCO",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 9.87,
+        "to_value": 9.96,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 0.9
+      },
+      {
+        "code": "SAMELCO-I",
+        "name": "SAMELCO I",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 8.76,
+        "to_value": 8.85,
+        "delta_php_kwh": 0.09,
+        "delta_pct": 1.0
+      },
+      {
+        "code": "LANECO",
+        "name": "LANECO",
+        "region_short": "Region X",
+        "customer_class": "generation",
+        "from_value": 5.61,
+        "to_value": 5.69,
+        "delta_php_kwh": 0.08,
+        "delta_pct": 1.4
+      },
+      {
+        "code": "SOLECO",
+        "name": "SOLECO",
+        "region_short": "Region VIII",
+        "customer_class": "generation",
+        "from_value": 8.88,
+        "to_value": 8.81,
+        "delta_php_kwh": -0.07,
+        "delta_pct": -0.8
+      },
+      {
+        "code": "MORE-POWER",
+        "name": "MORE Power",
+        "region_short": "Region VI",
+        "customer_class": "generation",
+        "from_value": 7.57,
+        "to_value": 7.63,
+        "delta_php_kwh": 0.06,
+        "delta_pct": 0.8
+      },
+      {
+        "code": "ORMECO",
+        "name": "ORMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "generation",
+        "from_value": 10.2,
+        "to_value": 10.26,
+        "delta_php_kwh": 0.06,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "PROSIELCO",
+        "name": "PROSIELCO",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 8.5,
+        "to_value": 8.55,
+        "delta_php_kwh": 0.05,
+        "delta_pct": 0.6
+      },
+      {
+        "code": "LASURECO",
+        "name": "LASURECO",
+        "region_short": "BARMM",
+        "customer_class": "generation",
+        "from_value": 2.63,
+        "to_value": 2.67,
+        "delta_php_kwh": 0.04,
+        "delta_pct": 1.5
+      },
+      {
+        "code": "OEDC",
+        "name": "OEDC",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 8.0,
+        "to_value": 7.96,
+        "delta_php_kwh": -0.04,
+        "delta_pct": -0.5
+      },
+      {
+        "code": "ZAMECO-I",
+        "name": "ZAMECO I",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 7.22,
+        "to_value": 7.25,
+        "delta_php_kwh": 0.03,
+        "delta_pct": 0.4
+      },
+      {
+        "code": "LUECO",
+        "name": "LUECO",
+        "region_short": "Region I",
+        "customer_class": "generation",
+        "from_value": 6.43,
+        "to_value": 6.44,
+        "delta_php_kwh": 0.01,
+        "delta_pct": 0.2
+      },
+      {
+        "code": "OMECO",
+        "name": "OMECO",
+        "region_short": "Region IV-B",
+        "customer_class": "generation",
+        "from_value": 7.39,
+        "to_value": 7.38,
+        "delta_php_kwh": -0.01,
+        "delta_pct": -0.1
+      },
+      {
+        "code": "BANELCO",
+        "name": "BANELCO",
+        "region_short": "Region VII",
+        "customer_class": "generation",
+        "from_value": 8.19,
+        "to_value": 8.19,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "IFELCO",
+        "name": "IFELCO",
+        "region_short": "CAR",
+        "customer_class": "generation",
+        "from_value": 4.57,
+        "to_value": 4.57,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "MARELCO",
+        "name": "MARELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "generation",
+        "from_value": 7.29,
+        "to_value": 7.29,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "PELCO-II",
+        "name": "PELCO II",
+        "region_short": "Region III",
+        "customer_class": "generation",
+        "from_value": 5.77,
+        "to_value": 5.77,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      },
+      {
+        "code": "TIELCO",
+        "name": "TIELCO",
+        "region_short": "Region IV-B",
+        "customer_class": "generation",
+        "from_value": 7.31,
+        "to_value": 7.31,
+        "delta_php_kwh": 0.0,
+        "delta_pct": 0.0
+      }
+    ],
+    "availability_changes": [
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CAPELCO",
+        "name": "CAPELCO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CELCO",
+        "name": "CELCO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "NOCECO",
+        "name": "NOCECO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "invalid"
+      },
+      {
+        "code": "SIARELCO",
+        "name": "SIARELCO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "TISELCO",
+        "name": "TISELCO",
+        "customer_class": "residential",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CELCO",
+        "name": "CELCO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "COTELCO",
+        "name": "COTELCO",
+        "customer_class": "commercial",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ILECO-II",
+        "name": "ILECO II",
+        "customer_class": "commercial",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SIARELCO",
+        "name": "SIARELCO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "TISELCO",
+        "name": "TISELCO",
+        "customer_class": "commercial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "customer_class": "industrial",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "CEBECO-I",
+        "name": "CEBECO I",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ESAMELCO",
+        "name": "ESAMELCO",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "NONECO",
+        "name": "NONECO",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SAJELCO",
+        "name": "SAJELCO",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SORECO1",
+        "name": "SORECO1",
+        "customer_class": "industrial",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "AKELCO",
+        "name": "AKELCO",
+        "customer_class": "generation",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "ANTECO",
+        "name": "ANTECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ASELCO",
+        "name": "ASELCO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "BASELCO",
+        "name": "BASELCO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "BOHECO-I",
+        "name": "BOHECO I",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "BUSECO",
+        "name": "BUSECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CAPELCO",
+        "name": "CAPELCO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEBECO-II",
+        "name": "CEBECO II",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CEDC",
+        "name": "CEDC",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CELCO",
+        "name": "CELCO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "CLPC",
+        "name": "CLPC",
+        "customer_class": "generation",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "DASURECO",
+        "name": "DASURECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "DORECO",
+        "name": "DORECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "FLECO",
+        "name": "FLECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ILECO-III",
+        "name": "ILECO III",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "LEYECO-II",
+        "name": "LEYECO II",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "MORESCO-I",
+        "name": "MORESCO I",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "NOCECO",
+        "name": "NOCECO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "PANELCO-I",
+        "name": "PANELCO I",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "ROMELCO",
+        "name": "ROMELCO",
+        "customer_class": "generation",
+        "from": "nda",
+        "to": "published"
+      },
+      {
+        "code": "SIARELCO",
+        "name": "SIARELCO",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "SOCOTECO-I",
+        "name": "SOCOTECO I",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      },
+      {
+        "code": "TARELCO-II",
+        "name": "TARELCO II",
+        "customer_class": "generation",
+        "from": "published",
+        "to": "nda"
+      }
+    ],
+    "notes": [
+      "This is a month-over-month movement feed, not a dataset revision history: the API publishes one dated snapshot, and a new snapshot is a new dataset_version.",
+      "movements lists utility/class pairs published in both months, sorted by customer class then absolute change (largest first). delta_pct is null when the previous value is zero.",
+      "availability_changes records cells whose explicit state changed between the two months (e.g. published -> nda)."
+    ]
+  },
+  "next_cursor": null
+}
