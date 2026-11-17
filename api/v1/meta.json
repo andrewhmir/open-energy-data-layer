@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 1
   },
@@ -262,42 +262,42 @@
     "data_files": [
       {
         "name": "utilities.csv",
-        "path": "../data/seed/utilities.csv",
+        "path": "data/seed/utilities.csv",
         "rows": 141,
         "bytes": 30091,
         "sha256": "3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912"
       },
       {
         "name": "regions.csv",
-        "path": "../data/seed/regions.csv",
+        "path": "data/seed/regions.csv",
         "rows": 18,
         "bytes": 2738,
         "sha256": "ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d"
       },
       {
         "name": "rates_monthly.csv",
-        "path": "../data/seed/rates_monthly.csv",
+        "path": "data/seed/rates_monthly.csv",
         "rows": 60348,
         "bytes": 6550268,
         "sha256": "07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373"
       },
       {
         "name": "sources.csv",
-        "path": "../data/seed/sources.csv",
+        "path": "data/seed/sources.csv",
         "rows": 4,
         "bytes": 2780,
         "sha256": "36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a"
       },
       {
         "name": "service_areas.csv",
-        "path": "../data/seed/service_areas.csv",
+        "path": "data/seed/service_areas.csv",
         "rows": 1665,
-        "bytes": 152768,
-        "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+        "bytes": 156906,
+        "sha256": "e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55"
       },
       {
         "name": "service_area_sources.csv",
-        "path": "../data/seed/service_area_sources.csv",
+        "path": "data/seed/service_area_sources.csv",
         "rows": 4,
         "bytes": 2584,
         "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
@@ -505,8 +505,8 @@
       "files": {
         "service_areas.csv": {
           "rows": 1665,
-          "bytes": 152768,
-          "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+          "bytes": 156906,
+          "sha256": "e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55"
         },
         "service_area_sources.csv": {
           "rows": 4,
@@ -519,7 +519,7 @@
         "Coverage rows are published verbatim in data/seed/service_areas.csv: utility_code, source_id, area_level, the PSGC hierarchy and a coverage_note. Every utility has at least one row.",
         "A row is a published franchise/service area, not verified household-level billing territory. Region-level rows are an explicit fallback, not LGU-level confirmation.",
         "Multi-region utilities in this snapshot: AURELCO, BASELCO, CAGELCO-II, FIBECO, LASURECO, MERALCO, PPALMA, QUEZELCO-I, SUKELCO, ZAMSURECO-I. MERALCO is the documented franchise-law case: RA 12146 Section 1 enumerates its LGUs in NCR, Region III and Region IV-A plus 17 Pampanga barangays, while the DOE workbook lists MERALCO under NCR only.",
-        "Coverage sources carry their own licences (public law, CC BY-SA where the OpenStreetMap Wiki / Wikipedia tables are used, DOE terms unconfirmed for the region fallback); see service_area.sources and /v1/sources.json."
+        "Coverage sources carry their own licences (public law, CC BY-SA where the OpenStreetMap Wiki / Wikipedia tables are used, DOE terms unconfirmed for the region fallback); see service_area.sources and /api/v1/sources.json."
       ]
     },
     "machine_access": {
@@ -533,7 +533,7 @@
       "Power-plant points: data/seed/plants.csv is illustrative sample data and is not part of this API.",
       "Bill-component breakdown (generation, transmission, system loss, distribution, subsidies, FIT-All, taxes): not in the DOE workbook and not published here.",
       "No imputed, interpolated or modelled values are published; an absent value stays absent.",
-      "Service-area coverage is derived data, not part of the DOE rates publication: a franchise area is not verified billing territory, and region-level rows are a fallback. See service_area and /v1/service-areas.json for provenance and licences."
+      "Service-area coverage is derived data, not part of the DOE rates publication: a franchise area is not verified billing territory, and region-level rows are a fallback. See service_area and /api/v1/service-areas.json for provenance and licences."
     ],
     "notes": [
       "This is a static snapshot: files are JSON documents and there is no query layer, so next_cursor is always null and there are no filter parameters.",

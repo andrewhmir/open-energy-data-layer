@@ -30,9 +30,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS = os.path.join(ROOT, "draft", "assets")
 OUT = os.path.join(ROOT, "draft", "map-table-prototype.html")
 
-# Canonical origin for <link rel=canonical> / Open Graph. Set at deployment time:
-#   OPEN_ENERGY_SITE_URL=https://<org>.github.io/<repo> python3 tools/build-map-page.py
-SITE_URL = os.environ.get("OPEN_ENERGY_SITE_URL", "").rstrip("/")
+# Canonical origin for <link rel=canonical> / Open Graph. The published deployment is
+# the default; override with OPEN_ENERGY_SITE_URL for another host.
+SITE_URL = os.environ.get(
+    "OPEN_ENERGY_SITE_URL", "https://andrewhmir.github.io/open-energy-data-layer").rstrip("/")
 
 esc = lambda s: html.escape(str(s), quote=False)
 esc_attr = lambda s: html.escape(str(s), quote=True)
@@ -2373,7 +2374,6 @@ function coverageProvinceRows(providerCode){
 }
 function coverageSummary(providerCode){
   var cov = COV[providerCode];
-  var u = UTIL[providerCode];
   if (!cov) return 'service area not sourced';
   if (cov.d === 'region') {
     return 'region-level coverage only (' + cov.r.map(regionShort).join(' · ') + ')';
@@ -2457,8 +2457,6 @@ function renderMap(){
   function f(v){ return moneyFmt.format(v); }
   var parts = [];
   for (var i = 0; i < 5; i++){
-    var lo = i === 0 ? null : sc.breaks[i-1];
-    var hi = i < 4 ? sc.breaks[i] : null;
     var label = i === 0 ? '\u2264 ' + f(sc.breaks[0])
       : i === 4 ? '> ' + f(sc.breaks[3])
       : f(sc.breaks[i-1]) + '\u2013' + f(sc.breaks[i]);
@@ -3130,6 +3128,7 @@ function sortValue(u, key){
 }
 function filtered(){
   var q = state.q.trim().toLowerCase();
+  var exactCode = q && DATA.utilities.some(function(u){ return u.code.toLowerCase() === q; });
   var list = DATA.utilities.filter(function(u){
     if (state.provider && u.code !== state.provider) return false;
     if (!state.includeNda && u.latest.residential == null) return false;
@@ -3137,6 +3136,7 @@ function filtered(){
     if (state.type !== 'all' && u.type !== state.type) return false;
     if (state.grid !== 'all' && u.grid !== state.grid) return false;
     if (!q) return true;
+    if (exactCode) return u.code.toLowerCase() === q;
     var hay = [u.name, u.code, u.region_short, u.region_name, u.island, u.type, u.grid, u.data_status]
       .join(' ').toLowerCase();
     return hay.indexOf(q) >= 0;
@@ -3179,6 +3179,9 @@ function rowHtml(u){
 function clearAllFilters(){
   if (state.provider) clearProvider({ aside: false });
   state.q = ''; state.region = 'all'; state.type = 'all'; state.grid = 'all';
+  state.includeNda = true;
+  var ndaSwitch = $('#include-nda');
+  if (ndaSwitch) ndaSwitch.setAttribute('aria-checked', 'true');
   var q = $('#q');
   if (q){ q.value = ''; }
   var searchBox = $('#searchbox');
@@ -3238,7 +3241,7 @@ function renderTable(){
   var n = $('#table-note');
   if (n) n.textContent = list.length === total ? '' : (total - list.length) + ' utilities hidden by the current filters.';
   var cf = $('#clear-filters');
-  if (cf){ cf.hidden = !(state.q.trim() || state.provider || state.region !== 'all' || state.type !== 'all' || state.grid !== 'all'); }
+  if (cf){ cf.hidden = !(state.q.trim() || state.provider || state.region !== 'all' || state.type !== 'all' || state.grid !== 'all' || !state.includeNda); }
   var searchBox = $('#searchbox');
   if (searchBox) searchBox.classList.toggle('has-value', !!state.q);
   if (state.utility && !UTIL[state.utility]) state.utility = null;
@@ -3255,6 +3258,7 @@ function toggleUtility(code){
     regionAside(u.psgc);
   }
   renderTable();
+  syncUrl();
 }
 
 /* ---------- selection ---------- */
@@ -3335,6 +3339,15 @@ function applyUrlState(){
     setDD('region-jump', state.region);
     renderMap(); regionAside(state.region); renderTable();
   }
+  // A row-expand link also carries region; apply the utility after the region
+  // filter (unless a provider lens wins) so the row actually reopens.
+  if (utility && UTIL[utility] && !state.provider && state.utility !== utility){
+    state.utility = utility;
+    state.region = UTIL[utility].psgc;
+    setDD('region-filter', state.region);
+    setDD('region-jump', state.region);
+    renderMap(); regionAside(state.region); renderTable();
+  }
   renderCompareTray();
   renderTable();
   if (state.compare.length >= 2){
@@ -3390,7 +3403,11 @@ function selectRegion(psgc, scroll){
 function focusUtility(code){
   var u = UTIL[code];
   if (state.provider){ clearProvider({ aside: false }); }
-  state.q = u.name; $('#q').value = u.name;
+  state.includeNda = true; state.type = 'all'; state.grid = 'all';
+  var ndaSwitch = $('#include-nda');
+  if (ndaSwitch) ndaSwitch.setAttribute('aria-checked', 'true');
+  setDD('type-filter', 'all'); setDD('grid-filter', 'all');
+  state.q = u.code; $('#q').value = u.code;
   var searchBox = $('#searchbox'); if (searchBox) searchBox.classList.add('has-value');
   state.region = u.psgc; setDD('region-filter', u.psgc); setDD('region-jump', u.psgc);
   state.utility = code;
@@ -3905,7 +3922,7 @@ def main():
     coverage_stats = payload["coverage"]["stats"]
     canonical = SITE_URL
     og_image = ""
-    if SITE_URL:
+    if SITE_URL and os.path.exists(os.path.join(ASSETS, "og.png")):
         base = SITE_URL.rsplit("/", 1)[0] if SITE_URL.endswith(".html") else SITE_URL.rstrip("/")
         og_image = base.rstrip("/") + "/assets/og.png"
 

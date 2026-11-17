@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 1
   },
@@ -720,7 +720,7 @@
     "notes": [
       "The series is grouped by explicit source state. published is month -> PHP/kWh for cells the source publishes; nda/missing/invalid list the months with those states. All four states together cover every month in coverage.months_total exactly once.",
       "NDA is the source's own \"No Data Available\" marker. No value is imputed.",
-      "service_area is the full coverage block (provinces, LGUs, barangays) with its source ids; the published rows are at /v1/service-areas/<CODE>.json. Coverage is derived data, not a DOE rate publication."
+      "service_area is the full coverage block (provinces, LGUs, barangays) with its source ids; the published rows are at /api/v1/service-areas/<CODE>.json. Coverage is derived data, not a DOE rate publication."
     ]
   },
   "next_cursor": null

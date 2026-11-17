@@ -1,5 +1,12 @@
 # Open Energy Data Layer — Philippine electricity rates
 
+> **Deployment note:** this `source/` folder is a partial copy of the upstream
+> project, shipped so the documentation's "download raw" links return the real
+> bytes. The build and QA commands below assume the full upstream tree (`tools/`,
+> `draft/`, `tests/`, `package.json`), which is not part of this deployment
+> repository. See the root [README](../README.md) and [CONTRIBUTING](../CONTRIBUTING.md)
+> for what this repository actually is.
+
 An open, API-first data layer that collates who sells power in the Philippines, at what
 price, and with what provenance — starting from what the Department of Energy (DOE) already
 publishes, not from a fleet of scrapers.
@@ -20,7 +27,7 @@ price table, the API in one place, and the receipts behind every number.
 | **Latest published month** | October 2026 |
 | **Coverage** | 141 distribution utilities and electric cooperatives, 18 PSGC regions, 106 months with published data (Jan 2018 – Oct 2026) |
 | **Status** | Pre-release (`0.x`), not yet deployed — see [Deployment status](#deployment-status) |
-| **Licence** | Code, page and design: MIT. Data, brand and third-party assets: see [Licence](#licence) and [NOTICE.md](NOTICE.md) |
+| **Licence** | Code, page and design: MIT. Data, brand and third-party assets: see [Licence](#licence) and [NOTICE.md](../NOTICE.md) |
 
 ## What it does
 
@@ -262,7 +269,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | Retrieval method | Unauthenticated CSV export of each tab (`/export?format=csv&gid=…`) — the same bytes a browser downloads |
 | Retrieval date | 2026-11-10 (Asia/Manila) |
 | Snapshot | `data/raw/doe-rates/2026-11-10/{0,441532959,1244383053,714337242}.csv` with SHA-256 recorded in `data/seed/sources.csv` and `data/seed/validation.json` |
-| Licence | **Not confirmed** — see [NOTICE.md](NOTICE.md); the project asserts no licence over the DOE workbook or the figures extracted from it |
+| Licence | **Not confirmed** — see [NOTICE.md](../NOTICE.md); the project asserts no licence over the DOE workbook or the figures extracted from it |
 
 ### Pipeline: fetch → snapshot → hash → parse → validate → publish
 
@@ -322,7 +329,7 @@ PSGC 3Q 2026 moved Sulu to Region IX and Siquijor to the Negros Island Region; t
 notes record the reassignment rather than forcing the old region. Partial coverage (an LGU
 split between two utilities, or a franchise that covers only part of an LGU) is recorded in
 the row's `coverage_note`. The coverage dataset is a **CC BY-SA derivative** of the OSM and
-Wikipedia sources and is licensed separately from the MIT code — see [NOTICE.md](NOTICE.md).
+Wikipedia sources and is licensed separately from the MIT code — see [NOTICE.md](../NOTICE.md).
 57 of the 1,642 LGUs have no DU in the current sources; they are listed with reasons in
 [`research/coverage/README.md`](research/coverage/README.md).
 
@@ -414,13 +421,13 @@ recorded in **[CHANGELOG.md](CHANGELOG.md)**.
 
 | Artefact | Licence |
 | --- | --- |
-| Source code, generated page, design layer | **MIT** — see [LICENSE](LICENSE) (© 2026 Open Energy Data Layer contributors) |
+| Source code, generated page, design layer | **MIT** — see [LICENSE](../LICENSE) (© 2026 Open Energy Data Layer contributors) |
 | Design language derived from BetterGovPH `transparency-portal` | MIT (© 2026 BetterGov.ph) |
 | Fonts (Figtree, Inter, JetBrains Mono) | SIL Open Font License 1.1 |
 | Icons (Lucide) | ISC License; Feather-derived icons MIT |
 | Region + LGU geometry | MIT (repository scripts/maps, © James Faeldon / `faeldon/philippines-json-maps`); boundaries **CC BY 3.0 IGO** (© NAMRIA and PSA, via OCHA COD-AB) |
 | Service-area dataset (`service_areas.csv`, derived coverage layer) | **CC BY-SA 2.0 / 4.0 derivative** — © OpenStreetMap Wiki contributors (CC BY-SA 2.0) and © Wikipedia contributors (CC BY-SA 4.0), with RA 12146 (Philippine public law) for Meralco; attribution + share-alike apply to the derived coverage data |
 | BetterGov brand assets | BetterGovPH brand property — not MIT; used with attribution for this BetterGovPH open-data project |
-| DOE workbook data and derived figures | **No confirmed licence** — the project asserts none; see [NOTICE.md](NOTICE.md) |
+| DOE workbook data and derived figures | **No confirmed licence** — the project asserts none; see [NOTICE.md](../NOTICE.md) |
 
-Third-party terms, provenance and attribution notes are in **[NOTICE.md](NOTICE.md)**.
+Third-party terms, provenance and attribution notes are in **[NOTICE.md](../NOTICE.md)**.

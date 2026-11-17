@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 141
   },
@@ -6655,11 +6655,11 @@
         "SRC-RA-12146",
         "SRC-DOE-RATES"
       ],
-      "note": "Every row's coverage object is a compact service-area summary (detail, source_ids, regions, lgu_count, province_count, barangay_count). Full rows and provenance: /v1/service-areas/<CODE>.json."
+      "note": "Every row's coverage object is a compact service-area summary (detail, source_ids, regions, lgu_count, province_count, barangay_count). Full rows and provenance: /api/v1/service-areas/<CODE>.json."
     },
     "notes": [
       "latest / prev are the 2026-10 and 2026-09 cells. A null means the cell is not published; latest_status says whether it is nda, missing or invalid.",
-      "coverage is derived data, not a DOE rate publication; see /v1/service-areas.json.",
+      "coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json.",
       "data_status restates the utility's latest-month outcome: published (a residential value exists), partial (some classes published), nda (no latest-month values).",
       "Codes are this dataset's stable slugs, not official DOE/ERC/NEA identifiers; name_variants records tab labels that differ."
     ]

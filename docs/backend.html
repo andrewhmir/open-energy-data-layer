@@ -509,8 +509,8 @@ fetching source data — committed snapshots and generated trees are the inputs:
 </table></div>
 <p>CI enforces the determinism rules: tracked generated trees must rebuild byte-identically or the build fails.</p>
 <h2 class="has-anchor" id="hosting-and-deployment-model">Hosting and deployment model<a class="h-anchor" href="#hosting-and-deployment-model" aria-label="Link to this section" tabindex="-1">#</a></h2>
-<p>Everything after the build is served as plain static files. <strong>No public deployment exists</strong>; the page,
-docs and API are static artefacts that <em>can</em> be served by any host, and the review pack is local.</p>
+<p>Everything after the build is served as plain static files. <strong>The page, docs and API are deployed as static files.</strong> The review pack is local;
+any static host can serve the same tree.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>

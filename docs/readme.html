@@ -134,7 +134,7 @@ price table, the API in one place, and the receipts behind every number.</p>
 </tr>
 <tr>
 <td><strong>Status</strong></td>
-<td>Pre-release (<code>0.x</code>), not yet deployed — see <a href="#deployment-status">Deployment status</a></td>
+<td>Public data page deployed; upstream source pre-release — see <a href="#deployment-status">Deployment status</a></td>
 </tr>
 <tr>
 <td><strong>Licence</strong></td>
@@ -296,17 +296,15 @@ downloads-and-licence section.</li>
 commands below. Reviewed data and generated payloads are documented in
 <a href="data-seed.html"><code>data/seed/README.md</code></a>.</p>
 <h2 class="has-anchor" id="deployment-status">Deployment status<a class="h-anchor" href="#deployment-status" aria-label="Link to this section" tabindex="-1">#</a></h2>
-<p><strong>No public deployment exists yet, and this repository contains no live URL for the project.</strong>
-The page is a single static HTML file that can be opened locally or dropped on any static
-host or CDN; choosing and documenting that host (and the API's base URL) is pending. The
-generated static JSON API under <code>draft/api/v1/</code> is the same kind of artefact: it can be
-served from any static host, but no host is configured yet, and the proposed hostnames in
-the API contract are not live services. The <code>preview/</code> review hub is a <strong>local build
-artefact</strong> (gitignored, produced by <code>tools/build-preview.py</code>), not a deployment. Nothing
-here is an official DOE or BetterGovPH publication.</p>
-<p>When a deployment exists, this section will record the URL, the host, the deployed dataset
-version and the API base URL. Until then, treat any URL that is not a source citation (DOE,
-the public Google Sheet, BetterGov.ph) as not ours.</p>
+<p><strong>This is the public deployment: <a href="https://andrewhmir.github.io/open-energy-data-layer/">andrewhmir.github.io/open-energy-data-layer</a>. The upstream source project is pre-release.</strong>
+The page is a single static HTML file served from GitHub Pages; the static JSON API at
+<code>api/v1/</code> is served from the same origin. The <code>preview/</code> review hub is a
+<strong>local build artefact</strong> (gitignored, produced by <code>tools/build-preview.py</code>),
+not a deployment. Nothing here is an official DOE or BetterGovPH publication.</p>
+<p>The deployment serves dataset version 2026-11-10; the API base URL is
+<code>https://andrewhmir.github.io/open-energy-data-layer/api/v1/</code>. The upstream build and
+QA commands below assume the full source project, which is not in this repository; see the
+root README and CONTRIBUTING.</p>
 <h2 class="has-anchor" id="quickstart">Quickstart<a class="h-anchor" href="#quickstart" aria-label="Link to this section" tabindex="-1">#</a></h2>
 <p>Requirements: <strong>Python 3.12</strong> with <code>pip</code>, and network access for the first workbook fetch.</p>
 <div class="code-block"><div class="code-head"><span class="code-lang">bash</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span>Copy</span></button></div><pre><code class="language-bash"># 1. Get the source (a public remote is pending publication; clone or copy as available)
@@ -640,9 +638,9 @@ changes, conflicts, the validation report and a JSON mirror of the contract.</li
 docs, contributing, security, changelog and research notes, with a
 sidebar, per-page table of contents, code-block copy buttons and raw-markdown downloads. It needs no server, no key and no database — serve the
 directory from any static host.</li>
-<li><strong>Nothing is deployed yet.</strong> There is no API host, and any hostnames in the contract are
-proposed values, not live services. The page's API section documents the same envelopes
-and files that the generated mirror contains.</li>
+<li><strong>The data page and static API are deployed at the URL above.</strong> The OpenAPI
+server URL is relative to the site root. The page's API section documents the same
+envelopes and files that the generated mirror contains.</li>
 </ul>
 <p>Consumers who want the data today should use the static JSON API in <code>draft/api/v1/</code>
 (start at <code>draft/api/v1/index.json</code>, the machine-readable catalogue), the CSVs in

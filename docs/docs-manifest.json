@@ -208,7 +208,7 @@
           "id": "notice",
           "label": "Notices & attribution",
           "html": "notice.html",
-          "source": "NOTICE.md",
+          "source": "../NOTICE.md",
           "lines": 166,
           "bytes": 11735,
           "kind": "markdown"
@@ -217,7 +217,7 @@
           "id": "license",
           "label": "Licence (MIT)",
           "html": "license.html",
-          "source": "LICENSE",
+          "source": "../LICENSE",
           "lines": 33,
           "bytes": 1623,
           "kind": "plain"

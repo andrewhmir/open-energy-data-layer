@@ -5,13 +5,14 @@
   "dataset_version": "2026-11-10",
   "generated_at": "2026-11-10T17:00:34+08:00",
   "base_url_hint": "api/v1/",
+  "path_base": "site root (use these paths as-is from the deployment origin)",
   "openapi": {
     "yaml": "openapi.yaml",
     "json": "api/v1/openapi.json"
   },
   "docs": {
-    "api": "api-docs.md",
-    "data_model": "data-model.md"
+    "api": "docs/api-docs.html",
+    "data_model": "docs/data-model.html"
   },
   "source": {
     "id": "SRC-DOE-RATES",
@@ -26,42 +27,42 @@
   "data_files": [
     {
       "name": "utilities.csv",
-      "path": "../data/seed/utilities.csv",
+      "path": "data/seed/utilities.csv",
       "rows": 141,
       "bytes": 30091,
       "sha256": "3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912"
     },
     {
       "name": "regions.csv",
-      "path": "../data/seed/regions.csv",
+      "path": "data/seed/regions.csv",
       "rows": 18,
       "bytes": 2738,
       "sha256": "ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d"
     },
     {
       "name": "rates_monthly.csv",
-      "path": "../data/seed/rates_monthly.csv",
+      "path": "data/seed/rates_monthly.csv",
       "rows": 60348,
       "bytes": 6550268,
       "sha256": "07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373"
     },
     {
       "name": "sources.csv",
-      "path": "../data/seed/sources.csv",
+      "path": "data/seed/sources.csv",
       "rows": 4,
       "bytes": 2780,
       "sha256": "36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a"
     },
     {
       "name": "service_areas.csv",
-      "path": "../data/seed/service_areas.csv",
+      "path": "data/seed/service_areas.csv",
       "rows": 1665,
-      "bytes": 152768,
-      "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+      "bytes": 156906,
+      "sha256": "e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55"
     },
     {
       "name": "service_area_sources.csv",
-      "path": "../data/seed/service_area_sources.csv",
+      "path": "data/seed/service_area_sources.csv",
       "rows": 4,
       "bytes": 2584,
       "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
@@ -194,8 +195,8 @@
     "files": {
       "service_areas.csv": {
         "rows": 1665,
-        "bytes": 152768,
-        "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+        "bytes": 156906,
+        "sha256": "e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55"
       },
       "service_area_sources.csv": {
         "rows": 4,
@@ -203,223 +204,223 @@
         "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"
       }
     },
-    "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+    "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
   },
   "endpoints": [
     {
       "tag": "meta",
       "method": "GET",
-      "path": "/v1/health.json",
+      "path": "api/v1/health.json",
       "file": "api/v1/health.json",
       "summary": "Snapshot health: build identity and data-quality check results",
       "description": "Build identity plus the result of the 17 recorded data-quality checks. \"ok\" means the snapshot is internally consistent, not that a live service is up.",
       "count": 1,
-      "size_bytes": 6101,
-      "sha256": "0cdfdf33d6717e8ea83eb9d02e1e916eed6906bd117904f0b88a9c5bb6da7c84"
+      "size_bytes": 6105,
+      "sha256": "5ac82441f09e83553fb6104e4a0bd4f5a2310cbee066458001a3caf335f8e43d"
     },
     {
       "tag": "meta",
       "method": "GET",
-      "path": "/v1/meta.json",
+      "path": "api/v1/meta.json",
       "file": "api/v1/meta.json",
       "summary": "Dataset metadata: source, licence, coverage, status vocabulary, checksums",
       "description": "One document with the full dataset metadata: coverage, units, identifier schemes, the status vocabulary, the source record, licence status, disclaimers, SHA-256 checksums of the four seed CSVs and links to every machine-readable artefact.",
       "count": 1,
-      "size_bytes": 25636,
-      "sha256": "792ba3e02d19230083c7cb4981f5fd408a05c0a4bbca0c5b55b9d419bada20a4"
+      "size_bytes": 25630,
+      "sha256": "72f7f949d60dc838eaf3141af83842b7586b34b47f7cb3f57084e14e1624cad7"
     },
     {
       "tag": "meta",
       "method": "GET",
-      "path": "/v1/months.json",
+      "path": "api/v1/months.json",
       "file": "api/v1/months.json",
       "summary": "Month coverage 2018-01 to 2026-11 with per-class state counts",
       "description": "The 107 source month columns, the latest published month (2026-10), and for every customer class the count of published / NDA / missing / invalid cells in each month.",
       "count": 107,
-      "size_bytes": 31020,
-      "sha256": "1b2b96142457efe59835cdb61e8111e3141beadf3f25bd3b655349d946cfb925"
+      "size_bytes": 31024,
+      "sha256": "258060334471b3ee5f1d9eed0fa007867c599e5c7fdb8ba24a99c648255e7818"
     },
     {
       "tag": "quality",
       "method": "GET",
-      "path": "/v1/conflicts.json",
+      "path": "api/v1/conflicts.json",
       "file": "api/v1/conflicts.json",
       "summary": "Source disagreements, with the resolution rule and unresolved splits",
       "description": "Rows where the workbook's four tabs disagree: region, island-group and grid-connection conflicts, plus name variants. Resolved by majority; a 2-2 grid split is published as CONFLICT rather than guessed.",
       "count": 5,
-      "size_bytes": 6701,
-      "sha256": "b3a470a8d74bd8b2780501d4209f8d5abae1f46c115d5940267339436fc41566"
+      "size_bytes": 6705,
+      "sha256": "073c576d4a61a237fcd48809300383880f9ed4c5bdf6f8f1287c7950a09648f0"
     },
     {
       "tag": "quality",
       "method": "GET",
-      "path": "/v1/validation.json",
+      "path": "api/v1/validation.json",
       "file": "api/v1/validation.json",
       "summary": "The 17 data-quality checks run against the retrieved workbook",
       "description": "Row counts, month coverage, spot values, derived aggregates and checksum checks, as run at retrieval time. Published verbatim; any failure would set health status to degraded.",
       "count": 17,
-      "size_bytes": 9184,
-      "sha256": "94fb5a538c50dfeb51a6ec2f35cb6e465754ff0fedf6e4817c89a9b0e9d19a13"
+      "size_bytes": 9188,
+      "sha256": "3da8de5e66d2c42d541519e9ba3ff7355ed3819b961b06361778799bf459789a"
     },
     {
       "tag": "rates",
       "method": "GET",
-      "path": "/v1/rates/latest.json",
+      "path": "api/v1/rates/latest.json",
       "file": "api/v1/rates/latest.json",
       "summary": "Index of the latest published month per customer class",
       "description": "Points at the four per-class files for 2026-10 with their stats, sizes and checksums. Start here for a single class; use utilities/<CODE>.json for one utility's history.",
       "count": 4,
-      "size_bytes": 7080,
-      "sha256": "a0f3a3a1e984908d4d6d2a9ef708d0ce9d52c18167ba1cc62540b57bfa7629e7"
+      "size_bytes": 7084,
+      "sha256": "9fd7a7c9cbb71a96ee768b688aab22a907e5f955037f7f241a975d535e3dada7"
     },
     {
       "tag": "rates",
       "method": "GET",
-      "path": "/v1/rates/latest/commercial.json",
+      "path": "api/v1/rates/latest/commercial.json",
       "file": "api/v1/rates/latest/commercial.json",
       "summary": "Latest published commercial rate per utility (2026-10)",
       "description": "The 2026-10 commercial cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
       "count": 141,
-      "size_bytes": 43223,
-      "sha256": "8efa094281963ba8ab7144494b6e06132bfd52da6a8000d3b8f03cad9644437e"
+      "size_bytes": 43227,
+      "sha256": "c11bf47482ccef72f53dafb327d7a050d3d4c3cf7f827f37430af3bae9a5f7db"
     },
     {
       "tag": "rates",
       "method": "GET",
-      "path": "/v1/rates/latest/generation.json",
+      "path": "api/v1/rates/latest/generation.json",
       "file": "api/v1/rates/latest/generation.json",
       "summary": "Latest published generation rate per utility (2026-10)",
       "description": "The 2026-10 generation cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
       "count": 141,
-      "size_bytes": 43138,
-      "sha256": "38347abcb7cad7c0f82ccffd4c9f40deb7e2e0b046c905052b6d0a842f6cdd3b"
+      "size_bytes": 43142,
+      "sha256": "5f98e10fde367f3a898a46d4064981a09f65d7eea4e04dbda44a26a0bd4b0fd2"
     },
     {
       "tag": "rates",
       "method": "GET",
-      "path": "/v1/rates/latest/industrial.json",
+      "path": "api/v1/rates/latest/industrial.json",
       "file": "api/v1/rates/latest/industrial.json",
       "summary": "Latest published industrial rate per utility (2026-10)",
       "description": "The 2026-10 industrial cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
       "count": 141,
-      "size_bytes": 43164,
-      "sha256": "65f3557e4eaa8bd8bc05d480db9de6e139e65d15c9bc25f775f1b6e5b5dadaa1"
+      "size_bytes": 43168,
+      "sha256": "b227480445044d8a3f837cd54998f13fd4dd7563a56e5c306f13fae7624a935a"
     },
     {
       "tag": "rates",
       "method": "GET",
-      "path": "/v1/rates/latest/residential.json",
+      "path": "api/v1/rates/latest/residential.json",
       "file": "api/v1/rates/latest/residential.json",
       "summary": "Latest published residential rate per utility (2026-10)",
       "description": "The 2026-10 residential cell for all 141 utilities, with explicit non-published states, the previous month's value and the month-over-month change where both cells are published.",
       "count": 141,
-      "size_bytes": 43440,
-      "sha256": "590d92705cfe809058ff036ea6bf859e61acc5838764ff8c39ed1695741229fa"
+      "size_bytes": 43444,
+      "sha256": "5b0a549d1f46104e460a6cb5231da5076550b8c8fbb655da74c24f7033e105be"
     },
     {
       "tag": "utilities",
       "method": "GET",
-      "path": "/v1/utilities.json",
+      "path": "api/v1/utilities.json",
       "file": "api/v1/utilities.json",
       "summary": "Utility / electric-cooperative registry (141 entities)",
       "description": "Identity, type, grid connection, PSGC region, data status and latest/previous month values for all 141 utilities. Codes discovered here resolve to utilities/<CODE>.json.",
       "count": 141,
-      "size_bytes": 175415,
-      "sha256": "3e7cca8840f7455f2570a9fd3607a83e026e98550984cc448ac8716204ae226c"
+      "size_bytes": 175427,
+      "sha256": "a63825d8afa0ad8f73fdb11a045797216b8616a7bde299e1e7a577846749bf20"
     },
     {
       "tag": "utilities",
       "method": "GET",
-      "path": "/v1/utilities/MERALCO.json",
+      "path": "api/v1/utilities/MERALCO.json",
       "file": "api/v1/utilities/MERALCO.json",
       "summary": "One utility with its full monthly series per customer class",
       "description": "Registry record plus all four customer-class series, grouped by explicit source state (published / nda / missing / invalid) for 2018-01 to 2026-11.",
       "count": 141,
-      "size_bytes": 26487,
-      "sha256": "37abeb5c5f7f0c018c52cc30b7da6611cca833b13f14fc69a7074449add73005",
+      "size_bytes": 26413,
+      "sha256": "5d2510c1657634c87b238d545141c793194fa7e3aae9b6a4ca34c39b0c0f79c8",
       "file_pattern": "api/v1/utilities/{code}.json",
       "file_count": 141
     },
     {
       "tag": "service-areas",
       "method": "GET",
-      "path": "/v1/service-areas.json",
+      "path": "api/v1/service-areas.json",
       "file": "api/v1/service-areas.json",
       "summary": "Provider service-area coverage registry with source provenance",
       "description": "One item per utility with a compact coverage summary, plus the coverage-source registry (franchise law, DOE fallback, OSM Wiki / Wikipedia tables) and the aggregate counts. This is derived data, not a DOE rate publication.",
       "count": 141,
-      "size_bytes": 74884,
-      "sha256": "d51aad21dacf52738641b448323b3f1eee5039380b55e4f45339e8e28a600512"
+      "size_bytes": 74892,
+      "sha256": "6f4992f32f39377f5c6fcc4e69eec5bb17d8b0039982ce7aaf23c2bbc480e1d9"
     },
     {
       "tag": "service-areas",
       "method": "GET",
-      "path": "/v1/service-areas/MERALCO.json",
+      "path": "api/v1/service-areas/MERALCO.json",
       "file": "api/v1/service-areas/MERALCO.json",
       "summary": "One utility's full service-area coverage rows",
       "description": "The published coverage rows for one utility (LGU / barangay / region-fallback rows) with the PSGC hierarchy, a per-row source_id and the source records. One file per utility (api/v1/service-areas/<CODE>.json).",
       "count": 141,
-      "size_bytes": 72982,
-      "sha256": "0d7e1ff383c30882273d8edcd07421fa87710613236a362f65f910a0ce3bd864",
+      "size_bytes": 77022,
+      "sha256": "162079091c3cb3f631f0f067295affb8826bc46efe46503013fff425757637b1",
       "file_pattern": "api/v1/service-areas/{code}.json",
       "file_count": 141
     },
     {
       "tag": "regions",
       "method": "GET",
-      "path": "/v1/regions.json",
+      "path": "api/v1/regions.json",
       "file": "api/v1/regions.json",
       "summary": "18 PSGC regions with latest-month aggregates",
       "description": "Latest-month medians, means and ranges per customer class, reporting counts, island group and the DOE workbook's region label for all 18 regions.",
       "count": 18,
-      "size_bytes": 12651,
-      "sha256": "5d6ee73284de424a2e34cc6f3c6a2516a8a19aeb89515680139f159707d24ccf"
+      "size_bytes": 12655,
+      "sha256": "d7d314d5cf4778c953b4232490dca020d6c816be7e2d0431159df878f05f3351"
     },
     {
       "tag": "regions",
       "method": "GET",
-      "path": "/v1/regions/1300000000.json",
+      "path": "api/v1/regions/1300000000.json",
       "file": "api/v1/regions/1300000000.json",
       "summary": "One region plus its member utilities",
       "description": "One region's aggregates plus every member utility with its latest-month values and states.",
       "count": 18,
-      "size_bytes": 5709,
-      "sha256": "437733cb15baecbf30ae54c1927ec73a47718a31f29eeba35830b8e0a6df49c6",
+      "size_bytes": 5713,
+      "sha256": "2006b97072b2ae6061aab71fed4d5dc15d328b0b419b93b021f056b5595f7226",
       "file_pattern": "api/v1/regions/{psgc}.json",
       "file_count": 18
     },
     {
       "tag": "changes",
       "method": "GET",
-      "path": "/v1/changes/latest.json",
+      "path": "api/v1/changes/latest.json",
       "file": "api/v1/changes/latest.json",
       "summary": "What moved between 2026-09 and 2026-10",
       "description": "Month-over-month movements for utility/class pairs published in both months (largest absolute change first), plus cells whose explicit state changed between the two months.",
       "count": 374,
-      "size_bytes": 113722,
-      "sha256": "1c8e9e241140c9ec2476925d6b891713c812e30efe2b76b44e4ee2d7d2fd28ae"
+      "size_bytes": 113726,
+      "sha256": "6dfbb37316d39f25be8b241676f93a8f3c2d3e0d6d8dda9ab8bac9781173a1a8"
     },
     {
       "tag": "sources",
       "method": "GET",
-      "path": "/v1/sources.json",
+      "path": "api/v1/sources.json",
       "file": "api/v1/sources.json",
       "summary": "Source registry: the DOE workbook and its checksums",
       "description": "The single upstream source record: canonical DOE URL, workbook URL and sheet id, retrieval timestamp and extraction method, per-tab SHA-256 and byte counts, archived raw snapshots, licence status and provenance notes.",
       "count": 1,
-      "size_bytes": 14005,
-      "sha256": "d3376d73281d90284e4703de278d65c3e9e76fa78e965d7949c1ed2c63b77fc8"
+      "size_bytes": 14009,
+      "sha256": "bf556df4f5e647321094cc543fc1fbcd688dd2e28d65a440d13ce25a74266a13"
     },
     {
       "tag": "sources",
       "method": "GET",
-      "path": "/v1/sources/SRC-DOE-RATES.json",
+      "path": "api/v1/sources/SRC-DOE-RATES.json",
       "file": "api/v1/sources/SRC-DOE-RATES.json",
       "summary": "One source record",
       "description": "The full source record for one source_id (currently SRC-DOE-RATES). Unknown ids are not served by this static snapshot. One file per source (api/v1/sources/<source_id>.json).",
       "count": 1,
-      "size_bytes": 8037,
-      "sha256": "ffba9cebf2a65780aee382f91df05bd676f67d79bb9d3bdb73a68d5baa36ec35",
+      "size_bytes": 8041,
+      "sha256": "1112bcb564013d2a4e3e7688fd54bd42d5f21fdd49d34d1c0879ed0f8284f1a1",
       "file_pattern": "api/v1/sources/{source_id}.json",
       "file_count": 1
     }

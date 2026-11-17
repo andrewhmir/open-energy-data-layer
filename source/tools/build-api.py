@@ -64,7 +64,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed"
 RAW = ROOT / "data" / "raw" / "doe-rates"
 DRAFT = ROOT / "draft"
-OUT = DRAFT / "api" / "v1"
+OUT_REAL = DRAFT / "api" / "v1"
+OUT = DRAFT / "api" / ".v1.stage"  # build here, swap in only after the contract check passes
 OPENAPI_YAML = DRAFT / "openapi.yaml"
 
 API_NAME = "Open Energy Data Layer — Philippine Electricity Rates Data API"
@@ -429,12 +430,12 @@ def envelope(count: int, data) -> dict:
     return {"meta": make_meta(count), "data": data, "next_cursor": None}
 
 
-# Data files shipped alongside the API (paths are relative to draft/).
+# Data files shipped alongside the API (paths are relative to the repository root).
 def _data_file_record(name: str) -> dict:
     path = SEED / name
     return {
         "name": name,
-        "path": f"../data/seed/{name}",
+        "path": f"data/seed/{name}",
         "rows": row_count(path),
         "bytes": path.stat().st_size,
         "sha256": sha256_file(path),
@@ -628,7 +629,7 @@ SERVICE_AREA_META = {
     ],
     "note": (
         "Service-area coverage is derived data, not a DOE rate publication; the combined layer "
-        "is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for "
+        "is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for "
         "rows, provenance and licences."
     ),
 }
@@ -1134,7 +1135,7 @@ def build_meta_response() -> dict:
                 "barangays, while the DOE workbook lists MERALCO under NCR only.",
                 "Coverage sources carry their own licences (public law, CC BY-SA where the "
                 "OpenStreetMap Wiki / Wikipedia tables are used, DOE terms unconfirmed for the "
-                "region fallback); see service_area.sources and /v1/sources.json.",
+                "region fallback); see service_area.sources and /api/v1/sources.json.",
             ],
         },
         "machine_access": {
@@ -1151,7 +1152,7 @@ def build_meta_response() -> dict:
             "No imputed, interpolated or modelled values are published; an absent value stays absent.",
             "Service-area coverage is derived data, not part of the DOE rates publication: a "
             "franchise area is not verified billing territory, and region-level rows are a "
-            "fallback. See service_area and /v1/service-areas.json for provenance and licences.",
+            "fallback. See service_area and /api/v1/service-areas.json for provenance and licences.",
         ],
         "notes": [
             "This is a static snapshot: files are JSON documents and there is no query layer, so "
@@ -1372,13 +1373,13 @@ def build_utilities_response() -> dict:
             "note": (
                 "Every row's coverage object is a compact service-area summary (detail, "
                 "source_ids, regions, lgu_count, province_count, barangay_count). Full rows and "
-                "provenance: /v1/service-areas/<CODE>.json."
+                "provenance: /api/v1/service-areas/<CODE>.json."
             ),
         },
         "notes": [
             "latest / prev are the 2026-10 and 2026-09 cells. A null means the cell is not "
             "published; latest_status says whether it is nda, missing or invalid.",
-            "coverage is derived data, not a DOE rate publication; see /v1/service-areas.json.",
+            "coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json.",
             "data_status restates the utility's latest-month outcome: published (a residential "
             "value exists), partial (some classes published), nda (no latest-month values).",
             "Codes are this dataset's stable slugs, not official DOE/ERC/NEA identifiers; "
@@ -1414,7 +1415,7 @@ def build_utility_response(code: str) -> dict:
             "All four states together cover every month in coverage.months_total exactly once.",
             "NDA is the source's own \"No Data Available\" marker. No value is imputed.",
             "service_area is the full coverage block (provinces, LGUs, barangays) with its "
-            "source ids; the published rows are at /v1/service-areas/<CODE>.json. Coverage is "
+            "source ids; the published rows are at /api/v1/service-areas/<CODE>.json. Coverage is "
             "derived data, not a DOE rate publication.",
         ],
     }
@@ -1443,7 +1444,7 @@ def build_service_areas_response() -> dict:
             "(LGU-level rows), barangay (barangay-level rows only) or region (region-level "
             "fallback). coverage.regions lists every PSGC region the published rows touch, so a "
             "multi-region franchise is visible even when the DOE workbook lists one region.",
-            "Rows and per-row provenance: /v1/service-areas/<CODE>.json. Coverage is derived "
+            "Rows and per-row provenance: /api/v1/service-areas/<CODE>.json. Coverage is derived "
             "data, not a DOE rate publication; keep the per-source attribution and licence.",
         ],
     }
@@ -1918,7 +1919,13 @@ def assert_json_types(node, where="openapi") -> None:
 
 
 assert_json_types(spec)
-write_json("openapi.json", spec)
+# The JSON mirror is served from api/v1/, so its relative server needs two levels up.
+spec_json = json.loads(json.dumps(spec))
+spec_json["servers"] = [{
+    "url": "../../api/v1",
+    "description": "Relative base URL for this JSON mirror (the YAML at the site root uses api/v1).",
+}]
+write_json("openapi.json", spec_json)
 
 
 # ---------------------------------------------------------------------------
@@ -1931,9 +1938,9 @@ for route in sorted(ROUTES, key=lambda r: (TAG_ORDER[r["tag"]], r["path"])):
     # Templated routes (per-entity files) advertise their concrete example file in the
     # served-URL style; the path template is in file_pattern.
     display_path = (
-        "/v1/" + route["catalog_file"][len("api/v1/"):]
+        "api/v1/" + route["catalog_file"][len("api/v1/"):]
         if route["file_count"] is not None
-        else route["path"]
+        else "api" + route["path"]
     )
     entry = {
         "tag": route["tag"],
@@ -1962,8 +1969,9 @@ index_doc = {
     "dataset_version": DATASET_VERSION,
     "generated_at": GENERATED_AT,
     "base_url_hint": "api/v1/",
+    "path_base": "site root (use these paths as-is from the deployment origin)",
     "openapi": {"yaml": "openapi.yaml", "json": "api/v1/openapi.json"},
-    "docs": {"api": "api-docs.md", "data_model": "data-model.md"},
+    "docs": {"api": "docs/api-docs.html", "data_model": "docs/data-model.html"},
     "source": dict(SOURCE_REF),
     "attribution": ATTRIBUTION,
     "citation": CITATION,
@@ -2183,7 +2191,7 @@ total_bytes = sum(record["size_bytes"] for record in FILES.values())
 largest = sorted(FILES.items(), key=lambda item: (-item[1]["size_bytes"], item[0]))[:5]
 
 print(f"wrote {file_count} JSON files, {total_bytes:,} bytes ({total_bytes / 1024 / 1024:.2f} MiB) "
-      f"under {OUT.relative_to(ROOT)}/")
+      f"under {OUT_REAL.relative_to(ROOT)}/")
 print(f"  seed consistency checks passed: {checks_run}")
 print(f"  source: {source['id']} — {source['dataset_title']} (retrieved {source['retrieved_at']})")
 print(f"  dataset_version {DATASET_VERSION} · latest published month {LATEST_MONTH} · "
@@ -2211,7 +2219,16 @@ if problems:
           file=sys.stderr)
     for problem in problems:
         print(f"  - {problem}", file=sys.stderr)
+    shutil.rmtree(OUT, ignore_errors=True)
     sys.exit(1)
+
+# Only after every check passes, replace the published tree with the staged one.
+if OUT_REAL.exists():
+    resolved = OUT_REAL.resolve()
+    if resolved == ROOT or ROOT not in resolved.parents:
+        die(f"refusing to clear unexpected output directory: {resolved}")
+    shutil.rmtree(OUT_REAL)
+OUT.rename(OUT_REAL)
 
 print(f"\nOpenAPI contract consistent: {len(ROUTES)} operations, {len(spec.get('paths') or {})} paths, "
       f"{len((spec.get('components') or {}).get('schemas') or {})} schemas"

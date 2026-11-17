@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 7
   },
@@ -135,7 +135,7 @@
       ],
       "barangays": [],
       "barangay_provinces": [],
-      "note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+      "note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
     },
     "rows": [
       {
@@ -151,7 +151,7 @@
         "lgu_name": "Indanan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -166,7 +166,7 @@
         "lgu_name": "Jolo",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -181,7 +181,7 @@
         "lgu_name": "Luuk",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -196,7 +196,7 @@
         "lgu_name": "Maimbung",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -211,7 +211,7 @@
         "lgu_name": "Parang",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -226,7 +226,7 @@
         "lgu_name": "Patikul",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       },
       {
         "utility_code": "SULECO",
@@ -241,7 +241,7 @@
         "lgu_name": "Talipao",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       }
     ],
     "sources": [

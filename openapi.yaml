@@ -86,9 +86,10 @@ info:
 servers:
   - url: api/v1
     description: >-
-      Relative base URL: paths resolve against the location of this OpenAPI document (draft/), so
-      api/v1/meta.json is the served path in this repository. The canonical origin is set at
-      deployment; no domain is asserted here.
+      Relative base URL: paths resolve against the location of this OpenAPI document, so
+      api/v1/meta.json is the served path at the site root. The canonical origin is set at
+      deployment; no domain is asserted here. The JSON mirror under api/v1/ carries the
+      equivalent ../..-relative server.
 security: []
 tags:
   - name: meta
@@ -122,10 +123,10 @@ paths:
         This is the file to read first when onboarding to the dataset.
       x-static-file: api/v1/meta.json
       x-data-files:
-        - ../data/seed/utilities.csv
-        - ../data/seed/regions.csv
-        - ../data/seed/rates_monthly.csv
-        - ../data/seed/sources.csv
+        - data/seed/utilities.csv
+        - data/seed/regions.csv
+        - data/seed/rates_monthly.csv
+        - data/seed/sources.csv
       responses:
         '200':
           description: 'Dataset metadata document. Full response: api/v1/meta.json.'
@@ -233,7 +234,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   status: ok
                   snapshot: true
@@ -370,7 +371,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   months: ['2026-09', '2026-10', '2026-11']
                   first_month: '2018-01'
@@ -461,7 +462,7 @@ paths:
         one utility's full history.
       x-static-file: api/v1/rates/latest.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -484,7 +485,7 @@ paths:
         published. `value: null` with `status: "nda"` is a published NDA marker; it is never zero.
       x-static-file: api/v1/rates/latest/residential.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -571,7 +572,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   month: '2026-10'
                   previous_month: '2026-09'
@@ -627,7 +628,7 @@ paths:
         published. Same shape as the residential file.
       x-static-file: api/v1/rates/latest/commercial.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -650,7 +651,7 @@ paths:
         published. Same shape as the residential file.
       x-static-file: api/v1/rates/latest/industrial.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -674,7 +675,7 @@ paths:
         workbook's blended generation charge, not a full bill.
       x-static-file: api/v1/rates/latest/generation.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -699,7 +700,7 @@ paths:
         2026-09 cells; `latest_status` says why a missing value is missing.
       x-static-file: api/v1/utilities.json
       x-data-files:
-        - ../data/seed/utilities.csv
+        - data/seed/utilities.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -786,7 +787,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   latest_month: '2026-10'
                   previous_month: '2026-09'
@@ -814,7 +815,7 @@ paths:
                       barangay: 17
                       region: 140
                     sources: [SRC-OSM-OPERATORS, SRC-WIKI-DUS, SRC-RA-12146, SRC-DOE-RATES]
-                    note: 'Derived coverage, not a DOE rate publication; full rows at /v1/service-areas/<CODE>.json.'
+                    note: 'Derived coverage, not a DOE rate publication; full rows at /api/v1/service-areas/<CODE>.json.'
                   rows:
                     - code: ABRECO
                       name: ABRECO
@@ -875,8 +876,8 @@ paths:
         (`api/v1/utilities/<CODE>.json`, 141 files); `x-static-file` names the MERALCO example.
       x-static-file: api/v1/utilities/MERALCO.json
       x-data-files:
-        - ../data/seed/utilities.csv
-        - ../data/seed/rates_monthly.csv
+        - data/seed/utilities.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       parameters:
         - name: code
@@ -912,8 +913,8 @@ paths:
         the DOE workbook lists one region. Coverage is derived data, not a DOE rate publication.
       x-static-file: api/v1/service-areas.json
       x-data-files:
-        - ../data/seed/service_areas.csv
-        - ../data/seed/service_area_sources.csv
+        - data/seed/service_areas.csv
+        - data/seed/service_area_sources.csv
       x-source:
         - SRC-RA-12146
         - SRC-OSM-OPERATORS
@@ -942,9 +943,9 @@ paths:
         example. Region-level rows are an explicit fallback, not LGU-level confirmation.
       x-static-file: api/v1/service-areas/MERALCO.json
       x-data-files:
-        - ../data/seed/service_areas.csv
-        - ../data/seed/service_area_sources.csv
-        - ../data/seed/regions.csv
+        - data/seed/service_areas.csv
+        - data/seed/service_area_sources.csv
+        - data/seed/regions.csv
       x-source:
         - SRC-RA-12146
         - SRC-OSM-OPERATORS
@@ -979,8 +980,8 @@ paths:
         published cells only and exclude NDA, missing and invalid values.
       x-static-file: api/v1/regions.json
       x-data-files:
-        - ../data/seed/regions.csv
-        - ../data/seed/rates_monthly.csv
+        - data/seed/regions.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -1004,8 +1005,8 @@ paths:
         (`api/v1/regions/<psgc>.json`, 18 files); `x-static-file` names the NCR example.
       x-static-file: api/v1/regions/1300000000.json
       x-data-files:
-        - ../data/seed/regions.csv
-        - ../data/seed/rates_monthly.csv
+        - data/seed/regions.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       parameters:
         - name: psgc
@@ -1101,7 +1102,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   region:
                     psgc: '1300000000'
@@ -1155,7 +1156,7 @@ paths:
         snapshot is a new `dataset_version`.
       x-static-file: api/v1/changes/latest.json
       x-data-files:
-        - ../data/seed/rates_monthly.csv
+        - data/seed/rates_monthly.csv
       x-source: SRC-DOE-RATES
       responses:
         '200':
@@ -1242,7 +1243,7 @@ paths:
                         licence:
                           name: Not stated by publisher
                           url: null
-                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences.'
+                    note: 'Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences.'
                 data:
                   from_month: '2026-09'
                   to_month: '2026-10'
@@ -1293,7 +1294,7 @@ paths:
         record and to a tab checksum.
       x-static-file: api/v1/sources.json
       x-data-files:
-        - ../data/seed/sources.csv
+        - data/seed/sources.csv
       responses:
         '200':
           description: 'Source registry. Full response: api/v1/sources.json.'
@@ -1315,7 +1316,7 @@ paths:
         file per source (`api/v1/sources/<source_id>.json`); `x-static-file` names the only one.
       x-static-file: api/v1/sources/SRC-DOE-RATES.json
       x-data-files:
-        - ../data/seed/sources.csv
+        - data/seed/sources.csv
       parameters:
         - name: source_id
           in: path
@@ -1546,7 +1547,7 @@ components:
           example: rates_monthly.csv
         path:
           type: string
-          example: '../data/seed/rates_monthly.csv'
+          example: 'data/seed/rates_monthly.csv'
         rows:
           type: integer
           example: 60348
@@ -3394,32 +3395,32 @@ x-changelog:
 
 x-data-files:
 - name: utilities.csv
-  path: ../data/seed/utilities.csv
+  path: data/seed/utilities.csv
   rows: 141
   bytes: 30091
   sha256: 3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912
 - name: regions.csv
-  path: ../data/seed/regions.csv
+  path: data/seed/regions.csv
   rows: 18
   bytes: 2738
   sha256: ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d
 - name: rates_monthly.csv
-  path: ../data/seed/rates_monthly.csv
+  path: data/seed/rates_monthly.csv
   rows: 60348
   bytes: 6550268
   sha256: 07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373
 - name: sources.csv
-  path: ../data/seed/sources.csv
+  path: data/seed/sources.csv
   rows: 4
   bytes: 2780
   sha256: 36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a
 - name: service_areas.csv
-  path: ../data/seed/service_areas.csv
+  path: data/seed/service_areas.csv
   rows: 1665
-  bytes: 152768
-  sha256: 9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25
+  bytes: 156906
+  sha256: e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55
 - name: service_area_sources.csv
-  path: ../data/seed/service_area_sources.csv
+  path: data/seed/service_area_sources.csv
   rows: 4
   bytes: 2584
   sha256: 6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8
