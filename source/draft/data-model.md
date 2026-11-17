@@ -5,7 +5,7 @@ Project: **Open Energy Data Layer** — the product page is titled *Philippine e
 
 Status: **draft for review** · Date: 2026-11-10 · Scope: one open dataset on *who sells power, at what price, and how reliably*, published as an API, a map, and a table, aligned with ASEAN Energy Statistics and consumable by DBM COMPASS.
 
-> **Evidence base:** revised after a source-verification review on 2026-11-10. Key facts that shape the model: (1) DOE already publishes a machine-readable rate workbook (141 DU/EC rows × 107 month columns Jan-18→Nov-26, 4 tabs incl. blended generation charge; latest published month Oct-26); (2) ERC, NEA, PSA/PSGC, FOI and NGCP HTML are bot-blocked for automated collection — partnership/FOI routes only; (3) the local API pattern is BetterGovPH's Budget API (`{meta,data,next_cursor}`, error slugs, `/mcp`); (4) AES/AESL covers national aggregates, not retail tariffs, and is "All rights reserved". Full ledger: `research/data-landscape.md`, `research/api-landscape.md`.
+> **Evidence base:** revised after a source-verification review on 2026-11-10. Key facts that shape the model: (1) DOE already publishes a machine-readable rate workbook (141 DU/EC rows × 107 month columns Jan-18→Nov-26, 4 tabs incl. blended generation charge; latest published month Oct-26); (2) ERC, NEA, PSA/PSGC, FOI and NGCP HTML are bot-blocked for automated collection — partnership/FOI routes only; (3) the local API pattern is BetterGovPH's Budget API (`{meta,data,next_cursor}`, error slugs, `/mcp`); (4) AES/AESL covers national aggregates, not retail tariffs, and is "All rights reserved".
 
 ---
 

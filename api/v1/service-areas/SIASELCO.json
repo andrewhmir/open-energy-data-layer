@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 1
   },
@@ -129,7 +129,7 @@
       ],
       "barangays": [],
       "barangay_provinces": [],
-      "note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+      "note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
     },
     "rows": [
       {
@@ -145,7 +145,7 @@
         "lgu_name": "Siasi",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists BARMM (legacy region code)"
       }
     ],
     "sources": [

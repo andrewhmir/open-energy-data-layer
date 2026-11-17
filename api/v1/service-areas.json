@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 141
   },
@@ -2920,7 +2920,7 @@
     ],
     "notes": [
       "One item per utility. coverage.detail says the strongest published level: lgu (LGU-level rows), barangay (barangay-level rows only) or region (region-level fallback). coverage.regions lists every PSGC region the published rows touch, so a multi-region franchise is visible even when the DOE workbook lists one region.",
-      "Rows and per-row provenance: /v1/service-areas/<CODE>.json. Coverage is derived data, not a DOE rate publication; keep the per-source attribution and licence."
+      "Rows and per-row provenance: /api/v1/service-areas/<CODE>.json. Coverage is derived data, not a DOE rate publication; keep the per-source attribution and licence."
     ]
   },
   "next_cursor": null

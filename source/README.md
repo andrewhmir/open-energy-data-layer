@@ -1,5 +1,12 @@
 # Open Energy Data Layer — Philippine electricity rates
 
+> **Deployment note:** this `source/` folder is a partial copy of the upstream
+> project, shipped so the documentation's "download raw" links return the real
+> bytes. The build and QA commands below assume the full upstream tree (`tools/`,
+> `draft/`, `tests/`, `package.json`), which is not part of this deployment
+> repository. See the root [README](../README.md) and [CONTRIBUTING](../CONTRIBUTING.md)
+> for what this repository actually is.
+
 An open, API-first data layer that collates who sells power in the Philippines, at what
 price, and with what provenance — starting from what the Department of Energy (DOE) already
 publishes, not from a fleet of scrapers.
@@ -20,7 +27,7 @@ price table, the API in one place, and the receipts behind every number.
 | **Latest published month** | October 2026 |
 | **Coverage** | 141 distribution utilities and electric cooperatives, 18 PSGC regions, 106 months with published data (Jan 2018 – Oct 2026) |
 | **Status** | Pre-release (`0.x`), not yet deployed — see [Deployment status](#deployment-status) |
-| **Licence** | Code, page and design: MIT. Data, brand and third-party assets: see [Licence](#licence) and [NOTICE.md](NOTICE.md) |
+| **Licence** | Code, page and design: MIT. Data, brand and third-party assets: see [Licence](#licence) and [NOTICE.md](../NOTICE.md) |
 
 ## What it does
 
@@ -76,7 +83,7 @@ layer:
 ## Architecture and agent maps
 
 Three generated guides explain how the system is put together and where to change it —
-all rendered with the rest of the documentation under `draft/docs/` (21 pages: 20
+all rendered with the rest of the documentation under `draft/docs/` (19 pages: 18
 documents + index):
 
 - **[Frontend architecture](draft/frontend.md)** — the three browser-facing surfaces
@@ -232,7 +239,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | `draft/openapi.yaml` | **API contract**, OpenAPI 3.1 (API version 1.0.0); a JSON mirror is generated at `draft/api/v1/openapi.json`. |
 | `draft/api-docs.md` | **API guide** (human-readable): access, datasets and units, conventions, endpoint reference, attribution, disclaimers and versioning. |
 | `draft/api/v1/` | **Generated static JSON API.** Dataset metadata, health, months, latest rates, utilities (one file per utility), regions (one file per region), service areas (one file per utility), sources, changes, conflicts and the validation report — read-only JSON, no server required. |
-| `draft/docs/` | **Generated documentation site** (21 pages + shared assets, deterministic): project README, data model, API guide, frontend/backend architecture, component map & agent guide, seed/asset/brand/testing docs, contributing, security, changelog and research notes — a styled UI with sidebar, TOC and raw-markdown downloads. |
+| `draft/docs/` | **Generated documentation site** (19 pages + shared assets, deterministic): project README, data model, API guide, frontend/backend architecture, component map & agent guide, seed/asset/brand/testing docs, contributing, security, changelog and research notes — a styled UI with sidebar, TOC and raw-markdown downloads. |
 | `draft/data-model.md` | Canonical entities, IDs, provenance, versioning and licensing policy. |
 | `draft/frontend.md`, `draft/backend.md`, `draft/component-map.md` | **Architecture docs**: the frontend surfaces and UI contracts, the backend/pipeline design and failure modes, and the component map & agent guide. Hand-maintained; rendered as `frontend.html`, `backend.html`, `component-map.html` in the docs site. |
 | `AGENTS.md`, `tools/AGENTS.md`, `data/AGENTS.md`, `draft/AGENTS.md`, `tests/AGENTS.md` | **Agent maps** for coding assistants: repository orientation/component map at the root plus per-area source-of-truth files, commands, generated artefacts, contracts and pitfalls. |
@@ -246,7 +253,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | `package.json` | Node tooling for the QA suite (Playwright pinned; convenience scripts for QA, validation and builds). |
 | `.github/workflows/ci.yml` | **CI.** On push/PR to `main`: static validation + deterministic rebuild check, then Chromium browser QA; QA screenshots are uploaded as artifacts. |
 | `plan/` | Internal working notes and plans (not part of the published product). |
-| `research/` | Source ledger and evidence: data landscape, API/interop landscape and API documentation conventions. |
+| `research/` | Source ledger and evidence: API documentation conventions and service-area coverage research. |
 | `preview/` | Generated local review hub (gitignored). |
 | `LICENSE`, `NOTICE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `requirements.txt` | Project packaging and governance. |
 
@@ -262,7 +269,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | Retrieval method | Unauthenticated CSV export of each tab (`/export?format=csv&gid=…`) — the same bytes a browser downloads |
 | Retrieval date | 2026-11-10 (Asia/Manila) |
 | Snapshot | `data/raw/doe-rates/2026-11-10/{0,441532959,1244383053,714337242}.csv` with SHA-256 recorded in `data/seed/sources.csv` and `data/seed/validation.json` |
-| Licence | **Not confirmed** — see [NOTICE.md](NOTICE.md); the project asserts no licence over the DOE workbook or the figures extracted from it |
+| Licence | **Not confirmed** — see [NOTICE.md](../NOTICE.md); the project asserts no licence over the DOE workbook or the figures extracted from it |
 
 ### Pipeline: fetch → snapshot → hash → parse → validate → publish
 
@@ -322,7 +329,7 @@ PSGC 3Q 2026 moved Sulu to Region IX and Siquijor to the Negros Island Region; t
 notes record the reassignment rather than forcing the old region. Partial coverage (an LGU
 split between two utilities, or a franchise that covers only part of an LGU) is recorded in
 the row's `coverage_note`. The coverage dataset is a **CC BY-SA derivative** of the OSM and
-Wikipedia sources and is licensed separately from the MIT code — see [NOTICE.md](NOTICE.md).
+Wikipedia sources and is licensed separately from the MIT code — see [NOTICE.md](../NOTICE.md).
 57 of the 1,642 LGUs have no DU in the current sources; they are listed with reasons in
 [`research/coverage/README.md`](research/coverage/README.md).
 
@@ -414,13 +421,13 @@ recorded in **[CHANGELOG.md](CHANGELOG.md)**.
 
 | Artefact | Licence |
 | --- | --- |
-| Source code, generated page, design layer | **MIT** — see [LICENSE](LICENSE) (© 2026 Open Energy Data Layer contributors) |
+| Source code, generated page, design layer | **MIT** — see [LICENSE](../LICENSE) (© 2026 Open Energy Data Layer contributors) |
 | Design language derived from BetterGovPH `transparency-portal` | MIT (© 2026 BetterGov.ph) |
 | Fonts (Figtree, Inter, JetBrains Mono) | SIL Open Font License 1.1 |
 | Icons (Lucide) | ISC License; Feather-derived icons MIT |
 | Region + LGU geometry | MIT (repository scripts/maps, © James Faeldon / `faeldon/philippines-json-maps`); boundaries **CC BY 3.0 IGO** (© NAMRIA and PSA, via OCHA COD-AB) |
 | Service-area dataset (`service_areas.csv`, derived coverage layer) | **CC BY-SA 2.0 / 4.0 derivative** — © OpenStreetMap Wiki contributors (CC BY-SA 2.0) and © Wikipedia contributors (CC BY-SA 4.0), with RA 12146 (Philippine public law) for Meralco; attribution + share-alike apply to the derived coverage data |
 | BetterGov brand assets | BetterGovPH brand property — not MIT; used with attribution for this BetterGovPH open-data project |
-| DOE workbook data and derived figures | **No confirmed licence** — the project asserts none; see [NOTICE.md](NOTICE.md) |
+| DOE workbook data and derived figures | **No confirmed licence** — the project asserts none; see [NOTICE.md](../NOTICE.md) |
 
-Third-party terms, provenance and attribution notes are in **[NOTICE.md](NOTICE.md)**.
+Third-party terms, provenance and attribution notes are in **[NOTICE.md](../NOTICE.md)**.

@@ -14,8 +14,8 @@
   },
   "servers": [
     {
-      "url": "api/v1",
-      "description": "Relative base URL: paths resolve against the location of this OpenAPI document (draft/), so api/v1/meta.json is the served path in this repository. The canonical origin is set at deployment; no domain is asserted here."
+      "url": "../../api/v1",
+      "description": "Relative base URL for this JSON mirror (the YAML at the site root uses api/v1)."
     }
   ],
   "security": [],
@@ -64,10 +64,10 @@
         "description": "The full dataset metadata document: rate coverage, units, identifier schemes, the\nstatus vocabulary, the complete rate-source record, licence status, disclaimers, the\nservice-area coverage block (stats, sources, checks, files), SHA-256 checksums of the six\nseed data files, archived raw snapshots and links to every machine-readable artefact.\nThis is the file to read first when onboarding to the dataset.\n",
         "x-static-file": "api/v1/meta.json",
         "x-data-files": [
-          "../data/seed/utilities.csv",
-          "../data/seed/regions.csv",
-          "../data/seed/rates_monthly.csv",
-          "../data/seed/sources.csv"
+          "data/seed/utilities.csv",
+          "data/seed/regions.csv",
+          "data/seed/rates_monthly.csv",
+          "data/seed/sources.csv"
         ],
         "responses": {
           "200": {
@@ -190,7 +190,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -353,7 +353,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -540,7 +540,7 @@
         "description": "Points at the four per-class files for 2026-10 with their summary statistics, sizes and\nSHA-256 checksums. Start here for one customer class; use `/utilities/{code}.json` for\none utility's full history.\n",
         "x-static-file": "api/v1/rates/latest.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -570,7 +570,7 @@
         "description": "The 2026-10 residential cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. `value: null` with `status: \"nda\"` is a published NDA marker; it is never zero.\n",
         "x-static-file": "api/v1/rates/latest/residential.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -668,7 +668,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -738,7 +738,7 @@
         "description": "The 2026-10 commercial cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. Same shape as the residential file.\n",
         "x-static-file": "api/v1/rates/latest/commercial.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -768,7 +768,7 @@
         "description": "The 2026-10 industrial cell for all 141 utilities, with explicit non-published states,\nthe previous month's value and the month-over-month change where both cells are\npublished. Same shape as the residential file.\n",
         "x-static-file": "api/v1/rates/latest/industrial.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -798,7 +798,7 @@
         "description": "The 2026-10 blended generation-charge cell for all 141 utilities, with explicit\nnon-published states, the previous month's value and the month-over-month change where\nboth cells are published. Same shape as the residential file; the measure is the DOE\nworkbook's blended generation charge, not a full bill.\n",
         "x-static-file": "api/v1/rates/latest/generation.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -828,7 +828,7 @@
         "description": "Identity, type, grid connection, PSGC region, data status, latest/previous month values\nand a compact `coverage` summary (service-area detail, source ids, regions, LGU /\nprovince / barangay counts) for all 141 utilities, sorted by `code`. The codes discovered\nhere resolve to `/utilities/{code}.json`. `latest` and `prev` are the 2026-10 and\n2026-09 cells; `latest_status` says why a missing value is missing.\n",
         "x-static-file": "api/v1/utilities.json",
         "x-data-files": [
-          "../data/seed/utilities.csv"
+          "data/seed/utilities.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -926,7 +926,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -967,7 +967,7 @@
                         "SRC-RA-12146",
                         "SRC-DOE-RATES"
                       ],
-                      "note": "Derived coverage, not a DOE rate publication; full rows at /v1/service-areas/<CODE>.json."
+                      "note": "Derived coverage, not a DOE rate publication; full rows at /api/v1/service-areas/<CODE>.json."
                     },
                     "rows": [
                       {
@@ -1042,8 +1042,8 @@
         "description": "The registry record, all four customer-class series for one utility (grouped by\nexplicit source state: `published` maps month to PHP/kWh, while `nda`, `missing` and\n`invalid` list the months with those states) and the full `service_area` coverage block\n(provinces, LGU codes, barangays, source ids). All four series states together cover every\nmonth in `coverage.months_total` exactly once. Codes come from `/utilities.json`; an\nunknown code is simply not a file (the host returns 404). There is one file per code\n(`api/v1/utilities/<CODE>.json`, 141 files); `x-static-file` names the MERALCO example.\n",
         "x-static-file": "api/v1/utilities/MERALCO.json",
         "x-data-files": [
-          "../data/seed/utilities.csv",
-          "../data/seed/rates_monthly.csv"
+          "data/seed/utilities.csv",
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "parameters": [
@@ -1086,8 +1086,8 @@
         "description": "One item per utility with a compact coverage summary (`detail`, `source_ids`, `regions`,\n`lgu_count`, `province_count`, `barangay_count`), the coverage-source registry\n(franchise law, DOE region fallback, OSM Wiki / Wikipedia tables) with each source's\nlicence, attribution and `used_for` counts, and the aggregate coverage statistics.\n`coverage.detail` says the strongest published level; `coverage.regions` lists every\nPSGC region the published rows touch, so a multi-region franchise is visible even when\nthe DOE workbook lists one region. Coverage is derived data, not a DOE rate publication.\n",
         "x-static-file": "api/v1/service-areas.json",
         "x-data-files": [
-          "../data/seed/service_areas.csv",
-          "../data/seed/service_area_sources.csv"
+          "data/seed/service_areas.csv",
+          "data/seed/service_area_sources.csv"
         ],
         "x-source": [
           "SRC-RA-12146",
@@ -1121,9 +1121,9 @@
         "description": "The published coverage rows for one utility, each carrying its `source_id`, area level\n(`lgu`, `barangay` or `region`), the PSGC hierarchy (region, province, `adm3`, `adm4`)\nand the source's `coverage_note`; plus the full coverage summary block (provinces, LGU\ncodes, barangays) and the source records used by that utility. One file per utility\n(`api/v1/service-areas/<CODE>.json`, 141 files); `x-static-file` names the MERALCO\nexample. Region-level rows are an explicit fallback, not LGU-level confirmation.\n",
         "x-static-file": "api/v1/service-areas/MERALCO.json",
         "x-data-files": [
-          "../data/seed/service_areas.csv",
-          "../data/seed/service_area_sources.csv",
-          "../data/seed/regions.csv"
+          "data/seed/service_areas.csv",
+          "data/seed/service_area_sources.csv",
+          "data/seed/regions.csv"
         ],
         "x-source": [
           "SRC-RA-12146",
@@ -1170,8 +1170,8 @@
         "description": "Latest-month medians, means and ranges per customer class, reporting counts, island group\nand the DOE workbook's own region label for all 18 PSA PSGC regions. Aggregates use\npublished cells only and exclude NDA, missing and invalid values.\n",
         "x-static-file": "api/v1/regions.json",
         "x-data-files": [
-          "../data/seed/regions.csv",
-          "../data/seed/rates_monthly.csv"
+          "data/seed/regions.csv",
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -1201,8 +1201,8 @@
         "description": "One region's aggregates plus every member utility with its latest-month values and\nexplicit states. PSGC codes come from `/regions.json`; an unknown code is simply not a\nfile (the host returns 404). There is one file per region\n(`api/v1/regions/<psgc>.json`, 18 files); `x-static-file` names the NCR example.\n",
         "x-static-file": "api/v1/regions/1300000000.json",
         "x-data-files": [
-          "../data/seed/regions.csv",
-          "../data/seed/rates_monthly.csv"
+          "data/seed/regions.csv",
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "parameters": [
@@ -1313,7 +1313,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -1380,7 +1380,7 @@
         "description": "Month-over-month movements for utility/class pairs published in both months, sorted by\ncustomer class then largest absolute change, plus cells whose explicit state changed\nbetween the two months. This is a movement feed, not a dataset revision history: a new\nsnapshot is a new `dataset_version`.\n",
         "x-static-file": "api/v1/changes/latest.json",
         "x-data-files": [
-          "../data/seed/rates_monthly.csv"
+          "data/seed/rates_monthly.csv"
         ],
         "x-source": "SRC-DOE-RATES",
         "responses": {
@@ -1478,7 +1478,7 @@
                           }
                         }
                       ],
-                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /v1/service-areas.json for rows, provenance and licences."
+                      "note": "Service-area coverage is derived data, not a DOE rate publication; see /api/v1/service-areas.json for rows, provenance and licences."
                     }
                   },
                   "data": {
@@ -1545,7 +1545,7 @@
         "description": "The single upstream source record: canonical DOE URL, workbook URL and sheet id,\nretrieval timestamp and extraction method, per-tab SHA-256 and byte counts, archived raw\nsnapshots, licence status and provenance notes. Every value in this API resolves to this\nrecord and to a tab checksum.\n",
         "x-static-file": "api/v1/sources.json",
         "x-data-files": [
-          "../data/seed/sources.csv"
+          "data/seed/sources.csv"
         ],
         "responses": {
           "200": {
@@ -1574,7 +1574,7 @@
         "description": "The full source record for one `source_id`. This snapshot has exactly one upstream source,\n`SRC-DOE-RATES`; unknown ids are simply not a file (the host returns 404). There is one\nfile per source (`api/v1/sources/<source_id>.json`); `x-static-file` names the only one.\n",
         "x-static-file": "api/v1/sources/SRC-DOE-RATES.json",
         "x-data-files": [
-          "../data/seed/sources.csv"
+          "data/seed/sources.csv"
         ],
         "parameters": [
           {
@@ -1928,7 +1928,7 @@
           },
           "path": {
             "type": "string",
-            "example": "../data/seed/rates_monthly.csv"
+            "example": "data/seed/rates_monthly.csv"
           },
           "rows": {
             "type": "integer",
@@ -4878,42 +4878,42 @@
   "x-data-files": [
     {
       "name": "utilities.csv",
-      "path": "../data/seed/utilities.csv",
+      "path": "data/seed/utilities.csv",
       "rows": 141,
       "bytes": 30091,
       "sha256": "3d008c939414c285d1e38459134b45c0804ef28e475815ee5d637f671c806912"
     },
     {
       "name": "regions.csv",
-      "path": "../data/seed/regions.csv",
+      "path": "data/seed/regions.csv",
       "rows": 18,
       "bytes": 2738,
       "sha256": "ff4594fa18afc141b9efcf44d0f5a9ce11b8a791cde3ea7f9ef62dacd80bf36d"
     },
     {
       "name": "rates_monthly.csv",
-      "path": "../data/seed/rates_monthly.csv",
+      "path": "data/seed/rates_monthly.csv",
       "rows": 60348,
       "bytes": 6550268,
       "sha256": "07d8ede64ddd1bec275595fa24b6a9df89125db4482e04d51a71001aef4e2373"
     },
     {
       "name": "sources.csv",
-      "path": "../data/seed/sources.csv",
+      "path": "data/seed/sources.csv",
       "rows": 4,
       "bytes": 2780,
       "sha256": "36a3806bc40412e98f356f774b7f3def1e6c4c671bce43f55e436e9054d31f6a"
     },
     {
       "name": "service_areas.csv",
-      "path": "../data/seed/service_areas.csv",
+      "path": "data/seed/service_areas.csv",
       "rows": 1665,
-      "bytes": 152768,
-      "sha256": "9b107ca7125b69c6603194f93b785710cd7a2ab2969d2e10a2734008fa357b25"
+      "bytes": 156906,
+      "sha256": "e4c2fba858cfa99a4ce1126a1e36e223747900610485a75bade20a80721a3f55"
     },
     {
       "name": "service_area_sources.csv",
-      "path": "../data/seed/service_area_sources.csv",
+      "path": "data/seed/service_area_sources.csv",
       "rows": 4,
       "bytes": 2584,
       "sha256": "6de87eb5541e638399052c653e760351dca84b63ffba9851fb5e399dc97ce6c8"

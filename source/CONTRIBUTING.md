@@ -17,9 +17,9 @@ Contributions are welcome in these areas:
 - **Documentation and evidence** — correcting this file or any doc, with sources.
 
 By contributing you agree that your contributions are licensed under the
-repository's MIT licence ([LICENSE](LICENSE)) for code, page and design, and
+repository's MIT licence ([LICENSE](../LICENSE)) for code, page and design, and
 that data contributions remain subject to the source-data terms described in
-[NOTICE.md](NOTICE.md).
+[NOTICE.md](../NOTICE.md).
 
 ## Development setup
 
@@ -162,7 +162,7 @@ investigate — a genuine data change, not noise.
    June-2026 reference figures. If an anchor fails, stop and investigate;
    never change the expected value to make the build pass.
 7. **Do not assert licences you cannot verify.** The DOE workbook has no
-   confirmed dataset licence; see [NOTICE.md](NOTICE.md). New sources with
+   confirmed dataset licence; see [NOTICE.md](../NOTICE.md). New sources with
    unclear terms must be labelled as such, not assumed open.
 8. **No personal data, no secrets, no blocked-source scraping.** Do not commit
    API keys, tokens, `.env` files, private contact details, or data obtained by
@@ -184,7 +184,7 @@ investigate — a genuine data change, not noise.
   receipt.
 - Design tokens and components follow the BetterGovPH open-data language; adapt
   them rather than inventing a parallel style. Brand assets remain BetterGovPH
-  property (see [NOTICE.md](NOTICE.md)).
+  property (see [NOTICE.md](../NOTICE.md)).
 
 ## API and schema rules
 

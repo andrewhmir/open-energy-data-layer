@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 6
   },
@@ -134,7 +134,7 @@
       ],
       "barangays": [],
       "barangay_provinces": [],
-      "note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+      "note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
     },
     "rows": [
       {
@@ -150,7 +150,7 @@
         "lgu_name": "Enrique Villanueva",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       },
       {
         "utility_code": "PROSIELCO",
@@ -165,7 +165,7 @@
         "lgu_name": "Larena",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       },
       {
         "utility_code": "PROSIELCO",
@@ -180,7 +180,7 @@
         "lgu_name": "Lazi",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       },
       {
         "utility_code": "PROSIELCO",
@@ -195,7 +195,7 @@
         "lgu_name": "Maria",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       },
       {
         "utility_code": "PROSIELCO",
@@ -210,7 +210,7 @@
         "lgu_name": "San Juan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       },
       {
         "utility_code": "PROSIELCO",
@@ -225,7 +225,7 @@
         "lgu_name": "Siquijor",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": "cross-region; cross-region: PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
+        "coverage_note": "cross-region; PSGC 3Q 2026 reassignment; the DOE workbook lists Region VII (legacy region code)"
       }
     ],
     "sources": [

@@ -90,7 +90,7 @@
           }
         }
       ],
-      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /v1/service-areas.json for rows, provenance and licences."
+      "note": "Service-area coverage is derived data, not a DOE rate publication; the combined layer is a CC BY-SA derivative (attribution + share-alike). See /api/v1/service-areas.json for rows, provenance and licences."
     },
     "count": 125
   },
@@ -397,7 +397,7 @@
       "barangay_provinces": [
         "Pampanga"
       ],
-      "note": "barangay-level franchise area (Pampanga): 17 of 22 LGUs have no whole-LGU coverage"
+      "note": ""
     },
     "rows": [
       {
@@ -413,7 +413,7 @@
         "lgu_name": "Angat",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -428,7 +428,7 @@
         "lgu_name": "Balagtas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -443,7 +443,7 @@
         "lgu_name": "Baliwag",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -458,7 +458,7 @@
         "lgu_name": "Bocaue",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -473,7 +473,7 @@
         "lgu_name": "Bulacan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -488,7 +488,7 @@
         "lgu_name": "Bustos",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -503,7 +503,7 @@
         "lgu_name": "Calumpit",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -518,7 +518,7 @@
         "lgu_name": "Guiguinto",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -533,7 +533,7 @@
         "lgu_name": "Hagonoy",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -548,7 +548,7 @@
         "lgu_name": "Malolos",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -563,7 +563,7 @@
         "lgu_name": "Marilao",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -578,7 +578,7 @@
         "lgu_name": "Meycauayan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -593,7 +593,7 @@
         "lgu_name": "Norzagaray",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -608,7 +608,7 @@
         "lgu_name": "Obando",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -623,7 +623,7 @@
         "lgu_name": "Pandi",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -638,7 +638,7 @@
         "lgu_name": "Paombong",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -653,7 +653,7 @@
         "lgu_name": "Plaridel",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -668,7 +668,7 @@
         "lgu_name": "Pulilan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -683,7 +683,7 @@
         "lgu_name": "San Ildefonso",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -698,7 +698,7 @@
         "lgu_name": "San Jose Del Monte",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -713,7 +713,7 @@
         "lgu_name": "San Miguel",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -728,7 +728,7 @@
         "lgu_name": "San Rafael",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -743,7 +743,7 @@
         "lgu_name": "Santa Maria",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -758,7 +758,7 @@
         "lgu_name": "Doña Remedios Trinidad",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (24 of 24 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -773,7 +773,7 @@
         "lgu_name": "Batangas City",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (3 of 34 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -788,7 +788,7 @@
         "lgu_name": "San Pascual",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (3 of 34 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -803,7 +803,7 @@
         "lgu_name": "Sto. Tomas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (3 of 34 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -818,7 +818,7 @@
         "lgu_name": "Alfonso",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -833,7 +833,7 @@
         "lgu_name": "Bacoor",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -848,7 +848,7 @@
         "lgu_name": "Carmona",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -863,7 +863,7 @@
         "lgu_name": "Cavite",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -878,7 +878,7 @@
         "lgu_name": "Dasmariñas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -893,7 +893,7 @@
         "lgu_name": "General Trias",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -908,7 +908,7 @@
         "lgu_name": "Imus",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -923,7 +923,7 @@
         "lgu_name": "Indang",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -938,7 +938,7 @@
         "lgu_name": "Kawit",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -953,7 +953,7 @@
         "lgu_name": "Magallanes",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -968,7 +968,7 @@
         "lgu_name": "Maragondon",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -983,7 +983,7 @@
         "lgu_name": "Mendez",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -998,7 +998,7 @@
         "lgu_name": "Naic",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1013,7 +1013,7 @@
         "lgu_name": "Noveleta",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1028,7 +1028,7 @@
         "lgu_name": "Rosario",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1043,7 +1043,7 @@
         "lgu_name": "Silang",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1058,7 +1058,7 @@
         "lgu_name": "Tagaytay",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1073,7 +1073,7 @@
         "lgu_name": "Tanza",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1088,7 +1088,7 @@
         "lgu_name": "Ternate",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1103,7 +1103,7 @@
         "lgu_name": "Trece Martires",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (20 of 23 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1118,7 +1118,7 @@
         "lgu_name": "Alaminos",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1133,7 +1133,7 @@
         "lgu_name": "Bay",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1148,7 +1148,7 @@
         "lgu_name": "Biñan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1163,7 +1163,7 @@
         "lgu_name": "Cabuyao",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1178,7 +1178,7 @@
         "lgu_name": "Calamba",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1193,7 +1193,7 @@
         "lgu_name": "Calauan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1208,7 +1208,7 @@
         "lgu_name": "Liliw",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1223,7 +1223,7 @@
         "lgu_name": "Los Baños",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1238,7 +1238,7 @@
         "lgu_name": "Luisiana",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1253,7 +1253,7 @@
         "lgu_name": "Magdalena",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1268,7 +1268,7 @@
         "lgu_name": "Majayjay",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1283,7 +1283,7 @@
         "lgu_name": "Nagcarlan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1298,7 +1298,7 @@
         "lgu_name": "Pila",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1313,7 +1313,7 @@
         "lgu_name": "Rizal",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1328,7 +1328,7 @@
         "lgu_name": "San Pablo",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1343,7 +1343,7 @@
         "lgu_name": "San Pedro",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1358,7 +1358,7 @@
         "lgu_name": "Santa Cruz",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1373,7 +1373,7 @@
         "lgu_name": "Santa Rosa",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1388,7 +1388,7 @@
         "lgu_name": "Victoria",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (19 of 30 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1403,7 +1403,7 @@
         "lgu_name": "Candelaria",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1418,7 +1418,7 @@
         "lgu_name": "Dolores",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1433,7 +1433,7 @@
         "lgu_name": "Lucban",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1448,7 +1448,7 @@
         "lgu_name": "Mauban",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1463,7 +1463,7 @@
         "lgu_name": "Pagbilao",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1478,7 +1478,7 @@
         "lgu_name": "Sampaloc",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1493,7 +1493,7 @@
         "lgu_name": "San Antonio",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1508,7 +1508,7 @@
         "lgu_name": "Sariaya",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1523,7 +1523,7 @@
         "lgu_name": "Tayabas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1538,7 +1538,7 @@
         "lgu_name": "Tiaong",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1553,7 +1553,7 @@
         "lgu_name": "Lucena",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: partial (11 of 41 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1568,7 +1568,7 @@
         "lgu_name": "Angono",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1583,7 +1583,7 @@
         "lgu_name": "Antipolo",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1598,7 +1598,7 @@
         "lgu_name": "Baras",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1613,7 +1613,7 @@
         "lgu_name": "Binangonan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1628,7 +1628,7 @@
         "lgu_name": "Cainta",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1643,7 +1643,7 @@
         "lgu_name": "Cardona",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1658,7 +1658,7 @@
         "lgu_name": "Jala-Jala",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1673,7 +1673,7 @@
         "lgu_name": "Rodriguez",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1688,7 +1688,7 @@
         "lgu_name": "Morong",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1703,7 +1703,7 @@
         "lgu_name": "Pililla",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1718,7 +1718,7 @@
         "lgu_name": "San Mateo",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1733,7 +1733,7 @@
         "lgu_name": "Tanay",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1748,7 +1748,7 @@
         "lgu_name": "Taytay",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1763,7 +1763,7 @@
         "lgu_name": "Teresa",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (14 of 14 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1778,7 +1778,7 @@
         "lgu_name": "Manila",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (1 of 1 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1793,7 +1793,7 @@
         "lgu_name": "Mandaluyong",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (5 of 5 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1808,7 +1808,7 @@
         "lgu_name": "Marikina",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (5 of 5 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1823,7 +1823,7 @@
         "lgu_name": "Pasig",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (5 of 5 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1838,7 +1838,7 @@
         "lgu_name": "Quezon City",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (5 of 5 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1853,7 +1853,7 @@
         "lgu_name": "San Juan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (5 of 5 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1868,7 +1868,7 @@
         "lgu_name": "Caloocan",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (4 of 4 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1883,7 +1883,7 @@
         "lgu_name": "Malabon",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (4 of 4 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1898,7 +1898,7 @@
         "lgu_name": "Navotas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (4 of 4 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1913,7 +1913,7 @@
         "lgu_name": "Valenzuela",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (4 of 4 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1928,7 +1928,7 @@
         "lgu_name": "Las Piñas",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1943,7 +1943,7 @@
         "lgu_name": "Makati",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1958,7 +1958,7 @@
         "lgu_name": "Muntinlupa",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1973,7 +1973,7 @@
         "lgu_name": "Parañaque",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -1988,7 +1988,7 @@
         "lgu_name": "Pasay City",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -2003,7 +2003,7 @@
         "lgu_name": "Taguig",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",
@@ -2018,7 +2018,7 @@
         "lgu_name": "Pateros",
         "adm4_psgc": null,
         "barangay_name": null,
-        "coverage_note": null
+        "coverage_note": "province coverage: full (7 of 7 LGUs)"
       },
       {
         "utility_code": "MERALCO",

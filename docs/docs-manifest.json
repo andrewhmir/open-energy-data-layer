@@ -2,7 +2,7 @@
   "generated_by": "tools/build-docs.py",
   "site_title": "Open Energy Data Layer — documentation",
   "dataset_version": "2026-11-10",
-  "page_count": 21,
+  "page_count": 19,
   "groups": [
     {
       "id": "overview",
@@ -171,24 +171,6 @@
           "kind": "markdown"
         },
         {
-          "id": "research-api-landscape",
-          "label": "Research: API landscape",
-          "html": "research-api-landscape.html",
-          "source": "research/api-landscape.md",
-          "lines": 219,
-          "bytes": 37352,
-          "kind": "markdown"
-        },
-        {
-          "id": "research-data-landscape",
-          "label": "Research: Data landscape",
-          "html": "research-data-landscape.html",
-          "source": "research/data-landscape.md",
-          "lines": 367,
-          "bytes": 49824,
-          "kind": "markdown"
-        },
-        {
           "id": "research-service-areas",
           "label": "Research: Service areas",
           "html": "research-service-areas.html",
@@ -208,7 +190,7 @@
           "id": "notice",
           "label": "Notices & attribution",
           "html": "notice.html",
-          "source": "NOTICE.md",
+          "source": "../NOTICE.md",
           "lines": 166,
           "bytes": 11735,
           "kind": "markdown"
@@ -217,7 +199,7 @@
           "id": "license",
           "label": "Licence (MIT)",
           "html": "license.html",
-          "source": "LICENSE",
+          "source": "../LICENSE",
           "lines": 33,
           "bytes": 1623,
           "kind": "plain"
@@ -320,18 +302,6 @@
       "source": "research/api-docs-conventions.md"
     },
     {
-      "id": "research-api-landscape",
-      "label": "Research: API landscape",
-      "html": "research-api-landscape.html",
-      "source": "research/api-landscape.md"
-    },
-    {
-      "id": "research-data-landscape",
-      "label": "Research: Data landscape",
-      "html": "research-data-landscape.html",
-      "source": "research/data-landscape.md"
-    },
-    {
       "id": "research-service-areas",
       "label": "Research: Service areas",
       "html": "research-service-areas.html",
@@ -356,11 +326,11 @@
       "source": "SECURITY.md"
     }
   ],
-  "html_bytes": 1019369,
+  "html_bytes": 846278,
   "search_index": {
-    "pages": 20,
-    "sections": 266,
-    "bytes": 109587,
-    "asset_bytes": 129027
+    "pages": 18,
+    "sections": 218,
+    "bytes": 87930,
+    "asset_bytes": 109144
   }
 }

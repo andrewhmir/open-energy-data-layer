@@ -176,7 +176,10 @@ def load_coverage(utilities):
             detail = "barangay"
         else:
             detail = "region"
-        notes = [row["coverage_note"] for row in rows if row.get("coverage_note")]
+        # Province-level Meralco notes repeat on every LGU row; keep them in the rows
+        # (and the API), not in the utility's single source note.
+        notes = [row["coverage_note"] for row in rows if row.get("coverage_note")
+                 and not row["coverage_note"].startswith("province coverage:")]
         coverage[utility["code"]] = {
             "detail": detail,
             "source_ids": u_sources,
@@ -203,7 +206,7 @@ def load_coverage(utilities):
     check("service area rows present", len(area_rows) > 0, "%d rows" % len(area_rows))
     check("every utility has a coverage block", len(coverage) == len(utilities),
           "%d of %d" % (len(coverage), len(utilities)))
-    check("utilities with LGU-level coverage", len(detailed) >= 1,
+    check("utilities with LGU-level coverage", len(detailed) == len(utilities),
           "%d of %d" % (len(detailed), len(utilities)))
     check("MERALCO service-area LGUs (RA 12146)",
           len(meralco.get("lgus", [])) == 108, str(len(meralco.get("lgus", []))))
@@ -560,7 +563,15 @@ def main():
         checks.append({"check": "SOLECO May→Jun 2026 change ~ +32.2%", "ok": change is not None and abs(change - 32.2) <= 0.2,
                        "got": change, "expected": 32.2})
         print(f"  {'OK  ' if checks[-1]['ok'] else 'FAIL'} SOLECO May→Jun 2026 change: got {change!r} expected ~32.2")
-    failed = [c for c in checks if not c["ok"]]
+    failed = [c for c in checks + coverage_checks if not c["ok"]]
+    if failed:
+        # Stop before writing: a failed run must not replace the published snapshot.
+        for c in failed:
+            detail = c.get("detail") or (
+                f"got {c['got']!r} expected {c['expected']!r}" if "got" in c else "")
+            print(f"  FAIL {c['check']}: {detail}")
+        print(f"\n{len(failed)} check(s) failed - nothing written")
+        sys.exit(1)
 
     # ---- write tidy CSVs -------------------------------------------------
     util_rows = []
@@ -691,10 +702,7 @@ def main():
     }
     with open(os.path.join(SEED_DIR, "validation.json"), "w", encoding="utf-8") as fh:
         json.dump(validation, fh, indent=1, ensure_ascii=False)
-    print(f"wrote validation.json · {'ALL CHECKS PASSED' if not failed else str(len(failed)) + ' FAILURES'}")
-
-    if failed:
-        sys.exit(1)
+    print("wrote validation.json · ALL CHECKS PASSED")
 
 
 if __name__ == "__main__":

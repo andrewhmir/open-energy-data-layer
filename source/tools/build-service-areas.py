@@ -274,7 +274,7 @@ def main():
             rows.append([
                 "MERALCO", SOURCE_LAW, "lgu", region_psgc,
                 record["province_psgc"], province["name"], adm3, record["name"],
-                "", "", "",
+                "", "", note,
             ])
             meralco_notes[adm3] = note
     for district in law["ncr"]["districts"]:
@@ -292,7 +292,7 @@ def main():
             rows.append([
                 "MERALCO", SOURCE_LAW, "lgu", "1300000000",
                 record["province_psgc"], province.get("name", "Metro Manila"),
-                adm3, record["name"], "", "", "",
+                adm3, record["name"], "", "", note,
             ])
     for municipality in law["pampanga_barangays"]["municipalities"]:
         adm3 = canonical_code(municipality["adm3_psgc"])
@@ -392,7 +392,9 @@ def main():
                     "(legacy region code)" % legacy.get("short_name", utility["region_psgc"]))
             for row in rows:
                 if row[0] == code:
-                    row[10] = (row[10] + "; " if row[10] else "") + note
+                    # The franchise source already labels these rows "cross-region";
+                    # keep that word once and append only the reassignment detail.
+                    row[10] = (row[10] + "; " if row[10] else "") + note.replace("cross-region: ", "", 1)
             reassigned.append("%s (%s -> %s)" % (code, legacy.get("short_name", "?"),
                                                  ", ".join(sorted(regions))))
     if reassigned:
