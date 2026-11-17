@@ -106,7 +106,7 @@ its public CSV export on **2026-11-10** (dataset version `2026-11-10`).
 - Reusers should cite the DOE workbook and this retrieval date, and should
   satisfy themselves about DOE's terms. Confirming the workbook's ownership,
   refresh cadence and licence/citation terms with DOE is a **week-1
-  partnership ask** recorded in `research/data-landscape.md`.
+  partnership ask**.
 - If DOE asks for changes to how the source data is
   presented or redistributed, the project will comply and update this notice.
 

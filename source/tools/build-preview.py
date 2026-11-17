@@ -72,8 +72,6 @@ NAV_PLATFORM = [
     ("docs/index.html", "Docs", "docs"),
     ("api.html", "API reference", "api"),
     ("data-model.html", "Data model", "model"),
-    ("research-data-landscape.html", "Data landscape", "data-landscape"),
-    ("research-api-landscape.html", "API landscape", "api-landscape"),
 ]
 
 DOC_PAGES = {
@@ -81,8 +79,6 @@ DOC_PAGES = {
     "plan/fellowship-proposal.md": "proposal.html",
     "plan/application-answers.md": "answers.html",
     "draft/data-model.md": "data-model.html",
-    "research/data-landscape.md": "research-data-landscape.html",
-    "research/api-landscape.md": "research-api-landscape.html",
     "research/pitch-deck-notes.md": "research-pitch-deck-notes.html",
     "draft/map-table-prototype.html": "prototype.html",
 }
@@ -232,9 +228,7 @@ def page(title, body, context="platform", active="", desc="", footer_note=""):
       <li><span class="label">Documentation</span><a href="docs/api-docs.html">API guide</a>
         <a href="docs/data-seed.html">Data dictionary</a><a href="docs/coverage-method.html">Coverage method</a>
         <a href="files/draft/openapi.yaml">openapi.yaml</a></li>
-      <li><span class="label">Research</span><a href="research-data-landscape.html">Data landscape</a>
-        <a href="research-api-landscape.html">API landscape</a>
-        <a href="index.html#review-evidence">Review evidence</a></li>
+      <li><span class="label">Research</span><a href="index.html#review-evidence">Review evidence</a></li>
       <li><span class="label">Source</span><a href="https://doe.gov.ph/data-and-prices/electricity" target="_blank" rel="noopener">DOE rate monitor &#8599;</a>
         <a href="https://bettergov.ph" target="_blank" rel="noopener">BetterGov.ph &#8599;</a>
         <a href="index.html">Review pack home</a></li>"""
@@ -755,7 +749,6 @@ def build_index():
         ("raw commercial tab", f"data/raw/doe-rates/{src['retrieved_at'][:10]}/441532959.csv", "raw bytes"),
         ("raw industrial tab", f"data/raw/doe-rates/{src['retrieved_at'][:10]}/1244383053.csv", "raw bytes"),
         ("raw generation tab", f"data/raw/doe-rates/{src['retrieved_at'][:10]}/714337242.csv", "raw bytes"),
-        ("validation log (research)", "research/data-landscape.md", "source ledger"),
         ("package README", "README.md", "updated"),
         ("entire package (.zip)", "open-energy-draft-2026-11-10.zip", "repo + data"),
     ]:
@@ -1209,11 +1202,6 @@ def copy_files():
         "research/api-docs-conventions.md",
         "CHANGELOG.md",
         "requirements.txt",
-        "plan/fellowship-proposal.md",
-        "plan/application-answers.md",
-        "research/data-landscape.md",
-        "research/api-landscape.md",
-        "research/pitch-deck-notes.md",
         "draft/openapi.yaml",
         "draft/data-model.md",
         "draft/assets/README.md",
@@ -1439,10 +1427,6 @@ def main():
          "Fellowship submission: the challenge deck extract.", "submission"),
         ("draft/data-model.md", "data-model.html", "model", "Data model",
          "Review copy of the data platform's canonical schema and provenance.", "platform"),
-        ("research/data-landscape.md", "research-data-landscape.html", "data-landscape", "Data landscape",
-         "Review copy: the data platform's source ledger.", "platform"),
-        ("research/api-landscape.md", "research-api-landscape.html", "api-landscape", "API & standards landscape",
-         "Review copy: the data platform's API evidence.", "platform"),
         ("README.md", "readme.html", "", "Project README",
          "Review copy: the data platform's project README.", "platform"),
     ]

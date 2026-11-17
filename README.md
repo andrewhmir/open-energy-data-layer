@@ -20,7 +20,7 @@ except the deployment link rewrites.
 | --- | --- |
 | `/` | The product page: national map, 141-utility price table, provider/coverage lens, comparison view and API explorer. Single self-contained HTML file — all data, fonts, brand marks and geometry inlined; no third-party runtime requests. |
 | `/api/v1/` | Static, read-only JSON API (dataset metadata, health, months, latest rates, regions, utilities, service areas, sources, conflicts, validation) with `/openapi.yaml` and `/api/v1/openapi.json` as the machine contract. |
-| `/docs/` | The platform documentation site (21 pages) with build-time full-text search and no runtime fetches. |
+| `/docs/` | The platform documentation site (19 pages) with build-time full-text search and no runtime fetches. |
 | `/data/seed/` | The published seed dataset (CSVs, validation report, page payload) — the same bytes the page and API are built from. |
 | `/data/raw/doe-rates/2026-11-10/` | The immutable raw workbook snapshots (four tabs) the dataset was extracted from. |
 | `/source/` | The raw source files the documentation links to (markdown sources, builder scripts, CI config) so its "download raw" actions return the actual bytes. |

@@ -83,7 +83,7 @@ layer:
 ## Architecture and agent maps
 
 Three generated guides explain how the system is put together and where to change it —
-all rendered with the rest of the documentation under `draft/docs/` (21 pages: 20
+all rendered with the rest of the documentation under `draft/docs/` (19 pages: 18
 documents + index):
 
 - **[Frontend architecture](draft/frontend.md)** — the three browser-facing surfaces
@@ -239,7 +239,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | `draft/openapi.yaml` | **API contract**, OpenAPI 3.1 (API version 1.0.0); a JSON mirror is generated at `draft/api/v1/openapi.json`. |
 | `draft/api-docs.md` | **API guide** (human-readable): access, datasets and units, conventions, endpoint reference, attribution, disclaimers and versioning. |
 | `draft/api/v1/` | **Generated static JSON API.** Dataset metadata, health, months, latest rates, utilities (one file per utility), regions (one file per region), service areas (one file per utility), sources, changes, conflicts and the validation report — read-only JSON, no server required. |
-| `draft/docs/` | **Generated documentation site** (21 pages + shared assets, deterministic): project README, data model, API guide, frontend/backend architecture, component map & agent guide, seed/asset/brand/testing docs, contributing, security, changelog and research notes — a styled UI with sidebar, TOC and raw-markdown downloads. |
+| `draft/docs/` | **Generated documentation site** (19 pages + shared assets, deterministic): project README, data model, API guide, frontend/backend architecture, component map & agent guide, seed/asset/brand/testing docs, contributing, security, changelog and research notes — a styled UI with sidebar, TOC and raw-markdown downloads. |
 | `draft/data-model.md` | Canonical entities, IDs, provenance, versioning and licensing policy. |
 | `draft/frontend.md`, `draft/backend.md`, `draft/component-map.md` | **Architecture docs**: the frontend surfaces and UI contracts, the backend/pipeline design and failure modes, and the component map & agent guide. Hand-maintained; rendered as `frontend.html`, `backend.html`, `component-map.html` in the docs site. |
 | `AGENTS.md`, `tools/AGENTS.md`, `data/AGENTS.md`, `draft/AGENTS.md`, `tests/AGENTS.md` | **Agent maps** for coding assistants: repository orientation/component map at the root plus per-area source-of-truth files, commands, generated artefacts, contracts and pitfalls. |
@@ -253,7 +253,7 @@ deterministic page/docs rebuild check and both browser QA suites on every push/P
 | `package.json` | Node tooling for the QA suite (Playwright pinned; convenience scripts for QA, validation and builds). |
 | `.github/workflows/ci.yml` | **CI.** On push/PR to `main`: static validation + deterministic rebuild check, then Chromium browser QA; QA screenshots are uploaded as artifacts. |
 | `plan/` | Internal working notes and plans (not part of the published product). |
-| `research/` | Source ledger and evidence: data landscape, API/interop landscape and API documentation conventions. |
+| `research/` | Source ledger and evidence: API documentation conventions and service-area coverage research. |
 | `preview/` | Generated local review hub (gitignored). |
 | `LICENSE`, `NOTICE.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `requirements.txt` | Project packaging and governance. |
 
